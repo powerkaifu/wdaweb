@@ -241,11 +241,6 @@ UNFOLD = {
                         'link': lambda request: reverse_lazy('admin:cms_carousel_changelist'),
                     },
                     {
-                        'title': '7大課程模組管理 (920h)',
-                        'icon': 'school',
-                        'link': lambda request: reverse_lazy('admin:cms_curriculummodule_changelist'),
-                    },
-                    {
                         'title': '核心技術卡片管理',
                         'icon': 'code',
                         'link': lambda request: reverse_lazy('admin:cms_techcard_changelist'),

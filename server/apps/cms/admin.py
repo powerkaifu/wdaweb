@@ -174,26 +174,6 @@ class AdmissionBatchAdmin(ModelAdmin):
     restore_selected.short_description = '♻️ 還原'
 
 
-@admin.register(CurriculumModule)
-class CurriculumModuleAdmin(ModelAdmin):
-    list_display = ['module_number', 'module_name', 'hours', 'category_tab', 'sort_order', 'deleted_status']
-    list_filter = ['category_tab']
-    search_fields = ['module_number', 'module_name', 'description']
-    list_editable = ['sort_order', 'hours']
-    actions = ['soft_delete_selected', 'restore_selected']
-
-    def deleted_status(self, obj):
-        return '🗑️ 垃圾桶中' if obj.deleted_at else '✅ 正常'
-    deleted_status.short_description = '狀態'
-
-    def soft_delete_selected(self, request, queryset):
-        queryset.update(deleted_at=timezone.now())
-    soft_delete_selected.short_description = '🗑️ 移至垃圾桶'
-
-    def restore_selected(self, request, queryset):
-        queryset.update(deleted_at=None)
-    restore_selected.short_description = '♻️ 還原'
-
 
 @admin.register(TechCard)
 class TechCardAdmin(SafeUploadAdminMixin, ModelAdmin):
