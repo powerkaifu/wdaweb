@@ -44,14 +44,7 @@ def download_image(img_url: str, dest_rel_path: str) -> bool:
 
     targets = [
         BASE_DIR / "media" / dest_rel_path,
-        BASE_DIR / "static" / dest_rel_path,
     ]
-
-    # 若為 facilities，額外複製至 client 端
-    if "facilities" in dest_rel_path:
-        filename = Path(dest_rel_path).name
-        targets.append(PROJECT_ROOT / "client" / "src" / "assets" / "facilities" / filename)
-        targets.append(PROJECT_ROOT / "client" / "public" / "facilities" / filename)
 
     try:
         # 下載圖片內容
