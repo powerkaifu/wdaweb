@@ -93,6 +93,7 @@ lerna-debug.log*
 .Trashes
 ehthumbs.db
 Thumbs.db
+tempCodeRunnerFile.*
 
 # ------------------------------------------------------------------------------
 # 內部專案規格、需求文件與本地使用手冊目錄 (禁止上傳 GitHub，僅限本地留存)
