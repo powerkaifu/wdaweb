@@ -22,13 +22,19 @@ def get_media_url(request, field):
     if not field:
         return ""
     try:
-        # 實體檔案防呆檢查：若實體檔案在磁碟中不存在，直接回傳空字串，由前端 0 延遲呈現打包資產
+        url = field.url if hasattr(field, 'url') else str(field)
+        if not url:
+            return ""
+        # 1. 若已經是雲端外部 CDN 網址 (例如 Cloudinary: https://res.cloudinary.com/...) 直接回傳
+        if url.startswith(('http://', 'https://')):
+            return url
+        # 2. 本地端檔案防呆檢查：若實體檔案在磁碟中不存在，直接回傳空字串由前端 0 延遲呈現打包資產
         if hasattr(field, 'name') and hasattr(field, 'storage') and field.name:
             if not field.storage.exists(field.name):
                 return ""
-        return request.build_absolute_uri(field.url)
+        return request.build_absolute_uri(url)
     except Exception:
-        return field.url if hasattr(field, 'url') else ""
+        return getattr(field, 'url', '')
 
 @api.get("/public/site-settings", response=SiteSettingOut, tags=["Public 前台公開"])
 def get_site_settings(request):
