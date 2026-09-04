@@ -15,15 +15,21 @@ from datetime import date
 
 print("=== 開始植入種子資料 ===")
 
-# 1. 建立單一超級管理員
-if not User.objects.filter(username="admin").exists():
-    admin_user = os.getenv("DJANGO_SUPERUSER_USERNAME", "admin")
-    admin_email = os.getenv("DJANGO_SUPERUSER_EMAIL", "admin@wdaweb.gov.tw")
-    admin_pass = os.getenv("DJANGO_SUPERUSER_PASSWORD", "Taishan@2026#Admin")
-    User.objects.create_superuser(admin_user, admin_email, admin_pass)
+# 1. 建立或重設超級管理員帳號與密碼 (確保密碼 100% 絕對對齊)
+admin_user = os.getenv("DJANGO_SUPERUSER_USERNAME", "admin")
+admin_email = os.getenv("DJANGO_SUPERUSER_EMAIL", "admin@wdaweb.gov.tw")
+admin_pass = os.getenv("DJANGO_SUPERUSER_PASSWORD", "Taishan@2026#Admin")
+
+user, created = User.objects.get_or_create(username=admin_user, defaults={"email": admin_email})
+user.set_password(admin_pass)
+user.is_staff = True
+user.is_superuser = True
+user.is_active = True
+user.save()
+if created:
     print(f"[OK] 管理員帳號建立成功：{admin_user}")
 else:
-    print("[INFO] 管理員帳號已存在")
+    print(f"[OK] 管理員帳號密碼已強制重設對齊：{admin_user}")
 
 # 2. 全域站台設定 (僅在完全無設定時建立預設值)
 if not SiteSetting.objects.exists():

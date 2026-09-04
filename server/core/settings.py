@@ -132,7 +132,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
 
+# 反向代理與 HTTPS 安全配置 (Render 部署必備，防止 CSRF 與登入失效)
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
 CSRF_TRUSTED_ORIGINS = [
+    'https://wdaweb.onrender.com',
     'https://*.onrender.com',
     'https://*.github.io',
     'http://localhost:5173',
