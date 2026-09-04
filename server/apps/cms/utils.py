@@ -10,14 +10,30 @@ def optimize_image(image_field, max_width=1920, quality=80):
     """
     自動化圖片處理管道：
     1. 若未上傳圖片則直接返回。
-    2. 自動將圖片等比縮放至最大寬度 max_width (不放大原圖)。
-    3. 自動轉換為現代 WebP 格式，縮減 80% 體積。
-    4. 支援透明度 (RGBA / LA / P 模式)。
+    2. 若當前使用的是 Cloudinary 雲端圖床儲存，直接返回交由 Cloudinary CDN 處理，
+       避免二次上傳衝突與 Render 512MB 記憶體溢出。
+    3. 本地儲存時，自動將圖片等比縮放至最大寬度 max_width，並轉換為 WebP 格式。
+    4. 支援透明度 (RGBA / LA / P 模式)，並具備指標歸零防禦。
     """
     if not image_field or not hasattr(image_field, 'file'):
         return
 
+    # 若使用 Cloudinary 雲端圖床儲存，圖片處理與 WebP 轉換一律交由 Cloudinary CDN 雲端管線，本地不進行重複壓縮與提早上傳
+    storage = getattr(image_field, 'storage', None)
+    if storage:
+        storage_cls_name = storage.__class__.__name__
+        if 'Cloudinary' in storage_cls_name:
+            logger.info(f"[Image Optimizer] 偵測到 Cloudinary 雲端圖床儲存，略過本地 PIL 壓縮，交由 CDN 雲端管線處理: {image_field.name}")
+            return
+
     try:
+        # 重設檔案指針至開頭
+        if hasattr(image_field, 'seek'):
+            try:
+                image_field.seek(0)
+            except Exception:
+                pass
+
         # 開啟圖片
         img = Image.open(image_field)
         
@@ -52,3 +68,10 @@ def optimize_image(image_field, max_width=1920, quality=80):
     except Exception as e:
         # 若圖片解析失敗則保留原圖，不阻擋儲存流程
         logger.warning(f"[Image Optimizer Warning] 無法壓縮圖片 {image_field.name}: {e}")
+    finally:
+        # 關鍵防禦：保證檔案指標重設回開頭，避免後續 Django save 流程讀取到空檔案
+        if hasattr(image_field, 'seek'):
+            try:
+                image_field.seek(0)
+            except Exception:
+                pass

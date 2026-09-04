@@ -96,16 +96,53 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 # 媒體檔案儲存架構 (智慧雙軌設計：自動偵測 Cloudinary 雲端圖床環境變數)
-CLOUDINARY_CLOUD_NAME = os.getenv('CLOUDINARY_CLOUD_NAME', '').strip()
-CLOUDINARY_API_KEY = os.getenv('CLOUDINARY_API_KEY', '').strip()
-CLOUDINARY_API_SECRET = os.getenv('CLOUDINARY_API_SECRET', '').strip()
+import urllib.parse
 
-if CLOUDINARY_CLOUD_NAME and CLOUDINARY_API_KEY and CLOUDINARY_API_SECRET:
-    CLOUDINARY_STORAGE = {
-        'CLOUD_NAME': CLOUDINARY_CLOUD_NAME,
-        'API_KEY': CLOUDINARY_API_KEY,
-        'API_SECRET': CLOUDINARY_API_SECRET,
-    }
+def _clean_env_val(val: str | None) -> str:
+    if not val:
+        return ""
+    val = str(val).strip()
+    if (val.startswith('"') and val.endswith('"')) or (val.startswith("'") and val.endswith("'")):
+        val = val[1:-1].strip()
+    return val
+
+# 支援兩種 Cloudinary 設定模式：
+# 模式 A：直接貼上 Cloudinary Dashboard 官方提供的 CLOUDINARY_URL (cloudinary://<api_key>:<api_secret>@<cloud_name>)
+# 模式 B：分開填寫 CLOUDINARY_CLOUD_NAME, CLOUDINARY_API_KEY, CLOUDINARY_API_SECRET
+_raw_c_url = _clean_env_val(os.getenv('CLOUDINARY_URL'))
+CLOUDINARY_CLOUD_NAME = _clean_env_val(os.getenv('CLOUDINARY_CLOUD_NAME'))
+CLOUDINARY_API_KEY = _clean_env_val(os.getenv('CLOUDINARY_API_KEY'))
+CLOUDINARY_API_SECRET = _clean_env_val(os.getenv('CLOUDINARY_API_SECRET'))
+
+if _raw_c_url:
+    try:
+        _parsed_c_url = urllib.parse.urlparse(_raw_c_url)
+        if _parsed_c_url.scheme == 'cloudinary':
+            CLOUDINARY_CLOUD_NAME = CLOUDINARY_CLOUD_NAME or _parsed_c_url.hostname or ''
+            CLOUDINARY_API_KEY = CLOUDINARY_API_KEY or _parsed_c_url.username or ''
+            CLOUDINARY_API_SECRET = CLOUDINARY_API_SECRET or _parsed_c_url.password or ''
+    except Exception:
+        pass
+
+IS_CLOUDINARY_CONFIGURED = bool(
+    CLOUDINARY_CLOUD_NAME and CLOUDINARY_API_KEY and CLOUDINARY_API_SECRET
+)
+
+# 始終配置 CLOUDINARY_STORAGE 字典，避免 django-cloudinary-storage 套件載入時拋出 ImproperlyConfigured
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': CLOUDINARY_CLOUD_NAME or 'placeholder_cloud',
+    'API_KEY': CLOUDINARY_API_KEY or '000000000000000',
+    'API_SECRET': CLOUDINARY_API_SECRET or 'placeholder_secret',
+}
+
+if IS_CLOUDINARY_CONFIGURED:
+    import cloudinary
+    cloudinary.config(
+        cloud_name=CLOUDINARY_CLOUD_NAME,
+        api_key=CLOUDINARY_API_KEY,
+        api_secret=CLOUDINARY_API_SECRET,
+        secure=True,
+    )
     DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
     STORAGES = {
         "default": {
@@ -268,5 +305,44 @@ UNFOLD = {
                 ],
             },
         ],
+    },
+}
+
+# 全域日誌配置 (確保 Render 終端機與本地可完整輸出 500 錯誤之 Exception Traceback)
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '[{asctime}] {levelname} [{name}:{lineno}] {message}',
+            'style': '{',
+        },
+    },
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+            'formatter': 'verbose',
+        },
+    },
+    'root': {
+        'handlers': ['console'],
+        'level': 'INFO',
+    },
+    'loggers': {
+        'django.request': {
+            'handlers': ['console'],
+            'level': 'ERROR',
+            'propagate': False,
+        },
+        'apps': {
+            'handlers': ['console'],
+            'level': 'INFO',
+            'propagate': False,
+        },
+        'cloudinary': {
+            'handlers': ['console'],
+            'level': 'INFO',
+            'propagate': False,
+        },
     },
 }
