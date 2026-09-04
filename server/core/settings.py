@@ -275,7 +275,7 @@ UNFOLD = {
                 'collapsible': False,
                 'items': [
                     {
-                        'title': '招生期別與官方連結',
+                        'title': '招生期別 (🤖 爬蟲自動同步)',
                         'icon': 'event_available',
                         'link': lambda request: reverse_lazy('admin:cms_admissionbatch_changelist'),
                     },

@@ -2,6 +2,7 @@ import logging
 from django.contrib import admin, messages
 from django.shortcuts import redirect
 from django.utils.html import format_html
+from django.utils.safestring import mark_safe
 from django.utils import timezone
 from unfold.admin import ModelAdmin
 from .models import (
@@ -67,6 +68,35 @@ class AdmissionBatchAdmin(ModelAdmin):
     search_fields = ['batch_name', 'course_code']
     list_editable = ['status_override', 'sort_order']
     actions = ['soft_delete_selected', 'restore_selected', 'sync_batches_action']
+    readonly_fields = ['last_synced_at', 'click_count', 'created_at', 'updated_at']
+
+    fieldsets = (
+        ("🤖 資料來源重要宣告與維護指引", {
+            "description": mark_safe(
+                '<div style="background: rgba(6, 182, 212, 0.12); border-left: 4px solid #06b6d4; padding: 14px 18px; border-radius: 6px; margin-bottom: 12px; color: #e2e8f0; font-size: 14px; line-height: 1.7;">'
+                '<strong style="color: #38bdf8; font-size: 15px;">📌 核心資料來源聲明：</strong><br>'
+                '本資料表之期別名稱、課程代碼、報名起訖日、甄試日、開訓與結訓日、預定招訓及目前報名人數，'
+                '<strong>全數由後端定時爬蟲自「台灣就業通」官方網站自動抓取並儲存落盤</strong>。<br>'
+                '💡 <strong>管理員維護指引：</strong>平日系統會全自動在背景監控更新，<strong>管理員完全無需手動新增或重複輸入</strong>。<br>'
+                '只有在官方就業通因特殊政策需臨時調整，或您希望強制「提前隱藏 / 額滿 / 鎖定狀態」時，才需在此手動干預。'
+                '</div>'
+            ),
+            "fields": (),
+        }),
+        ("班級基本資訊 (🤖 爬蟲自動同步)", {
+            "fields": ("batch_name", "course_code", "total_hours", "planned_trainees", "applicants_count", "apply_url"),
+        }),
+        ("重要招生時程 (🤖 爬蟲自動同步)", {
+            "fields": ("enroll_start_date", "enroll_end_date", "screening_date", "training_start_date", "training_end_date"),
+        }),
+        ("前台展示與狀態控制 (管理員可手動覆寫)", {
+            "description": "預設為「系統自動判定」（依今日日期與官方時程動態推進 5 階段）。若有特殊需求可手動鎖定狀態或調整順序。",
+            "fields": ("status_override", "sort_order"),
+        }),
+        ("數據紀錄與同步狀態 (唯讀)", {
+            "fields": ("last_synced_at", "click_count", "created_at", "updated_at"),
+        }),
+    )
 
     def has_add_permission(self, request):
         # 🚨 禁用手動新增期別：所有招生期別一律由台灣就業通官方爬蟲自動建立與同步，防止人為誤填
@@ -81,7 +111,7 @@ class AdmissionBatchAdmin(ModelAdmin):
             '#10b981' if percent >= 100 else '#f59e0b',
             percent
         )
-    applicants_ratio.short_description = '報名 / 招訓人數'
+    applicants_ratio.short_description = '報名 / 招訓人數 (爬蟲抓取)'
 
     def sync_batches_action(self, request, queryset):
         from apps.cms.services.batch_sync import sync_admission_batches
@@ -90,7 +120,7 @@ class AdmissionBatchAdmin(ModelAdmin):
             self.message_user(request, f"成功同步資料！新增 {res['created']} 筆，更新 {res['updated']} 筆。")
         else:
             self.message_user(request, f"同步失敗: {', '.join(res['errors'])}", level='ERROR')
-    sync_batches_action.short_description = '🔄 從台灣就業通追蹤系統同步最新資料'
+    sync_batches_action.short_description = '🔄 立即觸發爬蟲連線台灣就業通同步最新資料'
 
     def enroll_period(self, obj):
         return f'{obj.enroll_start_date} ~ {obj.enroll_end_date}'

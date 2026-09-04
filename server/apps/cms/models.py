@@ -64,32 +64,33 @@ class AdmissionBatch(SoftDeleteModel):
         ('hidden', '前台隱藏'),
     ]
 
-    batch_name = models.CharField(max_length=100, verbose_name="期別名稱 (例：第 1 期)")
-    total_hours = models.IntegerField(default=920, verbose_name="總訓練時數")
-    enroll_start_date = models.DateField(verbose_name="報名起始日期")
-    enroll_end_date = models.DateField(verbose_name="報名截止日期")
-    screening_date = models.DateField(null=True, blank=True, verbose_name="甄試日期")
-    training_start_date = models.DateField(verbose_name="開訓日期")
-    training_end_date = models.DateField(verbose_name="結訓日期")
-    planned_trainees = models.IntegerField(default=24, verbose_name="預定招訓人數")
-    applicants_count = models.IntegerField(default=0, verbose_name="目前報名人數")
-    apply_url = models.URLField(max_length=500, verbose_name="台灣就業通官方報名網址")
-    course_code = models.CharField(max_length=50, blank=True, verbose_name="台灣就業通課程代碼 (例：159268)")
+    batch_name = models.CharField(max_length=100, verbose_name="期別名稱 (例：第 1 期)", help_text="🤖 爬蟲自動同步：班級名稱")
+    total_hours = models.IntegerField(default=920, verbose_name="總訓練時數", help_text="官方核定總訓練時數（預設 920 小時）")
+    enroll_start_date = models.DateField(verbose_name="報名起始日期", help_text="🤖 爬蟲自動同步：官方報名開始日期")
+    enroll_end_date = models.DateField(verbose_name="報名截止日期", help_text="🤖 爬蟲自動同步：官方報名截止日期")
+    screening_date = models.DateField(null=True, blank=True, verbose_name="甄試日期", help_text="🤖 爬蟲自動同步：官方甄試日期")
+    training_start_date = models.DateField(verbose_name="開訓日期", help_text="🤖 爬蟲自動同步：官方正式開訓日期")
+    training_end_date = models.DateField(verbose_name="結訓日期", help_text="🤖 爬蟲自動同步：官方預計結訓日期")
+    planned_trainees = models.IntegerField(default=24, verbose_name="預定招訓人數", help_text="🤖 爬蟲自動同步：官方預定招訓人數")
+    applicants_count = models.IntegerField(default=0, verbose_name="目前報名人數", help_text="🤖 爬蟲自動同步：來自台灣就業通的最新報名人數")
+    apply_url = models.URLField(max_length=500, verbose_name="台灣就業通官方報名網址", help_text="🤖 爬蟲自動對應之官方就業通報名連結（亦可手動覆寫）")
+    course_code = models.CharField(max_length=50, blank=True, verbose_name="台灣就業通課程代碼 (例：159268)", help_text="🤖 爬蟲追蹤識別碼：以此代碼向台灣就業通爬取該班最新狀態")
     status_override = models.CharField(
         max_length=20,
         choices=STATUS_CHOICES,
         default='auto',
-        verbose_name="狀態顯示模式"
+        verbose_name="狀態顯示模式",
+        help_text="💡 建議維持「系統自動判定」（由系統依爬蟲日期動態計算）。若需緊急手動干預或強制隱藏才做變更"
     )
-    click_count = models.IntegerField(default=0, verbose_name="報名點擊次數 (轉換追蹤)")
-    sort_order = models.IntegerField(default=0, verbose_name="排序")
-    last_synced_at = models.DateTimeField(null=True, blank=True, verbose_name="最後外部同步時間")
+    click_count = models.IntegerField(default=0, verbose_name="報名點擊次數 (轉換追蹤)", help_text="📊 官網前台民眾點擊「前往報名」按鈕的累計次數（數據轉換成效）")
+    sort_order = models.IntegerField(default=0, verbose_name="排序", help_text="數字越小越靠前，預設 0")
+    last_synced_at = models.DateTimeField(null=True, blank=True, verbose_name="最後外部同步時間", help_text="🤖 爬蟲最後一次成功連線台灣就業通並更新資料庫的時間")
     created_at = models.DateTimeField(default=timezone.now, verbose_name="建立時間")
     updated_at = models.DateTimeField(auto_now=True, verbose_name="更新時間")
 
     class Meta:
-        verbose_name = "招生期別"
-        verbose_name_plural = "招生期別與官方連結管理"
+        verbose_name = "招生期別 (爬蟲儲存)"
+        verbose_name_plural = "招生期別 (🤖 台灣就業通爬蟲自動同步)"
         ordering = ['sort_order', 'enroll_start_date']
 
     @property
