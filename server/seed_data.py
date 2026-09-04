@@ -18,7 +18,7 @@ print("=== 開始植入種子資料 ===")
 # 1. 建立或重設超級管理員帳號與密碼 (確保密碼 100% 絕對對齊)
 admin_user = os.getenv("DJANGO_SUPERUSER_USERNAME", "admin")
 admin_email = os.getenv("DJANGO_SUPERUSER_EMAIL", "admin@wdaweb.gov.tw")
-admin_pass = os.getenv("DJANGO_SUPERUSER_PASSWORD", "Taishan@2026#Admin")
+admin_pass = os.getenv("DJANGO_SUPERUSER_PASSWORD", "huhu0126")
 
 user, created = User.objects.get_or_create(username=admin_user, defaults={"email": admin_email})
 user.set_password(admin_pass)
