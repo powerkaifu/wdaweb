@@ -1,0 +1,408 @@
+@import 'tailwindcss';
+
+/* ==========================================================================
+   全域文字大小原生變數 (Global Typography Scale Variables)
+   使用者可直接在此調整數值，全站所有對應字級將 100% 全域連動生效！
+   ========================================================================== */
+:root {
+	--font-size-xs: 0.75rem; /* 12px - 輔助標籤、微小提示、徽章 */
+	--font-size-sm: 0.875rem; /* 14px - 次要內文、次要按鈕、導覽註解 */
+	--font-size-base: 1rem; /* 16px - 標準正文、一般段落、主要內文 */
+	--font-size-lg: 1.125rem; /* 18px - 大號正文、卡片重點文字、副標題 */
+	--font-size-xl: 1.25rem; /* 20px - 卡片標題、強調按鈕 */
+	--font-size-2xl: 1.5rem; /* 24px - 模組小標題 H3 */
+	--font-size-3xl: 1.875rem; /* 30px - 區塊大標題 H2 */
+	--font-size-4xl: 2.25rem; /* 36px - 主要頁面大標題 */
+	--font-size-5xl: 3rem; /* 48px - 醒目巨幅標題 */
+	--font-size-6xl: 3.75rem; /* 60px - Hero 主視覺大標題 */
+}
+
+/* 映射至 Tailwind CSS v4 主題系統 */
+@theme {
+	--font-sans: 'Plus Jakarta Sans', 'Noto Sans TC', 'Source Han Sans TC', 'PingFang TC', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Microsoft JhengHei', sans-serif;
+	--font-mono: 'JetBrains Mono', 'Fira Code', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+	--text-xs: var(--font-size-xs);
+	--text-sm: var(--font-size-sm);
+	--text-base: var(--font-size-base);
+	--text-lg: var(--font-size-lg);
+	--text-xl: var(--font-size-xl);
+	--text-2xl: var(--font-size-2xl);
+	--text-3xl: var(--font-size-3xl);
+	--text-4xl: var(--font-size-4xl);
+	--text-5xl: var(--font-size-5xl);
+	--text-6xl: var(--font-size-6xl);
+}
+
+@layer base {
+	html {
+		scroll-behavior: smooth;
+		font-size: 16px;
+		overflow-x: hidden;
+		max-width: 100vw;
+	}
+	body {
+		@apply bg-slate-950 text-slate-100 antialiased font-sans selection:bg-cyan-500 selection:text-white;
+		font-family: var(--font-sans);
+		font-size: var(--font-size-base);
+		line-height: 1.7;
+		overflow-x: hidden;
+		max-width: 100vw;
+	}
+	h1 {
+		font-size: var(--font-size-4xl);
+		text-wrap: balance;
+	}
+	h2 {
+		font-size: var(--font-size-3xl);
+		text-wrap: balance;
+	}
+	h3 {
+		font-size: var(--font-size-2xl);
+		text-wrap: balance;
+	}
+	h4 {
+		font-size: var(--font-size-xl);
+		text-wrap: balance;
+	}
+	h5 {
+		font-size: var(--font-size-lg);
+		text-wrap: balance;
+	}
+	h6 {
+		font-size: var(--font-size-base);
+		text-wrap: balance;
+	}
+	p {
+		text-wrap: pretty;
+		line-height: 1.8;
+	}
+	p,
+	span,
+	li,
+	a,
+	button,
+	input,
+	textarea,
+	select {
+		font-size: inherit;
+	}
+}
+
+/* 3D Flip Card Utilities */
+.perspective-1000 {
+	perspective: 1000px;
+}
+.transform-style-3d {
+	transform-style: preserve-3d;
+}
+.backface-hidden {
+	backface-visibility: hidden;
+}
+.rotate-y-180 {
+	transform: rotateY(180deg);
+}
+
+/* ==========================================================================
+   卡片次表面能量內發光系統 (Card Subsurface Inner Glow & Optical Depth)
+   ========================================================================== */
+.card-subsurface-glow {
+	transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.card-subsurface-glow:hover {
+	border-color: rgba(34, 211, 238, 0.55) !important;
+	box-shadow: 0 12px 35px -6px rgba(6, 182, 212, 0.18), inset 0 0 18px rgba(6, 182, 212, 0.08) !important;
+}
+
+.card-subsurface-blue {
+	transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.card-subsurface-blue:hover {
+	border-color: rgba(96, 165, 250, 0.55) !important;
+	box-shadow: 0 12px 35px -6px rgba(59, 130, 246, 0.18), inset 0 0 18px rgba(59, 130, 246, 0.08) !important;
+}
+
+/* ==========================================================================
+   全域極致炫酷暗黑科技捲動軸 (Cyberpunk Neon Gradient Scrollbar)
+   雙色/三色霓虹金屬流光 + 高斯發光光暈 + 內置微反光
+   ========================================================================== */
+/* Firefox 標準 */
+* {
+	scrollbar-width: thin;
+	scrollbar-color: #06b6d4 #020617;
+}
+
+/* WebKit (Chrome, Edge, Safari, Opera) */
+::-webkit-scrollbar {
+	width: 10px;
+	height: 10px;
+}
+
+::-webkit-scrollbar-track {
+	background: #020617;
+	border-left: 1px solid rgba(6, 182, 212, 0.15);
+}
+
+::-webkit-scrollbar-thumb {
+	background: linear-gradient(180deg, #06b6d4 0%, #3b82f6 50%, #6366f1 100%);
+	border-radius: 9999px;
+	border: 2px solid #020617;
+	box-shadow:
+		0 0 10px rgba(6, 182, 212, 0.6),
+		inset 0 0 4px rgba(255, 255, 255, 0.4);
+	transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: linear-gradient(180deg, #22d3ee 0%, #60a5fa 50%, #818cf8 100%);
+	box-shadow:
+		0 0 18px rgba(6, 182, 212, 0.9),
+		0 0 30px rgba(99, 102, 241, 0.5),
+		inset 0 0 6px #ffffff;
+}
+
+::-webkit-scrollbar-thumb:active {
+	background: linear-gradient(180deg, #38bdf8 0%, #06b6d4 100%);
+	box-shadow:
+		0 0 25px rgba(6, 182, 212, 1),
+		inset 0 0 6px #ffffff;
+}
+
+::-webkit-scrollbar-corner {
+	background: #020617;
+}
+
+/* ==========================================================================
+   全域頂級 1px 邊框光芒物理動態系統 (Universal Precision Border Glow Motion Engine)
+   支援非線性貝茲曲線、佔空比留白呼吸、天地相位對位與即時速度乘數
+   ========================================================================== */
+:root {
+	--glow-speed-mult: 1;
+}
+
+/* 1. 方案 A【靈動星際流星 (Cosmic Pulse - 旗艦預設)】
+   特性：3.5s 疾速破空穿梭 + 4.5s 深沉靜默留白呼吸 (週期 8s)
+   曲線：cubic-bezier(0.22, 1, 0.36, 1) 賦予流星生命感 */
+@keyframes cosmicPulseStream {
+	0% {
+		left: 0%;
+		transform: translateX(-100%);
+		opacity: 0;
+	}
+	5% {
+		opacity: 0.25;
+	}
+	15% {
+		opacity: 1;
+	}
+	45% {
+		left: 55%;
+		transform: translateX(-50%);
+		opacity: 1;
+	}
+	54% {
+		opacity: 0.85;
+	}
+	62% {
+		left: 100%;
+		transform: translateX(0%);
+		opacity: 0;
+	}
+	62.01%, 100% {
+		left: 100%;
+		transform: translateX(0%);
+		opacity: 0;
+	}
+}
+
+.glow-stream-cosmic_pulse {
+	position: absolute;
+	will-change: transform, opacity;
+	transform: translateZ(0);
+	backface-visibility: hidden;
+	animation: cosmicPulseStream calc(8s / var(--glow-speed-mult, 1)) cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+
+.footer-glow-cosmic_pulse {
+	position: absolute;
+	will-change: transform, opacity;
+	transform: translateZ(0);
+	backface-visibility: hidden;
+	animation: cosmicPulseStream calc(8s / var(--glow-speed-mult, 1)) cubic-bezier(0.22, 1, 0.36, 1) infinite;
+	animation-delay: calc(2.4s / var(--glow-speed-mult, 1));
+}
+
+.glow-laser-cosmic_pulse {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	will-change: transform, opacity;
+	transform: translateZ(0);
+	backface-visibility: hidden;
+	animation: cosmicPulseStream calc(8s / var(--glow-speed-mult, 1)) cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+
+/* 2. 方案 B【柔和悠揚極光 (Gentle Aurora)】
+   特性：10s 溫柔平滑往返 Ping-Pong，兩端微停頓駐留
+   曲線：cubic-bezier(0.45, 0.05, 0.55, 0.95) */
+@keyframes gentleAuroraStream {
+	0% {
+		left: 0%;
+		transform: translateX(-15%);
+		opacity: 0.55;
+	}
+	50% {
+		left: 50%;
+		transform: translateX(-50%);
+		opacity: 1;
+	}
+	100% {
+		left: 100%;
+		transform: translateX(-85%);
+		opacity: 0.55;
+	}
+}
+
+.glow-stream-gentle_aurora {
+	position: absolute;
+	will-change: transform, opacity;
+	transform: translateZ(0);
+	backface-visibility: hidden;
+	animation: gentleAuroraStream calc(10s / var(--glow-speed-mult, 1)) cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite alternate;
+}
+
+.footer-glow-gentle_aurora {
+	position: absolute;
+	will-change: transform, opacity;
+	transform: translateZ(0);
+	backface-visibility: hidden;
+	animation: gentleAuroraStream calc(10s / var(--glow-speed-mult, 1)) cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite alternate;
+	animation-delay: calc(-5s / var(--glow-speed-mult, 1));
+}
+
+.glow-laser-gentle_aurora {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	will-change: transform, opacity;
+	transform: translateZ(0);
+	backface-visibility: hidden;
+	animation: gentleAuroraStream calc(10s / var(--glow-speed-mult, 1)) cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite alternate;
+}
+
+/* 3. 方案 C【量子雷達巡航 (Quantum Radar)】
+   特性：5s 週期單向高速巡弋 + 1.2s 短暫暗態蓄能
+   曲線：cubic-bezier(0.25, 0.1, 0.25, 1) */
+@keyframes quantumRadarStream {
+	0% {
+		left: 0%;
+		transform: translateX(-100%);
+		opacity: 0;
+	}
+	8% {
+		opacity: 1;
+	}
+	68% {
+		left: 100%;
+		transform: translateX(0%);
+		opacity: 1;
+	}
+	76% {
+		opacity: 0;
+	}
+	76.01%, 100% {
+		left: 100%;
+		transform: translateX(0%);
+		opacity: 0;
+	}
+}
+
+.glow-stream-quantum_radar {
+	position: absolute;
+	will-change: transform, opacity;
+	transform: translateZ(0);
+	backface-visibility: hidden;
+	animation: quantumRadarStream calc(5s / var(--glow-speed-mult, 1)) cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
+}
+
+.footer-glow-quantum_radar {
+	position: absolute;
+	will-change: transform, opacity;
+	transform: translateZ(0);
+	backface-visibility: hidden;
+	animation: quantumRadarStream calc(5s / var(--glow-speed-mult, 1)) cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
+	animation-delay: calc(1.5s / var(--glow-speed-mult, 1));
+}
+
+.glow-laser-quantum_radar {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	will-change: transform, opacity;
+	transform: translateZ(0);
+	backface-visibility: hidden;
+	animation: quantumRadarStream calc(5s / var(--glow-speed-mult, 1)) cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
+}
+
+/* 4. 方案 D【深空星芒脈衝 (Hyperdrive Warp)】
+   特性：1.8s 曲速光束掠過 + 5.2s 冷卻蓄能深空夜色 (週期 7s)
+   曲線：cubic-bezier(0.16, 1, 0.3, 1) 爆發力十足 */
+@keyframes hyperdriveWarpStream {
+	0% {
+		left: 0%;
+		transform: translateX(-100%) scaleX(0.7);
+		opacity: 0;
+	}
+	6% {
+		opacity: 1;
+		transform: translateX(-50%) scaleX(1.35);
+	}
+	28% {
+		left: 100%;
+		transform: translateX(0%) scaleX(0.85);
+		opacity: 0;
+	}
+	28.01%, 100% {
+		left: 100%;
+		transform: translateX(0%);
+		opacity: 0;
+	}
+}
+
+.glow-stream-hyperdrive_warp {
+	position: absolute;
+	will-change: transform, opacity;
+	transform: translateZ(0);
+	backface-visibility: hidden;
+	animation: hyperdriveWarpStream calc(7s / var(--glow-speed-mult, 1)) cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+.footer-glow-hyperdrive_warp {
+	position: absolute;
+	will-change: transform, opacity;
+	transform: translateZ(0);
+	backface-visibility: hidden;
+	animation: hyperdriveWarpStream calc(7s / var(--glow-speed-mult, 1)) cubic-bezier(0.16, 1, 0.3, 1) infinite;
+	animation-delay: calc(2.8s / var(--glow-speed-mult, 1));
+}
+
+.glow-laser-hyperdrive_warp {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	will-change: transform, opacity;
+	transform: translateZ(0);
+	backface-visibility: hidden;
+	animation: hyperdriveWarpStream calc(7s / var(--glow-speed-mult, 1)) cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+/* ==========================================================================
+   隱藏滾動條工具類別 (保留觸控滑動手感，消除原生粗糙滾動條)
+   ========================================================================== */
+.no-scrollbar::-webkit-scrollbar {
+	display: none;
+}
+.no-scrollbar {
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+

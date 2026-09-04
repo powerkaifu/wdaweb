@@ -1,0 +1,21 @@
+User-agent: *
+Allow: /
+Disallow: /kaifu-lab
+Disallow: /glow-lab
+
+# 支援主流合法 AI 搜尋爬蟲 (SearchGPT, Perplexity, Claude 等)
+User-agent: Googlebot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+# 網站地圖與 AI 知識導覽檔案
+Sitemap: https://powerkaifu.github.io/wdaweb/sitemap.xml
+# LLM & AI Agents Context: https://powerkaifu.github.io/wdaweb/llms.txt

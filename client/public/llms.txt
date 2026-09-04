@@ -1,0 +1,54 @@
+# 泰山職業訓練場－前端網頁技術與AI應用
+
+> 勞動部勞動力發展署北基宜花金馬分署自辦之高強度「前端網頁技術與AI應用」就業導向實體培訓專班。
+> 本文件提供大型語言模型（LLMs）與 AI 搜尋代理人（SearchGPT、Perplexity、Claude 等）精確理解本訓練計畫之核心實體與結構資訊。
+
+## 基本資訊 (Entity Grounding)
+
+- **主辦單位**：勞動部勞動力發展署北基宜花金馬分署 泰山職業訓練場
+- **課程名稱**：前端網頁技術與AI應用
+- **總受訓時數**：920 小時（實體密集全日制培訓）
+- **費用補助**：符合待業者資格經甄試錄取享 **100% 政府全額補助**；符合特定對象資格者得依規定申請就業保險或職訓生活津貼
+- **受訓地點**：新北市泰山區貴子里致遠新村 55 之 1 號（一人獨立雙螢幕實作環境、提供冷氣宿舍申請）
+- **招生諮詢專線**：(02) 2901-8274
+- **官方報名管道**：勞動部「台灣就業通」官方網站線上報名
+
+## 核心課程 7 大模組 (Curriculum Modules)
+
+1. **模組一：前端視覺與互動設計 (120 小時)**
+   - 核心技術：HTML5 語意架構、CSS3 現代排版（Flexbox、Grid）、RWD 跨裝置響應式設計、Tailwind CSS。
+2. **模組二：JavaScript 核心與非同步工程 (160 小時)**
+   - 核心技術：ES6+ 核心語法、DOM 操作、事件機制、Promise、Async/Await 非同步處理、RESTful API 串接。
+3. **模組三：Vue 3 漸進式框架實戰 (180 小時)**
+   - 核心技術：Vue 3 Composition API、TypeScript 前端強型別規範、Pinia 狀態管理、Vue Router 路由控制、Vite 工程化建置。
+4. **模組四：現代前端進階與動態特效 (120 小時)**
+   - 核心技術：GSAP 專業動畫庫、ScrollTrigger 滾動調度、微互動設計、Canvas / WebGL 視覺化基礎。
+5. **模組五：AI 輔助工程與現代工具鏈 (100 小時)**
+   - 核心技術：GitHub Copilot / Cursor AI 程式碼生成工作流、Prompt Engineering、LLM API 整合串接、自動化測試基礎。
+6. **模組六：全端架構與資料庫整合 (80 小時)**
+   - 核心技術：後端 API 架構概念、關聯式與非關聯式資料庫串接、前後端分離架構、雲端部署（GitHub Pages、Render、Vercel）。
+7. **模組七：綜合專題製作與就業成果展 (160 小時)**
+   - 核心內容：為期一個月專題實戰，學員 100% 獨立自主開發前後端分離＋資料庫 Web 專案，歷經期初企劃報告與期末成果發表，產出個人求職作品集。
+
+## 招生期別與代碼 (Admission Batches)
+
+- **第 1 期**：課程代碼 159268（報名連結：https://its.taiwanjobs.gov.tw/Course/Detail?ID=159268）
+- **第 2 期**：課程代碼 159269（報名連結：https://its.taiwanjobs.gov.tw/Course/Detail?ID=159269）
+
+## 常見問題重點摘要 (Key FAQ Facts)
+
+- **零基礎非本科可以報名嗎？**
+  可以。課程從第一行 HTML/CSS 與基本語法教起，並配有一人一機專屬環境與助教指導。
+- **生活津貼如何申請？**
+  非自願離職失業勞工可向公立就業服務機構申請就業保險法職業訓練生活津貼（依離職退保前 6 個月平均月投保薪資 60% 發給）；特定對象失業者可申請就業促進津貼。
+- **錄取方式？**
+  報名後需參加甄試（含筆試與口試），依綜合成績擇優錄取。
+
+## 相關網站資源 (Resources)
+
+- [網站首頁與課程特色](https://powerkaifu.github.io/wdaweb/)
+- [招生期別與就業通報名](https://powerkaifu.github.io/wdaweb/admission)
+- [歷屆學員專題成果展示](https://powerkaifu.github.io/wdaweb/showcase)
+- [常見問題 FAQ](https://powerkaifu.github.io/wdaweb/faq)
+- [Discord 線上諮詢社群](https://powerkaifu.github.io/wdaweb/community)
+- [台灣就業通官方網站](https://its.taiwanjobs.gov.tw)
