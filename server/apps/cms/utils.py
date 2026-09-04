@@ -21,6 +21,10 @@ def optimize_image(image_field, max_width=1920, quality=80):
         # 開啟圖片
         img = Image.open(image_field)
         
+        # 若已經是 WebP 且尺寸符合限制，直接返回避免重複存檔與產生隨機後綴
+        if image_field.name.lower().endswith('.webp') and img.width <= max_width and getattr(img, 'format', None) == 'WEBP':
+            return
+
         # 取得純檔名 (不含副檔名)
         name, _ = os.path.splitext(os.path.basename(image_field.name))
 

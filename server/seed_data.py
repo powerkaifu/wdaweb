@@ -27,16 +27,17 @@ else:
 
 # 2. 全域站台設定
 site, _ = SiteSetting.objects.get_or_create(id=1)
-site.site_title = "泰山職訓－前端網頁技術與AI應用"
-site.seo_description = "勞動部勞動力發展署北基宜花金馬分署－泰山職業訓練場「前端網頁技術與AI應用」專班。920 小時紮實養成、待業者享 100% 全額免費培訓與每月職訓生活津貼補助，一人配置獨立雙螢幕電腦，輔導專題實作與就業媒合。官方諮詢專線：(02) 2901-8274。"
-site.seo_keywords = "泰山職訓, 前端網頁技術與AI應用, 泰山職業訓練場, 勞動部職訓, 前端工程師培訓, 網頁設計課程, 免費職訓課程, 職訓生活津貼, 待業者全額免費, Vue3課程, TypeScript職訓, AI網頁開發, 轉職前端工程師, 青年職訓補助, 台灣就業通, 北分署職訓"
-site.announcement_bar_enabled = True
-site.announcement_text = "🔥 第 1 期熱烈招生中！待業民眾享全額免費受訓與生活津貼補助！"
-site.announcement_link = "#batches"
-site.contact_phone = "(02) 2901-8274"
-site.contact_address = "新北市泰山區貴子里致遠新村 55 之 1 號"
-site.footer_copyright = "本網站為前端班師資自主推廣與學員成果展示網頁"
-site.save()
+SiteSetting.objects.filter(id=site.id).update(
+    site_title="泰山職訓－前端網頁技術與AI應用",
+    seo_description="勞動部勞動力發展署北基宜花金馬分署－泰山職業訓練場「前端網頁技術與AI應用」專班。920 小時紮實養成、待業者享 100% 全額免費培訓與每月職訓生活津貼補助，一人配置獨立雙螢幕電腦，輔導專題實作與就業媒合。官方諮詢專線：(02) 2901-8274。",
+    seo_keywords="泰山職訓, 前端網頁技術與AI應用, 泰山職業訓練場, 勞動部職訓, 前端工程師培訓, 網頁設計課程, 免費職訓課程, 職訓生活津貼, 待業者全額免費, Vue3課程, TypeScript職訓, AI網頁開發, 轉職前端工程師, 青年職訓補助, 台灣就業通, 北分署職訓",
+    announcement_bar_enabled=True,
+    announcement_text="🔥 第 1 期熱烈招生中！待業民眾享全額免費受訓與生活津貼補助！",
+    announcement_link="#batches",
+    contact_phone="(02) 2901-8274",
+    contact_address="新北市泰山區貴子里致遠新村 55 之 1 號",
+    footer_copyright="本網站為前端班師資自主推廣與學員成果展示網頁"
+)
 print("[OK] 站台全域設定已更新標題為：泰山職訓－前端網頁技術與AI應用")
 
 # 3. 首頁輪播圖 (精準 3 筆黃金輪播圖保證)
@@ -147,20 +148,28 @@ if not TechCard.objects.exists():
     print("[OK] 核心技術卡片建立完成")
 
 # 7. 教學設施
-if not Facility.objects.exists():
-    Facility.objects.create(
-        facility_name="雙螢幕教學設備",
-        description="一人配置雙螢幕電腦，邊看講師即時示範邊同步動手編程，學習不漏拍！",
-        image_alt="泰山職訓雙螢幕電腦教室",
-        sort_order=1
-    )
-    Facility.objects.create(
-        facility_name="寬敞明亮專屬實作空間",
-        description="專屬獨立座位與高速光纖網路，提供 920 小時專注沉浸式程式開發環境。",
-        image_alt="寬敞明亮的教室實作環境",
-        sort_order=2
-    )
-    print("[OK] 教學環境設施建立完成")
+Facility.objects.update_or_create(
+    sort_order=1,
+    defaults={
+        "facility_name": "寬敞明亮專屬實作空間、雙螢幕教學設備",
+        "description": "專屬獨立座位與高速光纖網路，提供 920 小時專注沉浸式程式開發環境。一人配置雙螢幕電腦，邊看講師即時示範邊同步動手編程，學習不漏拍！",
+        "image_alt": "寬敞明亮專屬實作空間、雙螢幕教學設備",
+        "is_active": True,
+    }
+)
+Facility.objects.filter(sort_order=1).update(image="facilities/learning_ijciKln_09KM7k0_ddXbwFz.webp")
+
+Facility.objects.update_or_create(
+    sort_order=2,
+    defaults={
+        "facility_name": "整潔舒適專屬用餐空間、完善生活休憩設施",
+        "description": "寬敞木質長桌搭配舒適空調，提供課間放鬆交流的休憩環境。現場備有冷藏冰箱與專業閱覽多功能收納書櫃，方便餐點補給與翻書充電，休息、充電一次到位！",
+        "image_alt": "整潔舒適專屬用餐空間、完善生活休憩設施",
+        "is_active": True,
+    }
+)
+Facility.objects.filter(sort_order=2).update(image="facilities/lunch_g71Ci6n_NsJ8XsZ_mJ12g5T.webp")
+print("[OK] 教學環境設施同步完成")
 
 # 8. 14 組前後端分離＋資料庫學員專案作品
 if not StudentProject.objects.exists():

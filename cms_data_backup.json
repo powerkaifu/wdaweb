@@ -15,7 +15,7 @@
     "sort_order": 1,
     "is_active": true,
     "created_at": "2026-09-03T20:17:44.804Z",
-    "updated_at": "2026-09-03T20:23:39.511Z"
+    "updated_at": "2026-09-04T18:39:54.083Z"
   }
 },
 {
@@ -34,7 +34,7 @@
     "sort_order": 2,
     "is_active": true,
     "created_at": "2026-09-03T20:17:44.809Z",
-    "updated_at": "2026-09-03T20:23:39.520Z"
+    "updated_at": "2026-09-04T18:39:54.089Z"
   }
 },
 {
@@ -53,7 +53,7 @@
     "sort_order": 3,
     "is_active": true,
     "created_at": "2026-09-03T20:17:44.812Z",
-    "updated_at": "2026-09-03T20:23:39.527Z"
+    "updated_at": "2026-09-04T18:39:54.093Z"
   }
 },
 {
@@ -77,7 +77,7 @@
     "sort_order": 1,
     "last_synced_at": "2026-09-03T10:21:29.396Z",
     "created_at": "2026-09-01T19:28:00Z",
-    "updated_at": "2026-09-03T20:23:39.530Z"
+    "updated_at": "2026-09-04T18:39:54.096Z"
   }
 },
 {
@@ -101,7 +101,7 @@
     "sort_order": 2,
     "last_synced_at": "2026-09-03T10:21:29.396Z",
     "created_at": "2026-09-01T19:28:00Z",
-    "updated_at": "2026-09-03T20:23:39.533Z"
+    "updated_at": "2026-09-04T18:39:54.098Z"
   }
 },
 {
@@ -116,7 +116,7 @@
     "description": "就業市場分析、勞動法規與權益、性別主流化與職場倫理、職涯資源與求職準備。",
     "sort_order": 1,
     "created_at": "2026-09-01T19:39:55.930Z",
-    "updated_at": "2026-09-03T20:23:39.537Z"
+    "updated_at": "2026-09-04T18:39:54.101Z"
   }
 },
 {
@@ -131,7 +131,7 @@
     "description": "HTML5 語意化結構、CSS3 現代排版佈局、Bootstrap 響應式框架、RWD 跨裝置自適應設計、VS Code 開發環境配置。",
     "sort_order": 2,
     "created_at": "2026-09-01T19:39:55.930Z",
-    "updated_at": "2026-09-03T20:23:39.542Z"
+    "updated_at": "2026-09-04T18:39:54.103Z"
   }
 },
 {
@@ -146,7 +146,7 @@
     "description": "Adobe Photoshop 數位影像編修、網頁版面視覺規劃與調色修圖、Adobe Illustrator 貝茲曲線繪圖、向量圖標與 Web Icon 製作。",
     "sort_order": 3,
     "created_at": "2026-09-01T19:39:55.930Z",
-    "updated_at": "2026-09-03T20:23:39.546Z"
+    "updated_at": "2026-09-04T18:39:54.105Z"
   }
 },
 {
@@ -161,7 +161,7 @@
     "description": "視覺傳達設計基礎、UI/UX 介面設計與使用者體驗流程、原型設計工具應用、企業參訪與業界職場體驗。",
     "sort_order": 4,
     "created_at": "2026-09-01T19:39:55.930Z",
-    "updated_at": "2026-09-03T20:23:39.548Z"
+    "updated_at": "2026-09-04T18:39:54.108Z"
   }
 },
 {
@@ -176,7 +176,7 @@
     "description": "JavaScript 核心語法與 ES6+、DOM 原生操作與前端動態互動、RESTful API 非同步資料串接、Git 版本控制與 GitHub 協同開發、Vue.js 漸進式框架與 Pinia 狀態管理。",
     "sort_order": 5,
     "created_at": "2026-09-01T19:39:55.930Z",
-    "updated_at": "2026-09-03T20:23:39.551Z"
+    "updated_at": "2026-09-04T18:39:54.109Z"
   }
 },
 {
@@ -191,7 +191,7 @@
     "description": "NoSQL 資料庫概念與操作、MongoDB 資料管理與塑模、Node.js 執行環境、NPM 套件管理與基礎後端 API 整合測試。",
     "sort_order": 6,
     "created_at": "2026-09-01T19:39:55.930Z",
-    "updated_at": "2026-09-03T20:23:39.555Z"
+    "updated_at": "2026-09-04T18:39:54.113Z"
   }
 },
 {
@@ -206,7 +206,7 @@
     "description": "前端專案專題製作、前後端 API 整合實務、GitHub Pages 雲端部署發布、成果簡報發表與作品集指導。",
     "sort_order": 7,
     "created_at": "2026-09-01T19:39:55.930Z",
-    "updated_at": "2026-09-03T20:23:39.558Z"
+    "updated_at": "2026-09-04T18:39:54.115Z"
   }
 },
 {
@@ -326,10 +326,10 @@
   "pk": 1,
   "fields": {
     "deleted_at": null,
-    "facility_name": "雙螢幕教學設備",
-    "description": "一人配置雙螢幕電腦，邊看講師即時示範邊同步動手編程，學習不漏拍！",
-    "image": "facilities/1113.webp",
-    "image_alt": "泰山職訓雙螢幕電腦教室",
+    "facility_name": "寬敞明亮專屬實作空間、雙螢幕教學設備",
+    "description": "專屬獨立座位與高速光纖網路，提供 920 小時專注沉浸式程式開發環境。一人配置雙螢幕電腦，邊看講師即時示範邊同步動手編程，學習不漏拍！",
+    "image": "facilities/learning_ijciKln_09KM7k0_ddXbwFz.webp",
+    "image_alt": "寬敞明亮專屬實作空間、雙螢幕教學設備",
     "sort_order": 1,
     "is_active": true
   }
@@ -339,10 +339,10 @@
   "pk": 2,
   "fields": {
     "deleted_at": null,
-    "facility_name": "寬敞明亮專屬實作空間",
-    "description": "專屬獨立座位與高速光纖網路，提供 920 小時專注沉浸式程式開發環境。",
-    "image": "facilities/1114.webp",
-    "image_alt": "寬敞明亮的教室實作環境",
+    "facility_name": "整潔舒適專屬用餐空間、完善生活休憩設施",
+    "description": "寬敞木質長桌搭配舒適空調，提供課間放鬆交流的休憩環境。現場備有冷藏冰箱與專業閱覽多功能收納書櫃，方便餐點補給與翻書充電，休息、充電一次到位！",
+    "image": "facilities/lunch_g71Ci6n_NsJ8XsZ_mJ12g5T.webp",
+    "image_alt": "整潔舒適專屬用餐空間、完善生活休憩設施",
     "sort_order": 2,
     "is_active": true
   }

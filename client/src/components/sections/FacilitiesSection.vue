@@ -89,8 +89,8 @@
 import { ref, onMounted, onUnmounted, nextTick, watch } from 'vue'
 import { createScrollStagger } from '@/utils/motion'
 import { useCmsStore } from '@/stores/useCmsStore'
-import facility1Img from '@/assets/facilities/1113.webp'
-import facility2Img from '@/assets/facilities/1114.webp'
+import facility1Img from '@/assets/facilities/learning_ijciKln_09KM7k0_ddXbwFz.webp'
+import facility2Img from '@/assets/facilities/lunch_g71Ci6n_NsJ8XsZ_mJ12g5T.webp'
 
 const defaultFacilityImages = [facility1Img, facility2Img]
 const brokenFacilityIds = ref<Set<number>>(new Set())
