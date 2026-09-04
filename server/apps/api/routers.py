@@ -22,6 +22,10 @@ def get_media_url(request, field):
     if not field:
         return ""
     try:
+        # 實體檔案防呆檢查：若實體檔案在磁碟中不存在，直接回傳空字串，由前端 0 延遲呈現打包資產
+        if hasattr(field, 'name') and hasattr(field, 'storage') and field.name:
+            if not field.storage.exists(field.name):
+                return ""
         return request.build_absolute_uri(field.url)
     except Exception:
         return field.url if hasattr(field, 'url') else ""

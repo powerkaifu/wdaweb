@@ -51,7 +51,7 @@
             <img
               :src="getFacilityImage(fac, index)"
               :alt="fac.image_alt || fac.facility_name"
-              @error="handleFacilityImgError($event, index)"
+              @error="handleFacilityImgError(fac.id)"
               class="w-full h-full object-cover"
             />
 
@@ -86,24 +86,27 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, onUnmounted, nextTick, watch } from 'vue'
+import { ref, onMounted, onUnmounted, nextTick, watch } from 'vue'
 import { createScrollStagger } from '@/utils/motion'
 import { useCmsStore } from '@/stores/useCmsStore'
 import facility1Img from '@/assets/facilities/1113.webp'
 import facility2Img from '@/assets/facilities/1114.webp'
 
 const defaultFacilityImages = [facility1Img, facility2Img]
+const brokenFacilityIds = ref<Set<number>>(new Set())
 
-function getFacilityImage(fac: { image_url?: string }, index: number) {
-  return fac.image_url || defaultFacilityImages[index % defaultFacilityImages.length]
+function getFacilityImage(fac: { id?: number; image_url?: string }, index: number) {
+  // 若該設施圖片已被標記載入失敗，或後端未提供有效圖片路徑，100% 穩定回傳本地高畫質實景資產
+  if ((fac.id && brokenFacilityIds.value.has(fac.id)) || !fac.image_url) {
+    return defaultFacilityImages[index % defaultFacilityImages.length]
+  }
+  return fac.image_url
 }
 
-// 雙重防禦：遠端圖片 404 或載入失敗時，立即降級切換至打包在前端的實景照片
-function handleFacilityImgError(e: Event, index: number) {
-  const img = e.target as HTMLImageElement
-  const fallback = defaultFacilityImages[index % defaultFacilityImages.length]
-  if (img && img.src !== fallback) {
-    img.src = fallback
+// 雙重防禦：遠端圖片 404 或載入失敗時，立即觸發響應式降級，切換至本地實景照片
+function handleFacilityImgError(facId?: number) {
+  if (facId !== undefined) {
+    brokenFacilityIds.value.add(facId)
   }
 }
 
