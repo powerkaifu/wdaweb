@@ -25,105 +25,106 @@ if not User.objects.filter(username="admin").exists():
 else:
     print("[INFO] 管理員帳號已存在")
 
-# 2. 全域站台設定
-site, _ = SiteSetting.objects.get_or_create(id=1)
-SiteSetting.objects.filter(id=site.id).update(
-    site_title="泰山職訓－前端網頁技術與AI應用",
-    seo_description="勞動部勞動力發展署北基宜花金馬分署－泰山職業訓練場「前端網頁技術與AI應用」專班。920 小時紮實養成、待業者享 100% 全額免費培訓與每月職訓生活津貼補助，一人配置獨立雙螢幕電腦，輔導專題實作與就業媒合。官方諮詢專線：(02) 2901-8274。",
-    seo_keywords="泰山職訓, 前端網頁技術與AI應用, 泰山職業訓練場, 勞動部職訓, 前端工程師培訓, 網頁設計課程, 免費職訓課程, 職訓生活津貼, 待業者全額免費, Vue3課程, TypeScript職訓, AI網頁開發, 轉職前端工程師, 青年職訓補助, 台灣就業通, 北分署職訓",
-    announcement_bar_enabled=True,
-    announcement_text="🔥 第 1 期熱烈招生中！待業民眾享全額免費受訓與生活津貼補助！",
-    announcement_link="#batches",
-    contact_phone="(02) 2901-8274",
-    contact_address="新北市泰山區貴子里致遠新村 55 之 1 號",
-    footer_copyright="本網站為前端班師資自主推廣與學員成果展示網頁"
-)
-print("[OK] 站台全域設定已更新標題為：泰山職訓－前端網頁技術與AI應用")
-
-# 3. 首頁輪播圖 (精準 3 筆黃金輪播圖保證)
-carousels_data = [
-    (1, "從零開始的前端工程師養成", "政府自辦 920 小時紮實培訓 ｜ 待業者完全免費 ｜ 輔導就業與生活津貼", "泰山職訓前端網頁技術與AI應用班主視覺", "立即線上報名", "#batches", 1),
-    (2, "現代前端框架與 AI 協同開發", "一人兩機雙螢幕教學設備 ｜ 打造 AI 應用的優秀作品集 ｜ 跨領域轉職最佳起點", "泰山職訓雙螢幕教室實境", "立即線上報名", "#batches", 2),
-    (3, "打造專屬的個人全端作品集", "獨立完成全端架構 ｜ 實踐 AI 工具輔助開發 ｜ 累積求職競爭力的實戰作品集", "泰山職訓跨領域轉職前端網頁成果", "立即線上報名", "#batches", 3),
-]
-Carousel.objects.exclude(id__in=[1, 2, 3]).delete()
-for cid, title, sub, alt, cta, link, order in carousels_data:
-    Carousel.objects.update_or_create(
-        id=cid,
-        defaults={
-            "title": title,
-            "subtitle": sub,
-            "image_alt": alt,
-            "cta_text": cta,
-            "cta_link": link,
-            "cta_target": "_self",
-            "sort_order": order,
-            "is_active": True,
-            "deleted_at": None
-        }
+# 2. 全域站台設定 (僅在完全無設定時建立預設值)
+if not SiteSetting.objects.exists():
+    SiteSetting.objects.create(
+        id=1,
+        site_title="泰山職訓－前端網頁技術與AI應用",
+        seo_description="勞動部勞動力發展署北基宜花金馬分署－泰山職業訓練場「前端網頁技術與AI應用」專班。920 小時紮實養成、待業者享 100% 全額免費培訓與每月職訓生活津貼補助，一人配置獨立雙螢幕電腦，輔導專題實作與就業媒合。官方諮詢專線：(02) 2901-8274。",
+        seo_keywords="泰山職訓, 前端網頁技術與AI應用, 泰山職業訓練場, 勞動部職訓, 前端工程師培訓, 網頁設計課程, 免費職訓課程, 職訓生活津貼, 待業者全額免費, Vue3課程, TypeScript職訓, AI網頁開發, 轉職前端工程師, 青年職訓補助, 台灣就業通, 北分署職訓",
+        announcement_bar_enabled=True,
+        announcement_text="🔥 第 1 期熱烈招生中！待業民眾享全額免費受訓與生活津貼補助！",
+        announcement_link="#batches",
+        contact_phone="(02) 2901-8274",
+        contact_address="新北市泰山區貴子里致遠新村 55 之 1 號",
+        footer_copyright="本網站為前端班師資自主推廣與學員成果展示網頁"
     )
-print("[OK] 首頁 3 筆黃金輪播圖精準同步完成")
+    print("[OK] 站台全域設定建立完成")
+else:
+    print("[INFO] 站台設定已存在，保留既有設定")
 
-# 4. 招生期別 (第 1 期 & 第 2 期 - 精準官方數據保證)
-AdmissionBatch.objects.update_or_create(
-    course_code="159268",
-    defaults={
-        "batch_name": "前端網頁技術與AI應用（第 1 期）",
-        "total_hours": 920,
-        "enroll_start_date": date(2025, 12, 4),
-        "enroll_end_date": date(2026, 2, 25),
-        "screening_date": date(2026, 3, 11),
-        "training_start_date": date(2026, 3, 25),
-        "training_end_date": date(2026, 9, 10),
-        "planned_trainees": 24,
-        "applicants_count": 36,
-        "apply_url": "https://its.taiwanjobs.gov.tw/Course/Detail?ID=159268",
-        "status_override": "auto",
-        "sort_order": 1
-    }
-)
-AdmissionBatch.objects.update_or_create(
-    course_code="159269",
-    defaults={
-        "batch_name": "前端網頁技術與AI應用（第 2 期）",
-        "total_hours": 920,
-        "enroll_start_date": date(2026, 5, 7),
-        "enroll_end_date": date(2026, 8, 21),
-        "screening_date": date(2026, 9, 3),
-        "training_start_date": date(2026, 9, 23),
-        "training_end_date": date(2027, 3, 24),
-        "planned_trainees": 24,
-        "applicants_count": 38,
-        "apply_url": "https://its.taiwanjobs.gov.tw/Course/Detail?ID=159269",
-        "status_override": "auto",
-        "sort_order": 2
-    }
-)
-print("[OK] 招生期別精準官方數據（第 1 期 36 人、第 2 期 38 人）同步完成")
+# 3. 首頁輪播圖 (僅在完全無輪播圖時建立預設 3 筆)
+if not Carousel.objects.exists():
+    carousels_data = [
+        (1, "從零開始的前端工程師養成", "政府自辦 920 小時紮實培訓 ｜ 待業者完全免費 ｜ 輔導就業與生活津貼", "泰山職訓前端網頁技術與AI應用班主視覺", "立即線上報名", "#batches", 1),
+        (2, "現代前端框架與 AI 協同開發", "一人兩機雙螢幕教學設備 ｜ 打造 AI 應用的優秀作品集 ｜ 跨領域轉職最佳起點", "泰山職訓雙螢幕教室實境", "立即線上報名", "#batches", 2),
+        (3, "打造專屬的個人全端作品集", "獨立完成全端架構 ｜ 實踐 AI 工具輔助開發 ｜ 累積求職競爭力的實戰作品集", "泰山職訓跨領域轉職前端網頁成果", "立即線上報名", "#batches", 3),
+    ]
+    for cid, title, sub, alt, cta, link, order in carousels_data:
+        Carousel.objects.create(
+            id=cid,
+            title=title,
+            subtitle=sub,
+            image_alt=alt,
+            cta_text=cta,
+            cta_link=link,
+            cta_target="_self",
+            sort_order=order,
+            is_active=True
+        )
+    print("[OK] 首頁 3 筆黃金輪播圖建立完成")
+else:
+    print("[INFO] 首頁輪播圖已存在，保留既有設定")
 
-# 5. 7 大課程模組 (M1 ~ M7)
-modules = [
-    ("M1", "一般與共同課程", 53, "基礎與設計", "就業市場分析、勞動法規與權益、性別主流化與職場倫理、職涯資源與求職準備。"),
-    ("M2", "網頁排版編輯", 160, "基礎與設計", "HTML5 語意化結構、CSS3 現代排版佈局、Bootstrap 響應式框架、RWD 跨裝置自適應設計、VS Code 開發環境配置。"),
-    ("M3", "視覺影像設計", 120, "基礎與設計", "Adobe Photoshop 數位影像編修、網頁版面視覺規劃與調色修圖、Adobe Illustrator 貝茲曲線繪圖、向量圖標與 Web Icon 製作。"),
-    ("M4", "數位媒體應用", 107, "基礎與設計", "視覺傳達設計基礎、UI/UX 介面設計與使用者體驗流程、原型設計工具應用、企業參訪與業界職場體驗。"),
-    ("M5", "網頁動態技術", 240, "前端核心與框架", "JavaScript 核心語法與 ES6+、DOM 原生操作與前端動態互動、RESTful API 非同步資料串接、Git 版本控制與 GitHub 協同開發、Vue.js 漸進式框架與 Pinia 狀態管理。"),
-    ("M6", "資料庫程式設計", 80, "後端與資料庫", "NoSQL 資料庫概念與操作、MongoDB 資料管理與塑模、Node.js 執行環境、NPM 套件管理與基礎後端 API 整合測試。"),
-    ("M7", "網頁設計實務", 160, "專案實務與作品", "前端專案專題製作、前後端 API 整合實務、GitHub Pages 雲端部署發布、成果簡報發表與作品集指導。")
-]
-for idx, (num, name, hrs, cat, desc) in enumerate(modules, 1):
-    CurriculumModule.objects.update_or_create(
-        module_number=num,
-        defaults={
-            "module_name": name,
-            "hours": hrs,
-            "category_tab": cat,
-            "description": desc,
-            "sort_order": idx,
-            "deleted_at": None
-        }
+# 4. 招生期別 (僅在完全無期別時建立預設官方數據)
+if not AdmissionBatch.objects.exists():
+    AdmissionBatch.objects.create(
+        course_code="159268",
+        batch_name="前端網頁技術與AI應用（第 1 期）",
+        total_hours=920,
+        enroll_start_date=date(2025, 12, 4),
+        enroll_end_date=date(2026, 2, 25),
+        screening_date=date(2026, 3, 11),
+        training_start_date=date(2026, 3, 25),
+        training_end_date=date(2026, 9, 10),
+        planned_trainees=24,
+        applicants_count=36,
+        apply_url="https://its.taiwanjobs.gov.tw/Course/Detail?ID=159268",
+        status_override="auto",
+        sort_order=1
     )
-print("[OK] 7 大課程模組精準同步完成")
+    AdmissionBatch.objects.create(
+        course_code="159269",
+        batch_name="前端網頁技術與AI應用（第 2 期）",
+        total_hours=920,
+        enroll_start_date=date(2026, 5, 7),
+        enroll_end_date=date(2026, 8, 21),
+        screening_date=date(2026, 9, 3),
+        training_start_date=date(2026, 9, 23),
+        training_end_date=date(2027, 3, 24),
+        planned_trainees=24,
+        applicants_count=38,
+        apply_url="https://its.taiwanjobs.gov.tw/Course/Detail?ID=159269",
+        status_override="auto",
+        sort_order=2
+    )
+    print("[OK] 招生期別官方預設資料建立完成")
+else:
+    print("[INFO] 招生期別已存在，保留既有設定")
+
+# 5. 7 大課程模組 (僅在完全無模組時建立預設值)
+if not CurriculumModule.objects.exists():
+    modules = [
+        ("M1", "一般與共同課程", 53, "基礎與設計", "就業市場分析、勞動法規與權益、性別主流化與職場倫理、職涯資源與求職準備。"),
+        ("M2", "網頁排版編輯", 160, "基礎與設計", "HTML5 語意化結構、CSS3 現代排版佈局、Bootstrap 響應式框架、RWD 跨裝置自適應設計、VS Code 開發環境配置。"),
+        ("M3", "視覺影像設計", 120, "基礎與設計", "Adobe Photoshop 數位影像編修、網頁版面視覺規劃與調色修圖、Adobe Illustrator 貝茲曲線繪圖、向量圖標與 Web Icon 製作。"),
+        ("M4", "數位媒體應用", 107, "基礎與設計", "視覺傳達設計基礎、UI/UX 介面設計與使用者體驗流程、原型設計工具應用、企業參訪與業界職場體驗。"),
+        ("M5", "網頁動態技術", 240, "前端核心與框架", "JavaScript 核心語法與 ES6+、DOM 原生操作與前端動態互動、RESTful API 非同步資料串接、Git 版本控制與 GitHub 協同開發、Vue.js 漸進式框架與 Pinia 狀態管理。"),
+        ("M6", "資料庫程式設計", 80, "後端與資料庫", "NoSQL 資料庫概念與操作、MongoDB 資料管理與塑模、Node.js 執行環境、NPM 套件管理與基礎後端 API 整合測試。"),
+        ("M7", "網頁設計實務", 160, "專案實務與作品", "前端專案專題製作、前後端 API 整合實務、GitHub Pages 雲端部署發布、成果簡報發表與作品集指導。")
+    ]
+    for idx, (num, name, hrs, cat, desc) in enumerate(modules, 1):
+        CurriculumModule.objects.create(
+            module_number=num,
+            module_name=name,
+            hours=hrs,
+            category_tab=cat,
+            description=desc,
+            sort_order=idx
+        )
+    print("[OK] 7 大課程模組建立完成")
+else:
+    print("[INFO] 課程模組已存在，保留既有設定")
 
 # 6. 技術單元卡片
 if not TechCard.objects.exists():
@@ -147,29 +148,27 @@ if not TechCard.objects.exists():
         )
     print("[OK] 核心技術卡片建立完成")
 
-# 7. 教學設施
-Facility.objects.update_or_create(
-    sort_order=1,
-    defaults={
-        "facility_name": "寬敞明亮專屬實作空間、雙螢幕教學設備",
-        "description": "專屬獨立座位與高速光纖網路，提供 920 小時專注沉浸式程式開發環境。一人配置雙螢幕電腦，邊看講師即時示範邊同步動手編程，學習不漏拍！",
-        "image_alt": "寬敞明亮專屬實作空間、雙螢幕教學設備",
-        "is_active": True,
-    }
-)
-Facility.objects.filter(sort_order=1).update(image="facilities/learning_ijciKln_09KM7k0_ddXbwFz.webp")
-
-Facility.objects.update_or_create(
-    sort_order=2,
-    defaults={
-        "facility_name": "整潔舒適專屬用餐空間、完善生活休憩設施",
-        "description": "寬敞木質長桌搭配舒適空調，提供課間放鬆交流的休憩環境。現場備有冷藏冰箱與專業閱覽多功能收納書櫃，方便餐點補給與翻書充電，休息、充電一次到位！",
-        "image_alt": "整潔舒適專屬用餐空間、完善生活休憩設施",
-        "is_active": True,
-    }
-)
-Facility.objects.filter(sort_order=2).update(image="facilities/lunch_g71Ci6n_NsJ8XsZ_mJ12g5T.webp")
-print("[OK] 教學環境設施同步完成")
+# 7. 教學設施 (僅在完全無設施時建立預設值)
+if not Facility.objects.exists():
+    Facility.objects.create(
+        sort_order=1,
+        facility_name="寬敞明亮專屬實作空間、雙螢幕教學設備",
+        description="專屬獨立座位與高速光纖網路，提供 920 小時專注沉浸式程式開發環境。一人配置雙螢幕電腦，邊看講師即時示範邊同步動手編程，學習不漏拍！",
+        image="facilities/learning_ijciKln_09KM7k0_ddXbwFz.webp",
+        image_alt="寬敞明亮專屬實作空間、雙螢幕教學設備",
+        is_active=True,
+    )
+    Facility.objects.create(
+        sort_order=2,
+        facility_name="整潔舒適專屬用餐空間、完善生活休憩設施",
+        description="寬敞木質長桌搭配舒適空調，提供課間放鬆交流的休憩環境。現場備有冷藏冰箱與專業閱覽多功能收納書櫃，方便餐點補給與翻書充電，休息、充電一次到位！",
+        image="facilities/lunch_g71Ci6n_NsJ8XsZ_mJ12g5T.webp",
+        image_alt="整潔舒適專屬用餐空間、完善生活休憩設施",
+        is_active=True,
+    )
+    print("[OK] 教學環境設施建立完成")
+else:
+    print("[INFO] 教學環境設施已存在，保留既有設定")
 
 # 8. 14 組前後端分離＋資料庫學員專案作品
 if not StudentProject.objects.exists():
