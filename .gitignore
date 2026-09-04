@@ -44,6 +44,12 @@ server/staticfiles/
 local_settings.py
 db.sqlite3
 db.sqlite3-journal
+.env
+.env.*
+server/.env
+server/.env.*
+!.env.example
+!server/.env.example
 
 # ------------------------------------------------------------------------------
 # Node.js / Vue 3 / Vite 忽略清單

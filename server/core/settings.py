@@ -6,6 +6,19 @@ import dj_database_url
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# 自動讀取本地 .env 設定檔 (支援 server/ 與根目錄，免額外套件依賴)
+for _env_path in [BASE_DIR / '.env', BASE_DIR.parent / '.env']:
+    if _env_path.exists():
+        try:
+            with open(_env_path, 'r', encoding='utf-8') as _ef:
+                for _line in _ef:
+                    _line = _line.strip()
+                    if _line and not _line.startswith('#') and '=' in _line:
+                        _k, _v = _line.split('=', 1)
+                        os.environ.setdefault(_k.strip(), _v.strip())
+        except Exception:
+            pass
+
 SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-wdaweb-taishan-frontend-ai-key-2026')
 
 DEBUG = os.getenv('DEBUG', 'True') == 'True'
