@@ -22,7 +22,7 @@
         <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight">
           招生期別與報名
         </h2>
-        <p class="text-slate-400 mt-4 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed">
+        <p class="text-slate-400 mt-4 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed text-justify sm:text-center">
           把握政府自辦 100% 全額補助參訓機會，點擊「立即線上報名」直通台灣就業通官方報名系統。
         </p>
 
@@ -65,7 +65,7 @@
                 >
                   {{ notice.headline }}
                 </div>
-                <p class="mt-1 text-xs sm:text-sm text-slate-300 leading-relaxed">
+                <p class="mt-1 text-xs sm:text-sm text-slate-300 leading-relaxed text-justify">
                   {{ notice.subline }}
                 </p>
               </div>

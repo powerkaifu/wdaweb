@@ -27,7 +27,7 @@
 				<h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight text-balance">
 					你會接觸到哪些技術？
 				</h2>
-				<p class="text-slate-400 mt-4 text-base sm:text-lg max-w-4xl xl:max-w-5xl mx-auto leading-relaxed text-pretty">
+				<p class="text-slate-400 mt-4 text-base sm:text-lg max-w-4xl xl:max-w-5xl mx-auto leading-relaxed text-pretty text-justify sm:text-center">
 					技術不是一串需要背下來的英文單字。它們不是需要背下來的名詞，而是你完成作品時會真正用到的工具。你會依照學習階段，逐步接觸不同領域的技術。
 				</p>
 			</div>
@@ -72,7 +72,7 @@
 							{{ card.tech_name }}
 						</h3>
 
-						<p class="text-base text-slate-300 leading-relaxed text-pretty">
+						<p class="text-base text-slate-300 leading-relaxed text-pretty text-justify">
 							{{ card.description }}
 						</p>
 					</div>

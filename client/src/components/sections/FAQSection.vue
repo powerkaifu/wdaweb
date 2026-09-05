@@ -58,7 +58,7 @@
             :class="activeId === faq.id ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'"
           >
             <div class="overflow-hidden">
-              <div class="px-5 sm:px-6 pb-6 pt-2 text-slate-300 text-base leading-relaxed border-t border-slate-800/60 whitespace-pre-line">
+              <div class="px-5 sm:px-6 pb-6 pt-2 text-slate-300 text-base leading-relaxed border-t border-slate-800/60 whitespace-pre-line text-justify">
                 {{ faq.answer }}
               </div>
             </div>
@@ -74,7 +74,7 @@
             <span class="text-base sm:text-lg font-black text-white tracking-tight">權益提醒</span>
             <span class="px-2.5 py-0.5 rounded-lg text-sm font-bold bg-cyan-500/15 text-cyan-300 border border-cyan-500/40 font-mono">重要規範</span>
           </div>
-          <p class="text-base text-slate-300 leading-relaxed">
+          <p class="text-base text-slate-300 leading-relaxed text-justify">
             有關參訓資格認定、全額免費受訓審查、每月職訓生活津貼申請條件與各期招生期程，<strong class="text-white font-bold bg-cyan-500/10 px-1 py-0.5 rounded border border-cyan-500/20">一律以勞動部勞動力發展署北分署（台灣就業通）及相關主管機關之最新官方公告與簡章規定為主</strong>。
           </p>
         </div>

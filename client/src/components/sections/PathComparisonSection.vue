@@ -27,7 +27,7 @@
 						>你可以怎麼開始？</span
 					>
 				</h2>
-				<p class="text-slate-400 mt-4 text-base sm:text-lg max-w-4xl mx-auto leading-relaxed text-pretty">
+				<p class="text-slate-400 mt-4 text-base sm:text-lg max-w-4xl mx-auto leading-relaxed text-pretty text-justify sm:text-center">
 					如果你正在思考轉職，不一定只有「報名職訓」這一個答案。你也可以自學、使用 AI 學習，或在工作中逐步累積能力。不同方法適合不同的人，真正重要的是：<span class="text-slate-200 font-bold">你現在需要的是什麼？</span>
 				</p>
 			</div>
@@ -86,7 +86,7 @@
 							<div class="text-base font-bold text-emerald-400 tracking-wide">
 								核心優點
 							</div>
-							<p class="text-base text-slate-200 leading-relaxed text-pretty">
+							<p class="text-base text-slate-200 leading-relaxed text-pretty text-justify">
 								時間彈性最高、經濟成本極低，可以完全依照自己的節奏前進，自由探索感興趣的技術。
 							</p>
 						</div>
@@ -96,7 +96,7 @@
 							<div class="text-base font-bold text-amber-400 tracking-wide">
 								需要面對的代價
 							</div>
-							<p class="text-base text-slate-300 leading-relaxed text-pretty">
+							<p class="text-base text-slate-300 leading-relaxed text-pretty text-justify">
 								沒有專人協助規劃完整學習路徑；遇到深層報錯或觀念盲點時需獨自苦思；容易學了很多破碎的知識點，卻難以產出架構完整且具競爭力的代表專題。
 							</p>
 						</div>
@@ -163,7 +163,7 @@
 							<div class="text-base font-bold text-emerald-400 tracking-wide">
 								核心優點
 							</div>
-							<p class="text-base text-slate-100 leading-relaxed text-pretty">
+							<p class="text-base text-slate-100 leading-relaxed text-pretty text-justify">
 								勞動部自辦 <span class="inline-block">920 小時</span>系統化培訓；專屬<span class="inline-block">雙螢幕實作工位</span>；每天高強度沉浸式編程；有專任老師與同學現場即時討論，確保每一位學員都能獨立產出完整<span class="inline-block">專案作品集</span>。
 							</p>
 						</div>
@@ -173,7 +173,7 @@
 							<div class="text-base font-bold text-amber-400 tracking-wide">
 								需要面對的代價
 							</div>
-							<p class="text-base text-slate-300 leading-relaxed text-pretty">
+							<p class="text-base text-slate-300 leading-relaxed text-pretty text-justify">
 								需要全職投入整整半年的專注時間；需要跟上密集緊湊的課程進度與實作要求；這絕不是一條輕鬆速成的捷徑。
 							</p>
 						</div>
@@ -236,7 +236,7 @@
 							<div class="text-base font-bold text-emerald-400 tracking-wide">
 								核心優點
 							</div>
-							<p class="text-base text-slate-200 leading-relaxed text-pretty">
+							<p class="text-base text-slate-200 leading-relaxed text-pretty text-justify">
 								身處最真實的商業開發情境，直接面對市場需求，累積具備即戰力的一手實務經驗。
 							</p>
 						</div>
@@ -246,7 +246,7 @@
 							<div class="text-base font-bold text-amber-400 tracking-wide">
 								需要面對的代價
 							</div>
-							<p class="text-base text-slate-300 leading-relaxed text-pretty">
+							<p class="text-base text-slate-300 leading-relaxed text-pretty text-justify">
 								對完全零基礎的轉職者門檻極高；日常工作的交付壓力與時程緊迫，可能大幅壓縮你從容打好底層基礎的學習時間。
 							</p>
 						</div>
@@ -277,7 +277,7 @@
 					</h4>
 
 					<!-- 第 2 行：客觀對比 -->
-					<p class="text-base sm:text-lg text-slate-300 leading-relaxed xl:whitespace-nowrap">
+					<p class="text-base sm:text-lg text-slate-300 leading-relaxed text-justify sm:text-center xl:whitespace-nowrap">
 						如果你已經知道自己要什麼，自學可能就足夠；如果你需要一個完整環境、老師、同儕與大量實作，職訓可能更適合。
 					</p>
 

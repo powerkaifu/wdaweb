@@ -58,7 +58,7 @@
 							</span>
 						</div>
 						<h3 class="text-xl font-extrabold text-white mb-2.5 tracking-tight">從零出發的轉職者</h3>
-						<p class="text-base text-slate-200 leading-relaxed mb-4 text-pretty">
+						<p class="text-base text-slate-200 leading-relaxed mb-4 text-pretty text-justify">
 							零基礎不用擔心。課程從最根本的<span class="inline-block">網頁排版</span>教起，透過每日紮實的實作演練，帶你一步步建立扎實的<span class="inline-block">程式思維</span>。
 						</p>
 					</div>
@@ -83,7 +83,7 @@
 							</span>
 						</div>
 						<h3 class="text-xl font-extrabold text-white mb-2.5 tracking-tight">探索職涯可能性</h3>
-						<p class="text-base text-slate-200 leading-relaxed mb-4 text-pretty">
+						<p class="text-base text-slate-200 leading-relaxed mb-4 text-pretty text-justify">
 							為自己的職涯開拓新跑道。前端技能隨經驗持續增值，用半年的專注投入，為人生開啟具備技術底氣的新選擇。
 						</p>
 					</div>
@@ -108,7 +108,7 @@
 							</span>
 						</div>
 						<h3 class="text-xl font-extrabold text-white mb-2.5 tracking-tight">設計、UI/UX 創作者</h3>
-						<p class="text-base text-slate-200 leading-relaxed mb-4 text-pretty">
+						<p class="text-base text-slate-200 leading-relaxed mb-4 text-pretty text-justify">
 							發揮你的視覺美感優勢。學會<span class="inline-block">前端框架</span>與互動程式後，讓優秀設計不再停留在靜態稿，而是親手變成可運作的真實產品。
 						</p>
 					</div>
@@ -133,7 +133,7 @@
 							</span>
 						</div>
 						<h3 class="text-xl font-extrabold text-white mb-2.5 tracking-tight">自學瓶頸或資訊相關</h3>
-						<p class="text-base text-slate-200 leading-relaxed mb-4 text-pretty">
+						<p class="text-base text-slate-200 leading-relaxed mb-4 text-pretty text-justify">
 							告別零散自學與拼裝迷惘。完整透明的<span class="inline-block"> 920 小時</span>系統化訓練，帶你將碎裂的語法拼圖，整合為能獨立開發的實戰專案。
 						</p>
 					</div>

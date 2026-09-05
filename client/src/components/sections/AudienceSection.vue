@@ -26,7 +26,7 @@
 						>也許不只是「要不要學程式」</span
 					>
 				</h2>
-				<p class="text-slate-400 mt-4 text-base sm:text-lg max-w-none mx-auto leading-relaxed text-pretty xl:whitespace-nowrap">
+				<p class="text-slate-400 mt-4 text-base sm:text-lg max-w-none mx-auto leading-relaxed text-pretty text-justify sm:text-center xl:whitespace-nowrap">
 					踏入陌生的科技領域，害怕跟不上、害怕選錯方向，其實很正常。這些確實是現在許多轉職者正在面對的真實問題。
 				</p>
 			</div>
@@ -63,11 +63,11 @@
 							完全沒寫過程式，我真的學得會嗎？
 						</h3>
 						<div
-							class="p-4 rounded-2xl bg-slate-950/70 border border-slate-800/90 mb-4 text-base text-slate-300 font-normal leading-relaxed"
+							class="p-4 rounded-2xl bg-slate-950/70 border border-slate-800/90 mb-4 text-base text-slate-300 font-normal leading-relaxed text-justify"
 						>
 							“看著滿螢幕的英文程式碼，總覺得是離自己非常遙遠的世界……”
 						</div>
-						<p class="text-base text-slate-200 leading-relaxed text-pretty">
+						<p class="text-base text-slate-200 leading-relaxed text-pretty text-justify">
 							學習程式不需要一開始就懂所有事情。課程從網頁最基礎的結構與排版教起，親手看見每一行程式碼如何產生變化，循序建立扎實手感。<br />
 							<span class="text-cyan-300 font-bold mt-2.5 block text-base sm:text-lg">
 								真正需要確認的，不是「我現在會不會」，而是「我願不願意花時間，把不會變成會」。
@@ -103,11 +103,11 @@
 							現在才學寫程式，會不會馬上被 AI 取代？
 						</h3>
 						<div
-							class="p-4 rounded-2xl bg-slate-950/70 border border-slate-800/90 mb-4 text-base text-slate-300 font-normal leading-relaxed"
+							class="p-4 rounded-2xl bg-slate-950/70 border border-slate-800/90 mb-4 text-base text-slate-300 font-normal leading-relaxed text-justify"
 						>
 							“新聞天天都在報 AI 能一秒寫出網頁，現在投入還有競爭力嗎……”
 						</div>
-						<p class="text-base text-slate-200 leading-relaxed text-pretty">
+						<p class="text-base text-slate-200 leading-relaxed text-pretty text-justify">
 							AI 讓產生程式碼變得容易，但同時也讓架構思維、判斷合理性、除錯與整體系統能力變得更加重要。課程不只教「怎麼寫」，而是教你「理解自己正在做什麼」，讓 AI 成為最強協同副駕駛。<br />
 							<span class="text-blue-300 font-bold mt-2.5 block text-base sm:text-lg">
 								AI 讓生成變容易，但讓理解、判斷與架構能力更加關鍵。
@@ -143,11 +143,11 @@
 							自學資源這麼多，為什麼需要來職訓？
 						</h3>
 						<div
-							class="p-4 rounded-2xl bg-slate-950/70 border border-slate-800/90 mb-4 text-base text-slate-300 font-normal leading-relaxed"
+							class="p-4 rounded-2xl bg-slate-950/70 border border-slate-800/90 mb-4 text-base text-slate-300 font-normal leading-relaxed text-justify"
 						>
 							“看線上教學好像都懂，自己開編輯器卻一行都寫不出來……”
 						</div>
-						<p class="text-base text-slate-200 leading-relaxed text-pretty">
+						<p class="text-base text-slate-200 leading-relaxed text-pretty text-justify">
 							網路上有成千上萬的免費教學與影音。真正值得思考的是：你現在缺的到底是一套新教材，還是缺一個能讓你排除干擾、遇到卡關有人即時討論、並能持續走完半年的實體環境？<br />
 							<span class="text-purple-300 font-bold mt-2.5 block text-base sm:text-lg">
 								你缺的是更多教材，還是一個能讓你持續走下去的學習環境？

@@ -77,7 +77,7 @@
                 {{ fac.displaySubtitle }}
               </span>
             </h3>
-            <p class="text-slate-200 leading-relaxed text-base sm:text-lg text-pretty">
+            <p class="text-slate-200 leading-relaxed text-base sm:text-lg text-pretty text-justify">
               {{ fac.description }}
             </p>
           </div>

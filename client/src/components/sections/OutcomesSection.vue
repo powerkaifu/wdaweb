@@ -27,7 +27,7 @@
 						>不只是一張結訓證明</span
 					>
 				</h2>
-				<p class="text-slate-400 mt-4 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed text-pretty">
+				<p class="text-slate-400 mt-4 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed text-pretty text-justify sm:text-center">
 					<span class="inline-block">920 小時</span>的學習，目的不是讓你記住更多技術名詞，而是希望你離開教室後，仍然帶著可以繼續使用的實戰能力。
 				</p>
 			</div>
@@ -53,7 +53,7 @@
 							🌐
 						</div>
 						<h3 class="text-xl font-extrabold text-white mb-2.5 tracking-tight">真正做出屬於自己的作品</h3>
-						<p class="text-base text-slate-200 leading-relaxed text-pretty">
+						<p class="text-base text-slate-200 leading-relaxed text-pretty text-justify">
 							不只是套用模板或完成課堂作業，而是真正獨立完成可以向面試官展示、說得出架構細節與技術選型原因的專案代表作。
 						</p>
 					</div>
@@ -73,7 +73,7 @@
 							🔍
 						</div>
 						<h3 class="text-xl font-extrabold text-white mb-2.5 tracking-tight">建立拆解與解決問題的能力</h3>
-						<p class="text-base text-slate-200 leading-relaxed text-pretty">
+						<p class="text-base text-slate-200 leading-relaxed text-pretty text-justify">
 							遇到問題與 Bug 時，不再只盲目問「答案是什麼」，而是學會從程式碼與 Console 分析「問題到底發生在哪裡」，具備獨立除錯的思維。
 						</p>
 					</div>
@@ -93,7 +93,7 @@
 							🤖
 						</div>
 						<h3 class="text-xl font-extrabold text-white mb-2.5 tracking-tight">理解如何與 AI 深度協作</h3>
-						<p class="text-base text-slate-200 leading-relaxed text-pretty">
+						<p class="text-base text-slate-200 leading-relaxed text-pretty text-justify">
 							不把 AI 當成複製貼上的萬能答案機，而是建立「提問 ➔ 理解 ➔ 驗證 ➔ 修改 ➔ 除錯」的人機協同循環，讓 AI 成為實戰加速器。
 						</p>
 					</div>
@@ -113,7 +113,7 @@
 							🏗️
 						</div>
 						<h3 class="text-xl font-extrabold text-white mb-2.5 tracking-tight">建立前端與系統整合基礎</h3>
-						<p class="text-base text-slate-200 leading-relaxed text-pretty">
+						<p class="text-base text-slate-200 leading-relaxed text-pretty text-justify">
 							清楚知道一個完整系統不是只有排版畫面，而是由前端元件、狀態資料、後端 API、資料庫與部署流程共同協同運作的全貌。
 						</p>
 					</div>
@@ -133,7 +133,7 @@
 							🤝
 						</div>
 						<h3 class="text-xl font-extrabold text-white mb-2.5 tracking-tight">認識一起學習成長的夥伴</h3>
-						<p class="text-base text-slate-200 leading-relaxed text-pretty">
+						<p class="text-base text-slate-200 leading-relaxed text-pretty text-justify">
 							半年朝夕相處的同學，未來可能成為你在軟體業界交流情報、彼此推薦與互相支持的同行者。這是孤軍自學難以複製的人脈資產。
 						</p>
 					</div>
@@ -153,7 +153,7 @@
 							🧭
 						</div>
 						<h3 class="text-xl font-extrabold text-white mb-2.5 tracking-tight">更清楚自己是否適合走這條路</h3>
-						<p class="text-base text-slate-100 leading-relaxed text-pretty">
+						<p class="text-base text-slate-100 leading-relaxed text-pretty text-justify">
 							不是每個人結訓後都會走向相同道路。六個月後，你未必會得到唯一的標準答案；但你應該比現在更知道自己喜歡什麼、擅長什麼，以及下一步可以往哪裡走。
 						</p>
 					</div>

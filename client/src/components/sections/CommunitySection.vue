@@ -27,7 +27,7 @@
                 即時線上問答
               </h3>
             </div>
-            <p class="text-base text-slate-300 leading-relaxed text-pretty">
+            <p class="text-base text-slate-300 leading-relaxed text-pretty text-justify">
               不知道自己適不適合參訓？想了解上課氛圍？加入 Discord 即可即時詢問。
             </p>
           </div>

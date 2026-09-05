@@ -43,7 +43,7 @@
 					>
 				</h2>
 
-				<p class="text-slate-300 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed text-pretty">
+				<p class="text-slate-300 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed text-pretty text-justify sm:text-center">
 					每一個作品的開始，都不是一個完整的工程師，而是一個願意從不熟悉的第一行開始學習的人。
 				</p>
 
@@ -90,7 +90,7 @@
 					>
 				</h2>
 
-				<p class="text-slate-300 text-base sm:text-lg max-w-4xl xl:max-w-5xl mx-auto leading-relaxed text-pretty">
+				<p class="text-slate-300 text-base sm:text-lg max-w-4xl xl:max-w-5xl mx-auto leading-relaxed text-pretty text-justify sm:text-center">
 					<span class="block"
 						>920 小時不是一條速成的捷徑，而是一段從陌生、練習、卡關，到逐漸理解與完成作品的學習旅程。</span
 					>
