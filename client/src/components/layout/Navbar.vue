@@ -54,11 +54,22 @@
 							class="h-8 sm:h-9 md:h-10 w-auto max-w-[120px] sm:max-w-[160px] object-contain rounded-lg drop-shadow-md group-hover:scale-105 transition-transform"
 						/>
 					</div>
-					<div class="flex flex-col min-w-0">
-						<div class="flex items-center space-x-2">
+					<div class="flex flex-col min-w-0 justify-center">
+						<!-- 手機版：雙行精緻大字排版（徹底杜絕截斷，16px 醒目大字＋電光青班別高亮） -->
+						<div class="sm:hidden flex flex-col justify-center">
+							<span class="font-black text-base text-white tracking-tight leading-none group-hover:text-cyan-300 transition-colors">
+								{{ brandParts.main }}
+							</span>
+							<span v-if="brandParts.sub" class="font-bold text-xs text-cyan-400 tracking-tight mt-1 leading-none">
+								{{ brandParts.sub }}
+							</span>
+						</div>
+
+						<!-- 平板與桌機版：大器單行排版 -->
+						<div class="hidden sm:flex items-center space-x-2">
 							<span
 								class="font-extrabold tracking-tight text-white group-hover:text-cyan-400 transition-colors leading-tight truncate"
-								:class="isScrolled ? 'text-xs sm:text-sm' : 'text-xs xs:text-sm sm:text-base md:text-lg'"
+								:class="isScrolled ? 'text-base lg:text-lg' : 'text-lg lg:text-xl'"
 							>
 								{{ store.settings?.site_title || '泰山職訓－前端網頁技術與AI應用' }}
 							</span>
@@ -69,7 +80,7 @@
 								AI READY
 							</span>
 						</div>
-						<span class="hidden sm:block text-xs text-slate-400 font-medium leading-none mt-0.5 truncate">
+						<span class="hidden sm:block text-xs sm:text-sm text-slate-400 font-medium leading-none mt-1 truncate">
 							泰山職業訓練場 ｜ 師資成果推廣網
 						</span>
 					</div>
@@ -161,16 +172,27 @@
 							class="h-8 sm:h-9 w-auto max-w-[120px] sm:max-w-[140px] object-contain rounded-lg drop-shadow-md group-hover:scale-105 transition-transform"
 						/>
 					</div>
-					<div class="flex flex-col min-w-0">
-						<div class="flex items-center space-x-2">
+					<div class="flex flex-col min-w-0 justify-center">
+						<!-- 手機版：雙行精緻大字排版 -->
+						<div class="sm:hidden flex flex-col justify-center">
+							<span class="font-black text-base text-white tracking-tight leading-none group-hover:text-cyan-300 transition-colors">
+								{{ brandParts.main }}
+							</span>
+							<span v-if="brandParts.sub" class="font-bold text-xs text-cyan-400 tracking-tight mt-1 leading-none">
+								{{ brandParts.sub }}
+							</span>
+						</div>
+
+						<!-- 平板與桌機版：大器單行排版 -->
+						<div class="hidden sm:flex items-center space-x-2">
 							<span
-								class="text-xs sm:text-sm font-extrabold text-white tracking-tight group-hover:text-cyan-300 transition-colors leading-tight truncate"
+								class="text-base lg:text-lg font-extrabold text-white tracking-tight group-hover:text-cyan-300 transition-colors leading-tight truncate"
 							>
 								{{ store.settings?.site_title || '泰山職訓－前端網頁技術與AI應用' }}
 							</span>
 							<span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse shrink-0"></span>
 						</div>
-						<span class="hidden sm:block text-xs text-slate-400 leading-none truncate mt-0.5"> 泰山職訓 ｜ 師資自主推廣網 </span>
+						<span class="hidden sm:block text-xs sm:text-sm text-slate-400 leading-none truncate mt-1"> 泰山職訓 ｜ 師資自主推廣網 </span>
 					</div>
 				</router-link>
 
@@ -277,10 +299,21 @@
 								class="h-8 sm:h-9 md:h-10 w-auto max-w-[120px] sm:max-w-[160px] object-contain rounded-lg drop-shadow-md group-hover:scale-105 transition-transform"
 							/>
 						</div>
-						<div class="flex flex-col min-w-0">
-							<div class="flex items-center space-x-2">
+						<div class="flex flex-col min-w-0 justify-center">
+							<!-- 手機版：雙行精緻大字排版 -->
+							<div class="sm:hidden flex flex-col justify-center">
+								<span class="font-black text-base text-white tracking-tight leading-none group-hover:text-cyan-300 transition-colors">
+									{{ brandParts.main }}
+								</span>
+								<span v-if="brandParts.sub" class="font-bold text-xs text-cyan-400 tracking-tight mt-1 leading-none">
+									{{ brandParts.sub }}
+								</span>
+							</div>
+
+							<!-- 平板與桌機版：大器單行排版 -->
+							<div class="hidden sm:flex items-center space-x-2">
 								<span
-									class="font-extrabold tracking-tight text-white group-hover:text-cyan-400 transition-colors leading-tight text-xs xs:text-sm sm:text-base md:text-lg truncate"
+									class="font-extrabold tracking-tight text-white group-hover:text-cyan-400 transition-colors leading-tight text-base sm:text-lg lg:text-xl truncate"
 								>
 									{{ store.settings?.site_title || '泰山職訓－前端網頁技術與AI應用' }}
 								</span>
@@ -291,7 +324,7 @@
 									AI READY
 								</span>
 							</div>
-							<span class="hidden sm:block text-xs text-slate-400 font-medium leading-none mt-0.5 truncate">
+							<span class="hidden sm:block text-xs sm:text-sm text-slate-400 font-medium leading-none mt-1 truncate">
 								泰山職業訓練場 ｜ 師資成果推廣網
 							</span>
 						</div>
@@ -425,6 +458,22 @@ const isScrolled = ref(false)
 const isOpen = ref(false)
 const scrollDirection = ref<'up' | 'down'>('up')
 let lastScrollY = 0
+
+// 智慧拆分主標題（支援手機版雙行精緻大字排版，杜絕截斷與螞蟻字）
+const brandParts = computed(() => {
+	const title = store.settings?.site_title || '泰山職訓－前端網頁技術與AI應用'
+	const dashIndex = title.indexOf('－') !== -1 ? title.indexOf('－') : title.indexOf('-')
+	if (dashIndex !== -1) {
+		return {
+			main: title.slice(0, dashIndex),
+			sub: title.slice(dashIndex + 1),
+		}
+	}
+	return {
+		main: title,
+		sub: '',
+	}
+})
 
 // 雙重防禦：當遠端 Logo 網址 404 或載入失敗時，立即無縫降級回傳本地官方高畫質 Logo
 function handleLogoError(e: Event) {

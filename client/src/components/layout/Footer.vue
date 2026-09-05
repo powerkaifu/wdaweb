@@ -32,10 +32,15 @@
             class="h-8 sm:h-10 w-auto max-w-[120px] sm:max-w-[150px] object-contain rounded flex-shrink-0 mt-0.5 sm:mt-0"
           />
           <div class="min-w-0 flex-1">
-            <div class="font-bold text-white text-base sm:text-lg tracking-tight">
-              {{ store.settings?.site_title || '泰山職訓－前端網頁技術與AI應用' }}
+            <div class="font-extrabold text-white text-lg sm:text-xl tracking-tight leading-snug">
+              <template v-if="brandParts.sub">
+                <span class="inline-block">{{ brandParts.main }}－</span><span class="inline-block">{{ brandParts.sub }}</span>
+              </template>
+              <template v-else>
+                {{ brandParts.main }}
+              </template>
             </div>
-            <div class="text-xs sm:text-sm text-slate-400 mt-1 flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2 leading-relaxed">
+            <div class="text-xs sm:text-sm text-slate-400 mt-1.5 flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2 leading-relaxed">
               <span>地址：{{ store.settings?.contact_address || '新北市泰山區貴子里致遠新村 55 之 1 號' }}</span>
               <span class="hidden sm:inline text-slate-600" aria-hidden="true">｜</span>
               <span>電話：<a :href="`tel:${(store.settings?.contact_phone || '(02) 2901-8274').replace(/[^0-9]/g, '')}`" class="hover:text-cyan-400 transition-colors underline-offset-2">{{ store.settings?.contact_phone || '(02) 2901-8274' }}</a></span>
@@ -72,11 +77,28 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue'
 import { useCmsStore } from '@/stores/useCmsStore'
 import defaultLogo from '@/assets/logo.png'
 
 const store = useCmsStore()
 const currentYear = new Date().getFullYear()
+
+// 智慧拆分主標題（支援手機版雙行點狀保護與字級放大）
+const brandParts = computed(() => {
+  const title = store.settings?.site_title || '泰山職訓－前端網頁技術與AI應用'
+  const dashIndex = title.indexOf('－') !== -1 ? title.indexOf('－') : title.indexOf('-')
+  if (dashIndex !== -1) {
+    return {
+      main: title.slice(0, dashIndex),
+      sub: title.slice(dashIndex + 1),
+    }
+  }
+  return {
+    main: title,
+    sub: '',
+  }
+})
 
 // 雙重防禦：遠端 Logo 載入失敗時無縫降級回傳預設本地 Logo
 function handleLogoError(e: Event) {
