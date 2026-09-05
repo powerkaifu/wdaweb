@@ -1,8 +1,5 @@
 <template>
-	<section
-		id="path-comparison"
-		class="py-24 sm:py-28 lg:py-32 bg-transparent relative overflow-hidden"
-	>
+	<section id="path-comparison" class="py-24 sm:py-28 lg:py-32 bg-transparent relative overflow-hidden">
 		<!-- 背景環境微光 -->
 		<div
 			class="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl pointer-events-none"
@@ -27,8 +24,13 @@
 						>你可以怎麼開始？</span
 					>
 				</h2>
-				<p class="text-slate-400 mt-4 text-base sm:text-lg max-w-4xl mx-auto leading-relaxed text-pretty text-justify sm:text-center">
-					如果你正在思考轉職，不一定只有「報名職訓」這一個答案。你也可以自學、使用 AI 學習，或在工作中逐步累積能力。不同方法適合不同的人，真正重要的是：<span class="text-slate-200 font-bold">你現在需要的是什麼？</span>
+				<p
+					class="text-slate-400 mt-4 text-base sm:text-lg max-w-4xl mx-auto leading-relaxed text-pretty text-justify sm:text-center"
+				>
+					如果你正在思考轉職，不一定只有「報名職訓」這一個答案。你也可以自學、使用 AI
+					學習，或在工作中逐步累積能力。不同方法適合不同的人，真正重要的是：<span class="text-slate-200 font-bold"
+						>你現在需要的是什麼？</span
+					>
 				</p>
 			</div>
 
@@ -56,15 +58,11 @@
 							</span>
 						</div>
 
-						<h3 class="text-xl sm:text-2xl font-extrabold text-white mb-4 tracking-tight">
-							自學 ＋ AI 協同
-						</h3>
+						<h3 class="text-xl sm:text-2xl font-extrabold text-white mb-4 tracking-tight">自學與 AI 協作開發</h3>
 
 						<!-- 適合對象 -->
 						<div class="mb-5 p-4 rounded-2xl bg-slate-950/70 border border-slate-800/90">
-							<div class="text-base font-bold text-blue-400 tracking-wide mb-2">
-								適合對象
-							</div>
+							<div class="text-base font-bold text-blue-400 tracking-wide mb-2">適合對象</div>
 							<ul class="space-y-1.5 text-base text-slate-300">
 								<li class="flex items-start space-x-2">
 									<span class="text-blue-400 mt-0.5">•</span>
@@ -83,9 +81,7 @@
 
 						<!-- 核心優勢 -->
 						<div class="mb-5 space-y-2">
-							<div class="text-base font-bold text-emerald-400 tracking-wide">
-								核心優點
-							</div>
+							<div class="text-base font-bold text-emerald-400 tracking-wide">核心優點</div>
 							<p class="text-base text-slate-200 leading-relaxed text-pretty text-justify">
 								時間彈性最高、經濟成本極低，可以完全依照自己的節奏前進，自由探索感興趣的技術。
 							</p>
@@ -93,11 +89,9 @@
 
 						<!-- 需要面對 -->
 						<div class="space-y-2">
-							<div class="text-base font-bold text-amber-400 tracking-wide">
-								需要面對的代價
-							</div>
+							<div class="text-base font-bold text-amber-400 tracking-wide">需要面對的代價</div>
 							<p class="text-base text-slate-300 leading-relaxed text-pretty text-justify">
-								沒有專人協助規劃完整學習路徑；遇到深層報錯或觀念盲點時需獨自苦思；容易學了很多破碎的知識點，卻難以產出架構完整且具競爭力的代表專題。
+								沒有專人協助規劃完整學習路徑，遇到深層報錯或觀念盲點時需獨自苦思，容易學了很多破碎的知識點，卻難以產出架構完整且具競爭力的代表專題。
 							</p>
 						</div>
 					</div>
@@ -129,15 +123,11 @@
 							</span>
 						</div>
 
-						<h3 class="text-xl sm:text-2xl font-extrabold text-white mb-4 tracking-tight">
-							全日制實體職訓
-						</h3>
+						<h3 class="text-xl sm:text-2xl font-extrabold text-white mb-4 tracking-tight">全日制實體職訓</h3>
 
 						<!-- 適合對象 -->
 						<div class="mb-5 p-4 rounded-2xl bg-slate-950/90 border border-cyan-500/30">
-							<div class="text-base font-bold text-cyan-400 tracking-wide mb-2">
-								適合對象
-							</div>
+							<div class="text-base font-bold text-cyan-400 tracking-wide mb-2">適合對象</div>
 							<ul class="space-y-1.5 text-base text-slate-200">
 								<li class="flex items-start space-x-2">
 									<span class="text-cyan-400 mt-0.5">•</span>
@@ -160,21 +150,22 @@
 
 						<!-- 核心優勢 -->
 						<div class="mb-5 space-y-2">
-							<div class="text-base font-bold text-emerald-400 tracking-wide">
-								核心優點
-							</div>
+							<div class="text-base font-bold text-emerald-400 tracking-wide">核心優點</div>
 							<p class="text-base text-slate-100 leading-relaxed text-pretty text-justify">
-								勞動部自辦 <span class="inline-block">920 小時</span>系統化培訓；專屬<span class="inline-block">雙螢幕實作工位</span>；每天高強度沉浸式編程；有專任老師與同學現場即時討論，確保每一位學員都能獨立產出完整<span class="inline-block">專案作品集</span>。
+								勞動部自辦 <span class="inline-block">920 小時</span>系統化培訓，專屬<span class="inline-block"
+									>雙螢幕實作教學</span
+								>，每天高強度沉浸式編程，有專任老師與同學現場即時討論，確保每一位學員都能獨立產出完整<span
+									class="inline-block"
+									>專案作品集</span
+								>。
 							</p>
 						</div>
 
 						<!-- 需要面對 -->
 						<div class="space-y-2">
-							<div class="text-base font-bold text-amber-400 tracking-wide">
-								需要面對的代價
-							</div>
+							<div class="text-base font-bold text-amber-400 tracking-wide">需要面對的代價</div>
 							<p class="text-base text-slate-300 leading-relaxed text-pretty text-justify">
-								需要全職投入整整半年的專注時間；需要跟上密集緊湊的課程進度與實作要求；這絕不是一條輕鬆速成的捷徑。
+								需要全職投入整整半年的專注時間，需要跟上密集緊湊的課程進度與實作要求，這絕不是一條輕鬆速成的捷徑。
 							</p>
 						</div>
 					</div>
@@ -183,7 +174,7 @@
 						class="pt-5 mt-6 border-t border-cyan-500/30 flex items-center justify-between text-sm text-slate-200 font-mono"
 					>
 						<span>路徑屬性</span>
-						<span class="text-cyan-300 font-bold">系統沉浸 · 紮實作品集</span>
+						<span class="text-cyan-300 font-bold">系統沉浸 · 充實紮實</span>
 					</div>
 				</div>
 
@@ -206,15 +197,11 @@
 							</span>
 						</div>
 
-						<h3 class="text-xl sm:text-2xl font-extrabold text-white mb-4 tracking-tight">
-							在工作中邊做邊學
-						</h3>
+						<h3 class="text-xl sm:text-2xl font-extrabold text-white mb-4 tracking-tight">在工作中邊做邊學</h3>
 
 						<!-- 適合對象 -->
 						<div class="mb-5 p-4 rounded-2xl bg-slate-950/70 border border-slate-800/90">
-							<div class="text-base font-bold text-purple-400 tracking-wide mb-2">
-								適合對象
-							</div>
+							<div class="text-base font-bold text-purple-400 tracking-wide mb-2">適合對象</div>
 							<ul class="space-y-1.5 text-base text-slate-300">
 								<li class="flex items-start space-x-2">
 									<span class="text-purple-400 mt-0.5">•</span>
@@ -233,9 +220,7 @@
 
 						<!-- 核心優勢 -->
 						<div class="mb-5 space-y-2">
-							<div class="text-base font-bold text-emerald-400 tracking-wide">
-								核心優點
-							</div>
+							<div class="text-base font-bold text-emerald-400 tracking-wide">核心優點</div>
 							<p class="text-base text-slate-200 leading-relaxed text-pretty text-justify">
 								身處最真實的商業開發情境，直接面對市場需求，累積具備即戰力的一手實務經驗。
 							</p>
@@ -243,9 +228,7 @@
 
 						<!-- 需要面對 -->
 						<div class="space-y-2">
-							<div class="text-base font-bold text-amber-400 tracking-wide">
-								需要面對的代價
-							</div>
+							<div class="text-base font-bold text-amber-400 tracking-wide">需要面對的代價</div>
 							<p class="text-base text-slate-300 leading-relaxed text-pretty text-justify">
 								對完全零基礎的轉職者門檻極高；日常工作的交付壓力與時程緊迫，可能大幅壓縮你從容打好底層基礎的學習時間。
 							</p>
@@ -268,16 +251,16 @@
 
 			<!-- 誠懇決策收束橫幅 (三行層次結構) -->
 			<div class="mt-14 max-w-5xl xl:max-w-6xl mx-auto text-center">
-				<div
-					class="p-5 sm:p-8 rounded-3xl bg-slate-900/60 border border-slate-800/80 backdrop-blur-md shadow-xl"
-				>
+				<div class="p-5 sm:p-8 rounded-3xl bg-slate-900/60 border border-slate-800/80 backdrop-blur-md shadow-xl">
 					<!-- 第 1 行：核心精神 -->
 					<h4 class="text-xl sm:text-2xl font-extrabold text-white mb-3 tracking-tight text-balance">
 						沒有哪一種方式一定最好
 					</h4>
 
 					<!-- 第 2 行：客觀對比 -->
-					<p class="text-base sm:text-lg text-slate-300 leading-relaxed text-justify sm:text-center xl:whitespace-nowrap">
+					<p
+						class="text-base sm:text-lg text-slate-300 leading-relaxed text-justify sm:text-center xl:whitespace-nowrap"
+					>
 						如果你已經知道自己要什麼，自學可能就足夠；如果你需要一個完整環境、老師、同儕與大量實作，職訓可能更適合。
 					</p>
 
@@ -295,15 +278,11 @@
 import { useScrollStagger } from '@/composables/useScrollStagger'
 
 // 3 大學習路徑對比卡片統一由通用 Composable 調度
-useScrollStagger(
-	'#path-comparison-grid .path-card',
-	'#path-comparison',
-	{
-		yOffset: 28,
-		duration: 0.85,
-		stagger: 0.08,
-		ease: 'power1.out',
-		start: 'top 85%',
-	}
-)
+useScrollStagger('#path-comparison-grid .path-card', '#path-comparison', {
+	yOffset: 28,
+	duration: 0.85,
+	stagger: 0.08,
+	ease: 'power1.out',
+	start: 'top 85%',
+})
 </script>

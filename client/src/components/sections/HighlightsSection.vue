@@ -186,8 +186,8 @@
 							<span class="inline-block">920 小時</span>集中沉浸
 						</h3>
 						<p class="text-base text-slate-200 leading-relaxed text-pretty text-justify">
-							零散自學往往缺乏大局觀。<span class="inline-block">920 小時</span
-							>給你一段足夠長、足夠專注的時間，暫時放下外界干擾，把零碎的語法知識，真正沉澱為能獨立做出完整專案的實戰能力。
+							自學可以很自由，但也容易因為時間零碎而難以持續。<span class="inline-block">920 小時</span
+							>給你一段足夠長、足夠專注的時間，讓零碎的知識在持續練習中逐漸沉澱，最後轉化為能獨立完成完整專案的實戰能力。
 						</p>
 					</div>
 
@@ -227,7 +227,7 @@
 										>每天與人一起學習<span class="hidden sm:inline">，</span></span
 									><span
 										class="block sm:inline text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400"
-										>是職訓很不一樣的地方</span
+										>這是職訓很不一樣的地方</span
 									>
 								</span>
 							</h3>
@@ -239,7 +239,7 @@
 						</div>
 
 						<!-- 內文兩段 (保持 text-base sm:text-lg 大字，行高 1.8 舒緩，老花眼與中高齡友善，兩端切齊) -->
-						<div class="space-y-4 text-base sm:text-lg leading-relaxed text-pretty text-justify">
+						<div class="text-base sm:text-lg leading-relaxed text-pretty text-justify">
 							<p class="text-slate-200">
 								自學可以自己找答案，AI 也可以立即提供解答；但實體學習多了一個重要的過程：<strong
 									class="text-cyan-300 font-bold"
@@ -247,7 +247,7 @@
 								>
 							</p>
 							<p class="text-slate-300">
-								學習過程不只是練習怎麼說明自己的問題，也要學著仔細聆聽別人在問什麼，理解對方真正卡住的地方，再想辦法用對方聽得懂的方式解釋。老師與學員每天面對面交流，在一次次提問、討論與解釋中教學相長。
+								學習不只是練習怎麼說明自己的問題，也要學著仔細聆聽別人在問什麼，理解對方真正卡住的地方，再想辦法用對方聽得懂的方式解釋。老師與學員每天面對面交流，在一次次提問、討論與解釋中教學相長。
 							</p>
 						</div>
 
