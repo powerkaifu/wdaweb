@@ -65,7 +65,7 @@ def get_site_settings(request):
 
 @api.get("/public/carousels", response=List[CarouselOut], tags=["Public 前台公開"])
 def get_carousels(request):
-    qs = Carousel.objects.filter(is_active=True, deleted_at__isnull=True).order_by('sort_order', '-created_at')
+    qs = Carousel.objects.filter(is_active=True).order_by('sort_order', '-created_at')
     return [
         {
             "id": c.id,
@@ -84,7 +84,7 @@ def get_carousels(request):
 
 @api.get("/public/batches", response=List[AdmissionBatchOut], tags=["Public 前台公開"])
 def get_batches(request):
-    qs = AdmissionBatch.objects.filter(deleted_at__isnull=True).exclude(status_override='hidden').order_by('sort_order', 'enroll_start_date')
+    qs = AdmissionBatch.objects.exclude(status_override='hidden').order_by('sort_order', 'enroll_start_date')
     return [
         {
             "id": b.id,
@@ -110,7 +110,7 @@ def get_batches(request):
 
 @api.post("/public/batches/{batch_id}/click", response=ApiResponse, tags=["Public 轉換追蹤"])
 def track_batch_click(request, batch_id: int):
-    get_object_or_404(AdmissionBatch, id=batch_id, deleted_at__isnull=True)
+    get_object_or_404(AdmissionBatch, id=batch_id)
     AdmissionBatch.objects.filter(id=batch_id).update(click_count=F('click_count') + 1)
     return {"success": True, "message": "點擊已記錄"}
 
@@ -131,7 +131,7 @@ def trigger_batches_sync(request):
 
 @api.get("/public/curriculum/modules", response=List[CurriculumModuleOut], tags=["Public 前台公開"])
 def get_curriculum_modules(request):
-    qs = CurriculumModule.objects.filter(deleted_at__isnull=True).order_by('sort_order', 'module_number')
+    qs = CurriculumModule.objects.all().order_by('sort_order', 'module_number')
     return [
         {
             "id": m.id,
@@ -147,7 +147,7 @@ def get_curriculum_modules(request):
 
 @api.get("/public/curriculum/tech-cards", response=List[TechCardOut], tags=["Public 前台公開"])
 def get_tech_cards(request):
-    qs = TechCard.objects.filter(is_active=True, deleted_at__isnull=True).order_by('sort_order', 'id')
+    qs = TechCard.objects.filter(is_active=True).order_by('sort_order', 'id')
     return [
         {
             "id": t.id,
@@ -163,7 +163,7 @@ def get_tech_cards(request):
 
 @api.get("/public/facilities", response=List[FacilityOut], tags=["Public 前台公開"])
 def get_facilities(request):
-    qs = Facility.objects.filter(is_active=True, deleted_at__isnull=True).order_by('sort_order', 'id')
+    qs = Facility.objects.filter(is_active=True).order_by('sort_order', 'id')
     return [
         {
             "id": f.id,
@@ -179,7 +179,7 @@ def get_facilities(request):
 
 @api.get("/public/projects", response=List[StudentProjectOut], tags=["Public 前台公開"])
 def get_student_projects(request, featured: Optional[bool] = None):
-    qs = StudentProject.objects.filter(is_active=True, deleted_at__isnull=True)
+    qs = StudentProject.objects.filter(is_active=True)
     if featured is not None:
         qs = qs.filter(is_featured=featured)
     qs = qs.order_by('-is_featured', 'sort_order', '-created_at')
@@ -202,13 +202,13 @@ def get_student_projects(request, featured: Optional[bool] = None):
 
 @api.post("/public/projects/{project_id}/view", response=ApiResponse, tags=["Public 轉換追蹤"])
 def track_project_view(request, project_id: int):
-    get_object_or_404(StudentProject, id=project_id, deleted_at__isnull=True)
+    get_object_or_404(StudentProject, id=project_id)
     StudentProject.objects.filter(id=project_id).update(view_count=F('view_count') + 1)
     return {"success": True, "message": "瀏覽次數已累計"}
 
 @api.get("/public/faqs", response=List[FAQOut], tags=["Public 前台公開"])
 def get_faqs(request):
-    qs = FAQ.objects.filter(is_active=True, deleted_at__isnull=True).order_by('sort_order', 'id')
+    qs = FAQ.objects.filter(is_active=True).order_by('sort_order', 'id')
     return [
         {
             "id": faq.id,
