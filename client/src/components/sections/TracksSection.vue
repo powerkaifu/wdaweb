@@ -156,8 +156,7 @@
 					class="p-5 sm:p-7 rounded-3xl bg-slate-900/60 border border-slate-800/80 backdrop-blur-md shadow-xl text-pretty"
 				>
 					<p class="text-base sm:text-lg text-slate-200 leading-relaxed xl:whitespace-nowrap">
-						<span class="text-emerald-400 font-bold block sm:inline">你不需要符合某一種標準答案，才有資格開始。</span>
-						<span class="block sm:inline mt-1 sm:mt-0"> 重要的是先了解自己的起點，再找到適合自己的學習方式。</span>
+						<span class="text-emerald-400 font-bold">你不需要符合某一種標準答案，才有資格開始。</span>重要的是先了解自己的起點，再找到適合自己的學習方式。
 					</p>
 				</div>
 			</div>
