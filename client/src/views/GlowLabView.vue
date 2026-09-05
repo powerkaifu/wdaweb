@@ -826,9 +826,9 @@
               </div>
 
               <div>
-                <h3 class="font-bold text-base text-white mb-1">星空微星動態突觸網格</h3>
+                <h3 class="font-bold text-base text-white mb-1">星空微星動態拓撲網格</h3>
                 <p class="text-xs text-slate-400 leading-relaxed">
-                  深空微星間維持微弱常態拓撲連線；當滑鼠掠過時自動射出高光光纖火花連線流向游標！
+                  深空微星間維持微弱常態拓撲星宿連線，定時自發激發量子思維漣漪，視覺純粹沉浸不干擾閱讀！
                 </p>
               </div>
 
@@ -847,11 +847,11 @@
                   />
                 </label>
 
-                <!-- 2. 游標引力光纖連線 -->
+                <!-- 2. 游標引力光纖連線 (預設關閉) -->
                 <label class="flex items-center justify-between p-2.5 rounded-xl bg-slate-950/60 border border-slate-800 hover:border-cyan-500/40 cursor-pointer transition-all">
                   <div class="flex items-center space-x-2.5 text-xs sm:text-sm">
                     <span>⚡</span>
-                    <span class="font-bold text-slate-200">游標引力光纖連線與脈衝火花</span>
+                    <span class="font-bold text-slate-200">游標引力連線（預設停用・專注純淨背景）</span>
                   </div>
                   <input
                     type="checkbox"

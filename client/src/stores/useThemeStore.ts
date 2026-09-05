@@ -100,10 +100,10 @@ export const useThemeStore = defineStore('theme', () => {
 
   // 5. 🧠 AI 神經突觸星空網絡 (Synaptic Constellation Network)
   const synapticConfig = ref<SynapticConfig>({
-    enabled: true,           // 總開關
-    interactiveCursor: true, // 游標引力神經突觸連線
-    autonomousPulse: true,   // 宇宙深空自發性思維脈衝
-    manualPulseCount: 0      // 手動激發神經脈衝計數器
+    enabled: true,            // 總開關
+    interactiveCursor: false, // 游標引力連線已停用 (將視覺焦點純粹保留於背景動畫)
+    autonomousPulse: true,    // 宇宙深空自發性思維脈衝
+    manualPulseCount: 0       // 手動激發神經脈衝計數器
   })
 
   function triggerMeteor() {
