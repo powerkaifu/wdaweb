@@ -18,8 +18,9 @@
           <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping"></span>
           <span>Learning Environment ｜ 實體環境</span>
         </div>
-        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight text-balance">
-          接下來的半年，你會在這樣的地方學習
+        <h2 class="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-black text-white tracking-tight leading-tight text-balance">
+          <span class="block">接下來的半年，</span>
+          <span class="block mt-1 sm:mt-1.5 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-emerald-400">你會在這樣的地方學習</span>
         </h2>
         <p class="text-slate-400 mt-4 text-base sm:text-lg max-w-none mx-auto leading-relaxed text-pretty">
           專注的空間、一起學習的人，以及一段真正投入的時間。
