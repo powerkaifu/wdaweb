@@ -180,34 +180,30 @@
 }
 
 /* 1. 方案 A【靈動星際流星 (Cosmic Pulse - 旗艦預設)】
-   特性：3.5s 疾速破空穿梭 + 4.5s 深沉靜默留白呼吸 (週期 8s)
-   曲線：cubic-bezier(0.22, 1, 0.36, 1) 賦予流星生命感 */
+   特性：3.5s 疾速破空穿梭 + 4.5s 深沉靜默留白呼吸 (週期 8s，精準 43.75% / 56.25% 黃金佔空比)
+   曲線：cubic-bezier(0.22, 1, 0.36, 1) 賦予流星生命感，天地對位 2.4s 相位呼應 */
 @keyframes cosmicPulseStream {
 	0% {
 		left: 0%;
 		transform: translateX(-100%);
 		opacity: 0;
+		animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
 	}
-	5% {
-		opacity: 0.25;
+	4% {
+		opacity: 0.35;
 	}
-	15% {
+	12% {
 		opacity: 1;
 	}
-	45% {
-		left: 55%;
-		transform: translateX(-50%);
+	36% {
 		opacity: 1;
 	}
-	54% {
-		opacity: 0.85;
-	}
-	62% {
+	43.75% {
 		left: 100%;
 		transform: translateX(0%);
 		opacity: 0;
 	}
-	62.01%, 100% {
+	43.76%, 100% {
 		left: 100%;
 		transform: translateX(0%);
 		opacity: 0;

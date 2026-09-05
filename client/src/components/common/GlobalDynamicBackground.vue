@@ -881,6 +881,17 @@ function triggerAutonomousFlash(w: number, h: number) {
   })
 }
 
+/**
+ * ⚡ 高效能粒子無痛移除輔助函式 (O(1) Swap-and-Pop)
+ * 避免 Array.prototype.splice 引發的記憶體搬移與 GC 停頓
+ */
+function fastRemove<T>(arr: T[], index: number): void {
+  const last = arr.pop()!
+  if (index < arr.length) {
+    arr[index] = last
+  }
+}
+
 function renderQuantumMindWaves(ctx: CanvasRenderingContext2D, dt: number, w: number, h: number) {
   // 1. 檢查自發性宇宙深空量子思想放電 (約 8~14 秒一次，靈動自然)
   if (store.synapticConfig.autonomousPulse) {
@@ -897,20 +908,24 @@ function renderQuantumMindWaves(ctx: CanvasRenderingContext2D, dt: number, w: nu
     triggerAutonomousFlash(w, h)
   }
 
-  // 3. 更新並繪製量子思維漣漪光環 (純同心柔焦光環，絕無任何直線或連線)
+  // 3. 更新並繪製量子思維漣漪光環 (純同心柔焦光環，非線性阻尼擴散 + 漸近羽化消隱)
   for (let i = activeFlashWaves.length - 1; i >= 0; i--) {
     const wave = activeFlashWaves[i]
-    wave.radius += wave.speed * dt
+    const progress = Math.min(1.0, wave.radius / wave.maxRadius)
+    
+    // 非線性動量衰減：波前起始高速擴散，隨向外擴展平滑減速，還原真實深空引力波能量散逸
+    const currentSpeed = wave.speed * Math.max(0.20, 1.0 - progress * 0.75)
+    wave.radius += currentSpeed * dt
     wave.alpha -= dt * wave.decay
-    if (wave.alpha <= 0 || wave.radius >= wave.maxRadius) {
-      activeFlashWaves.splice(i, 1)
+
+    // 漸近式邊緣羽化 (Asymptotic Edge Feathering)：保證半徑逼近 maxRadius 時 alpha 完美歸零，徹底杜絕突兀消失截斷
+    const edgeFade = 1.0 - Math.pow(progress, 1.4)
+    const currentAlpha = Math.max(0, wave.alpha * edgeFade)
+
+    if (wave.alpha <= 0 || progress >= 1.0 || currentAlpha <= 0.003) {
+      fastRemove(activeFlashWaves, i)
       continue
     }
-
-    const progress = Math.min(1.0, wave.radius / wave.maxRadius)
-    // 隨半徑擴散逐漸柔和羽化消隱
-    const currentAlpha = wave.alpha * (1.0 - progress * 0.38)
-    if (currentAlpha <= 0.005) continue
 
     ctx.save()
     // A. 主光環
@@ -919,16 +934,17 @@ function renderQuantumMindWaves(ctx: CanvasRenderingContext2D, dt: number, w: nu
     ctx.strokeStyle = wave.color === '#22d3ee'
       ? `rgba(34, 211, 238, ${(currentAlpha * 0.28).toFixed(3)})`
       : `rgba(56, 189, 248, ${(currentAlpha * 0.28).toFixed(3)})`
-    ctx.lineWidth = Math.max(0.9, 1.8 - progress * 0.8)
+    ctx.lineWidth = Math.max(0.8, 1.8 - progress * 0.9)
     ctx.shadowColor = wave.color
-    ctx.shadowBlur = 12 + progress * 10
+    ctx.shadowBlur = 10 + progress * 12
     ctx.stroke()
 
-    // B. 次級諧振雙環 (若波形帶有伴波且半徑已擴散超過 45px)
-    if (wave.hasSecondaryRing && wave.radius > 45) {
+    // B. 次級諧振雙環 (波幅緊湊伴隨，間距自適應微調，維持高能雙環波前凝聚力)
+    if (wave.hasSecondaryRing && wave.radius > 35) {
+      const secondaryRadius = Math.max(10, wave.radius - Math.min(22, Math.max(5, wave.radius * 0.065)))
       ctx.beginPath()
-      ctx.arc(wave.x, wave.y, wave.radius * 0.91, 0, Math.PI * 2)
-      ctx.strokeStyle = `rgba(56, 189, 248, ${(currentAlpha * 0.12).toFixed(3)})`
+      ctx.arc(wave.x, wave.y, secondaryRadius, 0, Math.PI * 2)
+      ctx.strokeStyle = `rgba(56, 189, 248, ${(currentAlpha * 0.13).toFixed(3)})`
       ctx.lineWidth = 0.8
       ctx.shadowBlur = 6
       ctx.stroke()
@@ -943,14 +959,17 @@ function renderQuantumMindWaves(ctx: CanvasRenderingContext2D, dt: number, w: nu
 function updateAndRenderMeteors(dt: number) {
   if (!meteorCtx || !meteorCanvasRef.value) return
   const ctx = meteorCtx
-  const w = meteorCanvasRef.value.width
-  const h = meteorCanvasRef.value.height
+  const dpr = Math.min(window.devicePixelRatio || 1, 2)
+  const logicalW = window.innerWidth
+  const logicalH = window.innerHeight
 
-  ctx.clearRect(0, 0, w, h)
+  // 物理螢幕 DPI 座標矩陣重置與邏輯視窗尺寸清屏
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
+  ctx.clearRect(0, 0, logicalW, logicalH)
 
   // 0. 繪製深空量子思維漣漪光環 (純光環擴散，無任何直線連線干擾)
   if (store.synapticConfig.enabled) {
-    renderQuantumMindWaves(ctx, dt, w, h)
+    renderQuantumMindWaves(ctx, dt, logicalW, logicalH)
   }
 
   // 1. 檢查常規手動立即觸發
@@ -994,7 +1013,7 @@ function updateAndRenderMeteors(dt: number) {
     const ag = activeAfterglows[i]
     ag.alpha -= ag.decay * dt
     if (ag.alpha <= 0) {
-      activeAfterglows.splice(i, 1)
+      fastRemove(activeAfterglows, i)
       continue
     }
     ctx.beginPath()
@@ -1014,7 +1033,7 @@ function updateAndRenderMeteors(dt: number) {
     s.alpha -= s.decay * dt
 
     if (s.alpha <= 0) {
-      activeSparks.splice(i, 1)
+      fastRemove(activeSparks, i)
       continue
     }
 
@@ -1034,12 +1053,12 @@ function updateAndRenderMeteors(dt: number) {
     cd.alpha -= cd.decay * dt
 
     if (cd.alpha <= 0) {
-      activeCodeDusts.splice(i, 1)
+      fastRemove(activeCodeDusts, i)
       continue
     }
 
     ctx.save()
-    ctx.font = `bold ${Math.round(cd.size)}px "JetBrains Mono", monospace`
+    ctx.font = `bold ${Math.round(cd.size)}px "JetBrains Mono", "Fira Code", monospace`
     ctx.fillStyle = cd.color
     ctx.globalAlpha = Math.max(0, Math.min(1, cd.alpha * 0.95))
     ctx.shadowColor = cd.color
@@ -1056,7 +1075,7 @@ function updateAndRenderMeteors(dt: number) {
 
     if (progress >= 1.0) {
       m.dead = true
-      activeMeteors.splice(i, 1)
+      fastRemove(activeMeteors, i)
       continue
     }
 
@@ -1231,8 +1250,9 @@ function handleResize() {
   }
 
   if (meteorCanvasRef.value) {
-    meteorCanvasRef.value.width = w
-    meteorCanvasRef.value.height = h
+    const dpr = Math.min(window.devicePixelRatio || 1, 2)
+    meteorCanvasRef.value.width = Math.round(w * dpr)
+    meteorCanvasRef.value.height = Math.round(h * dpr)
   }
 }
 
@@ -1259,6 +1279,7 @@ onMounted(() => {
 
   const width = window.innerWidth
   const height = window.innerHeight
+  const dpr = Math.min(window.devicePixelRatio || 1, 2)
 
   scene = new THREE.Scene()
   camera = new THREE.PerspectiveCamera(55, width / height, 0.1, 120)
@@ -1272,11 +1293,17 @@ onMounted(() => {
     powerPreference: 'high-performance'
   })
   renderer.setSize(width, height)
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+  renderer.setPixelRatio(dpr)
 
-  meteorCanvasRef.value.width = width
-  meteorCanvasRef.value.height = height
+  // Canvas 2D Retina / HiDPI 完美物理像素清晰度適配
+  meteorCanvasRef.value.width = Math.round(width * dpr)
+  meteorCanvasRef.value.height = Math.round(height * dpr)
   meteorCtx = meteorCanvasRef.value.getContext('2d')
+
+  // 預熱 JetBrains Mono 向量字型快取防呆
+  if (typeof document !== 'undefined' && 'fonts' in document) {
+    document.fonts.load('bold 14px "JetBrains Mono"').catch(() => {})
+  }
 
   clock = new THREE.Clock()
 
