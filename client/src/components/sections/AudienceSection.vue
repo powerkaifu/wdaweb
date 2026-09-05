@@ -27,15 +27,7 @@
 					>
 				</h2>
 				<p class="text-slate-400 mt-4 text-base sm:text-lg max-w-none mx-auto leading-relaxed text-pretty xl:whitespace-nowrap">
-					<span class="block sm:inline"
-						>踏入陌生的<span class="inline-block">科技領域，</span></span
-					>
-					<span class="block sm:inline mt-1 sm:mt-0"
-						>害怕跟不上、害怕<span class="inline-block">選錯方向</span>，其實很正常。</span
-					>
-					<span class="block sm:inline mt-1 sm:mt-0 text-slate-400/90"
-						>這些確實是現在許多<span class="inline-block">轉職者</span>，正在面對的<span class="inline-block">真實問題</span>。</span
-					>
+					踏入陌生的科技領域，害怕跟不上、害怕選錯方向，其實很正常。這些確實是現在許多轉職者正在面對的真實問題。
 				</p>
 			</div>
 
