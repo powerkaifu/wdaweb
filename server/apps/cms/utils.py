@@ -15,7 +15,7 @@ def optimize_image(image_field, max_width=1920, quality=80):
     3. 本地儲存時，自動將圖片等比縮放至最大寬度 max_width，並轉換為 WebP 格式。
     4. 支援透明度 (RGBA / LA / P 模式)，並具備指標歸零防禦。
     """
-    if not image_field or not hasattr(image_field, 'file'):
+    if not image_field or not bool(image_field):
         return
 
     # 若使用 Cloudinary 雲端圖床儲存，圖片處理與 WebP 轉換一律交由 Cloudinary CDN 雲端管線，本地不進行重複壓縮與提早上傳
@@ -25,6 +25,13 @@ def optimize_image(image_field, max_width=1920, quality=80):
         if 'Cloudinary' in storage_cls_name:
             logger.info(f"[Image Optimizer] 偵測到 Cloudinary 雲端圖床儲存，略過本地 PIL 壓縮，交由 CDN 雲端管線處理: {image_field.name}")
             return
+
+    try:
+        if not hasattr(image_field, 'file') or not image_field.file:
+            return
+    except Exception:
+        # 當底層 storage 不支援 open 時直接略過
+        return
 
     try:
         # 重設檔案指針至開頭

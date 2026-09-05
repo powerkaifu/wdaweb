@@ -120,7 +120,7 @@
               rel="noopener noreferrer"
               class="w-full sm:w-auto px-8 py-3.5 sm:px-9 sm:py-4 rounded-2xl text-base font-bold text-white bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 shadow-xl shadow-cyan-500/25 hover:shadow-cyan-500/45 hover:-translate-y-0.5 active:scale-95 transition-all text-center flex items-center justify-center space-x-2 group"
             >
-              <span>立即查看招生期別與報名資訊</span>
+              <span>{{ currentSlide.cta_text || '立即查看招生期別與報名資訊' }}</span>
               <span class="group-hover:translate-x-1 transition-transform">→</span>
             </a>
             <router-link
@@ -128,7 +128,7 @@
               :to="resolveLink(currentSlide.cta_link || '/admission')"
               class="w-full sm:w-auto px-8 py-3.5 sm:px-9 sm:py-4 rounded-2xl text-base font-bold text-white bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 shadow-xl shadow-cyan-500/25 hover:shadow-cyan-500/45 hover:-translate-y-0.5 active:scale-95 transition-all text-center flex items-center justify-center space-x-2 group"
             >
-              <span>立即查看招生期別與報名資訊</span>
+              <span>{{ currentSlide.cta_text || '立即查看招生期別與報名資訊' }}</span>
               <span class="group-hover:translate-x-1 transition-transform">→</span>
             </router-link>
           </div>
@@ -218,16 +218,18 @@ const hasActiveAdmission = computed(() => {
 
 const dynamicAnnouncementText = computed(() => {
   const customText = store.settings?.announcement_text?.trim()
+  const defaultAnnouncement = '🔥 115 年度第 1 期熱烈招生中！待業民眾享全額免費受訓與生活津貼補助！'
+  // 若管理員在後台明確自訂快訊，100% 優先尊重管理員設定
+  if (customText && customText !== defaultAnnouncement) {
+    return customText
+  }
   if (activeBatches.value.length > 0) {
     const batchLabels = activeBatches.value.map(b => {
       const match = b.batch_name.match(/第\s*\d+\s*期/)
       return match ? match[0] : b.batch_name
     })
     const batchSummary = batchLabels.join(' & ')
-    if (!customText || customText.includes('年度') || customText.includes('熱烈招生中')) {
-      return `🔥 ${batchSummary}熱烈招生中！待業民眾享全額免費受訓與生活津貼補助！`
-    }
-    return customText
+    return `🔥 ${batchSummary}熱烈招生中！待業民眾享全額免費受訓與生活津貼補助！`
   }
   return customText || '🔥 熱烈招生中！待業民眾享全額免費受訓與生活津貼補助！'
 })
