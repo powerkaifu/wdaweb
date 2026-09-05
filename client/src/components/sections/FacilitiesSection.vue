@@ -60,24 +60,17 @@
           </div>
 
           <!-- 說明區塊 -->
-          <div class="p-6 sm:p-8 flex-1 flex flex-col justify-between relative z-10">
-            <div>
-              <div class="flex items-center space-x-2 mb-2">
-                <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
-                <span class="text-sm font-mono text-cyan-400 font-bold uppercase tracking-wider">Professional Facility</span>
-              </div>
-              <h3 class="text-xl sm:text-2xl font-extrabold text-white mb-2 text-balance">
-                {{ fac.facility_name }}
-              </h3>
-              <p class="text-slate-200 leading-relaxed text-base sm:text-lg text-pretty">
-                {{ fac.description }}
-              </p>
+          <div class="p-6 sm:p-8 flex-1 flex flex-col relative z-10">
+            <div class="flex items-center space-x-2 mb-2">
+              <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+              <span class="text-sm font-mono text-cyan-400 font-bold uppercase tracking-wider">Professional Facility</span>
             </div>
-
-            <div class="pt-5 mt-6 border-t border-slate-800/80 flex items-center justify-between text-sm text-slate-300 font-mono">
-              <span>泰山職訓實機環境</span>
-              <span class="text-cyan-400 font-bold">一人一組高階機</span>
-            </div>
+            <h3 class="text-xl sm:text-2xl font-extrabold text-white mb-2 text-balance">
+              {{ fac.facility_name }}
+            </h3>
+            <p class="text-slate-200 leading-relaxed text-base sm:text-lg text-pretty">
+              {{ fac.description }}
+            </p>
           </div>
         </div>
       </div>
