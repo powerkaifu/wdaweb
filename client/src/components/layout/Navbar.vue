@@ -14,14 +14,14 @@
 		<div
 			v-if="activeNavbarStyle === 'smart_morph'"
 			class="w-full transition-all duration-500 ease-out relative"
-			:class="[isScrolled ? 'max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 pt-3' : 'w-full px-0 pt-0']"
+			:class="[isScrolled ? 'px-3 sm:px-6 lg:px-8 pt-2.5 sm:pt-3.5' : 'px-0 pt-0']"
 		>
 			<nav
 				class="relative flex items-center justify-between transition-all duration-500 ease-out overflow-hidden"
 				:class="[
 					isScrolled
-						? 'p-2 sm:p-3 rounded-2xl bg-slate-900/90 backdrop-blur-2xl border border-cyan-500/30 shadow-2xl shadow-cyan-950/60'
-						: 'w-full h-20 bg-slate-950/60 backdrop-blur-md border-b border-slate-800/80 px-2.5 sm:px-6 lg:px-8 2xl:px-12',
+						? 'max-w-6xl xl:max-w-7xl mx-auto h-16 sm:h-18 px-3 sm:px-5 lg:px-6 rounded-2xl bg-slate-900/90 backdrop-blur-2xl border border-cyan-500/40 shadow-2xl shadow-cyan-950/70'
+						: 'w-full h-20 bg-slate-950/70 backdrop-blur-md border-b border-slate-800/80 px-3 sm:px-6 lg:px-8 2xl:px-12 rounded-none',
 				]"
 			>
 				<!-- ========================================================================= -->
@@ -44,7 +44,7 @@
 					</div>
 				</div>
 
-				<!-- Left: Official Logo + AI Pulse Indicator -->
+				<!-- Left: Official Logo -->
 				<div class="flex items-center justify-start flex-1 min-w-0">
 					<router-link to="/" class="flex items-center space-x-1.5 sm:space-x-3 group relative z-10 min-w-0">
 						<div class="flex-shrink-0 flex items-center justify-center">
@@ -71,21 +71,21 @@
 					</router-link>
 				</div>
 
-				<!-- Center: Nav Items with Magnetic Pill (水平正中間絕對置中) -->
+				<!-- Center: Nav Items with Magnetic Pill (水平正中間絕對置中，維持大字階梯 text-sm xl:text-base font-bold) -->
 				<div
-					class="hidden lg:flex items-center justify-center flex-shrink-0 relative z-10 px-2 xl:px-4"
+					class="hidden lg:flex items-center justify-center flex-shrink-0 relative z-10 px-1 xl:px-3"
 				>
 					<div
-						class="flex items-center space-x-1.5 p-1.5 px-3 rounded-2xl bg-slate-950/50 border border-slate-800/80 backdrop-blur-md"
+						class="flex items-center space-x-1 xl:space-x-1.5 p-1.5 px-2.5 xl:px-3 rounded-2xl bg-slate-950/60 border border-slate-800/80 backdrop-blur-md"
 					>
 						<router-link
 							v-for="item in navItems"
 							:key="item.path"
 							:to="item.path"
-							class="relative px-3 sm:px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 flex items-center space-x-1.5"
+							class="relative px-3 xl:px-3.5 py-1.5 xl:py-2 rounded-xl text-sm xl:text-base font-bold transition-all duration-200 flex items-center space-x-1.5"
 							:class="[
 								$route.path === item.path
-									? 'text-cyan-300 font-bold'
+									? 'text-cyan-300 font-extrabold'
 									: 'text-slate-300 hover:text-white hover:bg-slate-800/60',
 							]"
 						>
@@ -112,12 +112,11 @@
 					</div>
 				</div>
 
-				<!-- Right: Action Button -->
+				<!-- Right: Action Button (維持大字 text-sm xl:text-base font-extrabold，滾動時不降字級) -->
 				<div class="flex items-center justify-end flex-1 min-w-0 space-x-2 relative z-10">
 					<router-link
 						to="/admission"
-						class="hidden sm:inline-flex items-center font-bold text-white bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 shadow-md shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:scale-105 active:scale-95 transition-all flex-shrink-0"
-						:class="isScrolled ? 'px-4 py-2 rounded-xl text-xs' : 'px-5 py-2.5 rounded-xl text-sm'"
+						class="hidden sm:inline-flex items-center font-extrabold text-sm xl:text-base text-white bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 shadow-md shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:scale-105 active:scale-95 transition-all flex-shrink-0 px-4 xl:px-5 py-2 xl:py-2.5 rounded-xl"
 					>
 						<span>{{ admissionBadge ? admissionBadge.ctaText : '立即查看招生資訊' }}</span>
 						<span class="ml-1">→</span>
@@ -137,102 +136,7 @@
 		</div>
 
 		<!-- ========================================================================= -->
-		<!-- 方案 2：全息 HUD 懸浮島智能收折 (Folding Floating HUD) -->
-		<!-- ========================================================================= -->
-		<div
-			v-else-if="activeNavbarStyle === 'full_autohide'"
-			class="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 w-full transition-all duration-500 ease-out"
-			:class="[
-				scrollDirection === 'down' && isScrolled
-					? '-translate-y-28 opacity-0 pointer-events-none'
-					: 'translate-y-0 opacity-100',
-			]"
-		>
-			<nav
-				class="flex items-center justify-between p-3 rounded-2xl bg-slate-900/90 backdrop-blur-2xl border border-cyan-500/40 shadow-2xl shadow-cyan-950/60"
-			>
-				<!-- Left: Logo -->
-				<div class="flex items-center justify-start flex-1 min-w-0">
-					<router-link to="/" class="flex items-center space-x-1.5 sm:space-x-3 group min-w-0">
-						<div class="flex-shrink-0 flex items-center justify-center">
-							<img
-								:src="store.settings?.site_logo_url || defaultLogo"
-								:alt="store.settings?.site_title || '泰山職訓 Logo'"
-								@error="handleLogoError"
-								class="h-7 sm:h-9 w-auto max-w-[100px] sm:max-w-[140px] object-contain rounded-lg drop-shadow-md group-hover:scale-105 transition-transform"
-							/>
-						</div>
-						<div class="flex flex-col min-w-0 justify-center">
-							<!-- 官方全名完整呈現（大字階梯：手機端 16px text-base，移除 truncate 絕無省略號 ...） -->
-							<div class="flex items-center space-x-2 min-w-0">
-								<span
-									class="font-extrabold tracking-tighter sm:tracking-tight text-white group-hover:text-cyan-300 transition-colors leading-tight whitespace-nowrap text-sm min-[375px]:text-base sm:text-lg lg:text-xl shrink-0"
-								>
-									{{ store.settings?.site_title || '泰山職訓－前端網頁技術與AI應用' }}
-								</span>
-							</div>
-							<span class="hidden sm:block text-xs sm:text-sm text-slate-400 leading-none truncate mt-1"> 泰山職訓 ｜ 師資自主推廣網 </span>
-						</div>
-					</router-link>
-				</div>
-
-				<!-- Center: Nav Items (水平正中間置中) -->
-				<div
-					class="hidden lg:flex items-center justify-center flex-shrink-0 relative z-10 px-1 xl:px-3"
-				>
-					<div class="flex items-center space-x-1 xl:space-x-1.5 p-1.5 px-2.5 xl:px-3 rounded-2xl bg-slate-950/70 border border-slate-800">
-						<router-link
-							v-for="item in navItems"
-							:key="item.path"
-							:to="item.path"
-							class="px-3 xl:px-3.5 py-1.5 xl:py-2 rounded-xl text-sm xl:text-base font-bold transition-all duration-200 flex items-center space-x-1.5"
-							:class="[
-								$route.path === item.path
-									? 'text-cyan-300 bg-cyan-500/20 font-extrabold border border-cyan-400/40 shadow-sm shadow-cyan-500/20'
-									: 'text-slate-300 hover:text-white hover:bg-slate-800',
-							]"
-						>
-							<span>{{ item.name }}</span>
-							<span
-								v-if="item.path === '/admission' && admissionBadge"
-								class="inline-flex items-center px-1.5 py-0.5 rounded-full text-xs font-bold leading-none ml-0.5"
-								:class="admissionBadge.class"
-							>
-								<span
-									v-if="admissionBadge.hasDot"
-									class="w-1.5 h-1.5 rounded-full mr-1"
-									:class="admissionBadge.dotClass"
-								></span>
-								<span>{{ admissionBadge.text }}</span>
-							</span>
-						</router-link>
-					</div>
-				</div>
-
-				<!-- Right: Action & HUD Indicator -->
-				<div class="flex items-center justify-end flex-1 min-w-0 space-x-2">
-					<router-link
-						to="/admission"
-						class="hidden sm:inline-flex px-4 xl:px-5 py-2 xl:py-2.5 rounded-xl font-extrabold text-sm xl:text-base text-white bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 shadow-md shadow-cyan-500/25 transition-all flex-shrink-0"
-					>
-						<span>{{ admissionBadge ? admissionBadge.ctaText : '立即報名' }} →</span>
-					</router-link>
-
-					<button
-						type="button"
-						@click="isOpen = !isOpen"
-						class="lg:hidden p-2 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-xl text-slate-300 hover:text-white bg-slate-800 border border-slate-700 focus:outline-none flex-shrink-0"
-						aria-label="主要導覽選單開關"
-					>
-						<span v-if="!isOpen">☰</span>
-						<span v-else>✕</span>
-					</button>
-				</div>
-			</nav>
-		</div>
-
-		<!-- ========================================================================= -->
-		<!-- 方案 3：滿版全景 × 實心不透明導覽列 × 底部神祕漫射極光 (Mysterious Bottom Underglow) -->
+		<!-- 方案 2：滿版全景 × 實心不透明導覽列 × 底部神祕漫射極光 (Mysterious Bottom Underglow) -->
 		<!-- ========================================================================= -->
 		<div v-else-if="activeNavbarStyle === 'full_autohide'" class="w-full relative">
 			<nav
@@ -461,7 +365,7 @@ const navbarContainerClasses = computed(() => {
 })
 
 function handleScroll() {
-	const scrollY = window.scrollY || document.documentElement.scrollTop
+	const scrollY = window.scrollY || window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0
 
 	// 滾動方向感應 (Scroll Direction Detection)
 	if (scrollY > lastScrollY && scrollY > 60) {
@@ -471,9 +375,10 @@ function handleScroll() {
 	}
 	lastScrollY = Math.max(0, scrollY)
 
-	if (scrollY > 30 && !isScrolled.value) {
+	// 靈敏雙態變形閾值（滾動 > 20px 立即變形為懸浮膠囊，回頂 <= 10px 恢復滿版大氣）
+	if (scrollY > 20 && !isScrolled.value) {
 		isScrolled.value = true
-	} else if (scrollY <= 15 && isScrolled.value) {
+	} else if (scrollY <= 10 && isScrolled.value) {
 		isScrolled.value = false
 	}
 }
@@ -481,10 +386,12 @@ function handleScroll() {
 onMounted(() => {
 	handleScroll()
 	window.addEventListener('scroll', handleScroll, { passive: true })
+	window.addEventListener('resize', handleScroll, { passive: true })
 })
 
 onUnmounted(() => {
 	window.removeEventListener('scroll', handleScroll)
+	window.removeEventListener('resize', handleScroll)
 })
 </script>
 

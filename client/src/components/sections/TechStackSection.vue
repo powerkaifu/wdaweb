@@ -132,12 +132,6 @@
 									>
 								</h3>
 							</div>
-
-							<span
-								class="hidden lg:inline-flex items-center px-4 py-1.5 rounded-full bg-slate-800/80 border border-slate-700/80 text-sm font-mono text-slate-300 self-start sm:self-auto"
-							>
-								Claude · ChatGPT · Cursor
-							</span>
 						</div>
 
 						<!-- 說明前導段落 (維持 text-base sm:text-lg 大字，行高 1.8 舒緩，兩端切齊) -->
