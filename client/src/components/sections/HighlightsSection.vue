@@ -225,7 +225,7 @@
 								</span>
 							</h3>
 							<span
-								class="inline-flex items-center px-3.5 py-1 rounded-full bg-cyan-500/10 text-cyan-300 border border-cyan-500/30 text-xs font-mono font-bold tracking-wider w-fit"
+								class="hidden sm:inline-flex items-center px-3.5 py-1 rounded-full bg-cyan-500/10 text-cyan-300 border border-cyan-500/30 text-xs font-mono font-bold tracking-wider w-fit"
 							>
 								HUMAN COLLABORATION
 							</span>
