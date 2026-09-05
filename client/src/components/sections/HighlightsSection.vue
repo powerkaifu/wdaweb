@@ -236,7 +236,7 @@
 							<p class="text-slate-200">
 								自學可以自己找答案，AI 也可以立即提供解答；但實體學習多了一個重要的過程：<strong
 									class="text-cyan-300 font-bold"
-									>與真實的人一起討論問題。</strong
+									>與身邊的夥伴一起面對面討論。</strong
 								>
 							</p>
 							<p class="text-slate-300">
