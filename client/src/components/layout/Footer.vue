@@ -6,7 +6,7 @@
     <div class="absolute inset-0 pointer-events-none overflow-hidden">
       <div
         class="absolute inset-y-0 w-[280px] sm:w-[380px] lg:w-[460px] pointer-events-none"
-        :class="`footer-glow-${themeStore.activeGlowPreset}`"
+        :class="`footer-glow-${activeGlowPreset}`"
       >
         <!-- 1. 內部漫射背光穿透氣團 (滿版覆蓋 Footer 內部，z-0) -->
         <div class="absolute inset-0 bg-gradient-to-r from-transparent via-cyan-500/15 via-blue-500/10 to-transparent blur-2xl pointer-events-none"></div>
@@ -85,6 +85,9 @@ import defaultLogo from '@/assets/logo.png'
 const store = useCmsStore()
 const themeStore = useThemeStore()
 const currentYear = new Date().getFullYear()
+
+// 防禦性讀取全站極光預設，保障 HMR 熱重載與初始載入 100% 穩定
+const activeGlowPreset = computed(() => themeStore?.activeGlowPreset || 'cosmic')
 
 // 智慧拆分主標題（支援手機版雙行點狀保護與字級放大）
 const brandParts = computed(() => {

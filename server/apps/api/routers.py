@@ -27,8 +27,11 @@ def get_media_url(request, field):
         url = field.url if hasattr(field, 'url') else str(field)
         if not url:
             return ""
-        # 1. 若已經是雲端外部 CDN 網址 (例如 Cloudinary: https://res.cloudinary.com/...) 直接回傳
+        # 1. 若已經是雲端外部 CDN 網址 (例如 Cloudinary: https://res.cloudinary.com/...)
         if url.startswith(('http://', 'https://')):
+            # 防呆處理：Cloudinary 若為 /image/upload/v1/，常常因為固定版本衝突導致 404，移除 /v1/ 即可始終指向最新版資源
+            if 'res.cloudinary.com' in url and '/image/upload/v1/' in url:
+                url = url.replace('/image/upload/v1/', '/image/upload/')
             return url
         # 2. 本地端檔案防呆檢查：若實體檔案在磁碟中不存在，直接回傳空字串由前端 0 延遲呈現打包資產
         if hasattr(field, 'name') and hasattr(field, 'storage') and field.name:
@@ -36,7 +39,10 @@ def get_media_url(request, field):
                 return ""
         return request.build_absolute_uri(url)
     except Exception:
-        return getattr(field, 'url', '')
+        url = getattr(field, 'url', '')
+        if url and 'res.cloudinary.com' in url and '/image/upload/v1/' in url:
+            url = url.replace('/image/upload/v1/', '/image/upload/')
+        return url
 
 @api.get("/public/site-settings", response=SiteSettingOut, tags=["Public 前台公開"])
 def get_site_settings(request):

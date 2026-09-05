@@ -38,8 +38,8 @@
         class="flex md:grid md:grid-cols-2 overflow-x-auto md:overflow-x-visible snap-x snap-mandatory scroll-smooth no-scrollbar -mx-4 px-4 md:mx-auto md:px-0 gap-4 sm:gap-6 xl:gap-8 max-w-6xl pb-4 md:pb-0"
       >
         <div
-          v-for="(fac, index) in store.facilities"
-          :key="fac.id"
+          v-for="(fac, index) in displayFacilities"
+          :key="fac.id || index"
           class="facility-card card-subsurface-glow relative rounded-3xl overflow-hidden bg-slate-900/80 backdrop-blur-xl border border-slate-800/90 shadow-xl shadow-slate-950/60 flex flex-col justify-between transform-gpu will-change-transform cursor-default w-[86vw] sm:w-[460px] max-w-[500px] shrink-0 snap-start md:w-full md:max-w-none md:shrink"
         >
           <!-- 角落序號水印 (01, 02) -->
@@ -50,8 +50,8 @@
           <!-- 圖片展示相框 (固定 16:10 比例) -->
           <div class="aspect-[16/10] bg-slate-800/80 relative overflow-hidden flex items-center justify-center">
             <img
-              :src="getFacilityImage(fac, index)"
-              :alt="fac.image_alt || fac.facility_name"
+              :src="fac.displayImage"
+              :alt="fac.image_alt || fac.displayTitle"
               @error="handleFacilityImgError(fac.id)"
               class="w-full h-full object-cover"
             />
@@ -68,13 +68,13 @@
             </div>
             <h3 class="mb-3">
               <span class="block text-xl sm:text-2xl font-black text-white tracking-tight leading-snug text-balance">
-                {{ getFacilityTitles(fac).title }}
+                {{ fac.displayTitle }}
               </span>
               <span
-                v-if="getFacilityTitles(fac).subtitle"
+                v-if="fac.displaySubtitle"
                 class="block text-base sm:text-lg font-bold text-cyan-400 tracking-wide mt-1 leading-snug text-balance"
               >
-                {{ getFacilityTitles(fac).subtitle }}
+                {{ fac.displaySubtitle }}
               </span>
             </h3>
             <p class="text-slate-200 leading-relaxed text-base sm:text-lg text-pretty">
@@ -88,7 +88,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { useScrollStagger } from '@/composables/useScrollStagger'
 import { useCmsStore } from '@/stores/useCmsStore'
 import facility1Img from '@/assets/facilities/learning_ijciKln_09KM7k0_ddXbwFz.webp'
@@ -113,14 +113,16 @@ function handleFacilityImgError(facId?: number) {
 }
 
 // 智慧解析主標與副標：優先使用 subtitle，若無則依頓號自動拆分（雙重防禦相容）
-function getFacilityTitles(fac: { facility_name: string; subtitle?: string }) {
+function getFacilityTitles(fac?: { facility_name?: string; subtitle?: string }) {
+  if (!fac) return { title: '', subtitle: '' }
   if (fac.subtitle) {
     return {
-      title: fac.facility_name,
+      title: fac.facility_name || '',
       subtitle: fac.subtitle
     }
   }
-  const parts = fac.facility_name.split('、')
+  const name = fac.facility_name || ''
+  const parts = name.split('、')
   if (parts.length > 1) {
     return {
       title: parts[0],
@@ -128,7 +130,7 @@ function getFacilityTitles(fac: { facility_name: string; subtitle?: string }) {
     }
   }
   return {
-    title: fac.facility_name,
+    title: name,
     subtitle: ''
   }
 }
@@ -143,6 +145,19 @@ withDefaults(
 )
 
 const store = useCmsStore()
+
+// 防禦性預處理設施清單，兼顧主副標智慧解析與安全圖片綁定，杜絕 template 重複呼叫
+const displayFacilities = computed(() => {
+  return (store.facilities || []).map((fac, index) => {
+    const titles = getFacilityTitles(fac)
+    return {
+      ...fac,
+      displayTitle: titles.title,
+      displaySubtitle: titles.subtitle,
+      displayImage: getFacilityImage(fac, index)
+    }
+  })
+})
 
 // 兩大設施卡片統一由通用 Composable 調度 (100% 全站標準一致)
 useScrollStagger(

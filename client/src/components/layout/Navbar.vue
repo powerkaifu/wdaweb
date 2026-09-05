@@ -4,7 +4,7 @@
 		<!-- 頂部外圍全息漸層毛玻璃消隱天幕 (Ambient Frosted Glass Curtain - 方案 1 & 2 專用) -->
 		<!-- ========================================================================= -->
 		<div
-			v-if="isScrolled && themeStore.activeNavbarStyle === 'smart_morph'"
+			v-if="isScrolled && activeNavbarStyle === 'smart_morph'"
 			class="fixed top-0 inset-x-0 h-28 sm:h-32 pointer-events-none -z-20 transition-opacity duration-500 ambient-glass-curtain"
 		></div>
 
@@ -12,7 +12,7 @@
 		<!-- 方案 1：雙態智能變形 × 能量雷射光軌 (Smart Morph × Laser Rail) -->
 		<!-- ========================================================================= -->
 		<div
-			v-if="themeStore.activeNavbarStyle === 'smart_morph'"
+			v-if="activeNavbarStyle === 'smart_morph'"
 			class="w-full transition-all duration-500 ease-out relative"
 			:class="[isScrolled ? 'max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 pt-3' : 'w-full px-0 pt-0']"
 		>
@@ -30,7 +30,7 @@
 				<div class="absolute inset-0 pointer-events-none overflow-hidden">
 					<div
 						class="absolute inset-y-0 w-80 sm:w-96 pointer-events-none"
-						:class="`glow-laser-${themeStore.activeGlowPreset}`"
+						:class="`glow-laser-${activeGlowPreset}`"
 					>
 						<!-- 1. 內部漫射背光穿透氣團 (z-0) -->
 						<div
@@ -140,7 +140,7 @@
 		<!-- 方案 2：全息 HUD 懸浮島智能收折 (Folding Floating HUD) -->
 		<!-- ========================================================================= -->
 		<div
-			v-else-if="themeStore.activeNavbarStyle === 'folding_hud'"
+			v-else-if="activeNavbarStyle === 'folding_hud'"
 			class="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 w-full transition-all duration-500 ease-out"
 			:class="[
 				scrollDirection === 'down' && isScrolled
@@ -231,7 +231,7 @@
 		<!-- ========================================================================= -->
 		<!-- 方案 3：滿版全景 × 實心不透明導覽列 × 底部神祕漫射極光 (Mysterious Bottom Underglow) -->
 		<!-- ========================================================================= -->
-		<div v-else-if="themeStore.activeNavbarStyle === 'full_autohide'" class="w-full relative">
+		<div v-else-if="activeNavbarStyle === 'full_autohide'" class="w-full relative">
 			<nav
 				class="w-full h-20 transition-all duration-300 relative z-20 bg-slate-950/95 backdrop-blur-md border-b border-slate-800 shadow-2xl shadow-black/90 overflow-hidden"
 			>
@@ -239,7 +239,7 @@
 				<div class="absolute inset-0 pointer-events-none overflow-hidden">
 					<div
 						class="absolute inset-y-0 w-[280px] sm:w-[380px] lg:w-[460px] pointer-events-none"
-						:class="`glow-stream-${themeStore.activeGlowPreset}`"
+						:class="`glow-stream-${activeGlowPreset}`"
 					>
 						<!-- 1. 內部漫射背光穿透氣團 (滿版覆蓋 Navbar 內部，z-0) -->
 						<div
@@ -425,6 +425,11 @@ import { computed, onMounted, onUnmounted, ref } from 'vue'
 
 const store = useCmsStore()
 const themeStore = useThemeStore()
+
+// 防禦性讀取全站主題設定，保障 HMR 熱重載與初始載入 100% 穩定
+const activeNavbarStyle = computed(() => themeStore?.activeNavbarStyle || 'smart_morph')
+const activeGlowPreset = computed(() => themeStore?.activeGlowPreset || 'cosmic')
+
 const isScrolled = ref(false)
 const isOpen = ref(false)
 const scrollDirection = ref<'up' | 'down'>('up')
