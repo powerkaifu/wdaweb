@@ -56,14 +56,14 @@
         <!-- Left Text Content (8pt 垂直律動與格式塔群組精準重構) -->
         <div id="hero-left-content" class="lg:col-span-6 flex flex-col items-center lg:items-start text-center lg:text-left self-center transform-gpu will-change-transform">
           <!-- 1. 頂部認證標籤 Badge (權威背書) -->
-          <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-slate-900/90 border border-cyan-500/30 text-xs sm:text-sm font-medium text-cyan-400 shadow-sm shadow-cyan-950/40 mb-3 sm:mb-3.5 lg:mb-4">
-            <span>✨ 勞動部自辦職前訓練 ｜ 920 小時實體培訓</span>
+          <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-slate-900/90 border border-cyan-500/30 text-xs sm:text-sm font-semibold text-cyan-400 shadow-sm shadow-cyan-950/40 mb-3 sm:mb-3.5 lg:mb-4">
+            <span>✨ 勞動部自辦職前訓練 ｜ <span class="inline-block">920 小時實體培訓</span></span>
           </div>
 
           <!-- 2. 主標題與副標題固定安全高度容器 (頂部定錨 0 抖動，精密貼合文案階梯高度) -->
           <div class="relative h-[185px] sm:h-[155px] lg:h-[158px] xl:h-[178px] w-full [perspective:1000px]">
             <div class="absolute inset-x-0 top-0 text-center lg:text-left [perspective:800px]">
-              <h1 id="hero-main-title" class="text-3xl sm:text-4xl lg:text-4xl xl:text-5xl font-extrabold text-white tracking-tight leading-[1.2] sm:leading-[1.18] xl:leading-[1.15] [transform-style:preserve-3d]">
+              <h1 id="hero-main-title" class="text-3xl sm:text-4xl lg:text-4xl xl:text-5xl font-extrabold text-white tracking-tight leading-[1.2] sm:leading-[1.18] xl:leading-[1.15] [transform-style:preserve-3d] text-balance">
                 <template v-for="(token, tIdx) in splitTitleTokens" :key="`token-${currentIndex}-${tIdx}`">
                   <span v-if="token.isWord" class="inline-block whitespace-nowrap">
                     <span
@@ -79,7 +79,7 @@
                 </template>
               </h1>
 
-              <p ref="subtitleRef" class="mt-3 sm:mt-3.5 lg:mt-3.5 xl:mt-4 text-sm sm:text-base xl:text-lg text-slate-300 max-w-2xl font-normal leading-relaxed text-pretty will-change-transform">
+              <p ref="subtitleRef" class="mt-3 sm:mt-3.5 lg:mt-3.5 xl:mt-4 text-base sm:text-base xl:text-lg text-slate-300 max-w-2xl font-normal leading-relaxed text-pretty will-change-transform">
                 {{ currentSlide.subtitle }}
               </p>
             </div>
@@ -112,19 +112,19 @@
             <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-4 xl:gap-6">
               <div class="text-center lg:text-left">
                 <div class="text-2xl sm:text-3xl font-black text-cyan-400 font-mono tracking-tight">{{ display100 }}%</div>
-                <div class="text-xs sm:text-sm text-slate-300 font-medium mt-1">待業者全額免費補助</div>
+                <div class="text-xs sm:text-sm text-slate-300 font-semibold mt-1">待業者全額免費補助</div>
               </div>
               <div class="text-center lg:text-left">
                 <div class="text-2xl sm:text-3xl font-black text-blue-400 font-mono tracking-tight">{{ display920 }}h</div>
-                <div class="text-xs sm:text-sm text-slate-300 font-medium mt-1">920 小時實體培訓</div>
+                <div class="text-xs sm:text-sm text-slate-300 font-semibold mt-1"><span class="inline-block">920 小時</span>實體培訓</div>
               </div>
               <div class="text-center lg:text-left">
                 <div class="text-xl sm:text-2xl font-bold text-emerald-400 font-sans tracking-tight leading-8 sm:leading-9">專題實作</div>
-                <div class="text-xs sm:text-sm text-slate-300 font-medium mt-1">累積個人專題作品</div>
+                <div class="text-xs sm:text-sm text-slate-300 font-semibold mt-1">累積個人專題作品</div>
               </div>
               <div class="text-center lg:text-left">
                 <div class="text-xl sm:text-2xl font-bold text-purple-400 font-sans tracking-tight leading-8 sm:leading-9">生活津貼</div>
-                <div class="text-xs sm:text-sm text-slate-300 font-medium mt-1">可申請受訓生活津貼</div>
+                <div class="text-xs sm:text-sm text-slate-300 font-semibold mt-1">可申請受訓生活津貼</div>
               </div>
             </div>
           </div>

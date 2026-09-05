@@ -20,9 +20,10 @@
 					<span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
 					<span>Personalized Starting Points ｜ 找到專屬起點</span>
 				</div>
-				<h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight">
-					你的起點不同，<span
-						class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400"
+				<h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight text-balance">
+					<span class="block sm:inline">你的起點不同，</span>
+					<span
+						class="block sm:inline mt-1 sm:mt-0 text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400"
 						>但不代表從零開始</span
 					>
 				</h2>
@@ -58,7 +59,7 @@
 						</div>
 						<h3 class="text-xl font-extrabold text-white mb-2.5 tracking-tight">從零出發的轉職者</h3>
 						<p class="text-base text-slate-200 leading-relaxed mb-4 text-pretty">
-							零基礎不用擔心。課程從最根本的網頁排版教起，透過每日紮實的實作演練，帶你一步步建立扎實的程式思維。
+							零基礎不用擔心。課程從最根本的<span class="inline-block">網頁排版</span>教起，透過每日紮實的實作演練，帶你一步步建立扎實的<span class="inline-block">程式思維</span>。
 						</p>
 					</div>
 					<div
@@ -108,7 +109,7 @@
 						</div>
 						<h3 class="text-xl font-extrabold text-white mb-2.5 tracking-tight">設計、UI/UX 創作者</h3>
 						<p class="text-base text-slate-200 leading-relaxed mb-4 text-pretty">
-							發揮你的視覺美感優勢。學會前端框架與互動程式後，讓優秀設計不再停留在靜態稿，而是親手變成可運作的真實產品。
+							發揮你的視覺美感優勢。學會<span class="inline-block">前端框架</span>與互動程式後，讓優秀設計不再停留在靜態稿，而是親手變成可運作的真實產品。
 						</p>
 					</div>
 					<div
@@ -133,8 +134,7 @@
 						</div>
 						<h3 class="text-xl font-extrabold text-white mb-2.5 tracking-tight">自學瓶頸或資訊相關</h3>
 						<p class="text-base text-slate-200 leading-relaxed mb-4 text-pretty">
-							告別零散自學與拼裝迷惘。完整透明的 920
-							小時系統化訓練，帶你將碎裂的語法拼圖，整合為能獨立開發的實戰專案。
+							告別零散自學與拼裝迷惘。完整透明的<span class="inline-block"> 920 小時</span>系統化訓練，帶你將碎裂的語法拼圖，整合為能獨立開發的實戰專案。
 						</p>
 					</div>
 					<div
@@ -153,11 +153,11 @@
 			<!-- 共同收束：拉向決策與自主判斷 -->
 			<div class="mt-14 max-w-5xl xl:max-w-6xl mx-auto text-center">
 				<div
-					class="p-6 sm:p-7 rounded-3xl bg-slate-900/60 border border-slate-800/80 backdrop-blur-md shadow-xl text-pretty"
+					class="p-5 sm:p-7 rounded-3xl bg-slate-900/60 border border-slate-800/80 backdrop-blur-md shadow-xl text-pretty"
 				>
 					<p class="text-base sm:text-lg text-slate-200 leading-relaxed xl:whitespace-nowrap">
-						<span class="text-emerald-400 font-bold">你不需要符合某一種標準答案，才有資格開始。</span>
-						<span> 重要的是先了解自己的起點，再找到適合自己的學習方式。</span>
+						<span class="text-emerald-400 font-bold block sm:inline">你不需要符合某一種標準答案，才有資格開始。</span>
+						<span class="block sm:inline mt-1 sm:mt-0"> 重要的是先了解自己的起點，再找到適合自己的學習方式。</span>
 					</p>
 				</div>
 			</div>

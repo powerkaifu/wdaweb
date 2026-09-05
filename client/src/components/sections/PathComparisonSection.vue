@@ -20,9 +20,10 @@
 					<span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping"></span>
 					<span>Explore Options ｜ 比較選擇</span>
 				</div>
-				<h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight">
-					不只有一條路，<span
-						class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400"
+				<h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight text-balance">
+					<span class="block sm:inline">不只有一條路，</span>
+					<span
+						class="block sm:inline mt-1 sm:mt-0 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400"
 						>你可以怎麼開始？</span
 					>
 				</h2>
@@ -38,7 +39,7 @@
 			>
 				<!-- 路徑 1：自學 ＋ AI -->
 				<div
-					class="path-card card-subsurface-glow relative rounded-3xl p-6 sm:p-7 bg-slate-900/80 backdrop-blur-xl border border-slate-800/90 shadow-xl shadow-slate-950/60 flex flex-col justify-between overflow-hidden will-change-transform cursor-default hover:border-blue-500/50 transition-[border-color,box-shadow] duration-300 w-[86vw] max-w-[360px] shrink-0 snap-start md:w-full md:max-w-none md:shrink"
+					class="path-card card-subsurface-glow relative rounded-3xl p-5 sm:p-7 bg-slate-900/80 backdrop-blur-xl border border-slate-800/90 shadow-xl shadow-slate-950/60 flex flex-col justify-between overflow-hidden will-change-transform cursor-default hover:border-blue-500/50 transition-[border-color,box-shadow] duration-300 w-[86vw] max-w-[360px] shrink-0 snap-start md:w-full md:max-w-none md:shrink"
 				>
 					<div>
 						<!-- 標題與圖標 -->
@@ -111,7 +112,7 @@
 
 				<!-- 路徑 2：實體職訓 (高光焦點，cyan 主題) -->
 				<div
-					class="path-card card-subsurface-glow relative rounded-3xl p-6 sm:p-7 bg-gradient-to-b from-slate-900/95 via-slate-900/90 to-slate-950/95 backdrop-blur-xl border border-cyan-500/50 shadow-2xl shadow-cyan-950/50 flex flex-col justify-between overflow-hidden will-change-transform cursor-default w-[86vw] max-w-[360px] shrink-0 snap-start md:w-full md:max-w-none md:shrink"
+					class="path-card card-subsurface-glow relative rounded-3xl p-5 sm:p-7 bg-gradient-to-b from-slate-900/95 via-slate-900/90 to-slate-950/95 backdrop-blur-xl border border-cyan-500/50 shadow-2xl shadow-cyan-950/50 flex flex-col justify-between overflow-hidden will-change-transform cursor-default w-[86vw] max-w-[360px] shrink-0 snap-start md:w-full md:max-w-none md:shrink"
 				>
 					<div>
 						<!-- 標題與圖標 -->
@@ -163,7 +164,7 @@
 								核心優點
 							</div>
 							<p class="text-base text-slate-100 leading-relaxed text-pretty">
-								勞動部自辦 920 小時系統化培訓；專屬雙螢幕實作工位；每天高強度沉浸式編程；有專任老師與同學現場即時討論，確保每一位學員都能獨立產出完整專案作品集。
+								勞動部自辦 <span class="inline-block">920 小時</span>系統化培訓；專屬<span class="inline-block">雙螢幕實作工位</span>；每天高強度沉浸式編程；有專任老師與同學現場即時討論，確保每一位學員都能獨立產出完整<span class="inline-block">專案作品集</span>。
 							</p>
 						</div>
 
@@ -188,7 +189,7 @@
 
 				<!-- 路徑 3：工作中學習 -->
 				<div
-					class="path-card card-subsurface-glow relative rounded-3xl p-6 sm:p-7 bg-slate-900/80 backdrop-blur-xl border border-slate-800/90 shadow-xl shadow-slate-950/60 flex flex-col justify-between overflow-hidden will-change-transform cursor-default hover:border-purple-500/50 transition-[border-color,box-shadow] duration-300 w-[86vw] max-w-[360px] shrink-0 snap-start md:w-full md:max-w-none md:shrink"
+					class="path-card card-subsurface-glow relative rounded-3xl p-5 sm:p-7 bg-slate-900/80 backdrop-blur-xl border border-slate-800/90 shadow-xl shadow-slate-950/60 flex flex-col justify-between overflow-hidden will-change-transform cursor-default hover:border-purple-500/50 transition-[border-color,box-shadow] duration-300 w-[86vw] max-w-[360px] shrink-0 snap-start md:w-full md:max-w-none md:shrink"
 				>
 					<div>
 						<!-- 標題與圖標 -->
@@ -268,10 +269,10 @@
 			<!-- 誠懇決策收束橫幅 (三行層次結構) -->
 			<div class="mt-14 max-w-5xl xl:max-w-6xl mx-auto text-center">
 				<div
-					class="p-6 sm:p-8 rounded-3xl bg-slate-900/60 border border-slate-800/80 backdrop-blur-md shadow-xl"
+					class="p-5 sm:p-8 rounded-3xl bg-slate-900/60 border border-slate-800/80 backdrop-blur-md shadow-xl"
 				>
 					<!-- 第 1 行：核心精神 -->
-					<h4 class="text-xl sm:text-2xl font-extrabold text-white mb-3 tracking-tight">
+					<h4 class="text-xl sm:text-2xl font-extrabold text-white mb-3 tracking-tight text-balance">
 						沒有哪一種方式一定最好
 					</h4>
 
