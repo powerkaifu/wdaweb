@@ -153,7 +153,10 @@ interface NeuralFlashWave {
   radius: number
   maxRadius: number
   alpha: number
+  decay: number
   speed: number
+  color: string
+  hasSecondaryRing: boolean
 }
 
 let activeFlashWaves: NeuralFlashWave[] = []
@@ -827,26 +830,64 @@ function initNebulaFlowScene() {
 }
 
 // ---------------------------------------------------------------------------
-// 🧠 宇宙深空量子思維漣漪演算法 (Quantum Mind Waves Physics) - 純光環擴散，無任何直線連線
+// 🧠 宇宙深空量子思維漣漪演算法 (Quantum Mind Waves Physics) - 大小不固定、多階範圍動態擴散
 // ---------------------------------------------------------------------------
 function triggerAutonomousFlash(w: number, h: number) {
+  // 🌟 動態規模範圍（大小不固定，自適應螢幕）：
+  // Tier 1: 小型靈動微光波 (約 35% 機率) -> 半徑 300 ~ 460px，靈巧聚焦
+  // Tier 2: 中大型深空脈衝波 (約 45% 機率) -> 半徑 520 ~ 780px，廣域擴散
+  // Tier 3: 浩瀚超巨引力波 (約 20% 機率) -> 半徑 850 ~ 1150px，震撼橫跨大半星空！
+  const randTier = Math.random()
+  let targetMaxRadius: number
+  let speed: number
+  let decay: number
+  let hasSecondaryRing = false
+
+  const minDim = Math.min(w, h)
+
+  if (randTier < 0.35) {
+    // 1. 小型靈動微光波
+    targetMaxRadius = Math.max(300, minDim * (0.32 + Math.random() * 0.15))
+    speed = 190 + Math.random() * 60
+    decay = 0.45 + Math.random() * 0.10 // 存活約 1.8~2.0 秒
+    hasSecondaryRing = false
+  } else if (randTier < 0.80) {
+    // 2. 中大型深空脈衝波
+    targetMaxRadius = Math.max(520, minDim * (0.55 + Math.random() * 0.22))
+    speed = 260 + Math.random() * 80
+    decay = 0.32 + Math.random() * 0.08 // 存活約 2.5~2.8 秒
+    hasSecondaryRing = Math.random() < 0.65 // 65% 機率帶次級諧振雙環
+  } else {
+    // 3. 浩瀚超巨型引力波 (橫跨全域深空)
+    targetMaxRadius = Math.max(850, minDim * (0.85 + Math.random() * 0.35))
+    speed = 340 + Math.random() * 90
+    decay = 0.26 + Math.random() * 0.06 // 存活約 3.0~3.5 秒
+    hasSecondaryRing = true // 巨波必帶雙環，視覺極具層次深度
+  }
+
+  // 隨機微光色彩 (85% 電光青、15% 深空天藍)
+  const color = Math.random() < 0.85 ? '#22d3ee' : '#38bdf8'
+
   activeFlashWaves.push({
-    x: w * 0.2 + Math.random() * w * 0.6,
-    y: h * 0.2 + Math.random() * h * 0.6,
+    x: w * 0.15 + Math.random() * w * 0.70,
+    y: h * 0.15 + Math.random() * h * 0.70,
     radius: 10,
-    maxRadius: 220 + Math.random() * 140,
-    alpha: 0.85,
-    speed: 180 + Math.random() * 80
+    maxRadius: targetMaxRadius,
+    alpha: 0.90,
+    decay,
+    speed,
+    color,
+    hasSecondaryRing
   })
 }
 
 function renderQuantumMindWaves(ctx: CanvasRenderingContext2D, dt: number, w: number, h: number) {
-  // 1. 檢查自發性宇宙深空量子思想放電 (約 9~14 秒一次，靈動自然)
+  // 1. 檢查自發性宇宙深空量子思想放電 (約 8~14 秒一次，靈動自然)
   if (store.synapticConfig.autonomousPulse) {
     nextAutonomousFlashCountdown -= dt
     if (nextAutonomousFlashCountdown <= 0) {
       triggerAutonomousFlash(w, h)
-      nextAutonomousFlashCountdown = 9.0 + Math.random() * 5.0
+      nextAutonomousFlashCountdown = 8.0 + Math.random() * 5.5
     }
   }
 
@@ -860,20 +901,38 @@ function renderQuantumMindWaves(ctx: CanvasRenderingContext2D, dt: number, w: nu
   for (let i = activeFlashWaves.length - 1; i >= 0; i--) {
     const wave = activeFlashWaves[i]
     wave.radius += wave.speed * dt
-    wave.alpha -= dt * 0.55
+    wave.alpha -= dt * wave.decay
     if (wave.alpha <= 0 || wave.radius >= wave.maxRadius) {
       activeFlashWaves.splice(i, 1)
       continue
     }
 
+    const progress = Math.min(1.0, wave.radius / wave.maxRadius)
+    // 隨半徑擴散逐漸柔和羽化消隱
+    const currentAlpha = wave.alpha * (1.0 - progress * 0.38)
+    if (currentAlpha <= 0.005) continue
+
     ctx.save()
+    // A. 主光環
     ctx.beginPath()
     ctx.arc(wave.x, wave.y, wave.radius, 0, Math.PI * 2)
-    ctx.strokeStyle = `rgba(34, 211, 238, ${(wave.alpha * 0.25).toFixed(3)})`
-    ctx.lineWidth = 1.4
-    ctx.shadowColor = '#22d3ee'
-    ctx.shadowBlur = 12
+    ctx.strokeStyle = wave.color === '#22d3ee'
+      ? `rgba(34, 211, 238, ${(currentAlpha * 0.28).toFixed(3)})`
+      : `rgba(56, 189, 248, ${(currentAlpha * 0.28).toFixed(3)})`
+    ctx.lineWidth = Math.max(0.9, 1.8 - progress * 0.8)
+    ctx.shadowColor = wave.color
+    ctx.shadowBlur = 12 + progress * 10
     ctx.stroke()
+
+    // B. 次級諧振雙環 (若波形帶有伴波且半徑已擴散超過 45px)
+    if (wave.hasSecondaryRing && wave.radius > 45) {
+      ctx.beginPath()
+      ctx.arc(wave.x, wave.y, wave.radius * 0.91, 0, Math.PI * 2)
+      ctx.strokeStyle = `rgba(56, 189, 248, ${(currentAlpha * 0.12).toFixed(3)})`
+      ctx.lineWidth = 0.8
+      ctx.shadowBlur = 6
+      ctx.stroke()
+    }
     ctx.restore()
   }
 }

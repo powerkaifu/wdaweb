@@ -863,9 +863,9 @@
               </div>
 
               <div>
-                <h3 class="font-bold text-base text-white mb-1">深空純淨無連線・思維漣漪</h3>
+                <h3 class="font-bold text-base text-white mb-1">深空純淨無連線・動態思維漣漪</h3>
                 <p class="text-xs text-slate-400 leading-relaxed">
-                  深空繁星純淨自然無直線連線；每隔 9~14 秒自發性向外擴散出一圈同心量子柔焦光環，大器深邃不干擾閱讀！
+                  深空繁星純淨無直線連線；漣漪大小具備多階動態範圍（靈動小波 300px ～ 廣域中波 650px ～ 浩瀚超巨引力波 1150px），自然擴散不單調！
                 </p>
               </div>
 
