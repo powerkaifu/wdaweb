@@ -102,8 +102,9 @@ docs/
 系統操作與維護手冊*.md
 USER_MANUAL*.md
 
-# 代理人通用範本匯出包 (本地產出)
+# 代理人通用範本匯出包與本地工具 (僅本地留存，不上傳 GitHub)
 fullstack-agents-starter/
 fullstack-agents-starter.zip
+tools/
 
 
