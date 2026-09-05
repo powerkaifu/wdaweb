@@ -17,7 +17,9 @@
 					<span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping"></span>
 					<span>Physical Learning Experience ｜ 實體沉浸價值</span>
 				</div>
-				<h2 class="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-black text-white tracking-tight leading-tight text-balance">
+				<h2
+					class="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-black text-white tracking-tight leading-tight text-balance"
+				>
 					<span class="block">當你真的卡住時，</span>
 					<span
 						class="block mt-1 sm:mt-1.5 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400"
@@ -100,7 +102,9 @@
 							</span>
 						</div>
 
-						<h3 class="text-xl font-extrabold text-white mb-3 tracking-tight">專屬<span class="inline-block">雙螢幕實作環境</span></h3>
+						<h3 class="text-xl font-extrabold text-white mb-3 tracking-tight">
+							專屬<span class="inline-block">雙螢幕實作環境</span>
+						</h3>
 						<p class="text-base text-slate-200 leading-relaxed text-pretty">
 							降低實作與切換的摩擦。一邊看示範、一邊寫程式、查資料與測試結果能同時進行。讓學習當下就親手實作，徹底擺脫「看影片覺得懂、開編輯器一片空白」的困境。
 						</p>
@@ -176,9 +180,12 @@
 							</span>
 						</div>
 
-						<h3 class="text-xl font-extrabold text-white mb-3 tracking-tight"><span class="inline-block">920 小時</span>集中沉浸</h3>
+						<h3 class="text-xl font-extrabold text-white mb-3 tracking-tight">
+							<span class="inline-block">920 小時</span>集中沉浸
+						</h3>
 						<p class="text-base text-slate-200 leading-relaxed text-pretty">
-							零散自學往往缺乏大局觀。<span class="inline-block">920 小時</span>給你一段足夠長、足夠專注的時間，暫時放下外界干擾，把零碎的語法知識，真正沉澱為能獨立做出完整專案的實戰能力。
+							零散自學往往缺乏大局觀。<span class="inline-block">920 小時</span
+							>給你一段足夠長、足夠專注的時間，暫時放下外界干擾，把零碎的語法知識，真正沉澱為能獨立做出完整專案的實戰能力。
 						</p>
 					</div>
 
@@ -194,7 +201,7 @@
 			<!-- 每天與人一起學習 ｜ 實體交流與協作底蘊 (靈魂人文橫幅) -->
 			<div class="mt-14 sm:mt-16 max-w-5xl xl:max-w-6xl mx-auto">
 				<div
-					class="relative rounded-3xl p-6 sm:p-8 lg:p-10 bg-gradient-to-br from-slate-900/95 via-slate-900/80 to-slate-950/95 border border-slate-800/90 backdrop-blur-xl shadow-2xl shadow-slate-950/70 overflow-hidden"
+					class="relative rounded-3xl p-5 sm:p-8 lg:p-10 bg-gradient-to-br from-slate-900/95 via-slate-900/80 to-slate-950/95 border border-slate-800/90 backdrop-blur-xl shadow-2xl shadow-slate-950/70 overflow-hidden"
 				>
 					<!-- 背景微光點綴 -->
 					<div
@@ -210,10 +217,12 @@
 							class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800/80 pb-5"
 						>
 							<h3
-								class="text-xl sm:text-2xl lg:text-3xl font-extrabold text-white tracking-tight flex items-center gap-3 text-balance"
+								class="text-2xl sm:text-2xl lg:text-3xl font-extrabold text-white tracking-tight flex items-start sm:items-center gap-2.5 sm:gap-3 text-balance"
 							>
-								<span class="text-2xl sm:text-3xl">💬</span>
-								<span>每天與人一起學習，是職訓很不一樣的地方</span>
+								<span class="text-2xl sm:text-3xl flex-shrink-0 mt-0.5 sm:mt-0">💬</span>
+								<span class="leading-snug sm:leading-tight">
+									<span class="block sm:inline">每天與人一起學習<span class="hidden sm:inline">，</span></span><span class="block sm:inline">是職訓很不一樣的地方</span>
+								</span>
 							</h3>
 							<span
 								class="inline-flex items-center px-3.5 py-1 rounded-full bg-cyan-500/10 text-cyan-300 border border-cyan-500/30 text-xs font-mono font-bold tracking-wider w-fit"
