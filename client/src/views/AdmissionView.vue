@@ -36,7 +36,7 @@
               <!-- 狀態標籤 Pill Badge -->
               <div class="flex-shrink-0">
                 <span
-                  class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold font-mono tracking-wide"
+                  class="inline-flex items-center px-3 py-1 rounded-full text-sm font-bold tracking-wide"
                   :class="notice.isOpen
                     ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40'
                     : 'bg-amber-500/15 text-amber-300 border border-amber-500/30'"
@@ -57,7 +57,7 @@
                 >
                   {{ notice.headline }}
                 </div>
-                <p class="mt-1 text-xs sm:text-sm text-slate-300 leading-relaxed">
+                <p class="mt-1 text-sm sm:text-base text-slate-300 leading-relaxed">
                   {{ notice.subline }}
                 </p>
               </div>

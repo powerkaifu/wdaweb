@@ -2,7 +2,7 @@
   <section id="showcase" :class="hideHeader ? 'pt-8 pb-20 sm:pb-24 bg-transparent relative' : 'py-24 bg-slate-900/40 border-t border-slate-800/60 relative'">
     <div class="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12">
       <div v-if="!hideHeader" class="text-center max-w-5xl mx-auto mb-14">
-        <span class="px-3.5 py-1.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 text-xs font-bold uppercase tracking-wider">
+        <span class="px-3.5 py-1.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 text-sm font-bold uppercase tracking-wider">
           Student Portfolio
         </span>
         <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-4 tracking-tight">
@@ -53,11 +53,11 @@
                     💻
                   </div>
 
-                  <div v-if="project.is_featured" class="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-amber-500/90 text-white text-xs font-bold shadow-md">
+                  <div v-if="project.is_featured" class="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-amber-500/90 text-white text-sm font-bold shadow-md">
                     ⭐ 精選專案
                   </div>
 
-                  <div class="absolute bottom-2 right-2 px-2.5 py-0.5 rounded-md bg-black/75 backdrop-blur-md text-xs text-slate-300 font-mono">
+                  <div class="absolute bottom-2 right-2 px-2.5 py-0.5 rounded-md bg-black/75 backdrop-blur-md text-sm text-slate-200 font-mono">
                     👁️ {{ project.view_count }} 次瀏覽
                   </div>
                 </div>
@@ -68,16 +68,16 @@
                     <h3 class="font-extrabold text-white text-base truncate mb-1 group-hover:text-cyan-300 transition-colors">
                       {{ project.project_name }}
                     </h3>
-                    <div class="text-xs text-slate-400">
+                    <div class="text-sm text-slate-300 font-medium">
                       開發者：{{ project.student_name }}
                     </div>
                   </div>
 
                   <div class="flex items-center justify-between pt-3 border-t border-slate-800/80">
-                    <span class="text-xs text-slate-400 font-medium">
+                    <span class="text-sm text-slate-300 font-semibold">
                       {{ project.batch_tag }}
                     </span>
-                    <span class="text-xs text-cyan-400 font-bold group-hover:translate-x-0.5 transition-transform flex items-center space-x-1">
+                    <span class="text-sm text-cyan-400 font-bold group-hover:translate-x-0.5 transition-transform flex items-center space-x-1">
                       <span>查看 Demo</span>
                       <span>↷</span>
                     </span>
@@ -96,7 +96,7 @@
                 </div>
 
                 <div class="relative z-10">
-                  <span class="px-2.5 py-1 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 text-xs font-bold">
+                  <span class="px-2.5 py-1 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 text-sm font-bold">
                     專案詳情
                   </span>
                   <h3 class="text-lg font-extrabold text-white mt-3 mb-1">
@@ -105,7 +105,7 @@
                   <div class="text-sm text-slate-300 mb-2">
                     作者：<strong class="text-white">{{ project.student_name }}</strong>
                   </div>
-                  <div class="text-xs text-slate-400">
+                  <div class="text-sm text-slate-300 font-medium">
                     所屬期別：{{ project.batch_tag }}
                   </div>
                 </div>
@@ -118,7 +118,7 @@
                     :tabindex="flippedIds.has(project.id) ? 0 : -1"
                     :aria-label="`${project.project_name} 線上即時展示 Demo（另開新分頁）`"
                     @click.stop="handleView(project.id)"
-                    class="w-full py-2.5 rounded-xl text-center font-bold text-xs sm:text-sm text-white bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 shadow-md shadow-cyan-500/20 transition-all flex items-center justify-center space-x-1.5 focus-visible:ring-2 focus-visible:ring-white focus:outline-none cursor-pointer"
+                    class="w-full py-2.5 rounded-xl text-center font-bold text-sm text-white bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 shadow-md shadow-cyan-500/20 transition-all flex items-center justify-center space-x-1.5 focus-visible:ring-2 focus-visible:ring-white focus:outline-none cursor-pointer"
                   >
                     <span>🌐 線上即時展示 (Demo) ↗</span>
                   </a>
@@ -129,7 +129,7 @@
                     rel="noopener noreferrer"
                     :tabindex="flippedIds.has(project.id) ? 0 : -1"
                     :aria-label="`${project.project_name} GitHub 原始碼（另開新分頁）`"
-                    class="w-full py-2 rounded-xl text-center font-semibold text-xs text-slate-200 hover:text-white bg-slate-800 hover:bg-slate-700 border border-slate-700 transition-all flex items-center justify-center space-x-1.5 focus-visible:ring-2 focus-visible:ring-cyan-400 focus:outline-none cursor-pointer"
+                    class="w-full py-2 rounded-xl text-center font-semibold text-sm text-slate-200 hover:text-white bg-slate-800 hover:bg-slate-700 border border-slate-700 transition-all flex items-center justify-center space-x-1.5 focus-visible:ring-2 focus-visible:ring-cyan-400 focus:outline-none cursor-pointer"
                   >
                     <span>🐙 GitHub 原始碼 ↗</span>
                   </a>
@@ -138,7 +138,7 @@
                     :tabindex="flippedIds.has(project.id) ? 0 : -1"
                     aria-label="返回正面卡片"
                     @click.stop="toggleFlip(project.id)"
-                    class="w-full py-1.5 rounded-xl text-center font-medium text-xs text-slate-400 hover:text-white bg-slate-800/40 hover:bg-slate-800 transition-colors focus-visible:ring-2 focus-visible:ring-cyan-400 focus:outline-none"
+                    class="w-full py-1.5 rounded-xl text-center font-medium text-sm text-slate-300 hover:text-white bg-slate-800/40 hover:bg-slate-800 transition-colors focus-visible:ring-2 focus-visible:ring-cyan-400 focus:outline-none"
                   >
                     返回正面
                   </button>

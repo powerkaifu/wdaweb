@@ -15,7 +15,7 @@
 			<!-- 受眾心聲共鳴標頭 -->
 			<div class="text-center max-w-5xl xl:max-w-6xl mx-auto mb-10 sm:mb-16">
 				<div
-					class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 text-xs font-mono font-bold uppercase tracking-wider shadow-sm mb-3"
+					class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 text-sm font-bold uppercase tracking-wider shadow-sm mb-3"
 				>
 					<span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping"></span>
 					<span>Facing Reality ｜ 面對問題</span>
@@ -43,16 +43,17 @@
 			>
 				<!-- 卡片 1 -->
 				<div
-					class="resonance-card card-subsurface-glow relative rounded-3xl p-5 sm:p-6 bg-slate-900/80 backdrop-blur-xl border border-slate-800/90 shadow-xl shadow-slate-950/60 flex flex-col justify-between overflow-hidden will-change-transform cursor-default w-[86vw] sm:w-[360px] max-w-[380px] shrink-0 snap-start md:w-full md:max-w-none md:shrink"
+					class="resonance-card card-subsurface-glow relative rounded-3xl p-5 sm:p-7 bg-slate-900/80 backdrop-blur-xl border border-slate-800/90 shadow-xl shadow-slate-950/60 flex flex-col justify-between overflow-hidden hover:border-cyan-500/50 transition-[border-color,box-shadow] duration-300 cursor-default w-[84vw] max-w-[340px] shrink-0 snap-start md:w-full md:max-w-none md:shrink"
 				>
 					<div>
-						<div class="flex items-center space-x-3.5 mb-4">
+						<!-- 提問者標籤 -->
+						<div class="flex items-center space-x-3 mb-4">
 							<div
 								class="w-11 h-11 rounded-xl bg-cyan-500/15 border border-cyan-500/40 text-cyan-300 flex items-center justify-center text-xl shadow-[0_0_16px_rgba(6,182,212,0.2)] flex-shrink-0"
 							>
 								❓
 							</div>
-							<div class="text-xs sm:text-sm font-mono font-bold text-cyan-400 uppercase tracking-wider">
+							<div class="text-sm font-mono font-bold text-cyan-400 uppercase tracking-wider">
 								COMMON DOUBT 01
 							</div>
 						</div>
@@ -92,7 +93,7 @@
 							>
 								🤖
 							</div>
-							<div class="text-xs sm:text-sm font-mono font-bold text-blue-400 uppercase tracking-wider">
+							<div class="text-sm font-mono font-bold text-blue-400 uppercase tracking-wider">
 								COMMON DOUBT 02
 							</div>
 						</div>
@@ -132,7 +133,7 @@
 							>
 								🏫
 							</div>
-							<div class="text-xs sm:text-sm font-mono font-bold text-purple-400 uppercase tracking-wider">
+							<div class="text-sm font-mono font-bold text-purple-400 uppercase tracking-wider">
 								COMMON DOUBT 03
 							</div>
 						</div>

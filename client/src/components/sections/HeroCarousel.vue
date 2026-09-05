@@ -18,10 +18,10 @@
         class="group flex items-center justify-between p-2.5 sm:p-3.5 rounded-2xl bg-gradient-to-r from-cyan-950/80 via-blue-950/80 to-slate-900/80 border border-cyan-500/30 hover:border-cyan-500/60 shadow-lg shadow-cyan-950/30 backdrop-blur-md transition-all"
       >
         <div class="flex items-center space-x-3 overflow-hidden">
-          <span class="flex-shrink-0 px-2.5 py-1 text-xs font-bold uppercase rounded-full bg-cyan-500/20 text-cyan-400 border border-cyan-500/40">
+          <span class="flex-shrink-0 px-2.5 py-1 text-xs sm:text-sm font-bold uppercase rounded-full bg-cyan-500/20 text-cyan-400 border border-cyan-500/40">
             最新快訊
           </span>
-          <span class="text-xs sm:text-sm md:text-base font-medium text-slate-200 truncate group-hover:text-cyan-300 transition-colors">
+          <span class="text-sm md:text-base font-medium text-slate-200 truncate group-hover:text-cyan-300 transition-colors">
             {{ dynamicAnnouncementText }}
           </span>
         </div>
@@ -35,10 +35,10 @@
         class="group flex items-center justify-between p-2.5 sm:p-3.5 rounded-2xl bg-gradient-to-r from-cyan-950/80 via-blue-950/80 to-slate-900/80 border border-cyan-500/30 hover:border-cyan-500/60 shadow-lg shadow-cyan-950/30 backdrop-blur-md transition-all"
       >
         <div class="flex items-center space-x-3 overflow-hidden">
-          <span class="flex-shrink-0 px-2.5 py-1 text-xs font-bold uppercase rounded-full bg-cyan-500/20 text-cyan-400 border border-cyan-500/40">
+          <span class="flex-shrink-0 px-2.5 py-1 text-xs sm:text-sm font-bold uppercase rounded-full bg-cyan-500/20 text-cyan-400 border border-cyan-500/40">
             最新快訊
           </span>
-          <span class="text-xs sm:text-sm md:text-base font-medium text-slate-200 truncate group-hover:text-cyan-300 transition-colors">
+          <span class="text-sm md:text-base font-medium text-slate-200 truncate group-hover:text-cyan-300 transition-colors">
             {{ dynamicAnnouncementText }}
           </span>
         </div>
@@ -56,7 +56,7 @@
         <!-- Left Text Content (8pt 垂直律動與格式塔群組精準重構) -->
         <div id="hero-left-content" class="lg:col-span-6 flex flex-col items-center lg:items-start text-center lg:text-left self-center transform-gpu will-change-transform">
           <!-- 1. 頂部認證標籤 Badge (權威背書) -->
-          <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-slate-900/90 border border-cyan-500/30 text-xs sm:text-sm font-semibold text-cyan-400 shadow-sm shadow-cyan-950/40 mb-3 sm:mb-3.5 lg:mb-4">
+          <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-slate-900/90 border border-cyan-500/30 text-sm font-bold text-cyan-400 shadow-sm shadow-cyan-950/40 mb-3 sm:mb-3.5 lg:mb-4">
             <span>✨ 勞動部自辦職前訓練 ｜ <span class="inline-block">920 小時實體培訓</span></span>
           </div>
 
@@ -138,19 +138,19 @@
             <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-4 xl:gap-6">
               <div class="text-center lg:text-left">
                 <div class="text-2xl sm:text-3xl font-black text-cyan-400 font-mono tracking-tight">{{ display100 }}%</div>
-                <div class="text-xs sm:text-sm text-slate-300 font-semibold mt-1">待業者全額免費補助</div>
+                <div class="text-sm font-semibold text-slate-200 mt-1">待業者全額免費補助</div>
               </div>
               <div class="text-center lg:text-left">
                 <div class="text-2xl sm:text-3xl font-black text-blue-400 font-mono tracking-tight">{{ display920 }}h</div>
-                <div class="text-xs sm:text-sm text-slate-300 font-semibold mt-1"><span class="inline-block">920 小時</span>實體培訓</div>
+                <div class="text-sm font-semibold text-slate-200 mt-1"><span class="inline-block">920 小時</span>實體培訓</div>
               </div>
               <div class="text-center lg:text-left">
                 <div class="text-xl sm:text-2xl font-bold text-emerald-400 font-sans tracking-tight leading-8 sm:leading-9">專題實作</div>
-                <div class="text-xs sm:text-sm text-slate-300 font-semibold mt-1">累積個人專題作品</div>
+                <div class="text-sm font-semibold text-slate-200 mt-1">累積個人專題作品</div>
               </div>
               <div class="text-center lg:text-left">
                 <div class="text-xl sm:text-2xl font-bold text-purple-400 font-sans tracking-tight leading-8 sm:leading-9">生活津貼</div>
-                <div class="text-xs sm:text-sm text-slate-300 font-semibold mt-1">可申請受訓生活津貼</div>
+                <div class="text-sm font-semibold text-slate-200 mt-1">可申請受訓生活津貼</div>
               </div>
             </div>
           </div>

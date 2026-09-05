@@ -12,7 +12,7 @@
 			<!-- 區塊標題 (大器單行標題，中高齡友善閱讀) -->
 			<div class="text-center max-w-4xl mx-auto mb-10 sm:mb-16">
 				<div
-					class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 text-xs font-mono font-bold uppercase tracking-wider shadow-sm mb-3"
+					class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 text-sm font-bold uppercase tracking-wider shadow-sm mb-3"
 				>
 					<span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping"></span>
 					<span>Learning Journey ｜ 漸進式實踐路徑</span>
@@ -60,13 +60,13 @@
 								🧱
 							</div>
 							<span
-								class="px-3.5 py-1 rounded-2xl bg-cyan-500/10 text-cyan-300 font-bold text-xs font-mono tracking-wider border border-cyan-500/30"
+								class="px-3.5 py-1 rounded-2xl bg-cyan-500/10 text-cyan-300 font-bold text-sm font-mono tracking-wider border border-cyan-500/30"
 							>
 								PHASE 01
 							</span>
 						</div>
 
-						<div class="text-xs font-mono font-bold text-cyan-400 uppercase tracking-widest mb-1">
+						<div class="text-sm sm:text-base font-bold text-cyan-400 tracking-wider mb-1">
 							Stage 01 ｜ 從看不懂開始
 						</div>
 						<h3 class="text-xl font-extrabold text-white mb-3 tracking-tight">開始理解網頁運作</h3>
@@ -103,13 +103,13 @@
 								🚀
 							</div>
 							<span
-								class="px-3.5 py-1 rounded-2xl bg-blue-500/10 text-blue-300 font-bold text-xs font-mono tracking-wider border border-blue-500/30"
+								class="px-3.5 py-1 rounded-2xl bg-blue-500/10 text-blue-300 font-bold text-sm font-mono tracking-wider border border-blue-500/30"
 							>
 								PHASE 02
 							</span>
 						</div>
 
-						<div class="text-xs font-mono font-bold text-blue-400 uppercase tracking-widest mb-1">
+						<div class="text-sm sm:text-base font-bold text-blue-400 tracking-wider mb-1">
 							Stage 02 ｜ 從會寫到會組織
 						</div>
 						<h3 class="text-xl font-extrabold text-white mb-3 tracking-tight">學會組織前端系統</h3>
@@ -146,13 +146,13 @@
 								💼
 							</div>
 							<span
-								class="px-3.5 py-1 rounded-2xl bg-purple-500/10 text-purple-300 font-bold text-xs font-mono tracking-wider border border-purple-500/30"
+								class="px-3.5 py-1 rounded-2xl bg-purple-500/10 text-purple-300 font-bold text-sm font-mono tracking-wider border border-purple-500/30"
 							>
 								PHASE 03
 							</span>
 						</div>
 
-						<div class="text-xs font-mono font-bold text-purple-400 uppercase tracking-widest mb-1">
+						<div class="text-sm sm:text-base font-bold text-purple-400 tracking-wider mb-1">
 							Stage 03 ｜ 從前端走向完整系統
 						</div>
 						<h3 class="text-xl font-extrabold text-white mb-3 tracking-tight">串接真實資料流</h3>
@@ -189,13 +189,13 @@
 								🤖
 							</div>
 							<span
-								class="px-3.5 py-1 rounded-2xl bg-emerald-500/10 text-emerald-300 font-bold text-xs font-mono tracking-wider border border-emerald-500/30"
+								class="px-3.5 py-1 rounded-2xl bg-emerald-500/10 text-emerald-300 font-bold text-sm font-mono tracking-wider border border-emerald-500/30"
 							>
 								PHASE 04
 							</span>
 						</div>
 
-						<div class="text-xs font-mono font-bold text-emerald-400 uppercase tracking-widest mb-1">
+						<div class="text-sm sm:text-base font-bold text-emerald-400 tracking-wider mb-1">
 							Stage 04 ｜ 從自己寫，到與 AI 協作
 						</div>
 						<h3 class="text-xl font-extrabold text-white mb-3 tracking-tight">人機協作與實戰交付</h3>

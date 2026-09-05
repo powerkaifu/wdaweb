@@ -30,7 +30,7 @@
 
 			<div class="max-w-5xl xl:max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 relative z-10">
 				<div
-					class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 text-xs font-mono font-bold uppercase tracking-wider shadow-sm"
+					class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 text-sm font-bold uppercase tracking-wider shadow-sm"
 				>
 					<span>Student Showcase ｜ 學員專題成果</span>
 				</div>
@@ -76,7 +76,7 @@
 
 			<div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-7 relative z-10">
 				<div
-					class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 text-xs font-mono font-bold uppercase tracking-wider shadow-sm"
+					class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 text-sm font-bold uppercase tracking-wider shadow-sm"
 				>
 					<span>Make Your Choice ｜ 自主決定</span>
 				</div>

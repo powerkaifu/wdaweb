@@ -15,9 +15,9 @@
     <div class="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 relative z-10 w-full overflow-hidden">
       <!-- 區塊標題 (僅在首頁等未隱藏標頭時渲染) -->
       <div v-if="!hideHeader" class="text-center max-w-5xl mx-auto mb-14">
-        <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 text-xs font-mono font-bold uppercase tracking-wider shadow-sm mb-3">
+        <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 text-sm font-bold uppercase tracking-wider shadow-sm mb-3">
           <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping"></span>
-          <span>Admission Batches</span>
+          <span>Admission Batches ｜ 招生期別</span>
         </div>
         <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight">
           招生期別與報名
@@ -189,7 +189,7 @@
                     class="w-7 flex justify-center"
                   >
                     <span
-                      class="text-[11px] sm:text-xs font-medium transition-colors duration-300 whitespace-nowrap text-center select-none"
+                      class="text-xs sm:text-sm font-semibold transition-colors duration-300 whitespace-nowrap text-center select-none"
                       :class="getStepTextClass(batch, sIndex + 1)"
                     >
                       {{ step.label }}
@@ -199,9 +199,9 @@
               </div>
 
               <!-- 生命週期動態焦點看板 -->
-              <div class="mt-4 pt-3.5 border-t border-slate-800/80 text-xs sm:text-sm flex items-start sm:items-center space-x-2 text-slate-300">
+              <div class="mt-4 pt-3.5 border-t border-slate-800/80 text-sm sm:text-base flex items-start sm:items-center space-x-2 text-slate-200">
                 <span class="flex-shrink-0 mt-0.5 sm:mt-0">{{ getLifecycleDetailNotice(batch).icon }}</span>
-                <span class="leading-relaxed">{{ getLifecycleDetailNotice(batch).text }}</span>
+                <span class="leading-relaxed font-medium">{{ getLifecycleDetailNotice(batch).text }}</span>
               </div>
             </div>
 
@@ -230,7 +230,7 @@
                   <span class="font-medium font-mono text-slate-200 text-base">
                     {{ batch.screening_date }}
                   </span>
-                  <span v-if="isBatchScreeningOrPreparing(batch)" class="text-xs px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 font-semibold">{{ isScreeningEnded(batch) ? '已甄試完畢' : '今日甄試中' }}</span>
+                  <span v-if="isBatchScreeningOrPreparing(batch)" class="text-sm px-2.5 py-1 rounded bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 font-semibold">{{ isScreeningEnded(batch) ? '已甄試完畢' : '今日甄試中' }}</span>
                 </div>
               </div>
 
@@ -316,7 +316,7 @@
         <div class="grid grid-cols-2 gap-2.5 shrink-0 w-full sm:w-auto sm:flex sm:space-x-3 justify-end">
           <a
             :href="`tel:${(store.settings?.contact_phone || '(02) 2901-8274').replace(/[^0-9]/g, '')}`"
-            class="px-3.5 py-2.5 rounded-xl text-xs font-bold text-cyan-300 bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/30 transition-all flex items-center justify-center space-x-1 shadow-sm active:scale-95"
+            class="px-3.5 py-2.5 rounded-xl text-sm font-bold text-cyan-300 bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/30 transition-all flex items-center justify-center space-x-1 shadow-sm active:scale-95"
           >
             <span>📞 招生專線</span>
           </a>
@@ -324,7 +324,7 @@
             :href="store.settings?.discord_invite_url || 'https://discord.gg/TrerFKG'"
             target="_blank"
             rel="noopener noreferrer"
-            class="px-3.5 py-2.5 rounded-xl text-xs font-bold text-indigo-300 bg-indigo-500/10 hover:bg-indigo-500/20 border border-indigo-500/30 transition-all flex items-center justify-center space-x-1 shadow-sm active:scale-95"
+            class="px-3.5 py-2.5 rounded-xl text-sm font-bold text-indigo-300 bg-indigo-500/10 hover:bg-indigo-500/20 border border-indigo-500/30 transition-all flex items-center justify-center space-x-1 shadow-sm active:scale-95"
           >
             <span>💬 官方 Discord</span>
           </a>

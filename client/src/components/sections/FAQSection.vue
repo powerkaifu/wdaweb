@@ -5,7 +5,7 @@
 
     <div class="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 relative z-10 w-full">
       <div v-if="!hideHeader" class="text-center mb-12">
-        <span class="px-3.5 py-1.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 text-xs font-bold uppercase tracking-wider">
+        <span class="px-3.5 py-1.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 text-sm font-bold uppercase tracking-wider">
           FAQ
         </span>
         <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-4 tracking-tight">
@@ -33,7 +33,7 @@
             :aria-expanded="activeId === faq.id"
           >
             <div class="flex items-center space-x-3.5">
-              <span class="px-2.5 py-1 rounded-lg bg-cyan-500/10 text-xs font-bold text-cyan-400 border border-cyan-500/20 flex-shrink-0">
+              <span class="px-2.5 py-1 rounded-lg bg-cyan-500/10 text-sm font-bold text-cyan-400 border border-cyan-500/20 flex-shrink-0">
                 {{ faq.category }}
               </span>
               <span class="font-bold text-white text-base sm:text-lg">
@@ -72,7 +72,7 @@
         <div class="space-y-2.5 flex-1">
           <div class="flex items-center space-x-3 flex-wrap gap-y-1">
             <span class="text-base sm:text-lg font-black text-white tracking-tight">權益提醒</span>
-            <span class="px-2.5 py-0.5 rounded-lg text-xs font-bold bg-cyan-500/15 text-cyan-300 border border-cyan-500/40 font-mono">重要規範</span>
+            <span class="px-2.5 py-0.5 rounded-lg text-sm font-bold bg-cyan-500/15 text-cyan-300 border border-cyan-500/40 font-mono">重要規範</span>
           </div>
           <p class="text-base text-slate-300 leading-relaxed">
             有關參訓資格認定、全額免費受訓審查、每月職訓生活津貼申請條件與各期招生期程，<strong class="text-white font-bold bg-cyan-500/10 px-1 py-0.5 rounded border border-cyan-500/20">一律以勞動部勞動力發展署北分署（台灣就業通）及相關主管機關之最新官方公告與簡章規定為主</strong>。

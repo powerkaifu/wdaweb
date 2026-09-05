@@ -14,7 +14,7 @@
     <div class="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 relative z-10 w-full">
       <!-- 區塊標題 -->
       <div v-if="!hideHeader" class="text-center max-w-5xl mx-auto mb-10 sm:mb-14">
-        <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 text-xs font-mono font-bold uppercase tracking-wider shadow-sm mb-3">
+        <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 text-sm font-bold uppercase tracking-wider shadow-sm mb-3">
           <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping"></span>
           <span>Learning Environment ｜ 實體環境</span>
         </div>

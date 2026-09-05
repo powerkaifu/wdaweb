@@ -15,7 +15,7 @@
 			<!-- 區塊標題 (大器單行標題，中高齡友善閱讀) -->
 			<div class="text-center max-w-5xl mx-auto mb-16">
 				<div
-					class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 text-xs font-mono font-bold uppercase tracking-wider shadow-sm mb-3"
+					class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 text-sm font-bold uppercase tracking-wider shadow-sm mb-3"
 				>
 					<span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
 					<span>Personalized Starting Points ｜ 找到專屬起點</span>

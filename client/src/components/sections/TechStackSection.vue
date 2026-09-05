@@ -19,7 +19,7 @@
 			<!-- 區塊標題 (僅在未隱藏標頭時渲染) -->
 			<div v-if="!hideHeader" class="text-center max-w-4xl mx-auto mb-10 sm:mb-14">
 				<div
-					class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 text-xs font-mono font-bold uppercase tracking-wider shadow-sm mb-3"
+					class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 text-sm font-bold uppercase tracking-wider shadow-sm mb-3"
 				>
 					<span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping"></span>
 					<span>Development Tools ｜ 技術與工具</span>

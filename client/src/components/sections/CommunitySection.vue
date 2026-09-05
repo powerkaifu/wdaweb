@@ -6,7 +6,7 @@
 
     <div class="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 relative z-10 w-full">
       <div v-if="!hideHeader" class="text-center max-w-3xl mx-auto mb-16">
-        <span class="px-3.5 py-1.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 text-xs font-bold uppercase tracking-wider">
+        <span class="px-3.5 py-1.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 text-sm font-bold uppercase tracking-wider">
           Community & Discord
         </span>
         <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-4 tracking-tight">
@@ -65,7 +65,7 @@
                   <div class="h-3 bg-slate-700/50 rounded w-2/3"></div>
                 </div>
               </div>
-              <div class="text-center text-xs text-slate-500 font-medium">
+              <div class="text-center text-sm text-slate-400 font-medium">
                 ⚡ 正在連線至 Discord 官方伺服器...
               </div>
             </div>
