@@ -45,31 +45,20 @@
 				</div>
 
 				<!-- Left: Official Logo + AI Pulse Indicator -->
-				<router-link to="/" class="flex items-center space-x-2.5 sm:space-x-3 group relative z-10 flex-1 min-w-0 mr-2 sm:mr-4 lg:mr-6 xl:mr-8">
+				<router-link to="/" class="flex items-center space-x-2 sm:space-x-3 group relative z-10 flex-1 min-w-0 mr-1 sm:mr-4 lg:mr-6 xl:mr-8">
 					<div class="flex-shrink-0 flex items-center justify-center">
 						<img
 							:src="store.settings?.site_logo_url || defaultLogo"
 							:alt="store.settings?.site_title || '泰山職訓 Logo'"
 							@error="handleLogoError"
-							class="h-8 sm:h-9 md:h-10 w-auto max-w-[120px] sm:max-w-[160px] object-contain rounded-lg drop-shadow-md group-hover:scale-105 transition-transform"
+							class="h-7.5 sm:h-9 md:h-10 w-auto max-w-[120px] sm:max-w-[160px] object-contain rounded-lg drop-shadow-md group-hover:scale-105 transition-transform"
 						/>
 					</div>
 					<div class="flex flex-col min-w-0 justify-center">
-						<!-- 手機版：雙行精緻大字排版（徹底杜絕截斷，16px 醒目大字＋電光青班別高亮） -->
-						<div class="sm:hidden flex flex-col justify-center">
-							<span class="font-black text-base text-white tracking-tight leading-none group-hover:text-cyan-300 transition-colors">
-								{{ brandParts.main }}
-							</span>
-							<span v-if="brandParts.sub" class="font-bold text-xs text-cyan-400 tracking-tight mt-1 leading-none">
-								{{ brandParts.sub }}
-							</span>
-						</div>
-
-						<!-- 平板與桌機版：大器單行排版 -->
-						<div class="hidden sm:flex items-center space-x-2">
+						<!-- 大器單行標題（全站統一單行，手機端維持 16px 大字，桌機 18~20px） -->
+						<div class="flex items-center space-x-2 min-w-0">
 							<span
-								class="font-extrabold tracking-tight text-white group-hover:text-cyan-400 transition-colors leading-tight truncate"
-								:class="isScrolled ? 'text-base lg:text-lg' : 'text-lg lg:text-xl'"
+								class="font-extrabold tracking-tight text-white group-hover:text-cyan-400 transition-colors leading-tight whitespace-nowrap text-base sm:text-lg lg:text-xl truncate"
 							>
 								{{ store.settings?.site_title || '泰山職訓－前端網頁技術與AI應用' }}
 							</span>
@@ -163,30 +152,20 @@
 				class="flex items-center justify-between p-3 rounded-2xl bg-slate-900/90 backdrop-blur-2xl border border-cyan-500/40 shadow-2xl shadow-cyan-950/60"
 			>
 				<!-- Left: Logo -->
-				<router-link to="/" class="flex items-center space-x-2.5 sm:space-x-3 group flex-1 min-w-0 mr-2 sm:mr-4 lg:mr-6 xl:mr-8">
+				<router-link to="/" class="flex items-center space-x-2 sm:space-x-3 group flex-1 min-w-0 mr-1 sm:mr-4 lg:mr-6 xl:mr-8">
 					<div class="flex-shrink-0 flex items-center justify-center">
 						<img
 							:src="store.settings?.site_logo_url || defaultLogo"
 							:alt="store.settings?.site_title || '泰山職訓 Logo'"
 							@error="handleLogoError"
-							class="h-8 sm:h-9 w-auto max-w-[120px] sm:max-w-[140px] object-contain rounded-lg drop-shadow-md group-hover:scale-105 transition-transform"
+							class="h-7.5 sm:h-9 w-auto max-w-[120px] sm:max-w-[140px] object-contain rounded-lg drop-shadow-md group-hover:scale-105 transition-transform"
 						/>
 					</div>
 					<div class="flex flex-col min-w-0 justify-center">
-						<!-- 手機版：雙行精緻大字排版 -->
-						<div class="sm:hidden flex flex-col justify-center">
-							<span class="font-black text-base text-white tracking-tight leading-none group-hover:text-cyan-300 transition-colors">
-								{{ brandParts.main }}
-							</span>
-							<span v-if="brandParts.sub" class="font-bold text-xs text-cyan-400 tracking-tight mt-1 leading-none">
-								{{ brandParts.sub }}
-							</span>
-						</div>
-
-						<!-- 平板與桌機版：大器單行排版 -->
-						<div class="hidden sm:flex items-center space-x-2">
+						<!-- 大器單行排版（手機端維持 16px 大字，桌機 18~20px） -->
+						<div class="flex items-center space-x-2 min-w-0">
 							<span
-								class="text-base lg:text-lg font-extrabold text-white tracking-tight group-hover:text-cyan-300 transition-colors leading-tight truncate"
+								class="text-base sm:text-lg font-extrabold text-white tracking-tight group-hover:text-cyan-300 transition-colors leading-tight whitespace-nowrap truncate"
 							>
 								{{ store.settings?.site_title || '泰山職訓－前端網頁技術與AI應用' }}
 							</span>
@@ -289,31 +268,21 @@
 					<!-- Left: Official Logo + AI Pulse -->
 					<router-link
 						to="/"
-						class="flex items-center space-x-2.5 sm:space-x-3 group relative z-10 flex-1 min-w-0 mr-2 sm:mr-4 lg:mr-6 xl:mr-8"
+						class="flex items-center space-x-2 sm:space-x-3 group relative z-10 flex-1 min-w-0 mr-1 sm:mr-4 lg:mr-6 xl:mr-8"
 					>
 						<div class="flex-shrink-0 flex items-center justify-center">
 							<img
 								:src="store.settings?.site_logo_url || defaultLogo"
 								:alt="store.settings?.site_title || '泰山職訓 Logo'"
 								@error="handleLogoError"
-								class="h-8 sm:h-9 md:h-10 w-auto max-w-[120px] sm:max-w-[160px] object-contain rounded-lg drop-shadow-md group-hover:scale-105 transition-transform"
+								class="h-7.5 sm:h-9 md:h-10 w-auto max-w-[120px] sm:max-w-[160px] object-contain rounded-lg drop-shadow-md group-hover:scale-105 transition-transform"
 							/>
 						</div>
 						<div class="flex flex-col min-w-0 justify-center">
-							<!-- 手機版：雙行精緻大字排版 -->
-							<div class="sm:hidden flex flex-col justify-center">
-								<span class="font-black text-base text-white tracking-tight leading-none group-hover:text-cyan-300 transition-colors">
-									{{ brandParts.main }}
-								</span>
-								<span v-if="brandParts.sub" class="font-bold text-xs text-cyan-400 tracking-tight mt-1 leading-none">
-									{{ brandParts.sub }}
-								</span>
-							</div>
-
-							<!-- 平板與桌機版：大器單行排版 -->
-							<div class="hidden sm:flex items-center space-x-2">
+							<!-- 大器單行排版（手機端維持 16px 大字，桌機 18~20px） -->
+							<div class="flex items-center space-x-2 min-w-0">
 								<span
-									class="font-extrabold tracking-tight text-white group-hover:text-cyan-400 transition-colors leading-tight text-base sm:text-lg lg:text-xl truncate"
+									class="font-extrabold tracking-tight text-white group-hover:text-cyan-400 transition-colors leading-tight text-base sm:text-lg lg:text-xl whitespace-nowrap truncate"
 								>
 									{{ store.settings?.site_title || '泰山職訓－前端網頁技術與AI應用' }}
 								</span>
@@ -459,21 +428,6 @@ const isOpen = ref(false)
 const scrollDirection = ref<'up' | 'down'>('up')
 let lastScrollY = 0
 
-// 智慧拆分主標題（支援手機版雙行精緻大字排版，杜絕截斷與螞蟻字）
-const brandParts = computed(() => {
-	const title = store.settings?.site_title || '泰山職訓－前端網頁技術與AI應用'
-	const dashIndex = title.indexOf('－') !== -1 ? title.indexOf('－') : title.indexOf('-')
-	if (dashIndex !== -1) {
-		return {
-			main: title.slice(0, dashIndex),
-			sub: title.slice(dashIndex + 1),
-		}
-	}
-	return {
-		main: title,
-		sub: '',
-	}
-})
 
 // 雙重防禦：當遠端 Logo 網址 404 或載入失敗時，立即無縫降級回傳本地官方高畫質 Logo
 function handleLogoError(e: Event) {
