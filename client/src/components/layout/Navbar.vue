@@ -63,12 +63,6 @@
 								>
 									{{ store.settings?.site_title || '泰山職訓－前端網頁技術與AI應用' }}
 								</span>
-								<span
-									class="hidden xl:inline-flex items-center px-2 py-0.5 rounded-full text-xs font-mono font-bold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 shrink-0"
-								>
-									<span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping mr-1"></span>
-									AI READY
-								</span>
 							</div>
 							<span class="hidden sm:block text-xs sm:text-sm text-slate-400 font-medium leading-none mt-1 truncate">
 								泰山職業訓練場 ｜ 師資成果推廣網
@@ -176,7 +170,6 @@
 								>
 									{{ store.settings?.site_title || '泰山職訓－前端網頁技術與AI應用' }}
 								</span>
-								<span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse shrink-0"></span>
 							</div>
 							<span class="hidden sm:block text-xs sm:text-sm text-slate-400 leading-none truncate mt-1"> 泰山職訓 ｜ 師資自主推廣網 </span>
 						</div>
@@ -293,12 +286,6 @@
 										class="font-extrabold tracking-tighter sm:tracking-tight text-white group-hover:text-cyan-400 transition-colors leading-tight whitespace-nowrap text-sm min-[375px]:text-base sm:text-lg lg:text-xl shrink-0"
 									>
 										{{ store.settings?.site_title || '泰山職訓－前端網頁技術與AI應用' }}
-									</span>
-									<span
-										class="hidden xl:inline-flex items-center px-2 py-0.5 rounded-full text-xs font-mono font-bold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 shrink-0"
-									>
-										<span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping mr-1"></span>
-										AI READY
 									</span>
 								</div>
 								<span class="hidden sm:block text-xs sm:text-sm text-slate-400 font-medium leading-none mt-1 truncate">
