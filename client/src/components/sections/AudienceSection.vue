@@ -21,8 +21,8 @@
 					<span>Facing Reality ｜ 面對問題</span>
 				</div>
 				<h2 class="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-black text-white tracking-tight leading-tight lg:whitespace-nowrap text-balance">
-					你正在面對的，<span
-						class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400"
+					<span class="block sm:inline">你正在面對的，</span><span
+						class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400 block sm:inline"
 						>也許不只是「要不要學程式」</span
 					>
 				</h2>
