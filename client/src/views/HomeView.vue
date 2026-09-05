@@ -124,9 +124,9 @@
 				</div>
 
 				<!-- 誠懇收束金句 -->
-				<div class="pt-4 text-center">
-					<p class="text-base text-slate-400 font-medium leading-relaxed">
-						<span class="block sm:inline">如果你決定開始，</span><span class="text-cyan-300 font-bold block sm:inline">我們願意陪你把第一步走得更扎實。</span>
+				<div class="pt-6 sm:pt-8 text-center">
+					<p class="text-lg sm:text-xl lg:text-2xl text-slate-200 font-bold leading-relaxed tracking-tight">
+						<span class="block sm:inline">如果你決定開始，</span><span class="text-cyan-300 font-extrabold block sm:inline">我們願意陪你把第一步走得更扎實。</span>
 					</p>
 				</div>
 			</div>
