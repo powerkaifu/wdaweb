@@ -27,7 +27,7 @@
       </div>
 
       <!-- 手機端橫向滑動提示 (平板與桌機隱藏) -->
-      <div v-if="!hideHeader" class="flex md:hidden items-center justify-center gap-2 text-xs font-mono text-cyan-400/80 -mt-4 mb-4">
+      <div v-if="!hideHeader" class="flex md:hidden items-center justify-center gap-2 text-base font-bold text-cyan-400 -mt-4 mb-4">
         <span>👈 左右滑動瀏覽教學環境實景 👉</span>
       </div>
 

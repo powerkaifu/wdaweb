@@ -33,7 +33,7 @@
 			</div>
 
 			<!-- 手機端橫向滑動提示 (桌機隱藏) -->
-			<div class="flex md:hidden items-center justify-center gap-2 text-xs font-mono text-cyan-400/80 -mt-4 mb-4">
+			<div class="flex md:hidden items-center justify-center gap-2 text-base font-bold text-cyan-400 -mt-4 mb-4">
 				<span>👈 左右滑動瀏覽 6 大真實收穫 👉</span>
 			</div>
 

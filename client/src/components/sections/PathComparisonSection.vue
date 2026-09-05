@@ -262,7 +262,7 @@
 			</div>
 
 			<!-- 手機版微滑動提示 -->
-			<div class="md:hidden flex items-center justify-center gap-1 text-xs text-slate-500 mt-2">
+			<div class="md:hidden flex items-center justify-center gap-2 text-base font-bold text-cyan-400 mt-2 mb-2">
 				<span>👈 左右滑動橫向比較 3 種學習路徑 👉</span>
 			</div>
 
