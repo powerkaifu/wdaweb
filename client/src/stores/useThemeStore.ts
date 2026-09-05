@@ -93,7 +93,7 @@ export const useThemeStore = defineStore('theme', () => {
     mode: 'sporadic',       // 'sporadic' (8~22s 偶發) | 'shower' (2~5s 流星雨) | 'fireball' (純火流星)
     direction: 'omnidirectional', // 'omnidirectional' (360° 四面八方) | 'radiant' (天頂向外放射) | 'diagonal' (經典斜掠)
     fireballChance: 0.20,   // 20% 機率微爆火流星
-    codeMeteorChance: 0.35, // 35% 機率觸發「幽靈代碼流星」彩蛋
+    codeMeteorChance: 0.55, // 55% 機率觸發「幽靈代碼流星」彩蛋 (黃金頻率)
     manualTriggerCount: 0,  // 手動立即發射一般流星計數器
     manualTriggerCodeCount: 0 // 手動立即發射代碼流星計數器
   })

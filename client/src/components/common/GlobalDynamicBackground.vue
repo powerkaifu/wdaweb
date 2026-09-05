@@ -147,14 +147,15 @@ let mouseScreenX = -9999
 let mouseScreenY = -9999
 let isMouseActive = false
 let mouseInactiveTimer: ReturnType<typeof setTimeout> | null = null
-let nextAutonomousFlashCountdown = 16.0
+let nextAutonomousFlashCountdown = 4.8 // 🌟 進站 4.8 秒首發量子思維漣漪
 let lastManualPulseCount = 0
 
 let meteorCtx: CanvasRenderingContext2D | null = null
 let activeMeteors: CelestialMeteor[] = []
 let activeSparks: MeteorSpark[] = []
 let activeAfterglows: MeteorAfterglowSegment[] = []
-let nextMeteorCountdown = 5.0
+let nextMeteorCountdown = 2.2 // 🌟 進站 2.2 秒首發歡迎禮
+let hasSpawnedWelcomeMeteor = false
 let lastMeteorTriggerCount = 0
 
 const METEOR_PALETTES = [
@@ -852,12 +853,12 @@ function renderSynapticNetwork(ctx: CanvasRenderingContext2D, dt: number, w: num
     initSynapseNodes(w, h)
   }
 
-  // 1. 檢查自發性宇宙深空量子思想放電
+  // 1. 檢查自發性宇宙深空量子思想放電 (約 16~24 秒一次)
   if (store.synapticConfig.autonomousPulse) {
     nextAutonomousFlashCountdown -= dt
     if (nextAutonomousFlashCountdown <= 0) {
       triggerAutonomousFlash(w, h)
-      nextAutonomousFlashCountdown = 18.0 + Math.random() * 14.0
+      nextAutonomousFlashCountdown = 16.0 + Math.random() * 8.0
     }
   }
 
@@ -1044,17 +1045,23 @@ function updateAndRenderMeteors(dt: number) {
     spawnMeteor(false, true)
   }
 
-  // 2. 自動隨機排程 (久久一次)
+  // 2. 自動隨機排程 (進站首發歡迎禮 + 自然偶發)
   if (store.meteorConfig.enabled) {
     nextMeteorCountdown -= dt
     if (nextMeteorCountdown <= 0) {
-      spawnMeteor()
+      if (!hasSpawnedWelcomeMeteor) {
+        hasSpawnedWelcomeMeteor = true
+        spawnMeteor(false, true) // 🌟 進站 2.2 秒首發 100% 必定為幽靈代碼流星歡迎禮！
+      } else {
+        spawnMeteor()
+      }
+
       if (store.meteorConfig.mode === 'shower') {
         // 璀璨流星雨：2 ~ 4 秒一顆
         nextMeteorCountdown = 2.0 + Math.random() * 2.5
       } else {
-        // 靜謐偶發（真實仰望天球）：8 ~ 22 秒久久一次
-        nextMeteorCountdown = 8.0 + Math.random() * 14.0
+        // 靜謐自然偶發：6 ~ 14 秒一顆 (搭配 55% 代碼流星機率，平均約 18 秒必定遇見一顆代碼流星)
+        nextMeteorCountdown = 6.0 + Math.random() * 8.0
       }
     }
   }

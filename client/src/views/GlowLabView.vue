@@ -774,7 +774,7 @@
                     v-for="c in [
                       { label: '15%', val: 0.15 },
                       { label: '35%', val: 0.35 },
-                      { label: '60%', val: 0.60 },
+                      { label: '55%', val: 0.55 },
                       { label: '100%', val: 1.00 }
                     ]"
                     :key="c.val"
