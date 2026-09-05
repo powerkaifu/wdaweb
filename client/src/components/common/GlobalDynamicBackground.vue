@@ -10,11 +10,11 @@
 <script setup lang="ts">
 import { ref, watch, onMounted, onUnmounted } from 'vue'
 import * as THREE from 'three'
-import { useCmsStore } from '@/stores/useCmsStore'
+import { useThemeStore } from '@/stores/useThemeStore'
 
 const canvasRef = ref<HTMLCanvasElement | null>(null)
 const meteorCanvasRef = ref<HTMLCanvasElement | null>(null)
-const store = useCmsStore()
+const store = useThemeStore()
 
 // Three.js 核心實例
 let scene: THREE.Scene | null = null

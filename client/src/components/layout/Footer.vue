@@ -6,7 +6,7 @@
     <div class="absolute inset-0 pointer-events-none overflow-hidden">
       <div
         class="absolute inset-y-0 w-[280px] sm:w-[380px] lg:w-[460px] pointer-events-none"
-        :class="`footer-glow-${store.activeGlowPreset}`"
+        :class="`footer-glow-${themeStore.activeGlowPreset}`"
       >
         <!-- 1. 內部漫射背光穿透氣團 (滿版覆蓋 Footer 內部，z-0) -->
         <div class="absolute inset-0 bg-gradient-to-r from-transparent via-cyan-500/15 via-blue-500/10 to-transparent blur-2xl pointer-events-none"></div>
@@ -79,9 +79,11 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useCmsStore } from '@/stores/useCmsStore'
+import { useThemeStore } from '@/stores/useThemeStore'
 import defaultLogo from '@/assets/logo.png'
 
 const store = useCmsStore()
+const themeStore = useThemeStore()
 const currentYear = new Date().getFullYear()
 
 // 智慧拆分主標題（支援手機版雙行點狀保護與字級放大）

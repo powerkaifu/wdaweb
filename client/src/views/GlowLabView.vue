@@ -797,7 +797,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useCmsStore, type NavbarStyleType, type GlowMotionPreset } from '@/stores/useCmsStore'
+import { useThemeStore, type NavbarStyleType, type GlowMotionPreset } from '@/stores/useThemeStore'
 import { useSeoMeta } from '@/composables/useSeoMeta'
 
 useSeoMeta({
@@ -806,7 +806,7 @@ useSeoMeta({
   canonicalPath: '/kaifu-lab'
 })
 
-const store = useCmsStore()
+const store = useThemeStore()
 
 const navbarStyles: { id: NavbarStyleType; name: string; tagline: string; icon: string }[] = [
   { id: 'smart_morph', name: '方案 1: 雙態智能變形 × 能量雷射光軌 (旗艦基準)', tagline: '置頂 100% 滿版通透 ➔ 滾動絲滑收縮圓角膠囊 ＋ 頂部天幕消隱', icon: '💎' },
