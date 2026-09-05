@@ -88,8 +88,8 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, nextTick, watch } from 'vue'
-import { createScrollStagger } from '@/utils/motion'
+import { ref } from 'vue'
+import { useScrollStagger } from '@/composables/useScrollStagger'
 import { useCmsStore } from '@/stores/useCmsStore'
 import facility1Img from '@/assets/facilities/learning_ijciKln_09KM7k0_ddXbwFz.webp'
 import facility2Img from '@/assets/facilities/lunch_g71Ci6n_NsJ8XsZ_mJ12g5T.webp'
@@ -143,36 +143,12 @@ withDefaults(
 )
 
 const store = useCmsStore()
-let scrollTriggerCtx: ReturnType<typeof createScrollStagger> | null = null
 
-function initStaggerAnimation() {
-  if (scrollTriggerCtx) {
-    scrollTriggerCtx.revert()
-    scrollTriggerCtx = null
-  }
-  nextTick(() => {
-    // 兩大設施卡片統一由全域工廠函式調度 (100% 全站標準一致)
-    scrollTriggerCtx = createScrollStagger(
-      '#facilities-cards-grid .facility-card',
-      '#facilities',
-      { stagger: 0.1 }
-    )
-  })
-}
-
-onMounted(() => {
-  initStaggerAnimation()
-})
-
-// 當非同步取得後端設施資料後，重新精準綁定動畫
-watch(
-  () => store.facilities.length,
-  () => {
-    initStaggerAnimation()
-  }
+// 兩大設施卡片統一由通用 Composable 調度 (100% 全站標準一致)
+useScrollStagger(
+  '#facilities-cards-grid .facility-card',
+  '#facilities',
+  { stagger: 0.1 },
+  () => store.facilities.length
 )
-
-onUnmounted(() => {
-  if (scrollTriggerCtx) scrollTriggerCtx.revert()
-})
 </script>

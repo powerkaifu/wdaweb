@@ -165,24 +165,14 @@
 </template>
 
 <script setup lang="ts">
-import { createScrollStagger } from '@/utils/motion'
-import { nextTick, onMounted, onUnmounted } from 'vue'
+import { useScrollStagger } from '@/composables/useScrollStagger'
 
-let tracksCtx: ReturnType<typeof createScrollStagger> | null = null
-
-onMounted(() => {
-	nextTick(() => {
-		tracksCtx = createScrollStagger('#tracks-cards-grid .track-card', '#tracks-cards-grid', {
-			yOffset: 28,
-			duration: 0.85,
-			stagger: 0.08,
-			ease: 'power1.out',
-			start: 'top 85%',
-		})
-	})
-})
-
-onUnmounted(() => {
-	if (tracksCtx) tracksCtx.revert()
+// 4 大職涯軌道卡片統一由通用 Composable 調度
+useScrollStagger('#tracks-cards-grid .track-card', '#tracks-cards-grid', {
+	yOffset: 28,
+	duration: 0.85,
+	stagger: 0.08,
+	ease: 'power1.out',
+	start: 'top 85%',
 })
 </script>

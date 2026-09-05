@@ -227,32 +227,14 @@
 </template>
 
 <script setup lang="ts">
-import { createScrollStagger } from '@/utils/motion'
-import { nextTick, onMounted, onUnmounted } from 'vue'
+import { useScrollStagger } from '@/composables/useScrollStagger'
 
-let scrollTriggerCtx: ReturnType<typeof createScrollStagger> | null = null
-
-function initStaggerAnimation() {
-	if (scrollTriggerCtx) {
-		scrollTriggerCtx.revert()
-		scrollTriggerCtx = null
-	}
-	nextTick(() => {
-		scrollTriggerCtx = createScrollStagger('#learning-path-cards .learning-path-card', '#learning-path', {
-			yOffset: 28,
-			duration: 0.85,
-			stagger: 0.08,
-			ease: 'power1.out',
-			start: 'top 85%',
-		})
-	})
-}
-
-onMounted(() => {
-	initStaggerAnimation()
-})
-
-onUnmounted(() => {
-	if (scrollTriggerCtx) scrollTriggerCtx.revert()
+// 4 階段學習歷程卡片統一由通用 Composable 調度
+useScrollStagger('#learning-path-cards .learning-path-card', '#learning-path', {
+	yOffset: 28,
+	duration: 0.85,
+	stagger: 0.08,
+	ease: 'power1.out',
+	start: 'top 85%',
 })
 </script>

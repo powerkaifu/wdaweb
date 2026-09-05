@@ -292,28 +292,18 @@
 </template>
 
 <script setup lang="ts">
-import { createScrollStagger } from '@/utils/motion'
-import { nextTick, onMounted, onUnmounted } from 'vue'
+import { useScrollStagger } from '@/composables/useScrollStagger'
 
-let comparisonCtx: ReturnType<typeof createScrollStagger> | null = null
-
-onMounted(() => {
-	nextTick(() => {
-		comparisonCtx = createScrollStagger(
-			'#path-comparison-grid .path-card',
-			'#path-comparison',
-			{
-				yOffset: 28,
-				duration: 0.85,
-				stagger: 0.08,
-				ease: 'power1.out',
-				start: 'top 85%',
-			},
-		)
-	})
-})
-
-onUnmounted(() => {
-	if (comparisonCtx) comparisonCtx.revert()
-})
+// 3 大學習路徑對比卡片統一由通用 Composable 調度
+useScrollStagger(
+	'#path-comparison-grid .path-card',
+	'#path-comparison',
+	{
+		yOffset: 28,
+		duration: 0.85,
+		stagger: 0.08,
+		ease: 'power1.out',
+		start: 'top 85%',
+	}
+)
 </script>

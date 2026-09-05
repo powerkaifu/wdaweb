@@ -84,8 +84,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, nextTick, watch } from 'vue'
-import { createScrollStagger, gsap } from '@/utils/motion'
+import { ref, onMounted, nextTick, watch } from 'vue'
+import { gsap } from '@/utils/motion'
+import { useScrollStagger } from '@/composables/useScrollStagger'
 import { useCmsStore } from '@/stores/useCmsStore'
 
 const props = withDefaults(
@@ -99,48 +100,31 @@ const props = withDefaults(
 
 const store = useCmsStore()
 const activeId = ref<number | null>(null)
-let scrollTriggerCtx: ReturnType<typeof createScrollStagger> | null = null
 
 function toggleFaq(id: number) {
   activeId.value = activeId.value === id ? null : id
 }
 
-function initStaggerAnimation() {
-  if (scrollTriggerCtx) {
-    scrollTriggerCtx.revert()
-    scrollTriggerCtx = null
-  }
-  nextTick(() => {
-    if (props.hideHeader) {
+if (!props.hideHeader) {
+  // 首頁滾動觸發：統一由通用 Composable 調度
+  useScrollStagger(
+    '#faq .rounded-2xl',
+    '#faq',
+    { stagger: 0.06 },
+    () => store.faqs.length
+  )
+} else {
+  // 獨立 FAQ 頁面：頂部直接平滑進場
+  const playDirectEnter = () => {
+    nextTick(() => {
       gsap.fromTo(
         '#faq .rounded-2xl',
         { y: 20, opacity: 0 },
         { y: 0, opacity: 1, duration: 0.7, stagger: 0.05, ease: 'power1.out', clearProps: 'transform,opacity' }
       )
-    } else {
-      // FAQ 手風琴條目統一由全域工廠函式調度 (100% 全站標準一致)
-      scrollTriggerCtx = createScrollStagger(
-        '#faq .rounded-2xl',
-        '#faq',
-        { stagger: 0.06 }
-      )
-    }
-  })
-}
-
-onMounted(() => {
-  initStaggerAnimation()
-})
-
-// 當非同步取得後端 FAQ 資料後，重新精準綁定動畫
-watch(
-  () => store.faqs.length,
-  () => {
-    initStaggerAnimation()
+    })
   }
-)
-
-onUnmounted(() => {
-  if (scrollTriggerCtx) scrollTriggerCtx.revert()
-})
+  onMounted(playDirectEnter)
+  watch(() => store.faqs.length, playDirectEnter)
+}
 </script>

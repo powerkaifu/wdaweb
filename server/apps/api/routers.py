@@ -1,6 +1,8 @@
 from typing import List, Optional
 from ninja import NinjaAPI
+from ninja.security import django_auth
 from django.shortcuts import get_object_or_404
+from django.core.cache import cache
 from django.db.models import F
 from apps.cms.models import (
     Carousel, AdmissionBatch, CurriculumModule, TechCard,
@@ -80,23 +82,8 @@ def get_carousels(request):
         for c in qs
     ]
 
-_last_auto_sync_ts = 0
-
 @api.get("/public/batches", response=List[AdmissionBatchOut], tags=["Public 前台公開"])
 def get_batches(request):
-    global _last_auto_sync_ts
-    import time
-    now_ts = time.time()
-    # 每 30 分鐘自動嘗試一次背景非同步同步（守護執行緒，絕不阻塞前台回應速度）
-    if now_ts - _last_auto_sync_ts > 1800 or not AdmissionBatch.objects.filter(deleted_at__isnull=True).exists():
-        _last_auto_sync_ts = now_ts
-        import threading
-        try:
-            from apps.cms.services.batch_sync import sync_admission_batches
-            threading.Thread(target=sync_admission_batches, daemon=True).start()
-        except Exception:
-            pass
-
     qs = AdmissionBatch.objects.filter(deleted_at__isnull=True).exclude(status_override='hidden').order_by('sort_order', 'enroll_start_date')
     return [
         {
@@ -127,13 +114,20 @@ def track_batch_click(request, batch_id: int):
     AdmissionBatch.objects.filter(id=batch_id).update(click_count=F('click_count') + 1)
     return {"success": True, "message": "點擊已記錄"}
 
-@api.post("/admin/batches/sync", response=ApiResponse, tags=["Admin 管理操作"])
+@api.post("/admin/batches/sync", response=ApiResponse, tags=["Admin 管理操作"], auth=django_auth)
 def trigger_batches_sync(request):
-    from apps.cms.services.batch_sync import sync_admission_batches
-    res = sync_admission_batches()
-    if res["success"]:
-        return {"success": True, "message": f"同步成功！新增 {res['created']} 筆，更新 {res['updated']} 筆。"}
-    return {"success": False, "message": f"同步失敗: {', '.join(res['errors'])}"}
+    """手動觸發台灣就業通期別同步（需登入後台管理員權限，配置 60s 防抖鎖防範 DoS 競爭）"""
+    lock_key = "lock:batch_sync_trigger"
+    if not cache.add(lock_key, True, timeout=60):
+        return {"success": False, "message": "背景同步作業已在進行中或冷卻中，請稍候再試。"}
+    try:
+        from apps.cms.services.batch_sync import sync_admission_batches
+        res = sync_admission_batches()
+        if res["success"]:
+            return {"success": True, "message": f"同步成功！新增 {res['created']} 筆，更新 {res['updated']} 筆。"}
+        return {"success": False, "message": f"同步失敗: {', '.join(res['errors'])}"}
+    finally:
+        cache.delete(lock_key)
 
 @api.get("/public/curriculum/modules", response=List[CurriculumModuleOut], tags=["Public 前台公開"])
 def get_curriculum_modules(request):

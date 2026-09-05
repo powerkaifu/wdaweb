@@ -91,8 +91,7 @@
 
 <script setup lang="ts">
 import { useCmsStore } from '@/stores/useCmsStore'
-import { createScrollStagger } from '@/utils/motion'
-import { nextTick, onMounted, onUnmounted, watch } from 'vue'
+import { useScrollStagger } from '@/composables/useScrollStagger'
 
 withDefaults(
 	defineProps<{
@@ -104,40 +103,20 @@ withDefaults(
 )
 
 const store = useCmsStore()
-let scrollTriggerCtx: ReturnType<typeof createScrollStagger> | null = null
 
-function initStaggerAnimation() {
-	if (scrollTriggerCtx) {
-		scrollTriggerCtx.revert()
-		scrollTriggerCtx = null
-	}
-	nextTick(() => {
-		// 8 大技術棧卡片一氣呵成交錯波浪微升
-		scrollTriggerCtx = createScrollStagger('#tech-cards-grid .tech-card', '#tech-stack', {
-			yOffset: 28,
-			duration: 0.85,
-			stagger: 0.06,
-			ease: 'power1.out',
-			start: 'top 85%',
-		})
-	})
-}
-
-onMounted(() => {
-	initStaggerAnimation()
-})
-
-// 當非同步取得後端技術卡片資料後，重新精準綁定動畫
-watch(
-	() => store.techCards.length,
-	() => {
-		initStaggerAnimation()
+// 8 大技術棧卡片一氣呵成交錯波浪微升 (透過通用 Composable 統一調度生命週期與快取更新)
+useScrollStagger(
+	'#tech-cards-grid .tech-card',
+	'#tech-stack',
+	{
+		yOffset: 28,
+		duration: 0.85,
+		stagger: 0.06,
+		ease: 'power1.out',
+		start: 'top 85%',
 	},
+	() => store.techCards.length,
 )
-
-onUnmounted(() => {
-	if (scrollTriggerCtx) scrollTriggerCtx.revert()
-})
 
 function getTechIcon(name: string): string {
 	if (name.includes('HTML') || name.includes('CSS')) return '🌐'

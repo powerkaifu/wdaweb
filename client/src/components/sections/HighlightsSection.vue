@@ -278,25 +278,14 @@
 </template>
 
 <script setup lang="ts">
-import { createScrollStagger } from '@/utils/motion'
-import { nextTick, onMounted, onUnmounted } from 'vue'
+import { useScrollStagger } from '@/composables/useScrollStagger'
 
-let scrollTriggerCtx: ReturnType<typeof createScrollStagger> | null = null
-
-onMounted(() => {
-	nextTick(() => {
-		// 4 張核心優勢卡片統一由全域工廠函式調度 (嚴格與全站 power1.out 絲滑手感 100% 對齊)
-		scrollTriggerCtx = createScrollStagger('#highlights-cards-grid .highlight-card', '#highlights-cards-grid', {
-			yOffset: 28,
-			duration: 0.85,
-			stagger: 0.08,
-			ease: 'power1.out',
-			start: 'top 85%',
-		})
-	})
-})
-
-onUnmounted(() => {
-	if (scrollTriggerCtx) scrollTriggerCtx.revert()
+// 4 張核心優勢卡片統一由通用 Composable 調度 (全站 power1.out 絲滑手感 100% 對齊)
+useScrollStagger('#highlights-cards-grid .highlight-card', '#highlights-cards-grid', {
+	yOffset: 28,
+	duration: 0.85,
+	stagger: 0.08,
+	ease: 'power1.out',
+	start: 'top 85%',
 })
 </script>

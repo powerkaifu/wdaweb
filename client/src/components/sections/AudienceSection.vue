@@ -167,28 +167,18 @@
 </template>
 
 <script setup lang="ts">
-import { createScrollStagger } from '@/utils/motion'
-import { nextTick, onMounted, onUnmounted } from 'vue'
+import { useScrollStagger } from '@/composables/useScrollStagger'
 
-let resonanceCtx: ReturnType<typeof createScrollStagger> | null = null
-
-onMounted(() => {
-	nextTick(() => {
-		resonanceCtx = createScrollStagger(
-			'#resonance-cards-grid .resonance-card',
-			'#resonance-cards-grid',
-			{
-				yOffset: 28,
-				duration: 0.85,
-				stagger: 0.08,
-				ease: 'power1.out',
-				start: 'top 85%',
-			},
-		)
-	})
-})
-
-onUnmounted(() => {
-	if (resonanceCtx) resonanceCtx.revert()
-})
+// 3 大內在共鳴卡片統一由通用 Composable 調度
+useScrollStagger(
+	'#resonance-cards-grid .resonance-card',
+	'#resonance-cards-grid',
+	{
+		yOffset: 28,
+		duration: 0.85,
+		stagger: 0.08,
+		ease: 'power1.out',
+		start: 'top 85%',
+	}
+)
 </script>

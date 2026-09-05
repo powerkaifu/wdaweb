@@ -91,8 +91,8 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, nextTick } from 'vue'
-import { createScrollStagger } from '@/utils/motion'
+import { ref } from 'vue'
+import { useScrollStagger } from '@/composables/useScrollStagger'
 import { useCmsStore } from '@/stores/useCmsStore'
 
 withDefaults(
@@ -106,21 +106,12 @@ withDefaults(
 
 const store = useCmsStore()
 const isLoaded = ref(false)
-let scrollTriggerCtx: ReturnType<typeof createScrollStagger> | null = null
 
-onMounted(() => {
-  nextTick(() => {
-    // Discord 社群卡片與 Widget 統一由全域工廠函式調度 (100% 全站標準一致)
-    scrollTriggerCtx = createScrollStagger(
-      '#community .grid > div',
-      '#community',
-      { stagger: 0.08 }
-    )
-  })
-})
-
-onUnmounted(() => {
-  if (scrollTriggerCtx) scrollTriggerCtx.revert()
-})
+// Discord 社群卡片與 Widget 統一由通用 Composable 調度 (100% 全站標準一致)
+useScrollStagger(
+  '#community .grid > div',
+  '#community',
+  { stagger: 0.08 }
+)
 </script>
 

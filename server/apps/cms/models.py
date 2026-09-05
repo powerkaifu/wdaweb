@@ -2,19 +2,53 @@ from django.db import models
 from django.utils import timezone
 from .utils import optimize_image
 
+class SoftDeleteQuerySet(models.QuerySet):
+    def delete(self):
+        return super().update(deleted_at=timezone.now())
+
+    def hard_delete(self):
+        return super().delete()
+
+    def alive(self):
+        return self.filter(deleted_at__isnull=True)
+
+    def dead(self):
+        return self.filter(deleted_at__isnull=False)
+
+class SoftDeleteManager(models.Manager):
+    def get_queryset(self):
+        return SoftDeleteQuerySet(self.model, using=self._db).filter(deleted_at__isnull=True)
+
+    def with_deleted(self):
+        return SoftDeleteQuerySet(self.model, using=self._db)
+
+    def only_deleted(self):
+        return SoftDeleteQuerySet(self.model, using=self._db).filter(deleted_at__isnull=False)
+
 class SoftDeleteModel(models.Model):
-    deleted_at = models.DateTimeField(null=True, blank=True, verbose_name="軟刪除時間")
+    deleted_at = models.DateTimeField(null=True, blank=True, db_index=True, verbose_name="軟刪除時間")
+
+    objects = SoftDeleteManager()
+    all_objects = models.Manager()
 
     class Meta:
         abstract = True
 
-    def soft_delete(self):
+    def delete(self, using=None, keep_parents=False):
+        """預設覆寫 delete 為軟刪除，防止意外物理抹除資料"""
         self.deleted_at = timezone.now()
-        self.save()
+        self.save(update_fields=['deleted_at'])
+
+    def hard_delete(self, using=None, keep_parents=False):
+        """徹底物理刪除"""
+        super().delete(using=using, keep_parents=keep_parents)
+
+    def soft_delete(self):
+        self.delete()
 
     def restore(self):
         self.deleted_at = None
-        self.save()
+        self.save(update_fields=['deleted_at'])
 
 class Carousel(SoftDeleteModel):
     title = models.CharField(max_length=200, verbose_name="輪播主標題")

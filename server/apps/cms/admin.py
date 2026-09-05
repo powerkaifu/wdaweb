@@ -31,8 +31,36 @@ class SafeUploadAdminMixin:
                 return redirect(request.path)
             return redirect('../')
 
+class SoftDeleteAdminMixin:
+    """
+    軟刪除管理 Mixin：
+    1. 統一提供垃圾桶狀態標記 (deleted_status)
+    2. 統一提供批次移至垃圾桶與還原 Action (soft_delete_selected / restore_selected)
+    3. 覆寫 get_queryset 載入 all_objects，使管理員可檢視並還原被軟刪除的資料
+    """
+    actions = ['soft_delete_selected', 'restore_selected']
+
+    def get_queryset(self, request):
+        if hasattr(self.model, 'all_objects'):
+            return self.model.all_objects.all()
+        return super().get_queryset(request)
+
+    def deleted_status(self, obj):
+        return '🗑️ 垃圾桶中' if getattr(obj, 'deleted_at', None) else '✅ 正常'
+    deleted_status.short_description = '資料狀態'
+
+    def soft_delete_selected(self, request, queryset):
+        count = queryset.update(deleted_at=timezone.now())
+        self.message_user(request, f"成功將 {count} 筆資料移至垃圾桶。")
+    soft_delete_selected.short_description = '🗑️ 移至垃圾桶 (軟刪除)'
+
+    def restore_selected(self, request, queryset):
+        count = queryset.update(deleted_at=None)
+        self.message_user(request, f"成功從垃圾桶還原 {count} 筆資料。")
+    restore_selected.short_description = '♻️ 從垃圾桶還原'
+
 @admin.register(Carousel)
-class CarouselAdmin(SafeUploadAdminMixin, ModelAdmin):
+class CarouselAdmin(SafeUploadAdminMixin, SoftDeleteAdminMixin, ModelAdmin):
     list_display = ['image_preview', 'title', 'cta_text', 'cta_link', 'sort_order', 'is_active', 'deleted_status']
     list_filter = ['is_active']
     search_fields = ['title', 'subtitle']
@@ -48,21 +76,9 @@ class CarouselAdmin(SafeUploadAdminMixin, ModelAdmin):
         return '無圖片'
     image_preview.short_description = '縮圖'
 
-    def deleted_status(self, obj):
-        return '🗑️ 垃圾桶中' if obj.deleted_at else '✅ 正常'
-    deleted_status.short_description = '狀態'
-
-    def soft_delete_selected(self, request, queryset):
-        queryset.update(deleted_at=timezone.now())
-    soft_delete_selected.short_description = '🗑️ 移至垃圾桶 (軟刪除)'
-
-    def restore_selected(self, request, queryset):
-        queryset.update(deleted_at=None)
-    restore_selected.short_description = '♻️ 從垃圾桶還原'
-
 
 @admin.register(AdmissionBatch)
-class AdmissionBatchAdmin(ModelAdmin):
+class AdmissionBatchAdmin(SoftDeleteAdminMixin, ModelAdmin):
     list_display = ['batch_name', 'course_code', 'applicants_ratio', 'enroll_period', 'screening_date', 'training_period', 'status_override', 'status_badge', 'last_synced_at', 'click_count', 'sort_order', 'deleted_status']
     list_filter = ['status_override']
     search_fields = ['batch_name', 'course_code']
@@ -161,27 +177,23 @@ class AdmissionBatchAdmin(ModelAdmin):
         )
     status_badge.short_description = '對外狀態'
 
-    def deleted_status(self, obj):
-        return '🗑️ 垃圾桶中' if obj.deleted_at else '✅ 正常'
-    deleted_status.short_description = '資料狀態'
+    # 軟刪除與資料狀態已由 SoftDeleteAdminMixin 統一收斂治理
 
-    def soft_delete_selected(self, request, queryset):
-        queryset.update(deleted_at=timezone.now())
-    soft_delete_selected.short_description = '🗑️ 移至垃圾桶'
-
-    def restore_selected(self, request, queryset):
-        queryset.update(deleted_at=None)
-    restore_selected.short_description = '♻️ 還原'
+@admin.register(CurriculumModule)
+class CurriculumModuleAdmin(SoftDeleteAdminMixin, ModelAdmin):
+    list_display = ['module_number', 'module_name', 'hours', 'category_tab', 'sort_order', 'deleted_status']
+    list_filter = ['category_tab']
+    search_fields = ['module_number', 'module_name', 'description']
+    list_editable = ['sort_order', 'hours']
 
 
 
 @admin.register(TechCard)
-class TechCardAdmin(SafeUploadAdminMixin, ModelAdmin):
+class TechCardAdmin(SafeUploadAdminMixin, SoftDeleteAdminMixin, ModelAdmin):
     list_display = ['icon_preview', 'tech_name', 'category_tab', 'description', 'sort_order', 'is_active', 'deleted_status']
     list_filter = ['category_tab', 'is_active']
     search_fields = ['tech_name', 'description']
     list_editable = ['sort_order', 'is_active']
-    actions = ['soft_delete_selected', 'restore_selected']
 
     def icon_preview(self, obj):
         try:
@@ -192,26 +204,13 @@ class TechCardAdmin(SafeUploadAdminMixin, ModelAdmin):
         return '無圖標'
     icon_preview.short_description = 'Icon'
 
-    def deleted_status(self, obj):
-        return '🗑️ 垃圾桶中' if obj.deleted_at else '✅ 正常'
-    deleted_status.short_description = '狀態'
-
-    def soft_delete_selected(self, request, queryset):
-        queryset.update(deleted_at=timezone.now())
-    soft_delete_selected.short_description = '🗑️ 移至垃圾桶'
-
-    def restore_selected(self, request, queryset):
-        queryset.update(deleted_at=None)
-    restore_selected.short_description = '♻️ 還原'
-
 
 @admin.register(Facility)
-class FacilityAdmin(SafeUploadAdminMixin, ModelAdmin):
+class FacilityAdmin(SafeUploadAdminMixin, SoftDeleteAdminMixin, ModelAdmin):
     list_display = ['image_preview', 'facility_name', 'subtitle', 'sort_order', 'is_active', 'deleted_status']
     list_filter = ['is_active']
     search_fields = ['facility_name', 'subtitle', 'description']
     list_editable = ['sort_order', 'is_active']
-    actions = ['soft_delete_selected', 'restore_selected']
 
     def image_preview(self, obj):
         try:
@@ -222,26 +221,13 @@ class FacilityAdmin(SafeUploadAdminMixin, ModelAdmin):
         return '無照片'
     image_preview.short_description = '實景照片'
 
-    def deleted_status(self, obj):
-        return '🗑️ 垃圾桶中' if obj.deleted_at else '✅ 正常'
-    deleted_status.short_description = '狀態'
-
-    def soft_delete_selected(self, request, queryset):
-        queryset.update(deleted_at=timezone.now())
-    soft_delete_selected.short_description = '🗑️ 移至垃圾桶'
-
-    def restore_selected(self, request, queryset):
-        queryset.update(deleted_at=None)
-    restore_selected.short_description = '♻️ 還原'
-
 
 @admin.register(StudentProject)
-class StudentProjectAdmin(SafeUploadAdminMixin, ModelAdmin):
+class StudentProjectAdmin(SafeUploadAdminMixin, SoftDeleteAdminMixin, ModelAdmin):
     list_display = ['cover_preview', 'student_name', 'project_name', 'batch_tag', 'view_count', 'is_featured', 'sort_order', 'is_active', 'deleted_status']
     list_filter = ['batch_tag', 'is_featured', 'is_active']
     search_fields = ['student_name', 'project_name']
     list_editable = ['is_featured', 'sort_order', 'is_active']
-    actions = ['soft_delete_selected', 'restore_selected']
 
     def cover_preview(self, obj):
         try:
@@ -252,38 +238,13 @@ class StudentProjectAdmin(SafeUploadAdminMixin, ModelAdmin):
         return '無縮圖'
     cover_preview.short_description = '作品縮圖'
 
-    def deleted_status(self, obj):
-        return '🗑️ 垃圾桶中' if obj.deleted_at else '✅ 正常'
-    deleted_status.short_description = '狀態'
-
-    def soft_delete_selected(self, request, queryset):
-        queryset.update(deleted_at=timezone.now())
-    soft_delete_selected.short_description = '🗑️ 移至垃圾桶'
-
-    def restore_selected(self, request, queryset):
-        queryset.update(deleted_at=None)
-    restore_selected.short_description = '♻️ 還原'
-
 
 @admin.register(FAQ)
-class FAQAdmin(ModelAdmin):
+class FAQAdmin(SoftDeleteAdminMixin, ModelAdmin):
     list_display = ['category', 'question', 'sort_order', 'is_active', 'deleted_status']
     list_filter = ['category', 'is_active']
     search_fields = ['category', 'question', 'answer']
     list_editable = ['sort_order', 'is_active']
-    actions = ['soft_delete_selected', 'restore_selected']
-
-    def deleted_status(self, obj):
-        return '🗑️ 垃圾桶中' if obj.deleted_at else '✅ 正常'
-    deleted_status.short_description = '狀態'
-
-    def soft_delete_selected(self, request, queryset):
-        queryset.update(deleted_at=timezone.now())
-    soft_delete_selected.short_description = '🗑️ 移至垃圾桶'
-
-    def restore_selected(self, request, queryset):
-        queryset.update(deleted_at=None)
-    restore_selected.short_description = '♻️ 還原'
 
 
 @admin.register(SiteSetting)

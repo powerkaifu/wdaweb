@@ -233,7 +233,7 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted, nextTick, watch } from 'vue'
-import { createScrollStagger } from '@/utils/motion'
+import { createScrollStagger, gsap } from '@/utils/motion'
 import { useCmsStore } from '@/stores/useCmsStore'
 
 const PAGE_SIZE = 8 // 每頁固定 8 個學員專案

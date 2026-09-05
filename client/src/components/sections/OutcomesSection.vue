@@ -167,24 +167,14 @@
 </template>
 
 <script setup lang="ts">
-import { createScrollStagger } from '@/utils/motion'
-import { nextTick, onMounted, onUnmounted } from 'vue'
+import { useScrollStagger } from '@/composables/useScrollStagger'
 
-let scrollTriggerCtx: ReturnType<typeof createScrollStagger> | null = null
-
-onMounted(() => {
-	nextTick(() => {
-		scrollTriggerCtx = createScrollStagger('#outcomes-cards-grid .outcome-card', '#outcomes-cards-grid', {
-			yOffset: 28,
-			duration: 0.85,
-			stagger: 0.08,
-			ease: 'power1.out',
-			start: 'top 85%',
-		})
-	})
-})
-
-onUnmounted(() => {
-	if (scrollTriggerCtx) scrollTriggerCtx.revert()
+// 6 大核心收穫卡片統一由通用 Composable 調度
+useScrollStagger('#outcomes-cards-grid .outcome-card', '#outcomes-cards-grid', {
+	yOffset: 28,
+	duration: 0.85,
+	stagger: 0.08,
+	ease: 'power1.out',
+	start: 'top 85%',
 })
 </script>
