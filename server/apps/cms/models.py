@@ -159,7 +159,8 @@ class TechCard(SoftDeleteModel):
         return self.tech_name
 
 class Facility(SoftDeleteModel):
-    facility_name = models.CharField(max_length=100, verbose_name="設施名稱")
+    facility_name = models.CharField(max_length=100, verbose_name="設施主標題")
+    subtitle = models.CharField(max_length=100, blank=True, default="", verbose_name="設施副標題")
     description = models.TextField(verbose_name="設施亮點說明")
     image = models.ImageField(upload_to="facilities/", blank=True, null=True, verbose_name="教室實景照片")
     image_alt = models.CharField(max_length=200, verbose_name="照片替代文字")

@@ -54,6 +54,7 @@ class TechCardOut(Schema):
 class FacilityOut(Schema):
     id: int
     facility_name: str
+    subtitle: Optional[str] = ""
     description: str
     image_url: str
     image_alt: str

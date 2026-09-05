@@ -149,7 +149,8 @@ const defaultTechCards: TechCard[] = [
 const defaultFacilities: Facility[] = [
   {
     id: 1,
-    facility_name: '寬敞明亮專屬實作空間、雙螢幕教學設備',
+    facility_name: '寬敞明亮專屬實作空間',
+    subtitle: '雙螢幕教學設備',
     description: '專屬獨立座位與高速光纖網路，提供 920 小時專注沉浸式程式開發環境。一人配置雙螢幕電腦，邊看講師即時示範邊同步動手編程，學習不漏拍！',
     image_url: '',
     image_alt: '寬敞明亮專屬實作空間、雙螢幕教學設備',
@@ -157,7 +158,8 @@ const defaultFacilities: Facility[] = [
   },
   {
     id: 2,
-    facility_name: '整潔舒適專屬用餐空間、完善生活休憩設施',
+    facility_name: '整潔舒適專屬用餐空間',
+    subtitle: '完善生活休憩設施',
     description: '寬敞木質長桌搭配舒適空調，提供課間放鬆交流的休憩環境。現場備有冷藏冰箱與專業閱覽多功能收納書櫃，方便餐點補給與翻書充電，休息、充電一次到位！',
     image_url: '',
     image_alt: '整潔舒適專屬用餐空間、完善生活休憩設施',

@@ -174,6 +174,7 @@ def get_facilities(request):
         {
             "id": f.id,
             "facility_name": f.facility_name,
+            "subtitle": f.subtitle or "",
             "description": f.description,
             "image_url": get_media_url(request, f.image),
             "image_alt": f.image_alt,

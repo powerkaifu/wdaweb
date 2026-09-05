@@ -66,8 +66,16 @@
               <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
               <span class="text-sm font-mono text-cyan-400 font-bold uppercase tracking-wider">Professional Facility</span>
             </div>
-            <h3 class="text-xl sm:text-2xl font-extrabold text-white mb-2 text-balance">
-              {{ fac.facility_name }}
+            <h3 class="mb-3">
+              <span class="block text-xl sm:text-2xl font-black text-white tracking-tight leading-snug text-balance">
+                {{ getFacilityTitles(fac).title }}
+              </span>
+              <span
+                v-if="getFacilityTitles(fac).subtitle"
+                class="block text-base sm:text-lg font-bold text-cyan-400 tracking-wide mt-1 leading-snug text-balance"
+              >
+                {{ getFacilityTitles(fac).subtitle }}
+              </span>
             </h3>
             <p class="text-slate-200 leading-relaxed text-base sm:text-lg text-pretty">
               {{ fac.description }}
@@ -101,6 +109,27 @@ function getFacilityImage(fac: { id?: number; image_url?: string }, index: numbe
 function handleFacilityImgError(facId?: number) {
   if (facId !== undefined) {
     brokenFacilityIds.value.add(facId)
+  }
+}
+
+// 智慧解析主標與副標：優先使用 subtitle，若無則依頓號自動拆分（雙重防禦相容）
+function getFacilityTitles(fac: { facility_name: string; subtitle?: string }) {
+  if (fac.subtitle) {
+    return {
+      title: fac.facility_name,
+      subtitle: fac.subtitle
+    }
+  }
+  const parts = fac.facility_name.split('、')
+  if (parts.length > 1) {
+    return {
+      title: parts[0],
+      subtitle: parts.slice(1).join('、')
+    }
+  }
+  return {
+    title: fac.facility_name,
+    subtitle: ''
   }
 }
 

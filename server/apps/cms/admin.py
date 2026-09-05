@@ -207,9 +207,9 @@ class TechCardAdmin(SafeUploadAdminMixin, ModelAdmin):
 
 @admin.register(Facility)
 class FacilityAdmin(SafeUploadAdminMixin, ModelAdmin):
-    list_display = ['image_preview', 'facility_name', 'description', 'sort_order', 'is_active', 'deleted_status']
+    list_display = ['image_preview', 'facility_name', 'subtitle', 'sort_order', 'is_active', 'deleted_status']
     list_filter = ['is_active']
-    search_fields = ['facility_name', 'description']
+    search_fields = ['facility_name', 'subtitle', 'description']
     list_editable = ['sort_order', 'is_active']
     actions = ['soft_delete_selected', 'restore_selected']
 

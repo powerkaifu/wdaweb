@@ -74,6 +74,7 @@ export interface TechCard {
 export interface Facility {
   id: number
   facility_name: string
+  subtitle?: string
   description: string
   image_url: string
   image_alt: string
