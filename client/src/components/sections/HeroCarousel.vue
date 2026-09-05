@@ -5,50 +5,8 @@
     <div class="absolute -top-40 -left-40 w-96 h-96 bg-cyan-500/15 rounded-full blur-3xl pointer-events-none"></div>
     <div class="absolute top-1/2 -right-40 w-96 h-96 bg-blue-600/15 rounded-full blur-3xl pointer-events-none"></div>
 
-    <!-- 1. Top Section: Announcement Bar (使用 translate-y 向下微移，100% 絕不推擠下方內容) -->
-    <div
-      v-if="showAnnouncementBar"
-      class="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 w-full flex-shrink-0 translate-y-3 sm:translate-y-5 lg:translate-y-6"
-    >
-      <a
-        v-if="isExternalUrl(store.settings?.announcement_link)"
-        :href="store.settings.announcement_link"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="group flex items-center justify-between p-2.5 sm:p-3.5 rounded-2xl bg-gradient-to-r from-cyan-950/80 via-blue-950/80 to-slate-900/80 border border-cyan-500/30 hover:border-cyan-500/60 shadow-lg shadow-cyan-950/30 backdrop-blur-md transition-all"
-      >
-        <div class="flex items-center space-x-3 overflow-hidden">
-          <span class="flex-shrink-0 px-2.5 py-1 text-xs sm:text-sm font-bold uppercase rounded-full bg-cyan-500/20 text-cyan-400 border border-cyan-500/40">
-            最新快訊
-          </span>
-          <span class="text-sm md:text-base font-medium text-slate-200 truncate group-hover:text-cyan-300 transition-colors">
-            {{ dynamicAnnouncementText }}
-          </span>
-        </div>
-        <span class="hidden sm:inline-flex items-center text-xs font-semibold text-cyan-400 group-hover:translate-x-1 transition-transform">
-          查看詳情 →
-        </span>
-      </a>
-      <router-link
-        v-else
-        :to="resolveLink(store.settings?.announcement_link || '/admission')"
-        class="group flex items-center justify-between p-2.5 sm:p-3.5 rounded-2xl bg-gradient-to-r from-cyan-950/80 via-blue-950/80 to-slate-900/80 border border-cyan-500/30 hover:border-cyan-500/60 shadow-lg shadow-cyan-950/30 backdrop-blur-md transition-all"
-      >
-        <div class="flex items-center space-x-3 overflow-hidden">
-          <span class="flex-shrink-0 px-2.5 py-1 text-xs sm:text-sm font-bold uppercase rounded-full bg-cyan-500/20 text-cyan-400 border border-cyan-500/40">
-            最新快訊
-          </span>
-          <span class="text-sm md:text-base font-medium text-slate-200 truncate group-hover:text-cyan-300 transition-colors">
-            {{ dynamicAnnouncementText }}
-          </span>
-        </div>
-        <span class="hidden sm:inline-flex items-center text-xs font-semibold text-cyan-400 group-hover:translate-x-1 transition-transform">
-          查看詳情 →
-        </span>
-      </router-link>
-    </div>
-    <!-- 佔位符確保無快訊時保持上下空間平衡 -->
-    <div v-else class="h-1 flex-shrink-0"></div>
+    <!-- 1. Top Section: Announcement Bar (抽離獨立子組件) -->
+    <AnnouncementBar />
 
     <!-- 2. Middle Section: Hero Content Carousel (內容向上微調上提，視覺重心更佳) -->
     <div class="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 w-full relative z-10 flex-1 flex items-center my-auto -translate-y-2 sm:-translate-y-4 lg:-translate-y-6">
@@ -133,27 +91,8 @@
             </router-link>
           </div>
 
-          <!-- 4. 信任底座：水平分割線與 4 大核心指標 (大器呼吸空間與無障礙對比) -->
-          <div class="w-full border-t border-slate-800/80 pt-5 sm:pt-6 mt-7 sm:mt-8 lg:mt-8 xl:mt-9 max-w-3xl">
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-4 xl:gap-6">
-              <div class="text-center lg:text-left">
-                <div class="text-2xl sm:text-3xl font-black text-cyan-400 font-mono tracking-tight">{{ display100 }}%</div>
-                <div class="text-sm font-semibold text-slate-200 mt-1">待業者全額免費補助</div>
-              </div>
-              <div class="text-center lg:text-left">
-                <div class="text-2xl sm:text-3xl font-black text-blue-400 font-mono tracking-tight">{{ display920 }}h</div>
-                <div class="text-sm font-semibold text-slate-200 mt-1"><span class="inline-block">920 小時</span>實體培訓</div>
-              </div>
-              <div class="text-center lg:text-left">
-                <div class="text-xl sm:text-2xl font-bold text-emerald-400 font-sans tracking-tight leading-8 sm:leading-9">專題實作</div>
-                <div class="text-sm font-semibold text-slate-200 mt-1">累積個人專題作品</div>
-              </div>
-              <div class="text-center lg:text-left">
-                <div class="text-xl sm:text-2xl font-bold text-purple-400 font-sans tracking-tight leading-8 sm:leading-9">生活津貼</div>
-                <div class="text-sm font-semibold text-slate-200 mt-1">可申請受訓生活津貼</div>
-              </div>
-            </div>
-          </div>
+          <!-- 4. 信任底座：4 大核心指標 (抽離獨立子組件) -->
+          <HeroMetrics />
         </div>
 
         <!-- Right Hero Visual / AI Code Generator Interactive Window (擴大為 6 欄，展現旗艦科技感) -->
@@ -197,47 +136,18 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, onUnmounted, nextTick, type Ref } from 'vue'
+import { ref, computed, onMounted, onUnmounted, nextTick } from 'vue'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useCmsStore } from '@/stores/useCmsStore'
 import AiCodeWindow from '@/components/common/AiCodeWindow.vue'
+import AnnouncementBar from '@/components/common/AnnouncementBar.vue'
+import HeroMetrics from '@/components/common/HeroMetrics.vue'
+
+gsap.registerPlugin(ScrollTrigger)
 
 const store = useCmsStore()
 
-// 智慧快訊動態期別與顯隱邏輯：自動判斷當前開放第幾期 (每年 2 期)，無須硬編碼年度
-const activeBatches = computed(() => {
-  if (!store.batches || store.batches.length === 0) return []
-  return store.batches.filter(b => {
-    const status = b.status_override && b.status_override !== 'auto' ? b.status_override : b.dynamic_status
-    return status === 'open' || status === 'closing_soon'
-  })
-})
-
-const hasActiveAdmission = computed(() => {
-  return activeBatches.value.length > 0
-})
-
-const dynamicAnnouncementText = computed(() => {
-  const customText = store.settings?.announcement_text?.trim()
-  const defaultAnnouncement = '🔥 115 年度第 1 期熱烈招生中！待業民眾享全額免費受訓與生活津貼補助！'
-  // 若管理員在後台明確自訂快訊，100% 優先尊重管理員設定
-  if (customText && customText !== defaultAnnouncement) {
-    return customText
-  }
-  if (activeBatches.value.length > 0) {
-    const batchLabels = activeBatches.value.map(b => {
-      const match = b.batch_name.match(/第\s*\d+\s*期/)
-      return match ? match[0] : b.batch_name
-    })
-    const batchSummary = batchLabels.join(' & ')
-    return `🔥 ${batchSummary}熱烈招生中！待業民眾享全額免費受訓與生活津貼補助！`
-  }
-  return customText || '🔥 熱烈招生中！待業民眾享全額免費受訓與生活津貼補助！'
-})
-
-const showAnnouncementBar = computed(() => {
-  if (!store.settings?.announcement_bar_enabled) return false
-  return hasActiveAdmission.value
-})
 const currentIndex = ref(0)
 const brokenSlideImages = ref<Set<number>>(new Set())
 
@@ -248,8 +158,6 @@ function handleSlideImgError(id?: number) {
   }
 }
 let timer: ReturnType<typeof setInterval> | null = null
-let raf1: number | null = null
-let raf2: number | null = null
 
 function isExternalUrl(url?: string): boolean {
   if (!url) return false
@@ -264,29 +172,6 @@ function resolveLink(link?: string): string {
   if (link === '#community' || link === 'community') return '/community'
   if (link === '#faq' || link === 'faq') return '/faq'
   return link.startsWith('/') ? link : `/${link}`
-}
-
-// 動態計數器 (Animated Counters)
-const display100 = ref(0)
-const display920 = ref(0)
-
-function animateValue(targetRef: Ref<number>, start: number, end: number, duration: number, onFrame?: (id: number) => void) {
-  const startTime = performance.now()
-  function step(now: number) {
-    const elapsed = now - startTime
-    const progress = Math.min(elapsed / duration, 1)
-    // easeOutQuad 緩動函數
-    const easeProgress = 1 - (1 - progress) * (1 - progress)
-    targetRef.value = Math.floor(start + (end - start) * easeProgress)
-    if (progress < 1) {
-      const id = requestAnimationFrame(step)
-      if (onFrame) onFrame(id)
-    } else {
-      targetRef.value = end
-    }
-  }
-  const initialId = requestAnimationFrame(step)
-  if (onFrame) onFrame(initialId)
 }
 
 const currentSlide = computed(() => {
@@ -439,18 +324,9 @@ const resetTimer = () => {
   startTimer()
 }
 
-import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-
-gsap.registerPlugin(ScrollTrigger)
-
 let scrollTriggerCtx: gsap.Context | null = null
 
 onMounted(() => {
-  // 啟動數字滾動動畫 (帶 RAF 清理追蹤)
-  animateValue(display100, 0, 100, 1500, id => { raf1 = id })
-  animateValue(display920, 0, 920, 1800, id => { raf2 = id })
-
   // 啟動輪播計時器
   startTimer()
 
@@ -490,8 +366,6 @@ onMounted(() => {
 onUnmounted(() => {
   if (timer) clearInterval(timer)
   if (currentTimeline) currentTimeline.kill()
-  if (raf1) cancelAnimationFrame(raf1)
-  if (raf2) cancelAnimationFrame(raf2)
   if (scrollTriggerCtx) scrollTriggerCtx.revert()
 })
 </script>
