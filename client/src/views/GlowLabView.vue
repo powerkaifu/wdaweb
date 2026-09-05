@@ -544,15 +544,25 @@
             </p>
           </div>
 
-          <!-- ⚡ 立即召喚流星大按鈕 (Instant Meteor Launch) -->
-          <button
-            type="button"
-            @click="store.triggerMeteor()"
-            class="px-6 py-3.5 rounded-2xl font-black text-xs sm:text-sm text-slate-950 bg-gradient-to-r from-amber-300 via-amber-400 to-yellow-500 hover:from-amber-200 hover:to-yellow-400 shadow-xl shadow-amber-500/25 hover:shadow-amber-500/40 hover:scale-105 active:scale-95 transition-all flex items-center justify-center space-x-2 flex-shrink-0 cursor-pointer"
-          >
-            <span>⚡</span>
-            <span>立即發射一顆流星 (Launch Now)</span>
-          </button>
+          <!-- ⚡ 立即召喚流星大按鈕群 (Instant Meteor Launches) -->
+          <div class="flex flex-wrap gap-2.5 flex-shrink-0">
+            <button
+              type="button"
+              @click="store.triggerMeteor()"
+              class="px-5 py-3 rounded-2xl font-black text-xs sm:text-sm text-slate-950 bg-gradient-to-r from-amber-300 via-amber-400 to-yellow-500 hover:from-amber-200 hover:to-yellow-400 shadow-xl shadow-amber-500/25 hover:shadow-amber-500/40 hover:scale-105 active:scale-95 transition-all flex items-center justify-center space-x-2 cursor-pointer"
+            >
+              <span>⚡</span>
+              <span>發射流星</span>
+            </button>
+            <button
+              type="button"
+              @click="store.triggerCodeMeteor()"
+              class="px-5 py-3 rounded-2xl font-black text-xs sm:text-sm text-slate-950 bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 hover:from-emerald-300 hover:to-cyan-300 shadow-xl shadow-emerald-500/25 hover:shadow-emerald-500/40 hover:scale-105 active:scale-95 transition-all flex items-center justify-center space-x-2 cursor-pointer"
+            >
+              <span>👾</span>
+              <span>發射代碼流星</span>
+            </button>
+          </div>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -691,6 +701,222 @@
             <div class="pt-3 border-t border-slate-800/80 text-xs font-mono flex items-center justify-between text-slate-400">
               <span>全天球流星已全域啟用</span>
               <span class="text-cyan-400 font-bold">60FPS CANVAS 2D</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================================= -->
+      <!-- 區域 03.6：AI 神經突觸星空網絡與幽靈代碼彩蛋控制台 (Synaptic & Cyber Easter Egg) -->
+      <!-- ======================================================================= -->
+      <section id="sec-easter-eggs" class="space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800 pb-4">
+          <div>
+            <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full text-xs font-mono font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 mb-2">
+              <span>SECTION 03.6</span>
+              <span>｜</span>
+              <span>AI SYNAPSE & CYBER MATRIX EASTER EGGS</span>
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-black text-white tracking-tight">
+              03.6 AI 神經突觸星空網絡與幽靈代碼彩蛋
+            </h2>
+            <p class="text-sm text-slate-400 mt-1">
+              為仰望星空注入極具未來科技感的 AI 靈魂！神經元星宿互聯、游標引力光纖火花、以及夜空中驚喜掠過的幽靈代碼流星！
+            </p>
+          </div>
+
+          <!-- 🧠 立即激發神經元量子脈衝按鈕 -->
+          <div class="flex flex-wrap gap-2.5 flex-shrink-0">
+            <button
+              type="button"
+              @click="store.triggerSynapticPulse()"
+              class="px-5 py-3 rounded-2xl font-black text-xs sm:text-sm text-white bg-gradient-to-r from-cyan-500 via-blue-600 to-purple-600 hover:from-cyan-400 hover:to-purple-500 shadow-xl shadow-cyan-500/25 hover:scale-105 active:scale-95 transition-all flex items-center justify-center space-x-2 cursor-pointer"
+            >
+              <span>🧠</span>
+              <span>激發量子思維漣漪</span>
+            </button>
+            <button
+              type="button"
+              @click="store.triggerCodeMeteor()"
+              class="px-5 py-3 rounded-2xl font-black text-xs sm:text-sm text-slate-950 bg-gradient-to-r from-emerald-400 to-teal-300 hover:from-emerald-300 hover:to-teal-200 shadow-xl shadow-emerald-500/25 hover:scale-105 active:scale-95 transition-all flex items-center justify-center space-x-2 cursor-pointer"
+            >
+              <span>⚡</span>
+              <span>發射幽靈代碼流星</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <!-- 卡片 1: 👾 幽靈代碼流星彩蛋 (Cyber Matrix Code-Meteor) -->
+          <div class="p-6 rounded-3xl bg-slate-900/80 border border-slate-800 backdrop-blur-xl shadow-xl space-y-4 flex flex-col justify-between">
+            <div class="space-y-4">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono font-bold px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
+                  👾 幽靈代碼流星彩蛋
+                </span>
+                <span class="text-xs font-mono text-slate-400">CYBER MATRIX</span>
+              </div>
+
+              <div>
+                <h3 class="font-bold text-base text-white mb-1">黑客科技矩陣流星</h3>
+                <p class="text-xs text-slate-400 leading-relaxed">
+                  在全天球流星雨中，偶發化為矩陣青綠科技流星，並在掠過夜空時拋灑發光微塵符號粒子！
+                </p>
+              </div>
+
+              <!-- 機率切換按鈕組 -->
+              <div class="space-y-2">
+                <label class="text-xs font-mono text-slate-300 font-bold block">
+                  偶發生成機率 (Chance)
+                </label>
+                <div class="grid grid-cols-4 gap-2">
+                  <button
+                    v-for="c in [
+                      { label: '15%', val: 0.15 },
+                      { label: '35%', val: 0.35 },
+                      { label: '60%', val: 0.60 },
+                      { label: '100%', val: 1.00 }
+                    ]"
+                    :key="c.val"
+                    type="button"
+                    @click="store.meteorConfig.codeMeteorChance = c.val"
+                    class="py-1.5 px-2 rounded-xl text-xs font-mono font-bold transition-all cursor-pointer text-center"
+                    :class="[
+                      Math.abs(store.meteorConfig.codeMeteorChance - c.val) < 0.05
+                        ? 'bg-gradient-to-r from-emerald-500 to-teal-500 text-slate-950 font-black shadow-md shadow-emerald-500/30 scale-105'
+                        : 'bg-slate-950/70 text-slate-400 hover:text-slate-200 border border-slate-800'
+                    ]"
+                  >
+                    {{ c.label }}
+                  </button>
+                </div>
+              </div>
+
+              <!-- 發光代碼微塵粒子庫預覽 -->
+              <div class="p-3 rounded-2xl bg-slate-950/80 border border-slate-800/80 space-y-2">
+                <span class="text-xs font-mono text-emerald-400 font-bold block">
+                  🔤 微塵粒子字符庫 (Code Dust Pool)
+                </span>
+                <div class="flex flex-wrap gap-1.5 font-mono text-xs">
+                  <span
+                    v-for="sym in ['AI', '01', '<Vue/>', 'fn()', 'async', '=>', '{...}', 'const', 'TS', 'GSAP', '920h', '100%']"
+                    :key="sym"
+                    class="px-2 py-0.5 rounded-md bg-emerald-500/10 text-emerald-300 border border-emerald-500/30"
+                  >
+                    {{ sym }}
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-3 border-t border-slate-800/80 text-xs font-mono flex items-center justify-between text-slate-400">
+              <span>JetBrains Mono 原生渲染</span>
+              <span class="text-emerald-400 font-bold">READY</span>
+            </div>
+          </div>
+
+          <!-- 卡片 2: 🧠 AI 神經突觸星空網絡 (Synaptic Network) -->
+          <div class="p-6 rounded-3xl bg-slate-900/80 border border-slate-800 backdrop-blur-xl shadow-xl space-y-4 flex flex-col justify-between">
+            <div class="space-y-4">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono font-bold px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/30">
+                  🧠 AI 神經突觸星空
+                </span>
+                <span class="text-xs font-mono text-slate-400">SYNAPSE NETWORK</span>
+              </div>
+
+              <div>
+                <h3 class="font-bold text-base text-white mb-1">星空微星動態突觸網格</h3>
+                <p class="text-xs text-slate-400 leading-relaxed">
+                  深空微星間維持微弱常態拓撲連線；當滑鼠掠過時自動射出高光光纖火花連線流向游標！
+                </p>
+              </div>
+
+              <!-- 3 大神經特性開關 -->
+              <div class="space-y-2.5">
+                <!-- 1. 總開關 -->
+                <label class="flex items-center justify-between p-2.5 rounded-xl bg-slate-950/60 border border-slate-800 hover:border-cyan-500/40 cursor-pointer transition-all">
+                  <div class="flex items-center space-x-2.5 text-xs sm:text-sm">
+                    <span>🌐</span>
+                    <span class="font-bold text-slate-200">啟用神經突觸網絡</span>
+                  </div>
+                  <input
+                    type="checkbox"
+                    v-model="store.synapticConfig.enabled"
+                    class="w-4 h-4 rounded text-cyan-500 bg-slate-900 border-slate-700 focus:ring-cyan-500 cursor-pointer"
+                  />
+                </label>
+
+                <!-- 2. 游標引力光纖連線 -->
+                <label class="flex items-center justify-between p-2.5 rounded-xl bg-slate-950/60 border border-slate-800 hover:border-cyan-500/40 cursor-pointer transition-all">
+                  <div class="flex items-center space-x-2.5 text-xs sm:text-sm">
+                    <span>⚡</span>
+                    <span class="font-bold text-slate-200">游標引力光纖連線與脈衝火花</span>
+                  </div>
+                  <input
+                    type="checkbox"
+                    v-model="store.synapticConfig.interactiveCursor"
+                    class="w-4 h-4 rounded text-cyan-500 bg-slate-900 border-slate-700 focus:ring-cyan-500 cursor-pointer"
+                  />
+                </label>
+
+                <!-- 3. 自發性深空量子思維放電 -->
+                <label class="flex items-center justify-between p-2.5 rounded-xl bg-slate-950/60 border border-slate-800 hover:border-cyan-500/40 cursor-pointer transition-all">
+                  <div class="flex items-center space-x-2.5 text-xs sm:text-sm">
+                    <span>🌊</span>
+                    <span class="font-bold text-slate-200">自發性宇宙思維量子漣漪</span>
+                  </div>
+                  <input
+                    type="checkbox"
+                    v-model="store.synapticConfig.autonomousPulse"
+                    class="w-4 h-4 rounded text-cyan-500 bg-slate-900 border-slate-700 focus:ring-cyan-500 cursor-pointer"
+                  />
+                </label>
+              </div>
+            </div>
+
+            <div class="pt-3 border-t border-slate-800/80 text-xs font-mono flex items-center justify-between text-slate-400">
+              <span>動態拓撲演算法</span>
+              <span class="text-cyan-400 font-bold">ONLINE</span>
+            </div>
+          </div>
+
+          <!-- 卡片 3: 💫 彩蛋體驗引導與效能指標 -->
+          <div class="p-6 rounded-3xl bg-slate-900/80 border border-slate-800 backdrop-blur-xl shadow-xl space-y-4 flex flex-col justify-between">
+            <div class="space-y-3.5">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono font-bold px-3 py-1 rounded-full bg-purple-500/10 text-purple-400 border border-purple-500/30">
+                  💫 彩蛋互動引導
+                </span>
+                <span class="text-xs font-mono text-slate-400">HOW IT FEELS</span>
+              </div>
+
+              <div>
+                <h3 class="font-bold text-base text-white mb-1">民眾驚喜探索體驗</h3>
+                <p class="text-xs text-slate-400 leading-relaxed">
+                  在官網任何頁面移動滑鼠，即可直覺感受到繁星正向游標匯聚神經信號；偶爾劃過的綠色代碼流星讓人會心一笑！
+                </p>
+              </div>
+
+              <div class="space-y-2 text-xs font-mono">
+                <div class="p-2.5 rounded-xl bg-slate-950/70 border border-slate-800/80 flex items-center justify-between">
+                  <span class="text-slate-400">神經星點網絡半徑</span>
+                  <span class="text-cyan-300 font-bold">160px 引力場</span>
+                </div>
+                <div class="p-2.5 rounded-xl bg-slate-950/70 border border-slate-800/80 flex items-center justify-between">
+                  <span class="text-slate-400">信號脈衝火花速度</span>
+                  <span class="text-purple-300 font-bold">2.2x ~ 3.7x 疾速</span>
+                </div>
+                <div class="p-2.5 rounded-xl bg-slate-950/70 border border-slate-800/80 flex items-center justify-between">
+                  <span class="text-slate-400">GPU / CPU 負擔耗損</span>
+                  <span class="text-emerald-400 font-bold">&lt; 0.3ms (零額外開銷)</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-3 border-t border-slate-800/80 text-xs font-mono flex items-center justify-between text-slate-400">
+              <span>全域同步生效於所有分頁</span>
+              <span class="text-purple-400 font-bold">ACTIVE</span>
             </div>
           </div>
         </div>

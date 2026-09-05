@@ -79,6 +79,7 @@ interface CelestialMeteor {
     accent: string
   }
   isFireball: boolean
+  isCodeMeteor: boolean
   hasExploded: boolean
   flareAlpha: number
   flareRadius: number
@@ -86,6 +87,68 @@ interface CelestialMeteor {
   duration: number
   dead: boolean
 }
+
+// ===========================================================================
+// 👾 幽靈代碼流星彩蛋 (Cyber Matrix Code-Meteor)
+// ===========================================================================
+interface CodeDust {
+  x: number
+  y: number
+  vx: number
+  vy: number
+  text: string
+  alpha: number
+  decay: number
+  color: string
+  size: number
+}
+
+const CODE_SYMBOLS = ['AI', '01', '<Vue/>', 'fn()', 'async', '=>', '{...}', 'const', 'TS', 'GSAP', '920h', '100%']
+let activeCodeDusts: CodeDust[] = []
+let lastMeteorCodeTriggerCount = 0
+
+// ===========================================================================
+// 🧠 AI 神經突觸星空網絡 (Synaptic Constellation Network)
+// ===========================================================================
+interface SynapseNode {
+  x: number
+  y: number
+  vx: number
+  vy: number
+  radius: number
+  baseAlpha: number
+  pulseOffset: number
+  color: string
+}
+
+interface SynapticPulse {
+  fromX: number
+  fromY: number
+  toX: number
+  toY: number
+  progress: number
+  speed: number
+  color: string
+}
+
+interface NeuralFlashWave {
+  x: number
+  y: number
+  radius: number
+  maxRadius: number
+  alpha: number
+  speed: number
+}
+
+let synapseNodes: SynapseNode[] = []
+let activeSynapticPulses: SynapticPulse[] = []
+let activeFlashWaves: NeuralFlashWave[] = []
+let mouseScreenX = -9999
+let mouseScreenY = -9999
+let isMouseActive = false
+let mouseInactiveTimer: ReturnType<typeof setTimeout> | null = null
+let nextAutonomousFlashCountdown = 16.0
+let lastManualPulseCount = 0
 
 let meteorCtx: CanvasRenderingContext2D | null = null
 let activeMeteors: CelestialMeteor[] = []
@@ -122,10 +185,17 @@ const METEOR_PALETTES = [
     glow: 'rgba(224, 242, 254, 0.90)',
     outer: 'rgba(56, 189, 248, 0.30)',
     accent: '#e0f2fe'
+  },
+  {
+    name: 'cyber_matrix',
+    core: '#ffffff',
+    glow: 'rgba(52, 211, 153, 0.95)',
+    outer: 'rgba(6, 182, 212, 0.40)',
+    accent: '#34d399'
   }
 ]
 
-function spawnMeteor(forceFireball = false) {
+function spawnMeteor(forceFireball = false, forceCode = false) {
   if (!meteorCanvasRef.value) return
   const w = meteorCanvasRef.value.width || window.innerWidth
   const h = meteorCanvasRef.value.height || window.innerHeight
@@ -168,18 +238,27 @@ function spawnMeteor(forceFireball = false) {
     }
   }
 
-  const isFireball = forceFireball || store.meteorConfig.mode === 'fireball' || Math.random() < store.meteorConfig.fireballChance
-  const palette = isFireball
-    ? METEOR_PALETTES[2]
-    : METEOR_PALETTES[Math.floor(Math.random() * METEOR_PALETTES.length)]
+  const isFireball = !forceCode && (forceFireball || store.meteorConfig.mode === 'fireball' || Math.random() < store.meteorConfig.fireballChance)
+  const isCodeMeteor = forceCode || (!isFireball && Math.random() < store.meteorConfig.codeMeteorChance)
+
+  let palette = METEOR_PALETTES[Math.floor(Math.random() * 4)]
+  if (isFireball) {
+    palette = METEOR_PALETTES[2] // bolide_gold
+  } else if (isCodeMeteor) {
+    palette = METEOR_PALETTES[4] // cyber_matrix
+  }
 
   const speed = isFireball
     ? 850 + Math.random() * 450
-    : 1400 + Math.random() * 900
+    : isCodeMeteor
+      ? 1500 + Math.random() * 600
+      : 1400 + Math.random() * 900
 
   const length = isFireball
     ? 240 + Math.random() * 200
-    : 140 + Math.random() * 160
+    : isCodeMeteor
+      ? 210 + Math.random() * 160
+      : 140 + Math.random() * 160
 
   const travelDistance = Math.sqrt(w * w + h * h) * (0.45 + Math.random() * 0.40)
   const duration = travelDistance / speed
@@ -197,6 +276,7 @@ function spawnMeteor(forceFireball = false) {
     currentLength: 0,
     colorScheme: palette,
     isFireball,
+    isCodeMeteor,
     hasExploded: false,
     flareAlpha: 0,
     flareRadius: 0,
@@ -736,6 +816,207 @@ function initNebulaFlowScene() {
 }
 
 // ---------------------------------------------------------------------------
+// 🧠 AI 神經突觸星空網絡演算法 (Synaptic Constellation Physics)
+// ---------------------------------------------------------------------------
+function initSynapseNodes(w: number, h: number) {
+  synapseNodes = []
+  const count = Math.min(50, Math.max(26, Math.floor((w * h) / 38000)))
+  const colors = ['#22d3ee', '#38bdf8', '#c084fc']
+  for (let i = 0; i < count; i++) {
+    synapseNodes.push({
+      x: Math.random() * w,
+      y: Math.random() * h,
+      vx: (Math.random() - 0.5) * 11, // 極慢微漂移
+      vy: (Math.random() - 0.5) * 11,
+      radius: 1.2 + Math.random() * 1.3,
+      baseAlpha: 0.22 + Math.random() * 0.30,
+      pulseOffset: Math.random() * Math.PI * 2,
+      color: colors[Math.floor(Math.random() * colors.length)]
+    })
+  }
+}
+
+function triggerAutonomousFlash(w: number, h: number) {
+  activeFlashWaves.push({
+    x: w * 0.2 + Math.random() * w * 0.6,
+    y: h * 0.2 + Math.random() * h * 0.6,
+    radius: 10,
+    maxRadius: 220 + Math.random() * 140,
+    alpha: 0.85,
+    speed: 180 + Math.random() * 80
+  })
+}
+
+function renderSynapticNetwork(ctx: CanvasRenderingContext2D, dt: number, w: number, h: number) {
+  if (synapseNodes.length === 0) {
+    initSynapseNodes(w, h)
+  }
+
+  // 1. 檢查自發性宇宙深空量子思想放電
+  if (store.synapticConfig.autonomousPulse) {
+    nextAutonomousFlashCountdown -= dt
+    if (nextAutonomousFlashCountdown <= 0) {
+      triggerAutonomousFlash(w, h)
+      nextAutonomousFlashCountdown = 18.0 + Math.random() * 14.0
+    }
+  }
+
+  // 2. 檢查手動觸發神經脈衝
+  if (store.synapticConfig.manualPulseCount !== lastManualPulseCount) {
+    lastManualPulseCount = store.synapticConfig.manualPulseCount
+    triggerAutonomousFlash(w, h)
+  }
+
+  // 3. 更新並繪製量子思想漣漪光環
+  for (let i = activeFlashWaves.length - 1; i >= 0; i--) {
+    const wave = activeFlashWaves[i]
+    wave.radius += wave.speed * dt
+    wave.alpha -= dt * 0.55
+    if (wave.alpha <= 0 || wave.radius >= wave.maxRadius) {
+      activeFlashWaves.splice(i, 1)
+      continue
+    }
+
+    ctx.save()
+    ctx.beginPath()
+    ctx.arc(wave.x, wave.y, wave.radius, 0, Math.PI * 2)
+    ctx.strokeStyle = `rgba(34, 211, 238, ${(wave.alpha * 0.25).toFixed(3)})`
+    ctx.lineWidth = 1.4
+    ctx.shadowColor = '#22d3ee'
+    ctx.shadowBlur = 12
+    ctx.stroke()
+    ctx.restore()
+  }
+
+  // 4. 更新節點位置 (漂移與邊界反彈)
+  const nodeCount = synapseNodes.length
+  for (let i = 0; i < nodeCount; i++) {
+    const n = synapseNodes[i]
+    n.x += n.vx * dt
+    n.y += n.vy * dt
+
+    if (n.x < 0) { n.x = 0; n.vx *= -1 }
+    else if (n.x > w) { n.x = w; n.vx *= -1 }
+    if (n.y < 0) { n.y = 0; n.vy *= -1 }
+    else if (n.y > h) { n.y = h; n.vy *= -1 }
+  }
+
+  // 5. 繪製神經星網間的微弱常態連線 (星圖拓撲)
+  const maxConnDist = 110
+  const maxConnDistSq = maxConnDist * maxConnDist
+  ctx.save()
+  ctx.lineWidth = 0.6
+
+  for (let i = 0; i < nodeCount; i++) {
+    const na = synapseNodes[i]
+    for (let j = i + 1; j < nodeCount; j++) {
+      const nb = synapseNodes[j]
+      const dx = nb.x - na.x
+      const dy = nb.y - na.y
+      const distSq = dx * dx + dy * dy
+      if (distSq < maxConnDistSq) {
+        const dist = Math.sqrt(distSq)
+        const alpha = (1.0 - dist / maxConnDist) * 0.12
+        ctx.strokeStyle = `rgba(34, 211, 238, ${alpha.toFixed(3)})`
+        ctx.beginPath()
+        ctx.moveTo(na.x, na.y)
+        ctx.lineTo(nb.x, nb.y)
+        ctx.stroke()
+      }
+    }
+  }
+  ctx.restore()
+
+  // 6. 游標引力神經突觸高亮連線 (互動核心)
+  if (store.synapticConfig.interactiveCursor && isMouseActive && mouseScreenX > 0 && mouseScreenY > 0) {
+    const mouseRadius = 160
+    const mouseRadiusSq = mouseRadius * mouseRadius
+    ctx.save()
+
+    for (let i = 0; i < nodeCount; i++) {
+      const n = synapseNodes[i]
+      const dx = mouseScreenX - n.x
+      const dy = mouseScreenY - n.y
+      const distSq = dx * dx + dy * dy
+
+      if (distSq < mouseRadiusSq) {
+        const dist = Math.sqrt(distSq)
+        const alpha = (1.0 - dist / mouseRadius) * 0.45
+
+        // 光纖漸層：節點色彩 ➔ 游標白熱高亮
+        const grad = ctx.createLinearGradient(n.x, n.y, mouseScreenX, mouseScreenY)
+        grad.addColorStop(0, n.color)
+        grad.addColorStop(1, 'rgba(255, 255, 255, 0.95)')
+
+        ctx.strokeStyle = grad
+        ctx.globalAlpha = alpha
+        ctx.lineWidth = 0.9 + (1.0 - dist / mouseRadius) * 0.6
+        ctx.shadowColor = n.color
+        ctx.shadowBlur = 6
+        ctx.beginPath()
+        ctx.moveTo(n.x, n.y)
+        ctx.lineTo(mouseScreenX, mouseScreenY)
+        ctx.stroke()
+
+        // 隨機在連線上生成微型高能神經脈衝流向游標
+        if (Math.random() < 0.03 && activeSynapticPulses.length < 15) {
+          activeSynapticPulses.push({
+            fromX: n.x,
+            fromY: n.y,
+            toX: mouseScreenX,
+            toY: mouseScreenY,
+            progress: 0,
+            speed: 2.2 + Math.random() * 1.5,
+            color: n.color
+          })
+        }
+      }
+    }
+    ctx.restore()
+  }
+
+  // 7. 更新並繪製神經脈衝火花 (Synaptic Pulses)
+  for (let i = activeSynapticPulses.length - 1; i >= 0; i--) {
+    const p = activeSynapticPulses[i]
+    p.progress += p.speed * dt
+    if (p.progress >= 1.0) {
+      activeSynapticPulses.splice(i, 1)
+      continue
+    }
+
+    const curX = p.fromX + (p.toX - p.fromX) * p.progress
+    const curY = p.fromY + (p.toY - p.fromY) * p.progress
+
+    ctx.save()
+    ctx.beginPath()
+    ctx.arc(curX, curY, 1.8, 0, Math.PI * 2)
+    ctx.fillStyle = '#ffffff'
+    ctx.shadowColor = p.color
+    ctx.shadowBlur = 8
+    ctx.fill()
+    ctx.restore()
+  }
+
+  // 8. 繪製神經元微星節點本體 (帶呼吸感)
+  const now = performance.now() * 0.001
+  ctx.save()
+  for (let i = 0; i < nodeCount; i++) {
+    const n = synapseNodes[i]
+    const breathe = Math.sin(now * 1.2 + n.pulseOffset) * 0.12
+    const alpha = Math.min(1.0, Math.max(0.1, n.baseAlpha + breathe))
+
+    ctx.beginPath()
+    ctx.arc(n.x, n.y, n.radius, 0, Math.PI * 2)
+    ctx.fillStyle = n.color
+    ctx.globalAlpha = alpha
+    ctx.shadowColor = n.color
+    ctx.shadowBlur = 4
+    ctx.fill()
+  }
+  ctx.restore()
+}
+
+// ---------------------------------------------------------------------------
 // 🌠 Awwwards 級流星渲染與物理更新 (Sub-Frame Optical Canvas Simulation)
 // ---------------------------------------------------------------------------
 function updateAndRenderMeteors(dt: number) {
@@ -746,10 +1027,21 @@ function updateAndRenderMeteors(dt: number) {
 
   ctx.clearRect(0, 0, w, h)
 
-  // 1. 檢查手動立即觸發
+  // 0. 繪製 AI 神經突觸星空網絡 (最底層拓撲微光與游標連線)
+  if (store.synapticConfig.enabled) {
+    renderSynapticNetwork(ctx, dt, w, h)
+  }
+
+  // 1. 檢查常規手動立即觸發
   if (store.meteorConfig.manualTriggerCount !== lastMeteorTriggerCount) {
     lastMeteorTriggerCount = store.meteorConfig.manualTriggerCount
     spawnMeteor()
+  }
+
+  // 1.1 檢查幽靈代碼流星手動立即觸發
+  if (store.meteorConfig.manualTriggerCodeCount !== lastMeteorCodeTriggerCount) {
+    lastMeteorCodeTriggerCount = store.meteorConfig.manualTriggerCodeCount
+    spawnMeteor(false, true)
   }
 
   // 2. 自動隨機排程 (久久一次)
@@ -807,6 +1099,28 @@ function updateAndRenderMeteors(dt: number) {
     ctx.fill()
   }
 
+  // 4.1 更新並繪製「幽靈代碼流星粒子微塵 (Cyber Code Dust)」
+  for (let i = activeCodeDusts.length - 1; i >= 0; i--) {
+    const cd = activeCodeDusts[i]
+    cd.x += cd.vx * dt
+    cd.y += cd.vy * dt
+    cd.alpha -= cd.decay * dt
+
+    if (cd.alpha <= 0) {
+      activeCodeDusts.splice(i, 1)
+      continue
+    }
+
+    ctx.save()
+    ctx.font = `bold ${Math.round(cd.size)}px "JetBrains Mono", monospace`
+    ctx.fillStyle = cd.color
+    ctx.globalAlpha = Math.max(0, Math.min(1, cd.alpha * 0.95))
+    ctx.shadowColor = cd.color
+    ctx.shadowBlur = 8
+    ctx.fillText(cd.text, cd.x, cd.y)
+    ctx.restore()
+  }
+
   // 5. 更新並繪製「主體流星 (Meteors)」
   for (let i = activeMeteors.length - 1; i >= 0; i--) {
     const m = activeMeteors[i]
@@ -840,11 +1154,27 @@ function updateAndRenderMeteors(dt: number) {
     if (progress < 0.15) opacity = progress / 0.15
     else if (progress > 0.80) opacity = (1.0 - progress) / 0.20
 
+    // 幽靈代碼流星沿途拋灑發光代碼微塵
+    if (m.isCodeMeteor && Math.random() < 0.38) {
+      const symbol = CODE_SYMBOLS[Math.floor(Math.random() * CODE_SYMBOLS.length)]
+      activeCodeDusts.push({
+        x: m.x + (Math.random() - 0.5) * 18,
+        y: m.y + (Math.random() - 0.5) * 18,
+        vx: (Math.random() - 0.5) * 36 - Math.cos(m.angle) * 35,
+        vy: (Math.random() - 0.5) * 36 - Math.sin(m.angle) * 35,
+        text: symbol,
+        alpha: 1.0,
+        decay: 0.75 + Math.random() * 0.55,
+        color: Math.random() < 0.65 ? '#34d399' : '#22d3ee',
+        size: 11 + Math.random() * 4
+      })
+    }
+
     if (Math.random() < 0.40) {
       activeAfterglows.push({
         x: m.x,
         y: m.y,
-        width: m.isFireball ? 4.5 : 2.5,
+        width: m.isFireball ? 4.5 : (m.isCodeMeteor ? 3.0 : 2.5),
         alpha: opacity,
         decay: m.isFireball ? 0.65 : 1.1,
         color: m.colorScheme.glow.replace(/[\d\.]+\)$/, 'ALPHA)')
@@ -875,7 +1205,7 @@ function updateAndRenderMeteors(dt: number) {
     }
 
     // Pass 1: 環境微光暈
-    const ambientRadius = m.isFireball ? 65 : 35
+    const ambientRadius = m.isFireball ? 65 : (m.isCodeMeteor ? 45 : 35)
     const ambGrad = ctx.createRadialGradient(m.x, m.y, 0, m.x, m.y, ambientRadius)
     ambGrad.addColorStop(0, m.colorScheme.glow.replace(/[\d\.]+\)$/, `${0.45 * opacity})`))
     ambGrad.addColorStop(0.5, m.colorScheme.outer.replace(/[\d\.]+\)$/, `${0.20 * opacity})`))
@@ -912,10 +1242,10 @@ function updateAndRenderMeteors(dt: number) {
     ctx.moveTo(tailX, tailY)
     ctx.lineTo(m.x, m.y)
     ctx.strokeStyle = trailGrad
-    ctx.lineWidth = m.isFireball ? 3.0 : 1.8
+    ctx.lineWidth = m.isFireball ? 3.0 : (m.isCodeMeteor ? 2.2 : 1.8)
     ctx.lineCap = 'round'
     ctx.shadowColor = m.colorScheme.accent
-    ctx.shadowBlur = m.isFireball ? 16 : 9
+    ctx.shadowBlur = m.isFireball ? 16 : (m.isCodeMeteor ? 12 : 9)
     ctx.stroke()
 
     // Pass 4: 白熱針尖核心
@@ -948,11 +1278,22 @@ function updateAndRenderMeteors(dt: number) {
 }
 
 // ---------------------------------------------------------------------------
-// 互動監聽：滑鼠移動與滾動速度
+// 互動監聽：滑鼠移動與神經突觸引力座標
 // ---------------------------------------------------------------------------
 function handleMouseMove(e: MouseEvent) {
   targetMouseX = (e.clientX / window.innerWidth - 0.5) * 2
   targetMouseY = (e.clientY / window.innerHeight - 0.5) * 2
+
+  mouseScreenX = e.clientX
+  mouseScreenY = e.clientY
+  isMouseActive = true
+
+  if (mouseInactiveTimer) {
+    clearTimeout(mouseInactiveTimer)
+  }
+  mouseInactiveTimer = setTimeout(() => {
+    isMouseActive = false
+  }, 2500)
 }
 
 // ---------------------------------------------------------------------------
@@ -977,6 +1318,9 @@ function handleResize() {
     meteorCanvasRef.value.width = w
     meteorCanvasRef.value.height = h
   }
+
+  // 視窗變更時重新初始化神經節點分佈
+  initSynapseNodes(w, h)
 }
 
 function renderLoop() {
@@ -993,7 +1337,7 @@ function renderLoop() {
   }
   renderer.render(scene, camera)
 
-  // 2. 更新並渲染頂層 Awwwards 級流星系統
+  // 2. 更新並渲染頂層 Awwwards 級流星與神經星空系統
   updateAndRenderMeteors(delta)
 }
 
@@ -1024,6 +1368,7 @@ onMounted(() => {
   clock = new THREE.Clock()
 
   initNebulaFlowScene()
+  initSynapseNodes(width, height)
 
   window.addEventListener('resize', handleResize)
   window.addEventListener('mousemove', handleMouseMove, { passive: true })
@@ -1038,6 +1383,11 @@ onUnmounted(() => {
   if (animId) {
     cancelAnimationFrame(animId)
     animId = null
+  }
+
+  if (mouseInactiveTimer) {
+    clearTimeout(mouseInactiveTimer)
+    mouseInactiveTimer = null
   }
 
   clearCurrentScene()
@@ -1059,6 +1409,10 @@ onUnmounted(() => {
   activeMeteors = []
   activeSparks = []
   activeAfterglows = []
+  activeCodeDusts = []
+  synapseNodes = []
+  activeSynapticPulses = []
+  activeFlashWaves = []
   meteorCtx = null
 
   scene = null

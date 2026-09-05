@@ -16,7 +16,16 @@ export interface MeteorConfig {
   mode: 'sporadic' | 'shower' | 'fireball'
   direction: 'omnidirectional' | 'radiant' | 'diagonal'
   fireballChance: number
+  codeMeteorChance: number
   manualTriggerCount: number
+  manualTriggerCodeCount: number
+}
+
+export interface SynapticConfig {
+  enabled: boolean
+  interactiveCursor: boolean
+  autonomousPulse: boolean
+  manualPulseCount: number
 }
 
 const NAVBAR_STYLE_KEY = 'wda_navbar_style'
@@ -78,17 +87,35 @@ export const useThemeStore = defineStore('theme', () => {
     scrollWarp: false,      // 4. 滾動深空穿梭推進 (已停用，保持閱讀平穩舒適)
   })
 
-  // 4. Awwwards 級 360° 天球仰望偶發流星物理系統
+  // 4. Awwwards 級 360° 天球仰望偶發流星物理系統 (支援火流星與幽靈代碼流星彩蛋)
   const meteorConfig = ref<MeteorConfig>({
     enabled: true,
     mode: 'sporadic',       // 'sporadic' (8~22s 偶發) | 'shower' (2~5s 流星雨) | 'fireball' (純火流星)
     direction: 'omnidirectional', // 'omnidirectional' (360° 四面八方) | 'radiant' (天頂向外放射) | 'diagonal' (經典斜掠)
-    fireballChance: 0.25,   // 25% 機率微爆火流星
-    manualTriggerCount: 0   // 手動立即發射計數器
+    fireballChance: 0.20,   // 20% 機率微爆火流星
+    codeMeteorChance: 0.35, // 35% 機率觸發「幽靈代碼流星」彩蛋
+    manualTriggerCount: 0,  // 手動立即發射一般流星計數器
+    manualTriggerCodeCount: 0 // 手動立即發射代碼流星計數器
+  })
+
+  // 5. 🧠 AI 神經突觸星空網絡 (Synaptic Constellation Network)
+  const synapticConfig = ref<SynapticConfig>({
+    enabled: true,           // 總開關
+    interactiveCursor: true, // 游標引力神經突觸連線
+    autonomousPulse: true,   // 宇宙深空自發性思維脈衝
+    manualPulseCount: 0      // 手動激發神經脈衝計數器
   })
 
   function triggerMeteor() {
     meteorConfig.value.manualTriggerCount++
+  }
+
+  function triggerCodeMeteor() {
+    meteorConfig.value.manualTriggerCodeCount++
+  }
+
+  function triggerSynapticPulse() {
+    synapticConfig.value.manualPulseCount++
   }
 
   function setMeteorMode(mode: 'sporadic' | 'shower' | 'fireball') {
@@ -108,7 +135,10 @@ export const useThemeStore = defineStore('theme', () => {
     setGlowSpeedMultiplier,
     nebulaFeatures,
     meteorConfig,
+    synapticConfig,
     triggerMeteor,
+    triggerCodeMeteor,
+    triggerSynapticPulse,
     setMeteorMode,
     setMeteorDirection,
   }
