@@ -707,7 +707,7 @@
       </section>
 
       <!-- ======================================================================= -->
-      <!-- 區域 03.6：AI 神經突觸星空網絡與幽靈代碼彩蛋控制台 (Synaptic & Cyber Easter Egg) -->
+      <!-- 區域 03.6：AI 深空量子思維漣漪與幽靈代碼彩蛋控制台 (Quantum Waves & Cyber Easter Egg) -->
       <!-- ======================================================================= -->
       <section id="sec-easter-eggs" class="space-y-6">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800 pb-4">
@@ -715,13 +715,13 @@
             <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full text-xs font-mono font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 mb-2">
               <span>SECTION 03.6</span>
               <span>｜</span>
-              <span>AI SYNAPSE & CYBER MATRIX EASTER EGGS</span>
+              <span>QUANTUM MIND WAVES & CYBER MATRIX EASTER EGGS</span>
             </div>
             <h2 class="text-2xl sm:text-3xl font-black text-white tracking-tight">
-              03.6 AI 神經突觸星空網絡與幽靈代碼彩蛋
+              03.6 AI 深空量子思維漣漪與幽靈代碼彩蛋
             </h2>
             <p class="text-sm text-slate-400 mt-1">
-              為仰望星空注入極具未來科技感的 AI 靈魂！神經元星宿互聯、游標引力光纖火花、以及夜空中驚喜掠過的幽靈代碼流星！
+              為仰望星空注入極致純淨的 AI 科技彩蛋！無連線噪訊干擾、自發性量子思維漣漪光環、以及進站首發與自然掠過的幽靈代碼流星！
             </p>
           </div>
 
@@ -760,7 +760,7 @@
               <div>
                 <h3 class="font-bold text-base text-white mb-1">黑客科技矩陣流星</h3>
                 <p class="text-xs text-slate-400 leading-relaxed">
-                  在全天球流星雨中，偶發化為矩陣青綠科技流星，並在掠過夜空時拋灑發光微塵符號粒子！
+                  🌟 進站 2.2 秒首發 100% 必定掠過！後續全天球流星 55% 偶發轉化，沿途動態拋灑發光微塵符號粒子！
                 </p>
               </div>
 
@@ -815,30 +815,30 @@
             </div>
           </div>
 
-          <!-- 卡片 2: 🧠 AI 神經突觸星空網絡 (Synaptic Network) -->
+          <!-- 卡片 2: 🧠 AI 量子思維漣漪 (Quantum Mind Waves) -->
           <div class="p-6 rounded-3xl bg-slate-900/80 border border-slate-800 backdrop-blur-xl shadow-xl space-y-4 flex flex-col justify-between">
             <div class="space-y-4">
               <div class="flex items-center justify-between">
                 <span class="text-xs font-mono font-bold px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/30">
-                  🧠 AI 神經突觸星空
+                  🧠 AI 量子思維光環
                 </span>
-                <span class="text-xs font-mono text-slate-400">SYNAPSE NETWORK</span>
+                <span class="text-xs font-mono text-slate-400">QUANTUM WAVES</span>
               </div>
 
               <div>
-                <h3 class="font-bold text-base text-white mb-1">星空微星動態拓撲網格</h3>
+                <h3 class="font-bold text-base text-white mb-1">深空純淨無連線・思維漣漪</h3>
                 <p class="text-xs text-slate-400 leading-relaxed">
-                  深空微星間維持微弱常態拓撲星宿連線，定時自發激發量子思維漣漪，視覺純粹沉浸不干擾閱讀！
+                  深空繁星純淨自然無直線連線；每隔 16~24 秒自發性向外擴散出一圈同心量子柔焦光環，大器深邃不干擾閱讀！
                 </p>
               </div>
 
-              <!-- 3 大神經特性開關 -->
+              <!-- 特性開關 -->
               <div class="space-y-2.5">
                 <!-- 1. 總開關 -->
                 <label class="flex items-center justify-between p-2.5 rounded-xl bg-slate-950/60 border border-slate-800 hover:border-cyan-500/40 cursor-pointer transition-all">
                   <div class="flex items-center space-x-2.5 text-xs sm:text-sm">
                     <span>🌐</span>
-                    <span class="font-bold text-slate-200">啟用神經突觸網絡</span>
+                    <span class="font-bold text-slate-200">啟用量子思維光環</span>
                   </div>
                   <input
                     type="checkbox"
@@ -847,24 +847,11 @@
                   />
                 </label>
 
-                <!-- 2. 游標引力光纖連線 (預設關閉) -->
-                <label class="flex items-center justify-between p-2.5 rounded-xl bg-slate-950/60 border border-slate-800 hover:border-cyan-500/40 cursor-pointer transition-all">
-                  <div class="flex items-center space-x-2.5 text-xs sm:text-sm">
-                    <span>⚡</span>
-                    <span class="font-bold text-slate-200">游標引力連線（預設停用・專注純淨背景）</span>
-                  </div>
-                  <input
-                    type="checkbox"
-                    v-model="store.synapticConfig.interactiveCursor"
-                    class="w-4 h-4 rounded text-cyan-500 bg-slate-900 border-slate-700 focus:ring-cyan-500 cursor-pointer"
-                  />
-                </label>
-
-                <!-- 3. 自發性深空量子思維放電 -->
+                <!-- 2. 自發性深空量子思維放電 -->
                 <label class="flex items-center justify-between p-2.5 rounded-xl bg-slate-950/60 border border-slate-800 hover:border-cyan-500/40 cursor-pointer transition-all">
                   <div class="flex items-center space-x-2.5 text-xs sm:text-sm">
                     <span>🌊</span>
-                    <span class="font-bold text-slate-200">自發性宇宙思維量子漣漪</span>
+                    <span class="font-bold text-slate-200">自發性宇宙思維量子漣漪 (16~24s)</span>
                   </div>
                   <input
                     type="checkbox"
@@ -876,8 +863,8 @@
             </div>
 
             <div class="pt-3 border-t border-slate-800/80 text-xs font-mono flex items-center justify-between text-slate-400">
-              <span>動態拓撲演算法</span>
-              <span class="text-cyan-400 font-bold">ONLINE</span>
+              <span>無連線純淨星空</span>
+              <span class="text-cyan-400 font-bold">ACTIVE</span>
             </div>
           </div>
 
@@ -886,30 +873,30 @@
             <div class="space-y-3.5">
               <div class="flex items-center justify-between">
                 <span class="text-xs font-mono font-bold px-3 py-1 rounded-full bg-purple-500/10 text-purple-400 border border-purple-500/30">
-                  💫 彩蛋互動引導
+                  💫 彩蛋體驗引導
                 </span>
                 <span class="text-xs font-mono text-slate-400">HOW IT FEELS</span>
               </div>
 
               <div>
-                <h3 class="font-bold text-base text-white mb-1">民眾驚喜探索體驗</h3>
+                <h3 class="font-bold text-base text-white mb-1">純粹深空・絕無干擾</h3>
                 <p class="text-xs text-slate-400 leading-relaxed">
-                  在官網任何頁面移動滑鼠，即可直覺感受到繁星正向游標匯聚神經信號；偶爾劃過的綠色代碼流星讓人會心一笑！
+                  繁星維持最純天然閃爍與星雲漫游，無任何連線噪訊；偶爾掠過的代碼流星與量子光環讓民眾會心一笑！
                 </p>
               </div>
 
               <div class="space-y-2 text-xs font-mono">
                 <div class="p-2.5 rounded-xl bg-slate-950/70 border border-slate-800/80 flex items-center justify-between">
-                  <span class="text-slate-400">神經星點網絡半徑</span>
-                  <span class="text-cyan-300 font-bold">160px 引力場</span>
+                  <span class="text-slate-400">量子思維漣漪擴散半徑</span>
+                  <span class="text-cyan-300 font-bold">220px ~ 360px</span>
                 </div>
                 <div class="p-2.5 rounded-xl bg-slate-950/70 border border-slate-800/80 flex items-center justify-between">
-                  <span class="text-slate-400">信號脈衝火花速度</span>
-                  <span class="text-purple-300 font-bold">2.2x ~ 3.7x 疾速</span>
+                  <span class="text-slate-400">進站首發代碼流星</span>
+                  <span class="text-emerald-300 font-bold">2.2 秒 100% 必出</span>
                 </div>
                 <div class="p-2.5 rounded-xl bg-slate-950/70 border border-slate-800/80 flex items-center justify-between">
-                  <span class="text-slate-400">GPU / CPU 負擔耗損</span>
-                  <span class="text-emerald-400 font-bold">&lt; 0.3ms (零額外開銷)</span>
+                  <span class="text-slate-400">GPU / CPU 額外開銷</span>
+                  <span class="text-emerald-400 font-bold">&lt; 0.2ms (極致絲滑)</span>
                 </div>
               </div>
             </div>
