@@ -26,7 +26,9 @@
 						>差別在身邊有沒有能一起解題的人</span
 					>
 				</h2>
-				<p class="text-slate-400 mt-4 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed text-pretty text-justify sm:text-center">
+				<p
+					class="text-slate-400 mt-4 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed text-pretty text-justify sm:text-center"
+				>
 					自學可以走得很遠。但當你面對一個看不懂的錯誤訊息時，有人可以一起討論、有同學可以交流，往往能讓你少繞很多彎路。這也是實體學習最難被取代的地方。
 				</p>
 			</div>
@@ -184,7 +186,8 @@
 							<span class="inline-block">920 小時</span>集中沉浸
 						</h3>
 						<p class="text-base text-slate-200 leading-relaxed text-pretty text-justify">
-							零散自學往往缺乏大局觀。<span class="inline-block">920 小時</span>給你一段足夠長、足夠專注的時間，暫時放下外界干擾，把零碎的語法知識，真正沉澱為能獨立做出完整專案的實戰能力。
+							零散自學往往缺乏大局觀。<span class="inline-block">920 小時</span
+							>給你一段足夠長、足夠專注的時間，暫時放下外界干擾，把零碎的語法知識，真正沉澱為能獨立做出完整專案的實戰能力。
 						</p>
 					</div>
 
@@ -220,8 +223,12 @@
 							>
 								<span class="text-2xl sm:text-3xl flex-shrink-0 mt-0.5 sm:mt-0">💬</span>
 								<span class="leading-snug sm:leading-tight">
-									<span class="block sm:inline text-white">每天與人一起學習<span class="hidden sm:inline">，</span></span
-									><span class="block sm:inline text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">是職訓很不一樣的地方</span>
+									<span class="block sm:inline text-white"
+										>每天與人一起學習<span class="hidden sm:inline">，</span></span
+									><span
+										class="block sm:inline text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400"
+										>是職訓很不一樣的地方</span
+									>
 								</span>
 							</h3>
 							<span
@@ -240,7 +247,7 @@
 								>
 							</p>
 							<p class="text-slate-300">
-								你不只是練習怎麼說明自己的問題，也要學著仔細聆聽別人在問什麼，理解對方真正卡住的地方，再想辦法用對方聽得懂的方式解釋。老師與學員每天面對面交流，在一次次提問、討論與解釋中教學相長。
+								學習過程不只是練習怎麼說明自己的問題，也要學著仔細聆聽別人在問什麼，理解對方真正卡住的地方，再想辦法用對方聽得懂的方式解釋。老師與學員每天面對面交流，在一次次提問、討論與解釋中教學相長。
 							</p>
 						</div>
 
