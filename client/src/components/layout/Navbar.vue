@@ -20,8 +20,8 @@
 				class="relative flex items-center justify-between transition-all duration-500 ease-out overflow-hidden"
 				:class="[
 					isScrolled
-						? 'p-2.5 sm:p-3 rounded-2xl bg-slate-900/90 backdrop-blur-2xl border border-cyan-500/30 shadow-2xl shadow-cyan-950/60'
-						: 'w-full h-20 bg-slate-950/60 backdrop-blur-md border-b border-slate-800/80 px-4 sm:px-6 lg:px-8 2xl:px-12',
+						? 'p-2 sm:p-3 rounded-2xl bg-slate-900/90 backdrop-blur-2xl border border-cyan-500/30 shadow-2xl shadow-cyan-950/60'
+						: 'w-full h-20 bg-slate-950/60 backdrop-blur-md border-b border-slate-800/80 px-2.5 sm:px-6 lg:px-8 2xl:px-12',
 				]"
 			>
 				<!-- ========================================================================= -->
@@ -45,78 +45,84 @@
 				</div>
 
 				<!-- Left: Official Logo + AI Pulse Indicator -->
-				<router-link to="/" class="flex items-center space-x-2 sm:space-x-3 group relative z-10 flex-1 min-w-0 mr-1 sm:mr-4 lg:mr-6 xl:mr-8">
-					<div class="flex-shrink-0 flex items-center justify-center">
-						<img
-							:src="store.settings?.site_logo_url || defaultLogo"
-							:alt="store.settings?.site_title || '泰山職訓 Logo'"
-							@error="handleLogoError"
-							class="h-7.5 sm:h-9 md:h-10 w-auto max-w-[120px] sm:max-w-[160px] object-contain rounded-lg drop-shadow-md group-hover:scale-105 transition-transform"
-						/>
-					</div>
-					<div class="flex flex-col min-w-0 justify-center">
-						<!-- 大器單行標題（全站統一單行，手機端維持 16px 大字，桌機 18~20px） -->
-						<div class="flex items-center space-x-2 min-w-0">
-							<span
-								class="font-extrabold tracking-tight text-white group-hover:text-cyan-400 transition-colors leading-tight whitespace-nowrap text-base sm:text-lg lg:text-xl truncate"
-							>
-								{{ store.settings?.site_title || '泰山職訓－前端網頁技術與AI應用' }}
-							</span>
-							<span
-								class="hidden xl:inline-flex items-center px-2 py-0.5 rounded-full text-xs font-mono font-bold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 shrink-0"
-							>
-								<span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping mr-1"></span>
-								AI READY
+				<div class="flex items-center justify-start flex-1 min-w-0">
+					<router-link to="/" class="flex items-center space-x-1.5 sm:space-x-3 group relative z-10 min-w-0">
+						<div class="flex-shrink-0 flex items-center justify-center">
+							<img
+								:src="store.settings?.site_logo_url || defaultLogo"
+								:alt="store.settings?.site_title || '泰山職訓 Logo'"
+								@error="handleLogoError"
+								class="h-7 sm:h-9 md:h-10 w-auto max-w-[100px] sm:max-w-[160px] object-contain rounded-lg drop-shadow-md group-hover:scale-105 transition-transform"
+							/>
+						</div>
+						<div class="flex flex-col min-w-0 justify-center">
+							<!-- 官方全名完整呈現（大字階梯：手機端 16px text-base，移除 truncate 絕無省略號 ...） -->
+							<div class="flex items-center space-x-2 min-w-0">
+								<span
+									class="font-extrabold tracking-tighter sm:tracking-tight text-white group-hover:text-cyan-400 transition-colors leading-tight whitespace-nowrap text-sm min-[375px]:text-base sm:text-lg lg:text-xl shrink-0"
+								>
+									{{ store.settings?.site_title || '泰山職訓－前端網頁技術與AI應用' }}
+								</span>
+								<span
+									class="hidden xl:inline-flex items-center px-2 py-0.5 rounded-full text-xs font-mono font-bold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 shrink-0"
+								>
+									<span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping mr-1"></span>
+									AI READY
+								</span>
+							</div>
+							<span class="hidden sm:block text-xs sm:text-sm text-slate-400 font-medium leading-none mt-1 truncate">
+								泰山職業訓練場 ｜ 師資成果推廣網
 							</span>
 						</div>
-						<span class="hidden sm:block text-xs sm:text-sm text-slate-400 font-medium leading-none mt-1 truncate">
-							泰山職業訓練場 ｜ 師資成果推廣網
-						</span>
-					</div>
-				</router-link>
-
-				<!-- Center: Nav Items with Magnetic Pill (為課程特色介紹左側提供充足開闊空間) -->
-				<div
-					class="hidden lg:flex items-center space-x-1.5 p-1.5 px-3 rounded-2xl bg-slate-950/50 border border-slate-800/80 backdrop-blur-md relative z-10 ml-6 lg:ml-10 xl:ml-16"
-				>
-					<router-link
-						v-for="item in navItems"
-						:key="item.path"
-						:to="item.path"
-						class="relative px-3 sm:px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 flex items-center space-x-1.5"
-						:class="[
-							$route.path === item.path
-								? 'text-cyan-300 font-bold'
-								: 'text-slate-300 hover:text-white hover:bg-slate-800/60',
-						]"
-					>
-						<!-- 磁吸微光膠囊底塊 -->
-						<span
-							v-if="$route.path === item.path"
-							class="absolute inset-0 rounded-xl bg-gradient-to-r from-cyan-500/20 via-blue-500/20 to-cyan-500/20 border border-cyan-400/40 shadow-sm shadow-cyan-500/30 -z-10 animate-fade-in"
-						></span>
-						<span>{{ item.name }}</span>
-						<!-- 招生狀態小徽章 -->
-						<span
-							v-if="item.path === '/admission' && admissionBadge"
-							class="inline-flex items-center px-1.5 py-0.5 rounded-full text-xs font-bold leading-none ml-0.5"
-							:class="admissionBadge.class"
-						>
-							<span
-								v-if="admissionBadge.hasDot"
-								class="w-1.5 h-1.5 rounded-full mr-1"
-								:class="admissionBadge.dotClass"
-							></span>
-							<span>{{ admissionBadge.text }}</span>
-						</span>
 					</router-link>
 				</div>
 
+				<!-- Center: Nav Items with Magnetic Pill (水平正中間絕對置中) -->
+				<div
+					class="hidden lg:flex items-center justify-center flex-shrink-0 relative z-10 px-2 xl:px-4"
+				>
+					<div
+						class="flex items-center space-x-1.5 p-1.5 px-3 rounded-2xl bg-slate-950/50 border border-slate-800/80 backdrop-blur-md"
+					>
+						<router-link
+							v-for="item in navItems"
+							:key="item.path"
+							:to="item.path"
+							class="relative px-3 sm:px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 flex items-center space-x-1.5"
+							:class="[
+								$route.path === item.path
+									? 'text-cyan-300 font-bold'
+									: 'text-slate-300 hover:text-white hover:bg-slate-800/60',
+							]"
+						>
+							<!-- 磁吸微光膠囊底塊 -->
+							<span
+								v-if="$route.path === item.path"
+								class="absolute inset-0 rounded-xl bg-gradient-to-r from-cyan-500/20 via-blue-500/20 to-cyan-500/20 border border-cyan-400/40 shadow-sm shadow-cyan-500/30 -z-10 animate-fade-in"
+							></span>
+							<span>{{ item.name }}</span>
+							<!-- 招生狀態小徽章 -->
+							<span
+								v-if="item.path === '/admission' && admissionBadge"
+								class="inline-flex items-center px-1.5 py-0.5 rounded-full text-xs font-bold leading-none ml-0.5"
+								:class="admissionBadge.class"
+							>
+								<span
+									v-if="admissionBadge.hasDot"
+									class="w-1.5 h-1.5 rounded-full mr-1"
+									:class="admissionBadge.dotClass"
+								></span>
+								<span>{{ admissionBadge.text }}</span>
+							</span>
+						</router-link>
+					</div>
+				</div>
+
 				<!-- Right: Action Button -->
-				<div class="flex items-center space-x-2 relative z-10 flex-shrink-0">
+				<div class="flex items-center justify-end flex-1 min-w-0 space-x-2 relative z-10">
 					<router-link
 						to="/admission"
-						class="hidden sm:inline-flex items-center font-bold text-white bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 shadow-md shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:scale-105 active:scale-95 transition-all"
+						class="hidden sm:inline-flex items-center font-bold text-white bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 shadow-md shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:scale-105 active:scale-95 transition-all flex-shrink-0"
 						:class="isScrolled ? 'px-4 py-2 rounded-xl text-xs' : 'px-5 py-2.5 rounded-xl text-sm'"
 					>
 						<span>{{ admissionBadge ? admissionBadge.ctaText : '立即查看招生資訊' }}</span>
@@ -126,7 +132,7 @@
 					<button
 						type="button"
 						@click="isOpen = !isOpen"
-						class="lg:hidden p-2 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-xl text-slate-300 hover:text-white bg-slate-800/80 border border-slate-700/60 focus:outline-none"
+						class="lg:hidden p-2 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-xl text-slate-300 hover:text-white bg-slate-800/80 border border-slate-700/60 focus:outline-none flex-shrink-0"
 						aria-label="主要導覽選單開關"
 					>
 						<span v-if="!isOpen">☰</span>
@@ -152,65 +158,69 @@
 				class="flex items-center justify-between p-3 rounded-2xl bg-slate-900/90 backdrop-blur-2xl border border-cyan-500/40 shadow-2xl shadow-cyan-950/60"
 			>
 				<!-- Left: Logo -->
-				<router-link to="/" class="flex items-center space-x-2 sm:space-x-3 group flex-1 min-w-0 mr-1 sm:mr-4 lg:mr-6 xl:mr-8">
-					<div class="flex-shrink-0 flex items-center justify-center">
-						<img
-							:src="store.settings?.site_logo_url || defaultLogo"
-							:alt="store.settings?.site_title || '泰山職訓 Logo'"
-							@error="handleLogoError"
-							class="h-7.5 sm:h-9 w-auto max-w-[120px] sm:max-w-[140px] object-contain rounded-lg drop-shadow-md group-hover:scale-105 transition-transform"
-						/>
-					</div>
-					<div class="flex flex-col min-w-0 justify-center">
-						<!-- 大器單行排版（手機端維持 16px 大字，桌機 18~20px） -->
-						<div class="flex items-center space-x-2 min-w-0">
-							<span
-								class="text-base sm:text-lg font-extrabold text-white tracking-tight group-hover:text-cyan-300 transition-colors leading-tight whitespace-nowrap truncate"
-							>
-								{{ store.settings?.site_title || '泰山職訓－前端網頁技術與AI應用' }}
-							</span>
-							<span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse shrink-0"></span>
+				<div class="flex items-center justify-start flex-1 min-w-0">
+					<router-link to="/" class="flex items-center space-x-1.5 sm:space-x-3 group min-w-0">
+						<div class="flex-shrink-0 flex items-center justify-center">
+							<img
+								:src="store.settings?.site_logo_url || defaultLogo"
+								:alt="store.settings?.site_title || '泰山職訓 Logo'"
+								@error="handleLogoError"
+								class="h-7 sm:h-9 w-auto max-w-[100px] sm:max-w-[140px] object-contain rounded-lg drop-shadow-md group-hover:scale-105 transition-transform"
+							/>
 						</div>
-						<span class="hidden sm:block text-xs sm:text-sm text-slate-400 leading-none truncate mt-1"> 泰山職訓 ｜ 師資自主推廣網 </span>
-					</div>
-				</router-link>
-
-				<!-- Center: Nav Items (為課程特色介紹左側提供充足開闊空間) -->
-				<div
-					class="hidden lg:flex items-center space-x-1.5 p-1.5 px-3 rounded-xl bg-slate-950/70 border border-slate-800 ml-6 lg:ml-10 xl:ml-16"
-				>
-					<router-link
-						v-for="item in navItems"
-						:key="item.path"
-						:to="item.path"
-						class="px-3 sm:px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all duration-200 flex items-center space-x-1.5"
-						:class="[
-							$route.path === item.path
-								? 'text-cyan-300 bg-cyan-500/20 font-bold border border-cyan-400/40'
-								: 'text-slate-300 hover:text-white hover:bg-slate-800',
-						]"
-					>
-						<span>{{ item.name }}</span>
-						<span
-							v-if="item.path === '/admission' && admissionBadge"
-							class="inline-flex items-center px-1.5 py-0.5 rounded-full text-xs font-bold leading-none ml-0.5"
-							:class="admissionBadge.class"
-						>
-							<span
-								v-if="admissionBadge.hasDot"
-								class="w-1.5 h-1.5 rounded-full mr-1"
-								:class="admissionBadge.dotClass"
-							></span>
-							<span>{{ admissionBadge.text }}</span>
-						</span>
+						<div class="flex flex-col min-w-0 justify-center">
+							<!-- 官方全名完整呈現（大字階梯：手機端 16px text-base，移除 truncate 絕無省略號 ...） -->
+							<div class="flex items-center space-x-2 min-w-0">
+								<span
+									class="font-extrabold tracking-tighter sm:tracking-tight text-white group-hover:text-cyan-300 transition-colors leading-tight whitespace-nowrap text-sm min-[375px]:text-base sm:text-lg lg:text-xl shrink-0"
+								>
+									{{ store.settings?.site_title || '泰山職訓－前端網頁技術與AI應用' }}
+								</span>
+								<span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse shrink-0"></span>
+							</div>
+							<span class="hidden sm:block text-xs sm:text-sm text-slate-400 leading-none truncate mt-1"> 泰山職訓 ｜ 師資自主推廣網 </span>
+						</div>
 					</router-link>
 				</div>
 
+				<!-- Center: Nav Items (水平正中間置中) -->
+				<div
+					class="hidden lg:flex items-center justify-center flex-shrink-0 relative z-10 px-2 xl:px-4"
+				>
+					<div class="flex items-center space-x-1.5 p-1.5 px-3 rounded-xl bg-slate-950/70 border border-slate-800">
+						<router-link
+							v-for="item in navItems"
+							:key="item.path"
+							:to="item.path"
+							class="px-3 sm:px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all duration-200 flex items-center space-x-1.5"
+							:class="[
+								$route.path === item.path
+									? 'text-cyan-300 bg-cyan-500/20 font-bold border border-cyan-400/40'
+									: 'text-slate-300 hover:text-white hover:bg-slate-800',
+							]"
+						>
+							<span>{{ item.name }}</span>
+							<span
+								v-if="item.path === '/admission' && admissionBadge"
+								class="inline-flex items-center px-1.5 py-0.5 rounded-full text-xs font-bold leading-none ml-0.5"
+								:class="admissionBadge.class"
+							>
+								<span
+									v-if="admissionBadge.hasDot"
+									class="w-1.5 h-1.5 rounded-full mr-1"
+									:class="admissionBadge.dotClass"
+								></span>
+								<span>{{ admissionBadge.text }}</span>
+							</span>
+						</router-link>
+					</div>
+				</div>
+
 				<!-- Right: Action & HUD Indicator -->
-				<div class="flex items-center space-x-2 flex-shrink-0">
+				<div class="flex items-center justify-end flex-1 min-w-0 space-x-2">
 					<router-link
 						to="/admission"
-						class="hidden sm:inline-flex px-4 py-2 rounded-xl font-bold text-xs text-white bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 shadow-md shadow-cyan-500/25 transition-all"
+						class="hidden sm:inline-flex px-4 py-2 rounded-xl font-bold text-xs text-white bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 shadow-md shadow-cyan-500/25 transition-all flex-shrink-0"
 					>
 						<span>{{ admissionBadge ? admissionBadge.ctaText : '立即報名' }} →</span>
 					</router-link>
@@ -218,7 +228,7 @@
 					<button
 						type="button"
 						@click="isOpen = !isOpen"
-						class="lg:hidden p-2 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-xl text-slate-300 hover:text-white bg-slate-800 border border-slate-700 focus:outline-none"
+						class="lg:hidden p-2 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-xl text-slate-300 hover:text-white bg-slate-800 border border-slate-700 focus:outline-none flex-shrink-0"
 						aria-label="主要導覽選單開關"
 					>
 						<span v-if="!isOpen">☰</span>
@@ -266,79 +276,82 @@
 					class="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 h-full flex items-center justify-between relative z-10"
 				>
 					<!-- Left: Official Logo + AI Pulse -->
-					<router-link
-						to="/"
-						class="flex items-center space-x-2 sm:space-x-3 group relative z-10 flex-1 min-w-0 mr-1 sm:mr-4 lg:mr-6 xl:mr-8"
-					>
-						<div class="flex-shrink-0 flex items-center justify-center">
-							<img
-								:src="store.settings?.site_logo_url || defaultLogo"
-								:alt="store.settings?.site_title || '泰山職訓 Logo'"
-								@error="handleLogoError"
-								class="h-7.5 sm:h-9 md:h-10 w-auto max-w-[120px] sm:max-w-[160px] object-contain rounded-lg drop-shadow-md group-hover:scale-105 transition-transform"
-							/>
-						</div>
-						<div class="flex flex-col min-w-0 justify-center">
-							<!-- 大器單行排版（手機端維持 16px 大字，桌機 18~20px） -->
-							<div class="flex items-center space-x-2 min-w-0">
-								<span
-									class="font-extrabold tracking-tight text-white group-hover:text-cyan-400 transition-colors leading-tight text-base sm:text-lg lg:text-xl whitespace-nowrap truncate"
-								>
-									{{ store.settings?.site_title || '泰山職訓－前端網頁技術與AI應用' }}
-								</span>
-								<span
-									class="hidden xl:inline-flex items-center px-2 py-0.5 rounded-full text-xs font-mono font-bold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 shrink-0"
-								>
-									<span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping mr-1"></span>
-									AI READY
+					<div class="flex items-center justify-start flex-1 min-w-0">
+						<router-link to="/" class="flex items-center space-x-1.5 sm:space-x-3 group relative z-10 min-w-0">
+							<div class="flex-shrink-0 flex items-center justify-center">
+								<img
+									:src="store.settings?.site_logo_url || defaultLogo"
+									:alt="store.settings?.site_title || '泰山職訓 Logo'"
+									@error="handleLogoError"
+									class="h-7 sm:h-9 md:h-10 w-auto max-w-[100px] sm:max-w-[160px] object-contain rounded-lg drop-shadow-md group-hover:scale-105 transition-transform"
+								/>
+							</div>
+							<div class="flex flex-col min-w-0 justify-center">
+								<!-- 官方全名完整呈現（大字階梯：手機端 16px text-base，移除 truncate 絕無省略號 ...） -->
+								<div class="flex items-center space-x-2 min-w-0">
+									<span
+										class="font-extrabold tracking-tighter sm:tracking-tight text-white group-hover:text-cyan-400 transition-colors leading-tight whitespace-nowrap text-sm min-[375px]:text-base sm:text-lg lg:text-xl shrink-0"
+									>
+										{{ store.settings?.site_title || '泰山職訓－前端網頁技術與AI應用' }}
+									</span>
+									<span
+										class="hidden xl:inline-flex items-center px-2 py-0.5 rounded-full text-xs font-mono font-bold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 shrink-0"
+									>
+										<span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping mr-1"></span>
+										AI READY
+									</span>
+								</div>
+								<span class="hidden sm:block text-xs sm:text-sm text-slate-400 font-medium leading-none mt-1 truncate">
+									泰山職業訓練場 ｜ 師資成果推廣網
 								</span>
 							</div>
-							<span class="hidden sm:block text-xs sm:text-sm text-slate-400 font-medium leading-none mt-1 truncate">
-								泰山職業訓練場 ｜ 師資成果推廣網
-							</span>
-						</div>
-					</router-link>
-
-					<!-- Center: Nav Items with Magnetic Pill (為課程特色介紹左側提供充足開闊空間) -->
-					<div
-						class="hidden lg:flex items-center space-x-1.5 p-1.5 px-3 rounded-2xl bg-slate-950/50 border border-slate-800/80 backdrop-blur-md relative z-10 ml-6 lg:ml-10 xl:ml-16"
-					>
-						<router-link
-							v-for="item in navItems"
-							:key="item.path"
-							:to="item.path"
-							class="relative px-3 sm:px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 flex items-center space-x-1.5"
-							:class="[
-								$route.path === item.path
-									? 'text-cyan-300 font-bold'
-									: 'text-slate-300 hover:text-white hover:bg-slate-800/60',
-							]"
-						>
-							<span
-								v-if="$route.path === item.path"
-								class="absolute inset-0 rounded-xl bg-gradient-to-r from-cyan-500/20 via-blue-500/20 to-cyan-500/20 border border-cyan-400/40 shadow-sm shadow-cyan-500/30 -z-10 animate-fade-in"
-							></span>
-							<span>{{ item.name }}</span>
-							<span
-								v-if="item.path === '/admission' && admissionBadge"
-								class="inline-flex items-center px-1.5 py-0.5 rounded-full text-xs font-bold leading-none ml-0.5"
-								:class="admissionBadge.class"
-							>
-								<span
-									v-if="admissionBadge.hasDot"
-									class="w-1.5 h-1.5 rounded-full mr-1"
-									:class="admissionBadge.dotClass"
-								></span>
-								<span>{{ admissionBadge.text }}</span>
-							</span>
 						</router-link>
 					</div>
 
+					<!-- Center: Nav Items with Magnetic Pill (水平正中間置中) -->
+					<div
+						class="hidden lg:flex items-center justify-center flex-shrink-0 relative z-10 px-2 xl:px-4"
+					>
+						<div
+							class="flex items-center space-x-1.5 p-1.5 px-3 rounded-2xl bg-slate-950/50 border border-slate-800/80 backdrop-blur-md"
+						>
+							<router-link
+								v-for="item in navItems"
+								:key="item.path"
+								:to="item.path"
+								class="relative px-3 sm:px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 flex items-center space-x-1.5"
+								:class="[
+									$route.path === item.path
+										? 'text-cyan-300 font-bold'
+										: 'text-slate-300 hover:text-white hover:bg-slate-800/60',
+								]"
+							>
+								<span
+									v-if="$route.path === item.path"
+									class="absolute inset-0 rounded-xl bg-gradient-to-r from-cyan-500/20 via-blue-500/20 to-cyan-500/20 border border-cyan-400/40 shadow-sm shadow-cyan-500/30 -z-10 animate-fade-in"
+								></span>
+								<span>{{ item.name }}</span>
+								<span
+									v-if="item.path === '/admission' && admissionBadge"
+									class="inline-flex items-center px-1.5 py-0.5 rounded-full text-xs font-bold leading-none ml-0.5"
+									:class="admissionBadge.class"
+								>
+									<span
+										v-if="admissionBadge.hasDot"
+										class="w-1.5 h-1.5 rounded-full mr-1"
+										:class="admissionBadge.dotClass"
+									></span>
+									<span>{{ admissionBadge.text }}</span>
+								</span>
+							</router-link>
+						</div>
+					</div>
+
 					<!-- Right: Action Button -->
-					<div class="flex items-center space-x-2 relative z-10 flex-shrink-0">
+					<div class="flex items-center justify-end flex-1 min-w-0 space-x-2 relative z-10">
 						<router-link
 							to="/admission"
-							class="hidden sm:inline-flex items-center px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm text-white bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 shadow-md shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:scale-105 active:scale-95 transition-all"
+							class="hidden sm:inline-flex items-center px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm text-white bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 shadow-md shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:scale-105 active:scale-95 transition-all flex-shrink-0"
 						>
 							<span>{{ admissionBadge ? admissionBadge.ctaText : '立即查看招生資訊' }}</span>
 							<span class="ml-1">→</span>
@@ -347,7 +360,7 @@
 						<button
 							type="button"
 							@click="isOpen = !isOpen"
-							class="lg:hidden p-2 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-xl text-slate-300 hover:text-white bg-slate-800/80 border border-slate-700/60 focus:outline-none"
+							class="lg:hidden p-2 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-xl text-slate-300 hover:text-white bg-slate-800/80 border border-slate-700/60 focus:outline-none flex-shrink-0"
 							aria-label="主要導覽選單開關"
 						>
 							<span v-if="!isOpen">☰</span>
@@ -382,31 +395,33 @@
 					:key="item.path"
 					:to="item.path"
 					@click="isOpen = false"
-					class="flex items-center justify-between px-4 py-3 rounded-2xl text-sm font-semibold transition-colors"
+					class="flex items-center justify-between px-4.5 py-3.5 rounded-2xl text-base font-bold transition-all"
 					:class="[
-						$route.path === item.path ? 'text-cyan-400 bg-cyan-500/15 font-bold' : 'text-slate-200 hover:bg-slate-800',
+						$route.path === item.path
+							? 'text-cyan-300 bg-cyan-500/20 border border-cyan-400/40 shadow-sm shadow-cyan-500/20'
+							: 'text-slate-200 hover:text-white hover:bg-slate-800/80',
 					]"
 				>
-					<span>{{ item.name }}</span>
+					<span class="tracking-tight">{{ item.name }}</span>
 					<span
 						v-if="item.path === '/admission' && admissionBadge"
-						class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-bold tracking-wide"
+						class="inline-flex items-center px-2.5 py-1 rounded-full text-xs sm:text-sm font-bold tracking-wide"
 						:class="admissionBadge.class"
 					>
 						<span
 							v-if="admissionBadge.hasDot"
-							class="w-1.5 h-1.5 rounded-full mr-1"
+							class="w-2 h-2 rounded-full mr-1.5"
 							:class="admissionBadge.dotClass"
 						></span>
 						<span>{{ admissionBadge.fullText }}</span>
 					</span>
 				</router-link>
 
-				<div class="pt-3">
+				<div class="pt-3.5">
 					<router-link
 						to="/admission"
 						@click="isOpen = false"
-						class="block w-full text-center py-3.5 rounded-2xl font-bold text-white bg-gradient-to-r from-cyan-500 to-blue-600 shadow-lg shadow-cyan-500/25"
+						class="block w-full text-center py-4 rounded-2xl text-base sm:text-lg font-black tracking-wide text-white bg-gradient-to-r from-cyan-500 to-blue-600 shadow-xl shadow-cyan-500/25 active:scale-[0.98] transition-transform"
 					>
 						{{ admissionBadge ? admissionBadge.ctaText : '立即查看招生資訊' }}
 					</router-link>
