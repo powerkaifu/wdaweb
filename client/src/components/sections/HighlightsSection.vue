@@ -26,7 +26,7 @@
 						>差別在身邊有沒有能一起解題的人</span
 					>
 				</h2>
-				<p class="text-slate-400 mt-4 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed text-pretty">
+				<p class="text-slate-400 mt-4 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed text-pretty text-justify sm:text-center">
 					自學可以走得很遠。但當你面對一個看不懂的錯誤訊息時，有人可以一起討論、有同學可以交流，往往能讓你少繞很多彎路。這也是實體學習最難被取代的地方。
 				</p>
 			</div>
@@ -65,7 +65,7 @@
 						</div>
 
 						<h3 class="text-xl font-extrabold text-white mb-3 tracking-tight">老師陪你拆解問題</h3>
-						<p class="text-base text-slate-200 leading-relaxed text-pretty">
+						<p class="text-base text-slate-200 leading-relaxed text-pretty text-justify">
 							遇到問題，不必一個人對著錯誤訊息反覆猜測。不是直接告訴你答案，而是協助你理解「為什麼會錯、問題出在哪裡」，練習拆解問題的思維，而不是只找到一個暫時運作的答案。
 						</p>
 					</div>
@@ -105,7 +105,7 @@
 						<h3 class="text-xl font-extrabold text-white mb-3 tracking-tight">
 							專屬<span class="inline-block">雙螢幕實作環境</span>
 						</h3>
-						<p class="text-base text-slate-200 leading-relaxed text-pretty">
+						<p class="text-base text-slate-200 leading-relaxed text-pretty text-justify">
 							降低實作與切換的摩擦。一邊看示範、一邊寫程式、查資料與測試結果能同時進行。讓學習當下就親手實作，徹底擺脫「看影片覺得懂、開編輯器一片空白」的困境。
 						</p>
 					</div>
@@ -143,7 +143,7 @@
 						</div>
 
 						<h3 class="text-xl font-extrabold text-white mb-3 tracking-tight">同儕一起學習成長</h3>
-						<p class="text-base text-slate-200 leading-relaxed text-pretty">
+						<p class="text-base text-slate-200 leading-relaxed text-pretty text-justify">
 							你不需要一個人面對每一次卡關。在班級中，你會發現「原來別人也會卡住」，並開始練習把自己的問題說清楚。同儕並肩討論、互相提點，往往比孤軍奮戰更容易突破盲點。
 						</p>
 					</div>
@@ -183,9 +183,8 @@
 						<h3 class="text-xl font-extrabold text-white mb-3 tracking-tight">
 							<span class="inline-block">920 小時</span>集中沉浸
 						</h3>
-						<p class="text-base text-slate-200 leading-relaxed text-pretty">
-							零散自學往往缺乏大局觀。<span class="inline-block">920 小時</span
-							>給你一段足夠長、足夠專注的時間，暫時放下外界干擾，把零碎的語法知識，真正沉澱為能獨立做出完整專案的實戰能力。
+						<p class="text-base text-slate-200 leading-relaxed text-pretty text-justify">
+							零散自學往往缺乏大局觀。<span class="inline-block">920 小時</span>給你一段足夠長、足夠專注的時間，暫時放下外界干擾，把零碎的語法知識，真正沉澱為能獨立做出完整專案的實戰能力。
 						</p>
 					</div>
 
@@ -221,7 +220,8 @@
 							>
 								<span class="text-2xl sm:text-3xl flex-shrink-0 mt-0.5 sm:mt-0">💬</span>
 								<span class="leading-snug sm:leading-tight">
-									<span class="block sm:inline">每天與人一起學習<span class="hidden sm:inline">，</span></span><span class="block sm:inline">是職訓很不一樣的地方</span>
+									<span class="block sm:inline">每天與人一起學習<span class="hidden sm:inline">，</span></span
+									><span class="block sm:inline">是職訓很不一樣的地方</span>
 								</span>
 							</h3>
 							<span
@@ -231,8 +231,8 @@
 							</span>
 						</div>
 
-						<!-- 內文兩段 (保持 text-base sm:text-lg 大字，行高 1.8 舒緩，老花眼與中高齡友善) -->
-						<div class="space-y-4 text-base sm:text-lg leading-relaxed text-pretty">
+						<!-- 內文兩段 (保持 text-base sm:text-lg 大字，行高 1.8 舒緩，老花眼與中高齡友善，兩端切齊) -->
+						<div class="space-y-4 text-base sm:text-lg leading-relaxed text-pretty text-justify">
 							<p class="text-slate-200">
 								自學可以自己找答案，AI 也可以立即提供解答；但實體學習多了一個重要的過程：<strong
 									class="text-cyan-300 font-bold"
@@ -266,7 +266,7 @@
 									class="w-1.5 h-5 rounded-full bg-purple-400 flex-shrink-0 mt-1 shadow-[0_0_8px_rgba(168,85,247,0.6)]"
 								></div>
 								<p class="text-base sm:text-lg font-bold text-slate-100 leading-relaxed text-pretty">
-									這些能力，也是在真實職場與團隊中不可或缺的核心能力。
+									這些能力，也是在職場中不可或缺的核心能力。
 								</p>
 							</div>
 						</div>
