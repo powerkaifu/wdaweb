@@ -344,6 +344,9 @@ import {
   isBatchEnded,
   isBatchTraining,
   isBatchClosed,
+  isBatchEnrolling,
+  isBatchScreeningOrPreparing,
+  isBatchUpcoming,
   getBatchEnrollmentNotice
 } from '@/utils/batchStatus'
 

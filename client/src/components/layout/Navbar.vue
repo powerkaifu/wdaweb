@@ -140,7 +140,7 @@
 		<!-- 方案 2：全息 HUD 懸浮島智能收折 (Folding Floating HUD) -->
 		<!-- ========================================================================= -->
 		<div
-			v-else-if="activeNavbarStyle === 'folding_hud'"
+			v-else-if="activeNavbarStyle === 'full_autohide'"
 			class="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 w-full transition-all duration-500 ease-out"
 			:class="[
 				scrollDirection === 'down' && isScrolled
