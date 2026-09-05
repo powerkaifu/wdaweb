@@ -62,7 +62,7 @@
 
 						<!-- 適合對象 -->
 						<div class="mb-5 p-4 rounded-2xl bg-slate-950/70 border border-slate-800/90">
-							<div class="text-xs font-mono font-bold text-blue-400 uppercase tracking-wider mb-2">
+							<div class="text-base font-bold text-blue-400 tracking-wide mb-2">
 								適合對象
 							</div>
 							<ul class="space-y-1.5 text-base text-slate-300">
@@ -83,7 +83,7 @@
 
 						<!-- 核心優勢 -->
 						<div class="mb-5 space-y-2">
-							<div class="text-xs font-mono font-bold text-emerald-400 uppercase tracking-wider">
+							<div class="text-base font-bold text-emerald-400 tracking-wide">
 								核心優點
 							</div>
 							<p class="text-base text-slate-200 leading-relaxed text-pretty">
@@ -93,7 +93,7 @@
 
 						<!-- 需要面對 -->
 						<div class="space-y-2">
-							<div class="text-xs font-mono font-bold text-amber-400 uppercase tracking-wider">
+							<div class="text-base font-bold text-amber-400 tracking-wide">
 								需要面對的代價
 							</div>
 							<p class="text-base text-slate-300 leading-relaxed text-pretty">
@@ -135,7 +135,7 @@
 
 						<!-- 適合對象 -->
 						<div class="mb-5 p-4 rounded-2xl bg-slate-950/90 border border-cyan-500/30">
-							<div class="text-xs font-mono font-bold text-cyan-400 uppercase tracking-wider mb-2">
+							<div class="text-base font-bold text-cyan-400 tracking-wide mb-2">
 								適合對象
 							</div>
 							<ul class="space-y-1.5 text-base text-slate-200">
@@ -160,7 +160,7 @@
 
 						<!-- 核心優勢 -->
 						<div class="mb-5 space-y-2">
-							<div class="text-xs font-mono font-bold text-emerald-400 uppercase tracking-wider">
+							<div class="text-base font-bold text-emerald-400 tracking-wide">
 								核心優點
 							</div>
 							<p class="text-base text-slate-100 leading-relaxed text-pretty">
@@ -170,7 +170,7 @@
 
 						<!-- 需要面對 -->
 						<div class="space-y-2">
-							<div class="text-xs font-mono font-bold text-amber-400 uppercase tracking-wider">
+							<div class="text-base font-bold text-amber-400 tracking-wide">
 								需要面對的代價
 							</div>
 							<p class="text-base text-slate-300 leading-relaxed text-pretty">
@@ -212,7 +212,7 @@
 
 						<!-- 適合對象 -->
 						<div class="mb-5 p-4 rounded-2xl bg-slate-950/70 border border-slate-800/90">
-							<div class="text-xs font-mono font-bold text-purple-400 uppercase tracking-wider mb-2">
+							<div class="text-base font-bold text-purple-400 tracking-wide mb-2">
 								適合對象
 							</div>
 							<ul class="space-y-1.5 text-base text-slate-300">
@@ -233,7 +233,7 @@
 
 						<!-- 核心優勢 -->
 						<div class="mb-5 space-y-2">
-							<div class="text-xs font-mono font-bold text-emerald-400 uppercase tracking-wider">
+							<div class="text-base font-bold text-emerald-400 tracking-wide">
 								核心優點
 							</div>
 							<p class="text-base text-slate-200 leading-relaxed text-pretty">
@@ -243,7 +243,7 @@
 
 						<!-- 需要面對 -->
 						<div class="space-y-2">
-							<div class="text-xs font-mono font-bold text-amber-400 uppercase tracking-wider">
+							<div class="text-base font-bold text-amber-400 tracking-wide">
 								需要面對的代價
 							</div>
 							<p class="text-base text-slate-300 leading-relaxed text-pretty">
