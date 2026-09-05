@@ -103,7 +103,40 @@ interface CodeDust {
   size: number
 }
 
-const CODE_SYMBOLS = ['AI', '01', '<Vue/>', 'fn()', 'async', '=>', '{...}', 'const', 'TS', 'GSAP', '920h', '100%']
+interface CodeSymbolItem {
+  text: string
+  color: string
+  category: 'frontend' | 'backend' | 'database' | 'ai' | 'milestone'
+}
+
+const CODE_SYMBOLS: CodeSymbolItem[] = [
+  // 💻 前端網頁技術 (Frontend)
+  { text: '<Vue/>', color: '#4ade80', category: 'frontend' },
+  { text: 'TypeScript', color: '#38bdf8', category: 'frontend' },
+  { text: 'Tailwind', color: '#22d3ee', category: 'frontend' },
+  { text: 'GSAP', color: '#86efac', category: 'frontend' },
+  { text: 'Pinia', color: '#fde047', category: 'frontend' },
+
+  // ⚙️ 後端開發技術 (Backend)
+  { text: 'Python', color: '#60a5fa', category: 'backend' },
+  { text: 'Django', color: '#34d399', category: 'backend' },
+  { text: 'REST API', color: '#38bdf8', category: 'backend' },
+
+  // 🗄️ 資料庫架構 (Database)
+  { text: 'PostgreSQL', color: '#818cf8', category: 'database' },
+  { text: 'SQL', color: '#a78bfa', category: 'database' },
+  { text: 'ORM', color: '#c084fc', category: 'database' },
+
+  // 🧠 AI 與智慧應用 (AI)
+  { text: 'AI', color: '#f472b6', category: 'ai' },
+  { text: 'LLM', color: '#fb7185', category: 'ai' },
+  { text: 'Agent', color: '#e879f9', category: 'ai' },
+  { text: 'Prompt', color: '#22d3ee', category: 'ai' },
+
+  // 🏅 職訓精神里程碑
+  { text: '920h', color: '#ffffff', category: 'milestone' }
+]
+
 let activeCodeDusts: CodeDust[] = []
 let lastMeteorCodeTriggerCount = 0
 
@@ -985,18 +1018,18 @@ function updateAndRenderMeteors(dt: number) {
     if (progress < 0.15) opacity = progress / 0.15
     else if (progress > 0.80) opacity = (1.0 - progress) / 0.20
 
-    // 幽靈代碼流星沿途拋灑發光代碼微塵
-    if (m.isCodeMeteor && Math.random() < 0.38) {
-      const symbol = CODE_SYMBOLS[Math.floor(Math.random() * CODE_SYMBOLS.length)]
+    // 幽靈代碼流星沿途拋灑發光代碼微塵 (職訓四大技能庫：前端、後端、資料庫、AI)
+    if (m.isCodeMeteor && Math.random() < 0.40) {
+      const item = CODE_SYMBOLS[Math.floor(Math.random() * CODE_SYMBOLS.length)]
       activeCodeDusts.push({
-        x: m.x + (Math.random() - 0.5) * 18,
-        y: m.y + (Math.random() - 0.5) * 18,
+        x: m.x + (Math.random() - 0.5) * 20,
+        y: m.y + (Math.random() - 0.5) * 20,
         vx: (Math.random() - 0.5) * 36 - Math.cos(m.angle) * 35,
         vy: (Math.random() - 0.5) * 36 - Math.sin(m.angle) * 35,
-        text: symbol,
+        text: item.text,
         alpha: 1.0,
-        decay: 0.75 + Math.random() * 0.55,
-        color: Math.random() < 0.65 ? '#34d399' : '#22d3ee',
+        decay: 0.70 + Math.random() * 0.50,
+        color: item.color,
         size: 11 + Math.random() * 4
       })
     }
