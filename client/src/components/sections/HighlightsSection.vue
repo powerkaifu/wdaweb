@@ -220,8 +220,8 @@
 							>
 								<span class="text-2xl sm:text-3xl flex-shrink-0 mt-0.5 sm:mt-0">💬</span>
 								<span class="leading-snug sm:leading-tight">
-									<span class="block sm:inline">每天與人一起學習<span class="hidden sm:inline">，</span></span
-									><span class="block sm:inline">是職訓很不一樣的地方</span>
+									<span class="block sm:inline text-white">每天與人一起學習<span class="hidden sm:inline">，</span></span
+									><span class="block sm:inline text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">是職訓很不一樣的地方</span>
 								</span>
 							</h3>
 							<span
