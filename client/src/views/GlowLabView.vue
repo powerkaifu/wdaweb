@@ -798,7 +798,7 @@
                   <span class="text-xs font-mono text-emerald-400 font-bold">
                     🔤 職訓核心技能微塵庫 (Skills Pool)
                   </span>
-                  <span class="text-xs font-mono text-slate-400">16 顆技能粒子</span>
+                  <span class="text-xs font-mono text-slate-400">20 顆技能粒子</span>
                 </div>
                 
                 <div class="space-y-2 text-xs font-mono">
@@ -806,31 +806,39 @@
                   <div class="flex items-center space-x-1.5 flex-wrap gap-y-1">
                     <span class="text-slate-400 font-bold min-w-[32px]">前端:</span>
                     <span class="px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">&lt;Vue/&gt;</span>
-                    <span class="px-1.5 py-0.5 rounded bg-sky-500/15 text-sky-300 border border-sky-500/30">TypeScript</span>
-                    <span class="px-1.5 py-0.5 rounded bg-cyan-500/15 text-cyan-300 border border-cyan-500/30">Tailwind</span>
-                    <span class="px-1.5 py-0.5 rounded bg-green-500/15 text-green-300 border border-green-500/30">GSAP</span>
+                    <span class="px-1.5 py-0.5 rounded bg-amber-500/15 text-amber-300 border border-amber-500/30">JavaScript</span>
+                    <span class="px-1.5 py-0.5 rounded bg-orange-500/15 text-orange-300 border border-orange-500/30">HTML5</span>
+                    <span class="px-1.5 py-0.5 rounded bg-sky-500/15 text-sky-300 border border-sky-500/30">CSS3</span>
                     <span class="px-1.5 py-0.5 rounded bg-yellow-500/15 text-yellow-300 border border-yellow-500/30">Pinia</span>
+                    <span class="px-1.5 py-0.5 rounded bg-purple-500/15 text-purple-300 border border-purple-500/30">Bootstrap</span>
                   </div>
 
                   <!-- 後端與資料庫 -->
                   <div class="flex items-center space-x-1.5 flex-wrap gap-y-1">
                     <span class="text-slate-400 font-bold min-w-[32px]">後端:</span>
-                    <span class="px-1.5 py-0.5 rounded bg-blue-500/15 text-blue-300 border border-blue-500/30">Python</span>
-                    <span class="px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">Django</span>
+                    <span class="px-1.5 py-0.5 rounded bg-green-500/15 text-green-300 border border-green-500/30">Node.js</span>
+                    <span class="px-1.5 py-0.5 rounded bg-slate-500/15 text-slate-300 border border-slate-500/30">Express</span>
                     <span class="px-1.5 py-0.5 rounded bg-sky-500/15 text-sky-300 border border-sky-500/30">REST API</span>
-                    <span class="text-slate-400 font-bold ml-1">庫:</span>
-                    <span class="px-1.5 py-0.5 rounded bg-indigo-500/15 text-indigo-300 border border-indigo-500/30">PostgreSQL</span>
-                    <span class="px-1.5 py-0.5 rounded bg-purple-500/15 text-purple-300 border border-purple-500/30">SQL</span>
-                    <span class="px-1.5 py-0.5 rounded bg-purple-500/15 text-purple-300 border border-purple-500/30">ORM</span>
+                    <span class="px-1.5 py-0.5 rounded bg-indigo-500/15 text-indigo-300 border border-indigo-500/30">Axios</span>
+                    <span class="px-1.5 py-0.5 rounded bg-rose-500/15 text-rose-300 border border-rose-500/30">NPM</span>
+                  </div>
+
+                  <!-- 資料庫 (MongoDB) -->
+                  <div class="flex items-center space-x-1.5 flex-wrap gap-y-1">
+                    <span class="text-slate-400 font-bold min-w-[32px]">庫:</span>
+                    <span class="px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-bold border border-emerald-500/40">MongoDB</span>
+                    <span class="px-1.5 py-0.5 rounded bg-teal-500/15 text-teal-300 border border-teal-500/30">NoSQL</span>
+                    <span class="px-1.5 py-0.5 rounded bg-amber-500/15 text-amber-300 border border-amber-500/30">JSON</span>
+                    <span class="px-1.5 py-0.5 rounded bg-cyan-500/15 text-cyan-300 border border-cyan-500/30">CRUD</span>
                   </div>
 
                   <!-- AI 與 920h -->
                   <div class="flex items-center space-x-1.5 flex-wrap gap-y-1">
                     <span class="text-slate-400 font-bold min-w-[32px]">AI:</span>
                     <span class="px-1.5 py-0.5 rounded bg-pink-500/15 text-pink-300 border border-pink-500/30">AI</span>
-                    <span class="px-1.5 py-0.5 rounded bg-rose-500/15 text-rose-300 border border-rose-500/30">LLM</span>
-                    <span class="px-1.5 py-0.5 rounded bg-fuchsia-500/15 text-fuchsia-300 border border-fuchsia-500/30">Agent</span>
+                    <span class="px-1.5 py-0.5 rounded bg-rose-500/15 text-rose-300 border border-rose-500/30">GenAI</span>
                     <span class="px-1.5 py-0.5 rounded bg-cyan-500/15 text-cyan-300 border border-cyan-500/30">Prompt</span>
+                    <span class="px-1.5 py-0.5 rounded bg-fuchsia-500/15 text-fuchsia-300 border border-fuchsia-500/30">Agent</span>
                     <span class="text-slate-400 font-bold ml-1">時數:</span>
                     <span class="px-1.5 py-0.5 rounded bg-white/20 text-white font-bold border border-white/40">920h</span>
                   </div>

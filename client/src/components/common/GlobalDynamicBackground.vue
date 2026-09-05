@@ -112,26 +112,30 @@ interface CodeSymbolItem {
 const CODE_SYMBOLS: CodeSymbolItem[] = [
   // 💻 前端網頁技術 (Frontend)
   { text: '<Vue/>', color: '#4ade80', category: 'frontend' },
-  { text: 'TypeScript', color: '#38bdf8', category: 'frontend' },
-  { text: 'Tailwind', color: '#22d3ee', category: 'frontend' },
-  { text: 'GSAP', color: '#86efac', category: 'frontend' },
+  { text: 'JavaScript', color: '#facc15', category: 'frontend' },
+  { text: 'HTML5', color: '#fb923c', category: 'frontend' },
+  { text: 'CSS3', color: '#38bdf8', category: 'frontend' },
   { text: 'Pinia', color: '#fde047', category: 'frontend' },
+  { text: 'Bootstrap', color: '#c084fc', category: 'frontend' },
 
-  // ⚙️ 後端開發技術 (Backend)
-  { text: 'Python', color: '#60a5fa', category: 'backend' },
-  { text: 'Django', color: '#34d399', category: 'backend' },
+  // ⚙️ 後端開發與執行環境 (Backend)
+  { text: 'Node.js', color: '#22c55e', category: 'backend' },
+  { text: 'Express', color: '#94a3b8', category: 'backend' },
   { text: 'REST API', color: '#38bdf8', category: 'backend' },
+  { text: 'Axios', color: '#818cf8', category: 'backend' },
+  { text: 'NPM', color: '#f87171', category: 'backend' },
 
-  // 🗄️ 資料庫架構 (Database)
-  { text: 'PostgreSQL', color: '#818cf8', category: 'database' },
-  { text: 'SQL', color: '#a78bfa', category: 'database' },
-  { text: 'ORM', color: '#c084fc', category: 'database' },
+  // 🗄️ 資料庫 (Database - 專屬 MongoDB NoSQL)
+  { text: 'MongoDB', color: '#10b981', category: 'database' },
+  { text: 'NoSQL', color: '#34d399', category: 'database' },
+  { text: 'JSON', color: '#fbbf24', category: 'database' },
+  { text: 'CRUD', color: '#2dd4bf', category: 'database' },
 
   // 🧠 AI 與智慧應用 (AI)
   { text: 'AI', color: '#f472b6', category: 'ai' },
-  { text: 'LLM', color: '#fb7185', category: 'ai' },
-  { text: 'Agent', color: '#e879f9', category: 'ai' },
+  { text: 'GenAI', color: '#fb7185', category: 'ai' },
   { text: 'Prompt', color: '#22d3ee', category: 'ai' },
+  { text: 'Agent', color: '#e879f9', category: 'ai' },
 
   // 🏅 職訓精神里程碑
   { text: '920h', color: '#ffffff', category: 'milestone' }
