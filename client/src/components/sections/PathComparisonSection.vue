@@ -34,6 +34,11 @@
 				</p>
 			</div>
 
+			<!-- 手機端橫向滑動提示 (桌機隱藏) -->
+			<div class="flex md:hidden items-center justify-center gap-2 text-base font-bold text-cyan-400 -mt-4 mb-4">
+				<span>👈 左右滑動橫向比較 3 種學習路徑 👉</span>
+			</div>
+
 			<!-- 三種路徑對照 (手機版橫向 Snap 滑動比對，桌機維持大器 3 欄並排) -->
 			<div
 				id="path-comparison-grid"
@@ -242,11 +247,6 @@
 						<span class="text-purple-400 font-bold">實務連結 · 需既有門檻</span>
 					</div>
 				</div>
-			</div>
-
-			<!-- 手機版微滑動提示 -->
-			<div class="md:hidden flex items-center justify-center gap-2 text-base font-bold text-cyan-400 mt-2 mb-2">
-				<span>👈 左右滑動橫向比較 3 種學習路徑 👉</span>
 			</div>
 
 			<!-- 誠懇決策收束橫幅 (三行層次結構) -->

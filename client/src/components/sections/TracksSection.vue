@@ -32,6 +32,11 @@
 				</p>
 			</div>
 
+			<!-- 手機端橫向滑動提示 (桌機隱藏) -->
+			<div class="flex sm:hidden items-center justify-center gap-2 text-base font-bold text-cyan-400 -mt-4 mb-4">
+				<span>👈 左右滑動瀏覽 4 種起點 👉</span>
+			</div>
+
 			<!-- 四大起點軌道 (手機版支援極致橫向 Snap 微滑軌，桌機維持大器網格) -->
 			<div
 				id="tracks-cards-grid"
@@ -139,11 +144,6 @@
 						💡 把零散的知識，整理成完整架構
 					</div>
 				</div>
-			</div>
-
-			<!-- 手機版微滑動提示 -->
-			<div class="sm:hidden flex items-center justify-center gap-2 text-base font-bold text-cyan-400 mt-2 mb-2">
-				<span>👈 左右滑動瀏覽 4 種起點 👉</span>
 			</div>
 
 			<!-- 共同收束：拉向決策與自主判斷 -->
