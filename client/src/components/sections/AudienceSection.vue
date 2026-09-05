@@ -84,7 +84,7 @@
 
 				<!-- 卡片 2 -->
 				<div
-					class="resonance-card card-subsurface-blue relative rounded-3xl p-5 sm:p-6 bg-slate-900/80 backdrop-blur-xl border border-slate-800/90 shadow-xl shadow-slate-950/60 flex flex-col justify-between overflow-hidden will-change-transform cursor-default w-[86vw] sm:w-[360px] max-w-[380px] shrink-0 snap-start md:w-full md:max-w-none md:shrink"
+					class="resonance-card card-subsurface-blue relative rounded-3xl p-5 sm:p-6 bg-slate-900/80 backdrop-blur-xl border border-slate-800/90 shadow-xl shadow-slate-950/60 flex flex-col justify-between overflow-hidden cursor-default w-[86vw] sm:w-[360px] max-w-[380px] shrink-0 snap-start md:w-full md:max-w-none md:shrink"
 				>
 					<div>
 						<div class="flex items-center space-x-3.5 mb-4">
@@ -124,7 +124,7 @@
 
 				<!-- 卡片 3 -->
 				<div
-					class="resonance-card card-subsurface-glow relative rounded-3xl p-5 sm:p-6 bg-slate-900/80 backdrop-blur-xl border border-slate-800/90 shadow-xl shadow-slate-950/60 flex flex-col justify-between overflow-hidden will-change-transform cursor-default w-[86vw] sm:w-[360px] max-w-[380px] shrink-0 snap-start md:w-full md:max-w-none md:shrink"
+					class="resonance-card card-subsurface-glow relative rounded-3xl p-5 sm:p-6 bg-slate-900/80 backdrop-blur-xl border border-slate-800/90 shadow-xl shadow-slate-950/60 flex flex-col justify-between overflow-hidden cursor-default w-[86vw] sm:w-[360px] max-w-[380px] shrink-0 snap-start md:w-full md:max-w-none md:shrink"
 				>
 					<div>
 						<div class="flex items-center space-x-3.5 mb-4">

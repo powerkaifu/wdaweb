@@ -79,7 +79,7 @@
         <div
           v-for="(batch, index) in (sortedBatches.length > 0 ? sortedBatches : store.batches)"
           :key="batch.id"
-          class="batch-card group relative rounded-3xl p-4 sm:p-8 lg:p-11 backdrop-blur-xl border transition-all duration-300 flex flex-col justify-between overflow-hidden will-change-transform transform-gpu cursor-default w-full"
+          class="batch-card group relative rounded-3xl p-4 sm:p-8 lg:p-11 backdrop-blur-xl border transition-all duration-300 flex flex-col justify-between overflow-hidden transform-gpu cursor-default w-full"
           :class="[
             isBatchEnded(batch)
               ? 'bg-slate-950/45 border-slate-800/40 opacity-60 hover:opacity-85 grayscale-[40%] hover:grayscale-0 shadow-none'

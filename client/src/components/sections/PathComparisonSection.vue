@@ -46,7 +46,7 @@
 			>
 				<!-- 路徑 1：自學 ＋ AI -->
 				<div
-					class="path-card card-subsurface-glow relative rounded-3xl p-5 sm:p-7 bg-slate-900/80 backdrop-blur-xl border border-slate-800/90 shadow-xl shadow-slate-950/60 flex flex-col justify-between overflow-hidden will-change-transform cursor-default hover:border-blue-500/50 transition-[border-color,box-shadow] duration-300 w-[86vw] max-w-[360px] shrink-0 snap-start md:w-full md:max-w-none md:shrink"
+					class="path-card card-subsurface-glow relative rounded-3xl p-5 sm:p-7 bg-slate-900/80 backdrop-blur-xl border border-slate-800/90 shadow-xl shadow-slate-950/60 flex flex-col justify-between overflow-hidden cursor-default hover:border-blue-500/50 transition-[border-color,box-shadow] duration-300 w-[86vw] max-w-[360px] shrink-0 snap-start md:w-full md:max-w-none md:shrink"
 				>
 					<div>
 						<!-- 標題與圖標 -->
@@ -111,7 +111,7 @@
 
 				<!-- 路徑 2：實體職訓 (高光焦點，cyan 主題) -->
 				<div
-					class="path-card card-subsurface-glow relative rounded-3xl p-5 sm:p-7 bg-gradient-to-b from-slate-900/95 via-slate-900/90 to-slate-950/95 backdrop-blur-xl border border-cyan-500/50 shadow-2xl shadow-cyan-950/50 flex flex-col justify-between overflow-hidden will-change-transform cursor-default w-[86vw] max-w-[360px] shrink-0 snap-start md:w-full md:max-w-none md:shrink"
+					class="path-card card-subsurface-glow relative rounded-3xl p-5 sm:p-7 bg-gradient-to-b from-slate-900/95 via-slate-900/90 to-slate-950/95 backdrop-blur-xl border border-cyan-500/50 shadow-2xl shadow-cyan-950/50 flex flex-col justify-between overflow-hidden cursor-default w-[86vw] max-w-[360px] shrink-0 snap-start md:w-full md:max-w-none md:shrink"
 				>
 					<div>
 						<!-- 標題與圖標 -->
@@ -185,7 +185,7 @@
 
 				<!-- 路徑 3：工作中學習 -->
 				<div
-					class="path-card card-subsurface-glow relative rounded-3xl p-5 sm:p-7 bg-slate-900/80 backdrop-blur-xl border border-slate-800/90 shadow-xl shadow-slate-950/60 flex flex-col justify-between overflow-hidden will-change-transform cursor-default hover:border-purple-500/50 transition-[border-color,box-shadow] duration-300 w-[86vw] max-w-[360px] shrink-0 snap-start md:w-full md:max-w-none md:shrink"
+					class="path-card card-subsurface-glow relative rounded-3xl p-5 sm:p-7 bg-slate-900/80 backdrop-blur-xl border border-slate-800/90 shadow-xl shadow-slate-950/60 flex flex-col justify-between overflow-hidden cursor-default hover:border-purple-500/50 transition-[border-color,box-shadow] duration-300 w-[86vw] max-w-[360px] shrink-0 snap-start md:w-full md:max-w-none md:shrink"
 				>
 					<div>
 						<!-- 標題與圖標 -->

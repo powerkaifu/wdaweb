@@ -21,7 +21,7 @@
           <div
             v-for="(project, index) in displayedProjects"
             :key="project.id"
-            class="showcase-card h-84 perspective-1000 group cursor-pointer rounded-3xl focus-visible:ring-2 focus-visible:ring-cyan-400 focus:outline-none transform-gpu will-change-transform"
+            class="showcase-card h-84 perspective-1000 group cursor-pointer rounded-3xl focus-visible:ring-2 focus-visible:ring-cyan-400 focus:outline-none transform-gpu"
             tabindex="0"
             role="button"
             :aria-expanded="flippedIds.has(project.id)"

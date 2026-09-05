@@ -40,7 +40,7 @@
         <div
           v-for="(fac, index) in displayFacilities"
           :key="fac.id || index"
-          class="facility-card card-subsurface-glow relative rounded-3xl overflow-hidden bg-slate-900/80 backdrop-blur-xl border border-slate-800/90 shadow-xl shadow-slate-950/60 flex flex-col justify-between transform-gpu will-change-transform cursor-default w-[86vw] sm:w-[460px] max-w-[500px] shrink-0 snap-start md:w-full md:max-w-none md:shrink"
+          class="facility-card card-subsurface-glow relative rounded-3xl overflow-hidden bg-slate-900/80 backdrop-blur-xl border border-slate-800/90 shadow-xl shadow-slate-950/60 flex flex-col justify-between transform-gpu cursor-default w-[86vw] sm:w-[460px] max-w-[500px] shrink-0 snap-start md:w-full md:max-w-none md:shrink"
         >
           <!-- 角落序號水印 (01, 02) -->
           <div class="absolute -right-2 -bottom-4 text-7xl font-mono font-black text-slate-800/20 select-none pointer-events-none z-20">

@@ -44,7 +44,7 @@
 			>
 				<!-- 收穫 1 -->
 				<div
-					class="outcome-card card-subsurface-glow relative rounded-3xl p-5 sm:p-7 bg-slate-900/80 backdrop-blur-xl border border-slate-800/90 shadow-xl shadow-slate-950/60 flex flex-col justify-between overflow-hidden will-change-transform cursor-default w-[84vw] sm:w-[340px] max-w-[360px] shrink-0 snap-start md:w-full md:max-w-none md:shrink"
+					class="outcome-card card-subsurface-glow relative rounded-3xl p-5 sm:p-7 bg-slate-900/80 backdrop-blur-xl border border-slate-800/90 shadow-xl shadow-slate-950/60 flex flex-col justify-between overflow-hidden cursor-default w-[84vw] sm:w-[340px] max-w-[360px] shrink-0 snap-start md:w-full md:max-w-none md:shrink"
 				>
 					<div>
 						<div
@@ -64,7 +64,7 @@
 
 				<!-- 收穫 2 -->
 				<div
-					class="outcome-card card-subsurface-blue relative rounded-3xl p-5 sm:p-7 bg-slate-900/80 backdrop-blur-xl border border-slate-800/90 shadow-xl shadow-slate-950/60 flex flex-col justify-between overflow-hidden will-change-transform cursor-default w-[84vw] sm:w-[340px] max-w-[360px] shrink-0 snap-start md:w-full md:max-w-none md:shrink"
+					class="outcome-card card-subsurface-blue relative rounded-3xl p-5 sm:p-7 bg-slate-900/80 backdrop-blur-xl border border-slate-800/90 shadow-xl shadow-slate-950/60 flex flex-col justify-between overflow-hidden cursor-default w-[84vw] sm:w-[340px] max-w-[360px] shrink-0 snap-start md:w-full md:max-w-none md:shrink"
 				>
 					<div>
 						<div
@@ -84,7 +84,7 @@
 
 				<!-- 收穫 3 -->
 				<div
-					class="outcome-card card-subsurface-glow relative rounded-3xl p-5 sm:p-7 bg-slate-900/80 backdrop-blur-xl border border-slate-800/90 shadow-xl shadow-slate-950/60 flex flex-col justify-between overflow-hidden will-change-transform cursor-default w-[84vw] sm:w-[340px] max-w-[360px] shrink-0 snap-start md:w-full md:max-w-none md:shrink"
+					class="outcome-card card-subsurface-glow relative rounded-3xl p-5 sm:p-7 bg-slate-900/80 backdrop-blur-xl border border-slate-800/90 shadow-xl shadow-slate-950/60 flex flex-col justify-between overflow-hidden cursor-default w-[84vw] sm:w-[340px] max-w-[360px] shrink-0 snap-start md:w-full md:max-w-none md:shrink"
 				>
 					<div>
 						<div
@@ -104,7 +104,7 @@
 
 				<!-- 收穫 4 -->
 				<div
-					class="outcome-card card-subsurface-glow relative rounded-3xl p-5 sm:p-7 bg-slate-900/80 backdrop-blur-xl border border-slate-800/90 shadow-xl shadow-slate-950/60 flex flex-col justify-between overflow-hidden will-change-transform cursor-default w-[84vw] sm:w-[340px] max-w-[360px] shrink-0 snap-start md:w-full md:max-w-none md:shrink"
+					class="outcome-card card-subsurface-glow relative rounded-3xl p-5 sm:p-7 bg-slate-900/80 backdrop-blur-xl border border-slate-800/90 shadow-xl shadow-slate-950/60 flex flex-col justify-between overflow-hidden cursor-default w-[84vw] sm:w-[340px] max-w-[360px] shrink-0 snap-start md:w-full md:max-w-none md:shrink"
 				>
 					<div>
 						<div
@@ -124,7 +124,7 @@
 
 				<!-- 收穫 5 -->
 				<div
-					class="outcome-card card-subsurface-glow relative rounded-3xl p-5 sm:p-7 bg-slate-900/80 backdrop-blur-xl border border-slate-800/90 shadow-xl shadow-slate-950/60 flex flex-col justify-between overflow-hidden will-change-transform cursor-default w-[84vw] sm:w-[340px] max-w-[360px] shrink-0 snap-start md:w-full md:max-w-none md:shrink"
+					class="outcome-card card-subsurface-glow relative rounded-3xl p-5 sm:p-7 bg-slate-900/80 backdrop-blur-xl border border-slate-800/90 shadow-xl shadow-slate-950/60 flex flex-col justify-between overflow-hidden cursor-default w-[84vw] sm:w-[340px] max-w-[360px] shrink-0 snap-start md:w-full md:max-w-none md:shrink"
 				>
 					<div>
 						<div
@@ -144,7 +144,7 @@
 
 				<!-- 收穫 6 (靈魂總結卡片：特殊微光突顯) -->
 				<div
-					class="outcome-card card-subsurface-glow relative rounded-3xl p-5 sm:p-7 bg-gradient-to-br from-cyan-950/40 via-slate-900/90 to-slate-900/80 backdrop-blur-xl border border-cyan-500/40 shadow-xl shadow-cyan-950/40 flex flex-col justify-between overflow-hidden will-change-transform cursor-default w-[84vw] sm:w-[340px] max-w-[360px] shrink-0 snap-start md:w-full md:max-w-none md:shrink"
+					class="outcome-card card-subsurface-glow relative rounded-3xl p-5 sm:p-7 bg-gradient-to-br from-cyan-950/40 via-slate-900/90 to-slate-900/80 backdrop-blur-xl border border-cyan-500/40 shadow-xl shadow-cyan-950/40 flex flex-col justify-between overflow-hidden cursor-default w-[84vw] sm:w-[340px] max-w-[360px] shrink-0 snap-start md:w-full md:max-w-none md:shrink"
 				>
 					<div>
 						<div

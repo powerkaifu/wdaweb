@@ -243,15 +243,17 @@ const switchSlide = (targetIndex: number) => {
     }
   })
 
-  // 1. 舊字元 3D 翻轉 + 向上微移 + 粒子模糊消散
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
+
+  // 1. 舊字元 3D 翻轉 + 向上微移 + 粒子模糊消散 (手機端停用昂貴的 DOM filter blur)
   currentTimeline
     .to(chars, {
       y: -20,
       rotateX: 60,
       opacity: 0,
-      filter: 'blur(5px)',
+      filter: isMobile ? 'none' : 'blur(5px)',
       stagger: {
-        each: 0.007,
+        each: isMobile ? 0.005 : 0.007,
         from: 'start'
       },
       duration: 0.32,
@@ -260,7 +262,7 @@ const switchSlide = (targetIndex: number) => {
     .to(subtitle, {
       y: -10,
       opacity: 0,
-      filter: 'blur(4px)',
+      filter: isMobile ? 'none' : 'blur(4px)',
       duration: 0.25,
       ease: 'power2.in'
     }, 0.04)
@@ -270,6 +272,7 @@ const switchSlide = (targetIndex: number) => {
 const animateSlideIn = () => {
   const chars = document.querySelectorAll('#hero-main-title .hero-char')
   const subtitle = subtitleRef.value
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
 
   if (currentTimeline) currentTimeline.kill()
   currentTimeline = gsap.timeline({
@@ -283,16 +286,16 @@ const animateSlideIn = () => {
       y: 18,
       rotateX: -55,
       opacity: 0,
-      filter: 'blur(6px)',
+      filter: isMobile ? 'none' : 'blur(6px)',
       scale: 0.96
     }, {
       y: 0,
       rotateX: 0,
       opacity: 1,
-      filter: 'blur(0px)',
+      filter: 'none',
       scale: 1,
       stagger: {
-        each: 0.016,
+        each: isMobile ? 0.012 : 0.016,
         from: 'start'
       },
       duration: 0.52,
@@ -301,11 +304,11 @@ const animateSlideIn = () => {
     .fromTo(subtitle, {
       y: 12,
       opacity: 0,
-      filter: 'blur(4px)'
+      filter: isMobile ? 'none' : 'blur(4px)'
     }, {
       y: 0,
       opacity: 1,
-      filter: 'blur(0px)',
+      filter: 'none',
       duration: 0.42,
       ease: 'power2.out'
     }, 0.14)

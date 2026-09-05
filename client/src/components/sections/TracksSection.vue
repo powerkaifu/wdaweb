@@ -44,7 +44,7 @@
 			>
 				<!-- 軌道 1 -->
 				<div
-					class="track-card card-subsurface-glow relative rounded-3xl p-5 sm:p-6 bg-slate-900/80 backdrop-blur-xl border border-slate-800/90 shadow-xl shadow-slate-950/60 flex flex-col justify-between overflow-hidden will-change-transform cursor-default hover:border-cyan-500/50 transition-[border-color,box-shadow] duration-300 w-[84vw] max-w-[340px] shrink-0 snap-start sm:w-full sm:max-w-none sm:shrink"
+					class="track-card card-subsurface-glow relative rounded-3xl p-5 sm:p-6 bg-slate-900/80 backdrop-blur-xl border border-slate-800/90 shadow-xl shadow-slate-950/60 flex flex-col justify-between overflow-hidden cursor-default hover:border-cyan-500/50 transition-[border-color,box-shadow] duration-300 w-[84vw] max-w-[340px] shrink-0 snap-start sm:w-full sm:max-w-none sm:shrink"
 				>
 					<div>
 						<div class="mb-3.5">
@@ -70,7 +70,7 @@
 
 				<!-- 軌道 2 -->
 				<div
-					class="track-card card-subsurface-blue relative rounded-3xl p-5 sm:p-6 bg-slate-900/80 backdrop-blur-xl border border-slate-800/90 shadow-xl shadow-slate-950/60 flex flex-col justify-between overflow-hidden will-change-transform cursor-default hover:border-blue-500/50 transition-[border-color,box-shadow] duration-300 w-[84vw] max-w-[340px] shrink-0 snap-start sm:w-full sm:max-w-none sm:shrink"
+					class="track-card card-subsurface-blue relative rounded-3xl p-5 sm:p-6 bg-slate-900/80 backdrop-blur-xl border border-slate-800/90 shadow-xl shadow-slate-950/60 flex flex-col justify-between overflow-hidden cursor-default hover:border-blue-500/50 transition-[border-color,box-shadow] duration-300 w-[84vw] max-w-[340px] shrink-0 snap-start sm:w-full sm:max-w-none sm:shrink"
 				>
 					<div>
 						<div class="mb-3.5">
@@ -95,7 +95,7 @@
 
 				<!-- 軌道 3 -->
 				<div
-					class="track-card card-subsurface-glow relative rounded-3xl p-5 sm:p-6 bg-slate-900/80 backdrop-blur-xl border border-slate-800/90 shadow-xl shadow-slate-950/60 flex flex-col justify-between overflow-hidden will-change-transform cursor-default hover:border-purple-500/50 transition-[border-color,box-shadow] duration-300 w-[84vw] max-w-[340px] shrink-0 snap-start sm:w-full sm:max-w-none sm:shrink"
+					class="track-card card-subsurface-glow relative rounded-3xl p-5 sm:p-6 bg-slate-900/80 backdrop-blur-xl border border-slate-800/90 shadow-xl shadow-slate-950/60 flex flex-col justify-between overflow-hidden cursor-default hover:border-purple-500/50 transition-[border-color,box-shadow] duration-300 w-[84vw] max-w-[340px] shrink-0 snap-start sm:w-full sm:max-w-none sm:shrink"
 				>
 					<div>
 						<div class="mb-3.5">
@@ -121,7 +121,7 @@
 
 				<!-- 軌道 4 -->
 				<div
-					class="track-card card-subsurface-glow relative rounded-3xl p-5 sm:p-6 bg-slate-900/80 backdrop-blur-xl border border-slate-800/90 shadow-xl shadow-slate-950/60 flex flex-col justify-between overflow-hidden will-change-transform cursor-default hover:border-emerald-500/50 transition-[border-color,box-shadow] duration-300 w-[84vw] max-w-[340px] shrink-0 snap-start sm:w-full sm:max-w-none sm:shrink"
+					class="track-card card-subsurface-glow relative rounded-3xl p-5 sm:p-6 bg-slate-900/80 backdrop-blur-xl border border-slate-800/90 shadow-xl shadow-slate-950/60 flex flex-col justify-between overflow-hidden cursor-default hover:border-emerald-500/50 transition-[border-color,box-shadow] duration-300 w-[84vw] max-w-[340px] shrink-0 snap-start sm:w-full sm:max-w-none sm:shrink"
 				>
 					<div>
 						<div class="mb-3.5">

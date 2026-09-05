@@ -38,6 +38,23 @@ let targetMouseY = 0
 let currentMouseX = 0
 let currentMouseY = 0
 
+// 📱 裝置性能感知、智慧動態降級與省電休眠狀態 (Mobile Zero-Jank & Power Shield)
+let isMobileDevice = false
+let prefersReducedMotion = false
+let isPageHidden = false
+
+function updateDeviceCapabilities() {
+  if (typeof window === 'undefined') return
+  isMobileDevice = window.innerWidth < 768 || /Android|iPhone|iPad|iPod/i.test(navigator.userAgent)
+  prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+}
+
+// 動態計算最適 DPR：桌機維持 2.0，手機端限制 1.0 ~ 1.25（大幅減省 75% 像素寫入開銷，消除 GPU 頻寬瓶頸）
+function getOptimalDpr(): number {
+  const rawDpr = window.devicePixelRatio || 1
+  return isMobileDevice ? Math.min(rawDpr, 1.25) : Math.min(rawDpr, 2.0)
+}
+
 // ===========================================================================
 // 🌠 Awwwards 級 360° 天球仰望偶發流星物理系統 (Celestial Sporadic Meteor Engine)
 // ===========================================================================
@@ -577,11 +594,9 @@ function initNebulaFlowScene() {
     spritesRuntime.push({ sprite, material: mat, config: cfg })
   })
 
-  // 2. 建立 960 顆三階星等自然銀河繁星 (Three-Tier Stellar Magnitudes + GPU 原生非同步物理閃爍)
-  // Tier 1: 64 顆璀璨一等星（~6.7%）- 小巧晶瑩鑽石十字光刺、飽和呼吸與 HDR 溢光
-  // Tier 2: 300 顆中景二等星（~31.2%）- 沿旋臂密集聚散，獨立靈動眨眼
-  // Tier 3: 596 顆深空微星星塵（~62.1%）- 廣袤深空微米晶光，鋪陳深邃天幕
-  const starCount = 960
+  // 2. 建立自然銀河繁星 (Three-Tier Stellar Magnitudes + GPU 原生非同步物理閃爍)
+  // 桌機維持 960 顆三階繁星；手機端自適應精簡為 360 顆（保證璀璨星空美感，頂點運算減少 62%）
+  const starCount = isMobileDevice ? 360 : 960
   const starGeometry = new THREE.BufferGeometry()
   const starPositions = new Float32Array(starCount * 3)
   const starColors = new Float32Array(starCount * 3)
@@ -935,12 +950,14 @@ function renderQuantumMindWaves(ctx: CanvasRenderingContext2D, dt: number, w: nu
       ? `rgba(34, 211, 238, ${(currentAlpha * 0.28).toFixed(3)})`
       : `rgba(56, 189, 248, ${(currentAlpha * 0.28).toFixed(3)})`
     ctx.lineWidth = Math.max(0.8, 1.8 - progress * 0.9)
-    ctx.shadowColor = wave.color
-    ctx.shadowBlur = 10 + progress * 12
+    if (!isMobileDevice) {
+      ctx.shadowColor = wave.color
+      ctx.shadowBlur = 10 + progress * 12
+    }
     ctx.stroke()
 
-    // B. 次級諧振雙環 (波幅緊湊伴隨，間距自適應微調，維持高能雙環波前凝聚力)
-    if (wave.hasSecondaryRing && wave.radius > 35) {
+    // B. 次級諧振雙環 (波幅緊湊伴隨，間距自適應微調；手機端跳過以節省 GPU 算力)
+    if (!isMobileDevice && wave.hasSecondaryRing && wave.radius > 35) {
       const secondaryRadius = Math.max(10, wave.radius - Math.min(22, Math.max(5, wave.radius * 0.065)))
       ctx.beginPath()
       ctx.arc(wave.x, wave.y, secondaryRadius, 0, Math.PI * 2)
@@ -1040,8 +1057,10 @@ function updateAndRenderMeteors(dt: number) {
     ctx.beginPath()
     ctx.arc(s.x, s.y, s.size * s.alpha, 0, Math.PI * 2)
     ctx.fillStyle = s.color.replace('ALPHA', String(s.alpha))
-    ctx.shadowColor = s.color.replace('ALPHA', '0.8')
-    ctx.shadowBlur = 6
+    if (!isMobileDevice) {
+      ctx.shadowColor = s.color.replace('ALPHA', '0.8')
+      ctx.shadowBlur = 6
+    }
     ctx.fill()
   }
 
@@ -1061,8 +1080,10 @@ function updateAndRenderMeteors(dt: number) {
     ctx.font = `bold ${Math.round(cd.size)}px "JetBrains Mono", "Fira Code", monospace`
     ctx.fillStyle = cd.color
     ctx.globalAlpha = Math.max(0, Math.min(1, cd.alpha * 0.95))
-    ctx.shadowColor = cd.color
-    ctx.shadowBlur = 8
+    if (!isMobileDevice) {
+      ctx.shadowColor = cd.color
+      ctx.shadowBlur = 8
+    }
     ctx.fillText(cd.text, cd.x, cd.y)
     ctx.restore()
   }
@@ -1190,8 +1211,10 @@ function updateAndRenderMeteors(dt: number) {
     ctx.strokeStyle = trailGrad
     ctx.lineWidth = m.isFireball ? 3.0 : (m.isCodeMeteor ? 2.2 : 1.8)
     ctx.lineCap = 'round'
-    ctx.shadowColor = m.colorScheme.accent
-    ctx.shadowBlur = m.isFireball ? 16 : (m.isCodeMeteor ? 12 : 9)
+    if (!isMobileDevice) {
+      ctx.shadowColor = m.colorScheme.accent
+      ctx.shadowBlur = m.isFireball ? 16 : (m.isCodeMeteor ? 12 : 9)
+    }
     ctx.stroke()
 
     // Pass 4: 白熱針尖核心
@@ -1215,8 +1238,10 @@ function updateAndRenderMeteors(dt: number) {
     ctx.beginPath()
     ctx.arc(m.x, m.y, m.isFireball ? 2.2 : 1.4, 0, Math.PI * 2)
     ctx.fillStyle = '#ffffff'
-    ctx.shadowColor = '#ffffff'
-    ctx.shadowBlur = 12
+    if (!isMobileDevice) {
+      ctx.shadowColor = '#ffffff'
+      ctx.shadowBlur = 12
+    }
     ctx.fill()
   }
 
@@ -1232,37 +1257,67 @@ function handleMouseMove(e: MouseEvent) {
 }
 
 // ---------------------------------------------------------------------------
-// 視窗縮放與主渲染循環
+// ---------------------------------------------------------------------------
+// 視窗縮放、分頁休眠保護與主渲染循環 (Mobile Zero-Jank & Power Shield)
 // ---------------------------------------------------------------------------
 function handleResize() {
+  updateDeviceCapabilities()
   const w = window.innerWidth
   const h = window.innerHeight
+  const dpr = getOptimalDpr()
 
   if (renderer && camera && canvasRef.value) {
     camera.aspect = w / h
     camera.updateProjectionMatrix()
     renderer.setSize(w, h)
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+    renderer.setPixelRatio(dpr)
   }
 
   if (starShaderMaterial) {
-    starShaderMaterial.uniforms.uPixelRatio.value = Math.min(window.devicePixelRatio, 2)
+    starShaderMaterial.uniforms.uPixelRatio.value = dpr
   }
 
   if (meteorCanvasRef.value) {
-    const dpr = Math.min(window.devicePixelRatio || 1, 2)
     meteorCanvasRef.value.width = Math.round(w * dpr)
     meteorCanvasRef.value.height = Math.round(h * dpr)
   }
 }
 
+// 🔋 分頁切換與螢幕鎖定自動休眠鎖（防發燙、防耗電、防切回瞬移爆衝）
+function handleVisibilityChange() {
+  if (typeof document === 'undefined') return
+  if (document.hidden) {
+    isPageHidden = true
+    if (animId) {
+      cancelAnimationFrame(animId)
+      animId = null
+    }
+  } else {
+    isPageHidden = false
+    // 喚醒時重置時鐘，防止背景暫停後 delta 瞬態爆增造成天體流星瞬移
+    if (clock) {
+      clock.getDelta()
+    }
+    if (!animId) {
+      renderLoop()
+    }
+  }
+}
+
 function renderLoop() {
+  if (isPageHidden) return
   animId = requestAnimationFrame(renderLoop)
 
   if (!renderer || !scene || !camera || !clock) return
 
   const delta = clock.getDelta()
   const elapsedTime = clock.getElapsedTime()
+
+  // 尊重無障礙「減少動態效果」偏好：停止粒子與流星的高頻動畫，僅保持靜止深空
+  if (prefersReducedMotion) {
+    renderer.render(scene, camera)
+    return
+  }
 
   // 1. 更新並渲染 3D 宇宙星雲與微星
   if (currentUpdateFn) {
@@ -1277,9 +1332,10 @@ function renderLoop() {
 onMounted(() => {
   if (!canvasRef.value || !meteorCanvasRef.value) return
 
+  updateDeviceCapabilities()
   const width = window.innerWidth
   const height = window.innerHeight
-  const dpr = Math.min(window.devicePixelRatio || 1, 2)
+  const dpr = getOptimalDpr()
 
   scene = new THREE.Scene()
   camera = new THREE.PerspectiveCamera(55, width / height, 0.1, 120)
@@ -1295,7 +1351,7 @@ onMounted(() => {
   renderer.setSize(width, height)
   renderer.setPixelRatio(dpr)
 
-  // Canvas 2D Retina / HiDPI 完美物理像素清晰度適配
+  // Canvas 2D Retina / HiDPI 完美物理像素清晰度適配（手機端鎖定最適 DPR 1.25，省 75% 像素負擔）
   meteorCanvasRef.value.width = Math.round(width * dpr)
   meteorCanvasRef.value.height = Math.round(height * dpr)
   meteorCtx = meteorCanvasRef.value.getContext('2d')
@@ -1311,6 +1367,7 @@ onMounted(() => {
 
   window.addEventListener('resize', handleResize)
   window.addEventListener('mousemove', handleMouseMove, { passive: true })
+  document.addEventListener('visibilitychange', handleVisibilityChange)
 
   renderLoop()
 })
@@ -1318,6 +1375,7 @@ onMounted(() => {
 onUnmounted(() => {
   window.removeEventListener('resize', handleResize)
   window.removeEventListener('mousemove', handleMouseMove)
+  document.removeEventListener('visibilitychange', handleVisibilityChange)
 
   if (animId) {
     cancelAnimationFrame(animId)
