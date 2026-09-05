@@ -77,7 +77,7 @@
       <!-- 期別卡片網格清單 (大器寬闊排版，空間充裕舒展，杜絕緊湊壓迫) -->
       <div id="batches-cards-grid" class="grid grid-cols-1 lg:grid-cols-2 gap-8 xl:gap-10 max-w-[1360px] mx-auto w-full">
         <div
-          v-for="(batch, index) in sortedBatches"
+          v-for="(batch, index) in (sortedBatches.length > 0 ? sortedBatches : store.batches)"
           :key="batch.id"
           class="batch-card group relative rounded-3xl p-4 sm:p-8 lg:p-11 backdrop-blur-xl border transition-all duration-300 flex flex-col justify-between overflow-hidden will-change-transform transform-gpu cursor-default w-full"
           :class="[
@@ -371,30 +371,16 @@ const {
   getStepTextClass,
   getTrainingProgress,
   getLifecycleDetailNotice
-} = useBatchTimeline(toRef(store, 'batches'))
+} = useBatchTimeline(() => store.batches)
 
-// 動效管理
+// 動效管理：僅在首頁有標頭滾動時啟用 ScrollTrigger；在獨立招生頁面由外層 page transition 驅動，維持 100% 穩定立即可見
 if (!props.hideHeader) {
-  // 首頁滾動微升進場：統一由全域 Composable 調度
   useScrollStagger(
     '#batches-cards-grid .batch-card',
     '#batches-cards-grid',
     { stagger: 0.1 },
     () => store.batches.length
   )
-} else {
-  // 獨立分頁模式：直接以柔順動畫入場
-  const playEnter = () => {
-    nextTick(() => {
-      gsap.fromTo(
-        '#batches-cards-grid .batch-card',
-        { y: 20, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.7, stagger: 0.08, ease: 'power1.out', clearProps: 'transform,opacity' }
-      )
-    })
-  }
-  onMounted(playEnter)
-  watch(() => store.batches.length, playEnter)
 }
 </script>
 

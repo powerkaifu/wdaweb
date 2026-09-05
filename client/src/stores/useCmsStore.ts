@@ -69,7 +69,7 @@ const defaultCarousels: CarouselItem[] = [
   }
 ]
 
-const defaultBatches: AdmissionBatch[] = [
+export const defaultBatches: AdmissionBatch[] = [
   {
     id: 1,
     batch_name: '前端網頁技術與AI應用 (第 1 期)',

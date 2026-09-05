@@ -1,5 +1,6 @@
-import { computed, type Ref } from 'vue'
+import { computed, toValue, type MaybeRefOrGetter } from 'vue'
 import type { AdmissionBatch } from '@/types'
+import { defaultBatches } from '@/stores/useCmsStore'
 import {
   isBatchEnrolling,
   isBatchUpcoming,
@@ -34,8 +35,9 @@ export interface DetailNotice {
 /**
  * 招生期別時序與生命週期演算 Composable
  * 遵循 SRP 與 SoC 原則，將期別推導、雙期別智慧輪替、5 階段步進節點、進度條百分比完全抽離封裝
+ * 同時配置防禦性 defaultBatches 兜底防線，確保任何異常情境下 100% 絕對有卡片呈現
  */
-export function useBatchTimeline(batchesRef: Ref<AdmissionBatch[]>) {
+export function useBatchTimeline(batchesInput: MaybeRefOrGetter<AdmissionBatch[]>) {
   const lifecycleSteps: LifecycleStep[] = [
     { key: 'register', label: '1.報名' },
     { key: 'screening', label: '2.甄試' },
@@ -79,9 +81,12 @@ export function useBatchTimeline(batchesRef: Ref<AdmissionBatch[]>) {
    * 智慧自適應期別輪替與位置錨定 (Smart Adaptive Batch Slotting)：
    * 1. 總數 > 2 時，依活躍優先級篩選，優先淘汰已結訓舊班
    * 2. 嚴格依時間序列「左舊進行中、右新即將到來/報名中」自然流向排列
+   * 3. 雙重防禦保底：若無資料自動使用 defaultBatches，確保期別卡片 100% 絕對存在
    */
   const sortedBatches = computed(() => {
-    const visibleBatches = [...batchesRef.value].filter(b => b.status_override !== 'hidden')
+    const rawList = toValue(batchesInput)
+    const list = Array.isArray(rawList) && rawList.length > 0 ? rawList : defaultBatches
+    const visibleBatches = [...list].filter(b => b.status_override !== 'hidden')
 
     if (visibleBatches.length <= 2) {
       return visibleBatches.sort((a, b) => getBatchTimeValue(a) - getBatchTimeValue(b))
