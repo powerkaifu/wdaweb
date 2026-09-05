@@ -185,17 +185,17 @@
 
 				<!-- Center: Nav Items (水平正中間置中) -->
 				<div
-					class="hidden lg:flex items-center justify-center flex-shrink-0 relative z-10 px-2 xl:px-4"
+					class="hidden lg:flex items-center justify-center flex-shrink-0 relative z-10 px-1 xl:px-3"
 				>
-					<div class="flex items-center space-x-1.5 p-1.5 px-3 rounded-xl bg-slate-950/70 border border-slate-800">
+					<div class="flex items-center space-x-1 xl:space-x-1.5 p-1.5 px-2.5 xl:px-3 rounded-2xl bg-slate-950/70 border border-slate-800">
 						<router-link
 							v-for="item in navItems"
 							:key="item.path"
 							:to="item.path"
-							class="px-3 sm:px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all duration-200 flex items-center space-x-1.5"
+							class="px-3 xl:px-3.5 py-1.5 xl:py-2 rounded-xl text-sm xl:text-base font-bold transition-all duration-200 flex items-center space-x-1.5"
 							:class="[
 								$route.path === item.path
-									? 'text-cyan-300 bg-cyan-500/20 font-bold border border-cyan-400/40'
+									? 'text-cyan-300 bg-cyan-500/20 font-extrabold border border-cyan-400/40 shadow-sm shadow-cyan-500/20'
 									: 'text-slate-300 hover:text-white hover:bg-slate-800',
 							]"
 						>
@@ -220,7 +220,7 @@
 				<div class="flex items-center justify-end flex-1 min-w-0 space-x-2">
 					<router-link
 						to="/admission"
-						class="hidden sm:inline-flex px-4 py-2 rounded-xl font-bold text-xs text-white bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 shadow-md shadow-cyan-500/25 transition-all flex-shrink-0"
+						class="hidden sm:inline-flex px-4 xl:px-5 py-2 xl:py-2.5 rounded-xl font-extrabold text-sm xl:text-base text-white bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 shadow-md shadow-cyan-500/25 transition-all flex-shrink-0"
 					>
 						<span>{{ admissionBadge ? admissionBadge.ctaText : '立即報名' }} →</span>
 					</router-link>
@@ -310,19 +310,19 @@
 
 					<!-- Center: Nav Items with Magnetic Pill (水平正中間置中) -->
 					<div
-						class="hidden lg:flex items-center justify-center flex-shrink-0 relative z-10 px-2 xl:px-4"
+						class="hidden lg:flex items-center justify-center flex-shrink-0 relative z-10 px-1 xl:px-3"
 					>
 						<div
-							class="flex items-center space-x-1.5 p-1.5 px-3 rounded-2xl bg-slate-950/50 border border-slate-800/80 backdrop-blur-md"
+							class="flex items-center space-x-1 xl:space-x-1.5 p-1.5 px-2.5 xl:px-3 rounded-2xl bg-slate-950/50 border border-slate-800/80 backdrop-blur-md"
 						>
 							<router-link
 								v-for="item in navItems"
 								:key="item.path"
 								:to="item.path"
-								class="relative px-3 sm:px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 flex items-center space-x-1.5"
+								class="relative px-3 xl:px-3.5 py-1.5 xl:py-2 rounded-xl text-sm xl:text-base font-bold transition-all duration-200 flex items-center space-x-1.5"
 								:class="[
 									$route.path === item.path
-										? 'text-cyan-300 font-bold'
+										? 'text-cyan-300 font-extrabold'
 										: 'text-slate-300 hover:text-white hover:bg-slate-800/60',
 								]"
 							>
@@ -351,7 +351,7 @@
 					<div class="flex items-center justify-end flex-1 min-w-0 space-x-2 relative z-10">
 						<router-link
 							to="/admission"
-							class="hidden sm:inline-flex items-center px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm text-white bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 shadow-md shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:scale-105 active:scale-95 transition-all flex-shrink-0"
+							class="hidden sm:inline-flex items-center px-4 xl:px-5 py-2 xl:py-2.5 rounded-xl font-extrabold text-sm xl:text-base text-white bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 shadow-md shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:scale-105 active:scale-95 transition-all flex-shrink-0"
 						>
 							<span>{{ admissionBadge ? admissionBadge.ctaText : '立即查看招生資訊' }}</span>
 							<span class="ml-1">→</span>
@@ -395,7 +395,7 @@
 					:key="item.path"
 					:to="item.path"
 					@click="isOpen = false"
-					class="flex items-center justify-between px-4.5 py-3.5 rounded-2xl text-base font-bold transition-all"
+					class="flex items-center justify-between px-5 py-4 rounded-2xl text-lg font-extrabold transition-all"
 					:class="[
 						$route.path === item.path
 							? 'text-cyan-300 bg-cyan-500/20 border border-cyan-400/40 shadow-sm shadow-cyan-500/20'
@@ -405,7 +405,7 @@
 					<span class="tracking-tight">{{ item.name }}</span>
 					<span
 						v-if="item.path === '/admission' && admissionBadge"
-						class="inline-flex items-center px-2.5 py-1 rounded-full text-xs sm:text-sm font-bold tracking-wide"
+						class="inline-flex items-center px-3 py-1 rounded-full text-xs sm:text-sm font-bold tracking-wide"
 						:class="admissionBadge.class"
 					>
 						<span
@@ -421,7 +421,7 @@
 					<router-link
 						to="/admission"
 						@click="isOpen = false"
-						class="block w-full text-center py-4 rounded-2xl text-base sm:text-lg font-black tracking-wide text-white bg-gradient-to-r from-cyan-500 to-blue-600 shadow-xl shadow-cyan-500/25 active:scale-[0.98] transition-transform"
+						class="block w-full text-center py-4 rounded-2xl text-lg sm:text-xl font-black tracking-wide text-white bg-gradient-to-r from-cyan-500 to-blue-600 shadow-xl shadow-cyan-500/25 active:scale-[0.98] transition-transform"
 					>
 						{{ admissionBadge ? admissionBadge.ctaText : '立即查看招生資訊' }}
 					</router-link>
