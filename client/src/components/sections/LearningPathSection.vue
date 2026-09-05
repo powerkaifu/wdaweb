@@ -24,7 +24,7 @@
 						>一步一步完成自己的作品</span
 					>
 				</h2>
-				<p class="text-slate-400 mt-4 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed text-pretty">
+				<p class="text-slate-400 mt-4 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed text-pretty text-justify sm:text-center">
 					<span class="block"
 						>920 小時，從「看不懂」到「知道自己正在做什麼」，一步步累積能真正做出作品的實戰能力。</span
 					>
@@ -70,9 +70,8 @@
 							Stage 01 ｜ 從看不懂開始
 						</div>
 						<h3 class="text-xl font-extrabold text-white mb-3 tracking-tight">開始理解網頁運作</h3>
-						<p class="text-base text-slate-300 leading-relaxed text-pretty">
-							從 HTML、CSS 與 JavaScript
-							開始。理解網頁如何建立、文字與畫面如何排列、互動如何發生。從「滿螢幕看不懂」慢慢走向「知道每一行程式碼正在做什麼」。
+						<p class="text-base text-slate-300 leading-relaxed text-pretty text-justify">
+							從 HTML、CSS 與 JavaScript 開始。理解網頁如何建立、文字與畫面如何排列、互動如何發生。從「滿螢幕看不懂」慢慢走向「知道每一行程式碼正在做什麼」。
 						</p>
 					</div>
 
@@ -113,9 +112,8 @@
 							Stage 02 ｜ 從會寫到會組織
 						</div>
 						<h3 class="text-xl font-extrabold text-white mb-3 tracking-tight">學會組織前端系統</h3>
-						<p class="text-base text-slate-300 leading-relaxed text-pretty">
-							進入 Vue 3
-							現代前端框架。不只是把零散功能寫出來，而是開始理解元件化、狀態流與架構設計，學習如何把越來越複雜的功能整理成容易維護的前端系統。
+						<p class="text-base text-slate-300 leading-relaxed text-pretty text-justify">
+							進入 Vue 3 現代前端框架。不只是把零散功能寫出來，而是開始理解元件化、狀態流與架構設計，學習如何把越來越複雜的功能整理成容易維護的前端系統。
 						</p>
 					</div>
 
@@ -156,9 +154,8 @@
 							Stage 03 ｜ 從前端走向完整系統
 						</div>
 						<h3 class="text-xl font-extrabold text-white mb-3 tracking-tight">串接真實資料流</h3>
-						<p class="text-base text-slate-300 leading-relaxed text-pretty">
-							學習前後端資料串接、REST API
-							與資料庫設計。開始理解前端介面、後端伺服器與資料庫如何真正串在一起，建立能處理真實資料與商業邏輯的完整專案。
+						<p class="text-base text-slate-300 leading-relaxed text-pretty text-justify">
+							學習前後端資料串接、REST API 與資料庫設計。開始理解前端介面、後端伺服器與資料庫如何真正串在一起，建立能處理真實資料與商業邏輯的完整專案。
 						</p>
 					</div>
 
@@ -199,9 +196,8 @@
 							Stage 04 ｜ 從自己寫，到與 AI 協作
 						</div>
 						<h3 class="text-xl font-extrabold text-white mb-3 tracking-tight">人機協作與實戰交付</h3>
-						<p class="text-base text-slate-300 leading-relaxed text-pretty">
-							AI 可以幫你快速產生程式碼，但你需要逐漸具備提問、審核、除錯與架構判斷的能力。並透過 Git/GitHub
-							團隊協同流程，將 AI 工具轉化為真實生產力。
+						<p class="text-base text-slate-300 leading-relaxed text-pretty text-justify">
+							AI 可以幫你快速產生程式碼，但你需要逐漸具備提問、審核、除錯與架構判斷的能力。並透過 Git/GitHub 團隊協同流程，將 AI 工具轉化為真實生產力。
 						</p>
 					</div>
 
