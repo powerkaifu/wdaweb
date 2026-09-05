@@ -80,7 +80,33 @@
               </h1>
 
               <p ref="subtitleRef" class="mt-3 sm:mt-3.5 lg:mt-3.5 xl:mt-4 text-base sm:text-base xl:text-lg text-slate-300 max-w-2xl font-normal leading-relaxed text-pretty will-change-transform">
-                {{ currentSlide.subtitle }}
+                <template v-if="subtitleChunks.length > 1">
+                  <!-- 具有「｜」三段式副標：手機端語意塊自然斷詞＋隱藏「｜」；桌機端大器單行 -->
+                  <template v-for="(chunk, idx) in subtitleChunks" :key="`sub-chunk-${currentIndex}-${idx}`">
+                    <span class="inline-block">{{ chunk }}</span>
+                    <!-- 桌機顯示優雅「｜」分隔線 -->
+                    <span
+                      v-if="idx < subtitleChunks.length - 1"
+                      class="hidden sm:inline text-slate-500 mx-2 select-none"
+                      aria-hidden="true"
+                    >｜</span>
+                    <!-- 手機端：若為第一塊則自然換行，使版面呈現乾淨整齊的兩行 -->
+                    <span
+                      v-if="idx === 0 && subtitleChunks.length > 2"
+                      class="sm:hidden block h-1"
+                      aria-hidden="true"
+                    ></span>
+                    <!-- 手機端：若為第二塊與第三塊之間，以精緻微點「·」銜接 -->
+                    <span
+                      v-else-if="idx < subtitleChunks.length - 1"
+                      class="sm:hidden text-cyan-400 mx-1.5 font-bold select-none"
+                      aria-hidden="true"
+                    >·</span>
+                  </template>
+                </template>
+                <template v-else>
+                  {{ currentSlide.subtitle }}
+                </template>
               </p>
             </div>
           </div>
@@ -291,6 +317,17 @@ const splitTitleTokens = computed<SplitToken[]>(() => {
     isWord: /^[a-zA-Z0-9_#+.-]+$/.test(token),
     chars: token.split('')
   }))
+})
+
+// 智慧解析副標題為語意分塊（支援手機端自然分行與「｜」分隔符響應式隱藏）
+const subtitleChunks = computed(() => {
+  const raw = currentSlide.value?.subtitle || ''
+  if (!raw) return []
+  if (raw.includes('｜') || raw.includes('|')) {
+    const separator = raw.includes('｜') ? '｜' : '|'
+    return raw.split(separator).map(s => s.trim()).filter(Boolean)
+  }
+  return [raw]
 })
 
 const subtitleRef = ref<HTMLElement | null>(null)
