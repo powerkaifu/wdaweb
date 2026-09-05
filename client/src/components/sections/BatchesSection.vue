@@ -208,12 +208,12 @@
             <div class="space-y-4 text-base text-slate-300 mb-8">
               <!-- 報名期間 (手機版直式/橫式自適應) -->
               <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-3.5 border-b border-slate-800/80 gap-1 sm:gap-0">
-                <span class="text-slate-400 flex items-center space-x-1.5 text-sm sm:text-base">
+                <span class="text-slate-400 flex items-center space-x-1.5 text-base">
                   <span>📅 報名起訖期間</span>
                 </span>
                 <div class="text-left sm:text-right">
                   <span
-                    class="font-medium font-mono text-sm sm:text-base"
+                    class="font-medium font-mono text-base"
                     :class="isBatchClosed(batch) ? 'text-slate-300' : 'text-white'"
                   >
                     {{ batch.enroll_start_date }} ～ {{ batch.enroll_end_date }}
@@ -223,23 +223,23 @@
 
               <!-- 甄試日期 (若有，手機版自適應不擠出) -->
               <div v-if="batch.screening_date" class="flex flex-col sm:flex-row sm:items-center justify-between pb-3.5 border-b border-slate-800/80 gap-1 sm:gap-0">
-                <span class="text-slate-400 flex items-center space-x-1.5 text-sm sm:text-base">
+                <span class="text-slate-400 flex items-center space-x-1.5 text-base">
                   <span>📝 甄試辦理日期</span>
                 </span>
                 <div class="text-left sm:text-right flex items-center flex-wrap gap-1.5">
-                  <span class="font-medium font-mono text-slate-200 text-sm sm:text-base">
+                  <span class="font-medium font-mono text-slate-200 text-base">
                     {{ batch.screening_date }}
                   </span>
-                  <span v-if="isBatchScreeningOrPreparing(batch)" class="text-xs px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">{{ isScreeningEnded(batch) ? '已甄試完畢' : '今日甄試中' }}</span>
+                  <span v-if="isBatchScreeningOrPreparing(batch)" class="text-xs px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 font-semibold">{{ isScreeningEnded(batch) ? '已甄試完畢' : '今日甄試中' }}</span>
                 </div>
               </div>
 
               <!-- 訓練期間 (時程清單末項，手機版自適應) -->
               <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-0">
-                <span class="text-slate-400 text-sm sm:text-base">🚀 正式訓練期間</span>
+                <span class="text-slate-400 text-base">🚀 正式訓練期間</span>
                 <div class="text-left sm:text-right">
                   <span
-                    class="font-medium font-mono text-sm sm:text-base"
+                    class="font-medium font-mono text-base"
                     :class="isBatchTraining(batch) ? 'text-emerald-300 font-bold' : isBatchScreeningOrPreparing(batch) ? 'text-cyan-300 font-bold' : 'text-white'"
                   >
                     {{ batch.training_start_date }} ～ {{ batch.training_end_date }}
@@ -257,16 +257,16 @@
               target="_blank"
               rel="noopener noreferrer"
               @click="store.trackBatchClick(batch.id)"
-              class="w-full py-3.5 sm:py-4 px-3 rounded-2xl text-center font-bold text-white bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 shadow-xl shadow-cyan-500/30 hover:shadow-cyan-500/50 hover:-translate-y-0.5 active:scale-[0.98] transition-all flex items-center justify-center space-x-2 text-sm sm:text-base lg:text-lg"
+              class="w-full py-3.5 sm:py-4 px-3 rounded-2xl text-center font-bold text-white bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 shadow-xl shadow-cyan-500/30 hover:shadow-cyan-500/50 hover:-translate-y-0.5 active:scale-[0.98] transition-all flex items-center justify-center space-x-2 text-base lg:text-lg"
             >
-              <span>🔥 立即至台灣就業通報名</span>
+              <span>🔥 立即至<span class="inline-block">台灣就業通</span>報名</span>
               <svg class="w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
               </svg>
             </a>
             <div
               v-else-if="isBatchTraining(batch)"
-              class="w-full py-3.5 sm:py-4 px-3 rounded-2xl text-center font-semibold text-emerald-400/90 bg-slate-900/90 border border-emerald-500/30 shadow-inner flex items-center justify-center space-x-2 select-none text-sm sm:text-base lg:text-lg"
+              class="w-full py-3.5 sm:py-4 px-3 rounded-2xl text-center font-semibold text-emerald-400/90 bg-slate-900/90 border border-emerald-500/30 shadow-inner flex items-center justify-center space-x-2 select-none text-base lg:text-lg"
             >
               <svg class="w-5 h-5 text-emerald-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
@@ -275,7 +275,7 @@
             </div>
             <div
               v-else-if="isBatchScreeningOrPreparing(batch)"
-              class="w-full py-3.5 sm:py-4 px-3 rounded-2xl text-center font-semibold text-cyan-300 bg-slate-900/90 border border-cyan-500/30 shadow-inner flex flex-wrap items-center justify-center gap-1.5 select-none text-xs sm:text-base lg:text-lg"
+              class="w-full py-3.5 sm:py-4 px-3 rounded-2xl text-center font-semibold text-cyan-300 bg-slate-900/90 border border-cyan-500/30 shadow-inner flex flex-wrap items-center justify-center gap-1.5 select-none text-base lg:text-lg"
             >
               <svg class="w-5 h-5 text-cyan-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -284,7 +284,7 @@
             </div>
             <div
               v-else-if="isBatchUpcoming(batch)"
-              class="w-full py-3.5 sm:py-4 px-3 rounded-2xl text-center font-semibold text-purple-300/90 bg-slate-900/90 border border-purple-500/30 shadow-inner flex items-center justify-center space-x-2 select-none text-sm sm:text-base lg:text-lg"
+              class="w-full py-3.5 sm:py-4 px-3 rounded-2xl text-center font-semibold text-purple-300/90 bg-slate-900/90 border border-purple-500/30 shadow-inner flex items-center justify-center space-x-2 select-none text-base lg:text-lg"
             >
               <svg class="w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -293,7 +293,7 @@
             </div>
             <div
               v-else
-              class="w-full py-3.5 sm:py-4 px-3 rounded-2xl text-center font-semibold text-slate-400 bg-slate-900/90 border border-slate-800 shadow-inner flex items-center justify-center space-x-2 select-none text-sm sm:text-base lg:text-lg"
+              class="w-full py-3.5 sm:py-4 px-3 rounded-2xl text-center font-semibold text-slate-400 bg-slate-900/90 border border-slate-800 shadow-inner flex items-center justify-center space-x-2 select-none text-base lg:text-lg"
             >
               <svg class="w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />

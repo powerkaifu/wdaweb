@@ -24,7 +24,7 @@
 					<span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping"></span>
 					<span>Development Tools ｜ 技術與工具</span>
 				</div>
-				<h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight">
+				<h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight text-balance">
 					你會接觸到哪些技術？
 				</h2>
 				<p class="text-slate-400 mt-4 text-base sm:text-lg max-w-4xl xl:max-w-5xl mx-auto leading-relaxed text-pretty">
@@ -62,7 +62,7 @@
 								{{ getTechIcon(card.tech_name) }}
 							</div>
 							<span
-								class="px-3.5 py-1 rounded-2xl bg-cyan-500/10 text-cyan-300 font-bold text-base border border-cyan-500/30 tracking-wide"
+								class="px-3.5 py-1 rounded-2xl bg-cyan-500/10 text-cyan-300 font-bold text-sm border border-cyan-500/30 tracking-wide"
 							>
 								{{ card.category_tab || '核心必修' }}
 							</span>
@@ -72,7 +72,7 @@
 							{{ card.tech_name }}
 						</h3>
 
-						<p class="text-base text-slate-300 leading-relaxed">
+						<p class="text-base text-slate-300 leading-relaxed text-pretty">
 							{{ card.description }}
 						</p>
 					</div>

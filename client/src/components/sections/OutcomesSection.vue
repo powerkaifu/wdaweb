@@ -20,14 +20,15 @@
 					<span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping"></span>
 					<span>What You Truly Take Away ｜ 結訓真實收穫</span>
 				</div>
-				<h2 class="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-black text-white tracking-tight leading-tight">
-					你最後真正帶走的，<span
-						class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-emerald-400"
+				<h2 class="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-black text-white tracking-tight leading-tight text-balance">
+					<span class="block sm:inline">你最後真正帶走的，</span>
+					<span
+						class="block sm:inline mt-1 sm:mt-0 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-emerald-400"
 						>不只是一張結訓證明</span
 					>
 				</h2>
 				<p class="text-slate-400 mt-4 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed text-pretty">
-					920 小時的學習，目的不是讓你記住更多技術名詞，而是希望你離開教室後，仍然帶著可以繼續使用的實戰能力。
+					<span class="inline-block">920 小時</span>的學習，目的不是讓你記住更多技術名詞，而是希望你離開教室後，仍然帶著可以繼續使用的實戰能力。
 				</p>
 			</div>
 
@@ -56,7 +57,7 @@
 							不只是套用模板或完成課堂作業，而是真正獨立完成可以向面試官展示、說得出架構細節與技術選型原因的專案代表作。
 						</p>
 					</div>
-					<div class="pt-4 mt-5 border-t border-slate-800/80 text-sm sm:text-base font-bold text-cyan-400">
+					<div class="pt-4 mt-5 border-t border-slate-800/80 text-base font-bold text-cyan-400">
 						✓ 擁有專屬專案代表作
 					</div>
 				</div>
@@ -76,7 +77,7 @@
 							遇到問題與 Bug 時，不再只盲目問「答案是什麼」，而是學會從程式碼與 Console 分析「問題到底發生在哪裡」，具備獨立除錯的思維。
 						</p>
 					</div>
-					<div class="pt-4 mt-5 border-t border-slate-800/80 text-sm sm:text-base font-bold text-blue-400">
+					<div class="pt-4 mt-5 border-t border-slate-800/80 text-base font-bold text-blue-400">
 						✓ 具備獨立除錯思維
 					</div>
 				</div>
@@ -96,7 +97,7 @@
 							不把 AI 當成複製貼上的萬能答案機，而是建立「提問 ➔ 理解 ➔ 驗證 ➔ 修改 ➔ 除錯」的人機協同循環，讓 AI 成為實戰加速器。
 						</p>
 					</div>
-					<div class="pt-4 mt-5 border-t border-slate-800/80 text-sm sm:text-base font-bold text-purple-400">
+					<div class="pt-4 mt-5 border-t border-slate-800/80 text-base font-bold text-purple-400">
 						✓ 人機協同判斷力
 					</div>
 				</div>
@@ -116,7 +117,7 @@
 							清楚知道一個完整系統不是只有排版畫面，而是由前端元件、狀態資料、後端 API、資料庫與部署流程共同協同運作的全貌。
 						</p>
 					</div>
-					<div class="pt-4 mt-5 border-t border-slate-800/80 text-sm sm:text-base font-bold text-emerald-400">
+					<div class="pt-4 mt-5 border-t border-slate-800/80 text-base font-bold text-emerald-400">
 						✓ 系統全貌架構思維
 					</div>
 				</div>
@@ -136,7 +137,7 @@
 							半年朝夕相處的同學，未來可能成為你在軟體業界交流情報、彼此推薦與互相支持的同行者。這是孤軍自學難以複製的人脈資產。
 						</p>
 					</div>
-					<div class="pt-4 mt-5 border-t border-slate-800/80 text-sm sm:text-base font-bold text-amber-400">
+					<div class="pt-4 mt-5 border-t border-slate-800/80 text-base font-bold text-amber-400">
 						✓ 累積第一批軟體業人脈
 					</div>
 				</div>
@@ -156,7 +157,7 @@
 							不是每個人結訓後都會走向相同道路。六個月後，你未必會得到唯一的標準答案；但你應該比現在更知道自己喜歡什麼、擅長什麼，以及下一步可以往哪裡走。
 						</p>
 					</div>
-					<div class="pt-4 mt-5 border-t border-cyan-500/30 text-sm sm:text-base font-extrabold text-cyan-300">
+					<div class="pt-4 mt-5 border-t border-cyan-500/30 text-base font-extrabold text-cyan-300">
 						✨ 最誠實、最寶貴的人生收穫
 					</div>
 				</div>
