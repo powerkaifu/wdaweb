@@ -828,7 +828,7 @@
               <div>
                 <h3 class="font-bold text-base text-white mb-1">深空純淨無連線・思維漣漪</h3>
                 <p class="text-xs text-slate-400 leading-relaxed">
-                  深空繁星純淨自然無直線連線；每隔 16~24 秒自發性向外擴散出一圈同心量子柔焦光環，大器深邃不干擾閱讀！
+                  深空繁星純淨自然無直線連線；每隔 9~14 秒自發性向外擴散出一圈同心量子柔焦光環，大器深邃不干擾閱讀！
                 </p>
               </div>
 
@@ -851,7 +851,7 @@
                 <label class="flex items-center justify-between p-2.5 rounded-xl bg-slate-950/60 border border-slate-800 hover:border-cyan-500/40 cursor-pointer transition-all">
                   <div class="flex items-center space-x-2.5 text-xs sm:text-sm">
                     <span>🌊</span>
-                    <span class="font-bold text-slate-200">自發性宇宙思維量子漣漪 (16~24s)</span>
+                    <span class="font-bold text-slate-200">自發性宇宙思維量子漣漪 (9~14s)</span>
                   </div>
                   <input
                     type="checkbox"

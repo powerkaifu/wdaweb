@@ -120,7 +120,7 @@ interface NeuralFlashWave {
 }
 
 let activeFlashWaves: NeuralFlashWave[] = []
-let nextAutonomousFlashCountdown = 4.8 // 🌟 進站 4.8 秒首發量子思維漣漪
+let nextAutonomousFlashCountdown = 3.6 // 🌟 進站 3.6 秒首發量子思維漣漪 (緊接 2.2s 代碼流星後)
 let lastManualPulseCount = 0
 
 let meteorCtx: CanvasRenderingContext2D | null = null
@@ -804,12 +804,12 @@ function triggerAutonomousFlash(w: number, h: number) {
 }
 
 function renderQuantumMindWaves(ctx: CanvasRenderingContext2D, dt: number, w: number, h: number) {
-  // 1. 檢查自發性宇宙深空量子思想放電 (約 16~24 秒一次)
+  // 1. 檢查自發性宇宙深空量子思想放電 (約 9~14 秒一次，靈動自然)
   if (store.synapticConfig.autonomousPulse) {
     nextAutonomousFlashCountdown -= dt
     if (nextAutonomousFlashCountdown <= 0) {
       triggerAutonomousFlash(w, h)
-      nextAutonomousFlashCountdown = 16.0 + Math.random() * 8.0
+      nextAutonomousFlashCountdown = 9.0 + Math.random() * 5.0
     }
   }
 
