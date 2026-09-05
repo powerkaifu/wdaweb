@@ -14,14 +14,14 @@
 		<div
 			v-if="activeNavbarStyle === 'smart_morph'"
 			class="w-full transition-all duration-500 ease-out relative"
-			:class="[isScrolled ? 'px-3 sm:px-6 lg:px-8 pt-2.5 sm:pt-3.5' : 'px-0 pt-0']"
+			:class="[isScrolled ? 'px-2.5 sm:px-4 lg:px-6 2xl:px-8 pt-2 sm:pt-3' : 'px-0 pt-0']"
 		>
 			<nav
 				class="relative flex items-center justify-between transition-all duration-500 ease-out overflow-hidden"
 				:class="[
 					isScrolled
-						? 'max-w-6xl xl:max-w-7xl mx-auto h-16 sm:h-18 px-3 sm:px-5 lg:px-6 rounded-2xl bg-slate-900/90 backdrop-blur-2xl border border-cyan-500/40 shadow-2xl shadow-cyan-950/70'
-						: 'w-full h-20 bg-slate-950/70 backdrop-blur-md border-b border-slate-800/80 px-3 sm:px-6 lg:px-8 2xl:px-12 rounded-none',
+						? 'w-full max-w-[1536px] 2xl:max-w-[1680px] mx-auto h-16 sm:h-18 px-4 sm:px-6 lg:px-8 rounded-2xl bg-slate-900/90 backdrop-blur-2xl border border-cyan-500/40 shadow-2xl shadow-cyan-950/70'
+						: 'w-full h-20 bg-slate-950/70 backdrop-blur-md border-b border-slate-800/80 px-4 sm:px-6 lg:px-8 2xl:px-12 rounded-none',
 				]"
 			>
 				<!-- ========================================================================= -->
