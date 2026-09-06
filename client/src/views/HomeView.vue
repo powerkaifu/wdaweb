@@ -18,10 +18,16 @@
 		<!-- 6. 核心技術工具 (你會接觸到哪些技術) -->
 		<TechStackSection />
 
-		<!-- 7. 從第一行程式碼開始，一步一步完成自己的作品 (四階段能力蛻變路徑) -->
+		<!-- 7. 工程思維核心 (在 AI 時代，我們培養的是真正能完成產品的人) -->
+		<EngineeringMindsetSection />
+
+		<!-- 8. 現代人機協同實務 (AI 輔助應用：讓 AI 成為你的專業開發副駕駛) -->
+		<AiWorkflowSection />
+
+		<!-- 9. 從第一行程式碼開始，一步一步完成自己的作品 (四階段能力蛻變路徑) -->
 		<LearningPathSection />
 
-		<!-- 8. 他們也是從第一行開始 (學員成果心理信任橋樑，定稿版核心章節) -->
+		<!-- 10. 他們也是從第一行開始 (學員成果心理信任橋樑，定稿版核心章節) -->
 		<section class="py-10 sm:py-16 lg:py-24 xl:py-28 bg-slate-950/50 text-center relative overflow-hidden">
 			<!-- 柔和微光 -->
 			<div
@@ -59,13 +65,13 @@
 			</div>
 		</section>
 
-		<!-- 9. 結訓真實收穫 ｜ 你最後真正帶走的，不只是一張結訓證明 -->
+		<!-- 11. 結訓真實收穫 ｜ 你最後真正帶走的，不只是一張結訓證明 -->
 		<OutcomesSection />
 
-		<!-- 10. 教學環境與設施 ｜ 接下來的半年，你會在這樣的地方學習 -->
+		<!-- 12. 教學環境與設施 ｜ 接下來的半年，你會在這樣的地方學習 -->
 		<FacilitiesSection />
 
-		<!-- 11. 誠懇安心行動召喚：自主決定與三大入口 -->
+		<!-- 13. 誠懇安心行動召喚：自主決定與三大入口 -->
 		<section
 			class="py-10 sm:py-16 lg:py-24 xl:py-28 bg-gradient-to-b from-slate-950/60 via-slate-900/40 to-slate-950 text-center relative overflow-hidden"
 		>
@@ -99,39 +105,43 @@
 					<span class="block"
 						>920 小時不是一條速成的捷徑，而是一段從陌生、練習、卡關，到逐漸理解與完成作品的學習旅程。</span
 					>
-					<span class="block mt-1 sm:mt-1.5 text-slate-200">先了解課程、看看學員作品、比較不同的學習方式，再判斷這是不是適合你的選擇。</span>
+					<span class="block mt-1">
+						如果你也想為自己爭取一個真正改變的機會，歡迎先看看課程期別與報名方式。
+					</span>
 				</p>
 
-				<!-- 三大安心入口按鈕群 (三大入口：期別時程 / 學員作品 / Discord 諮詢) -->
-				<div class="pt-3 sm:pt-4 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+				<!-- 底部三軌按鈕群組 (手機直式堆疊，平板與桌機橫向排開) -->
+				<div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 max-w-2xl mx-auto">
 					<router-link
 						to="/admission"
-						class="w-full sm:w-auto px-7 py-3.5 sm:px-8 sm:py-4 rounded-2xl font-bold text-base text-white bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 shadow-xl shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:-translate-y-0.5 active:scale-95 transition-all inline-flex items-center justify-center space-x-2"
+						class="w-full sm:w-auto px-8 py-3.5 rounded-2xl text-base font-extrabold text-white bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 shadow-xl shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:-translate-y-0.5 active:scale-95 transition-all flex items-center justify-center space-x-2"
 					>
-						<span>查看最新招生期別與時程</span>
+						<span>立即查看招生期別與報名流程</span>
 						<span>→</span>
 					</router-link>
 
 					<router-link
-						to="/showcase"
-						class="w-full sm:w-auto px-7 py-3.5 sm:px-8 sm:py-4 rounded-2xl font-bold text-base text-cyan-300 bg-slate-900/90 hover:bg-slate-850 border border-cyan-500/40 hover:border-cyan-400 shadow-lg hover:text-white transition-all inline-flex items-center justify-center space-x-2"
+						to="/faq"
+						class="w-full sm:w-auto px-6 py-3.5 rounded-2xl text-base font-bold text-slate-300 hover:text-white bg-slate-900/80 hover:bg-slate-800/90 border border-slate-700/80 hover:border-slate-600 transition-all flex items-center justify-center space-x-2"
 					>
-						<span>先看看歷屆學員作品集</span>
-						<span>→</span>
+						<span>常見問答 FAQ</span>
 					</router-link>
 
 					<router-link
 						to="/community"
-						class="w-full sm:w-auto px-7 py-3.5 sm:px-8 sm:py-4 rounded-2xl font-bold text-base text-slate-200 bg-slate-900/90 hover:bg-slate-850 border border-slate-700/90 hover:border-slate-600 shadow-lg hover:text-white transition-all inline-flex items-center justify-center space-x-2"
+						class="w-full sm:w-auto px-6 py-3.5 rounded-2xl text-base font-bold text-slate-300 hover:text-white bg-slate-900/80 hover:bg-slate-800/90 border border-slate-700/80 hover:border-slate-600 transition-all flex items-center justify-center space-x-2"
 					>
-						<span>加入 Discord 線上諮詢</span>
+						<span>交通與諮詢</span>
 					</router-link>
 				</div>
 
-				<!-- 誠懇收束金句 -->
-				<div class="pt-5 sm:pt-8 text-center">
-					<p class="text-base sm:text-xl lg:text-2xl text-slate-200 font-bold leading-relaxed tracking-tight">
-						<span class="block sm:inline">如果你決定開始，</span><span class="text-cyan-300 font-extrabold block sm:inline">我們願意陪你把第一步走得更扎實。</span>
+				<!-- 溫馨提示與免責聲明 (中高齡老花眼 16px 大字閱讀友好) -->
+				<div class="pt-6 border-t border-slate-800/60 max-w-3xl mx-auto space-y-2">
+					<p class="text-base text-slate-400 font-medium">
+						💡 正式報名一律透過勞動部「台灣就業通」官方網站辦理，本站為純招生推廣宣傳展示，不收集任何個人資料。
+					</p>
+					<p class="text-sm text-slate-300 font-mono">
+						招生諮詢專線：(02) 2901-8274 ｜ 訓練場：新北市泰山區貴子里致遠新村 55 之 1 號
 					</p>
 				</div>
 			</div>
@@ -149,6 +159,8 @@ import LearningPathSection from '@/components/sections/LearningPathSection.vue'
 import OutcomesSection from '@/components/sections/OutcomesSection.vue'
 import PathComparisonSection from '@/components/sections/PathComparisonSection.vue'
 import TechStackSection from '@/components/sections/TechStackSection.vue'
+import EngineeringMindsetSection from '@/components/sections/EngineeringMindsetSection.vue'
+import AiWorkflowSection from '@/components/sections/AiWorkflowSection.vue'
 import TracksSection from '@/components/sections/TracksSection.vue'
 
 useSeoMeta({
