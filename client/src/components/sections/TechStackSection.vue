@@ -134,22 +134,37 @@
 							</div>
 						</div>
 
-						<!-- 說明前導段落 (維持 text-base sm:text-lg 大字，行高 1.8 舒緩，兩端切齊) -->
-						<p class="text-base sm:text-lg text-slate-200 leading-relaxed text-pretty text-justify">
+						<!-- 說明前導段落 (手機短金句 / 桌機完整論述) -->
+						<p class="text-base text-slate-200 leading-relaxed text-pretty text-justify sm:hidden">
+							寫程式不再死記語法。學會將生成式 AI 融入日常，把注意力集中在架構設計與真實體驗。
+						</p>
+						<p class="hidden sm:block text-base sm:text-lg text-slate-200 leading-relaxed text-pretty text-justify">
 							寫程式不再是枯燥死記每一行語法。在課程中，你將學會如何將現代生成式 AI 工具融入日常開發流程。AI
 							不是取代思考的捷徑，而是讓你能把寶貴注意力集中在「邏輯設計、架構規劃與使用者體驗」的強大助手。
 						</p>
 
-						<!-- 3 大核心 AI 輔助應用卡片 (桌機 3 欄並排，空間充裕大氣，內容精煉不冗長) -->
-						<div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5 pt-2">
+						<!-- 手機端橫向滑動提示 (桌機隱藏) -->
+						<div class="flex md:hidden items-center justify-center gap-2 text-sm font-bold text-cyan-400 pt-1">
+							<span>👈 左右滑動瀏覽 3 大 AI 協同場景 👉</span>
+						</div>
+
+						<!-- 3 大核心 AI 輔助應用卡片 (手機橫向滑軌避免堆疊 750px，桌機 3 欄並排大氣) -->
+						<div
+							class="flex md:grid md:grid-cols-3 overflow-x-auto md:overflow-x-visible snap-x snap-mandatory scroll-smooth no-scrollbar -mx-2 px-2 md:mx-0 md:px-0 gap-3 sm:gap-5 pb-2 md:pb-0 pt-2"
+						>
 							<!-- 卡片 1 -->
 							<div
-								class="p-5 rounded-2xl bg-slate-950/70 border border-slate-800/80 hover:border-cyan-500/40 transition-colors flex flex-col justify-between"
+								class="p-5 rounded-2xl bg-slate-950/70 border border-slate-800/80 hover:border-cyan-500/40 transition-colors flex flex-col justify-between w-[80vw] max-w-[290px] shrink-0 snap-start md:w-auto md:max-w-none md:shrink"
 							>
 								<div>
 									<div class="text-2xl mb-2.5">💡</div>
 									<h4 class="text-lg font-bold text-white mb-2 tracking-tight">想法轉化為程式雛型</h4>
-									<p class="text-base text-slate-300 leading-relaxed text-pretty text-justify">
+									<!-- 手機短金句 -->
+									<p class="text-base text-slate-300 leading-relaxed text-pretty text-justify sm:hidden">
+										用精確 Prompt 讓 AI 快速生成版面與雛型，大幅縮短從零摸索的時間。
+									</p>
+									<!-- 桌機完整論述 -->
+									<p class="hidden sm:block text-base text-slate-300 leading-relaxed text-pretty text-justify">
 										學會用精確的 Prompt 描述需求，讓 AI 快速生成基礎頁面架構與樣式雛型，大幅縮短從零起步的摸索期。
 									</p>
 								</div>
@@ -169,12 +184,17 @@
 
 							<!-- 卡片 2 -->
 							<div
-								class="p-5 rounded-2xl bg-slate-950/70 border border-slate-800/80 hover:border-cyan-500/40 transition-colors flex flex-col justify-between"
+								class="p-5 rounded-2xl bg-slate-950/70 border border-slate-800/80 hover:border-cyan-500/40 transition-colors flex flex-col justify-between w-[80vw] max-w-[290px] shrink-0 snap-start md:w-auto md:max-w-none md:shrink"
 							>
 								<div>
 									<div class="text-2xl mb-2.5">🔍</div>
 									<h4 class="text-lg font-bold text-white mb-2 tracking-tight">報錯解讀與輔助除錯</h4>
-									<p class="text-base text-slate-300 leading-relaxed text-pretty text-justify">
+									<!-- 手機短金句 -->
+									<p class="text-base text-slate-300 leading-relaxed text-pretty text-justify sm:hidden">
+										看不懂報錯時請 AI 翻譯成白話、分析原因，提供多元解題思路。
+									</p>
+									<!-- 桌機完整論述 -->
+									<p class="hidden sm:block text-base text-slate-300 leading-relaxed text-pretty text-justify">
 										遇到看不懂的錯誤訊息時，學會請 AI 協助翻譯成人類白話，分析可能的報錯成因，提供多元解題思路。
 									</p>
 								</div>
@@ -194,12 +214,17 @@
 
 							<!-- 卡片 3 -->
 							<div
-								class="p-5 rounded-2xl bg-slate-950/70 border border-slate-800/80 hover:border-cyan-500/40 transition-colors flex flex-col justify-between"
+								class="p-5 rounded-2xl bg-slate-950/70 border border-slate-800/80 hover:border-cyan-500/40 transition-colors flex flex-col justify-between w-[80vw] max-w-[290px] shrink-0 snap-start md:w-auto md:max-w-none md:shrink"
 							>
 								<div>
 									<div class="text-2xl mb-2.5">🛡️</div>
 									<h4 class="text-lg font-bold text-white mb-2 tracking-tight">批判審核與把關驗證</h4>
-									<p class="text-base text-slate-300 leading-relaxed text-pretty text-justify">
+									<!-- 手機短金句 -->
+									<p class="text-base text-slate-300 leading-relaxed text-pretty text-justify sm:hidden">
+										AI 也會犯錯。培養逐行審閱與除錯驗證能力，掌握專案最終主導權。
+									</p>
+									<!-- 桌機完整論述 -->
+									<p class="hidden sm:block text-base text-slate-300 leading-relaxed text-pretty text-justify">
 										AI 也會出錯。你將學會不盲信、不照抄，具備逐行審閱代碼、除錯與驗證的能力，牢牢掌握專案的最終主導權。
 									</p>
 								</div>

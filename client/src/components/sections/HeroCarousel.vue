@@ -95,8 +95,8 @@
           <HeroMetrics />
         </div>
 
-        <!-- Right Hero Visual / AI Code Generator Interactive Window (擴大為 6 欄，展現旗艦科技感) -->
-        <div id="hero-right-content" class="lg:col-span-6 w-full relative self-center flex items-center justify-center transform-gpu will-change-transform">
+        <!-- Right Hero Visual / AI Code Generator Interactive Window (手機端隱藏以達成 100dvh 定錨，桌機 lg: 展現旗艦科技視窗) -->
+        <div id="hero-right-content" class="hidden lg:flex lg:col-span-6 w-full relative self-center items-center justify-center transform-gpu will-change-transform">
           <Transition name="fade-slide" mode="out-in">
             <!-- 若有上傳圖片且非預設，顯示照片；否則展示頂級科技感的 AI Code Generator 互動視窗 -->
             <div v-if="currentSlide.image_url && !brokenSlideImages.has(currentSlide.id)" :key="currentSlide.image_url" class="w-full relative rounded-3xl overflow-hidden border border-slate-800/80 bg-slate-900/60 p-3 shadow-2xl shadow-cyan-950/40 backdrop-blur-xl group">

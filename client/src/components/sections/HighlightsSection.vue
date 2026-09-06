@@ -44,7 +44,7 @@
 			>
 				<!-- 1. 老師陪你拆解問題 (Cyan Theme) -->
 				<div
-					class="highlight-card card-subsurface-glow relative rounded-3xl p-5 sm:p-6 bg-slate-900/80 backdrop-blur-xl border border-slate-800/90 shadow-xl shadow-slate-950/60 flex flex-col justify-between overflow-hidden cursor-default w-[84vw] sm:w-[320px] max-w-[340px] shrink-0 snap-start md:w-full md:max-w-none md:shrink"
+					class="highlight-card card-subsurface-glow relative rounded-3xl p-5 sm:p-6 bg-slate-900/80 backdrop-blur-xl border border-slate-800/90 shadow-xl shadow-slate-950/60 flex flex-col justify-between overflow-hidden cursor-default w-[78vw] sm:w-[320px] max-w-[340px] shrink-0 snap-start md:w-full md:max-w-none md:shrink"
 				>
 					<div
 						class="absolute -right-2 -bottom-4 text-7xl font-mono font-black text-slate-800/20 select-none pointer-events-none"
@@ -53,7 +53,7 @@
 					</div>
 
 					<div>
-						<div class="flex items-center justify-between mb-6">
+						<div class="flex items-center justify-between mb-4 sm:mb-6">
 							<div
 								class="w-12 h-12 rounded-2xl bg-cyan-500/15 border border-cyan-500/40 text-cyan-300 flex items-center justify-center text-2xl shadow-[0_0_20px_rgba(6,182,212,0.2)]"
 							>
@@ -66,14 +66,19 @@
 							</span>
 						</div>
 
-						<h3 class="text-xl font-extrabold text-white mb-3 tracking-tight">老師陪你拆解問題</h3>
-						<p class="text-base text-slate-200 leading-relaxed text-pretty text-justify">
+						<h3 class="text-xl font-extrabold text-white mb-2 sm:mb-3 tracking-tight">老師陪你拆解問題</h3>
+						<!-- 手機端精煉文案 -->
+						<p class="text-base text-slate-200 leading-relaxed text-pretty text-justify sm:hidden">
+							遇到報錯不必猜。老師帶你理解成因、練習拆解思維，而非只給暫時解答。
+						</p>
+						<!-- 桌機完整論述 -->
+						<p class="hidden sm:block text-base text-slate-200 leading-relaxed text-pretty text-justify">
 							遇到問題，不必一個人對著錯誤訊息反覆猜測。不是直接告訴你答案，而是協助你理解「為什麼會錯、問題出在哪裡」，練習拆解問題的思維，而不是只找到一個暫時運作的答案。
 						</p>
 					</div>
 
 					<div
-						class="pt-5 mt-6 border-t border-slate-800/80 flex items-center justify-between text-sm text-slate-300 font-mono"
+						class="pt-4 sm:pt-5 mt-4 sm:mt-6 border-t border-slate-800/80 flex items-center justify-between text-sm text-slate-300 font-mono"
 					>
 						<span>思維訓練</span>
 						<span class="text-cyan-400 font-bold">理解原因而非死背</span>
@@ -82,7 +87,7 @@
 
 				<!-- 2. 專屬雙螢幕實作環境 (Blue Theme) -->
 				<div
-					class="highlight-card card-subsurface-blue relative rounded-3xl p-5 sm:p-6 bg-slate-900/80 backdrop-blur-xl border border-slate-800/90 shadow-xl shadow-slate-950/60 flex flex-col justify-between overflow-hidden cursor-default w-[84vw] sm:w-[320px] max-w-[340px] shrink-0 snap-start md:w-full md:max-w-none md:shrink"
+					class="highlight-card card-subsurface-blue relative rounded-3xl p-5 sm:p-6 bg-slate-900/80 backdrop-blur-xl border border-slate-800/90 shadow-xl shadow-slate-950/60 flex flex-col justify-between overflow-hidden cursor-default w-[78vw] sm:w-[320px] max-w-[340px] shrink-0 snap-start md:w-full md:max-w-none md:shrink"
 				>
 					<div
 						class="absolute -right-2 -bottom-4 text-7xl font-mono font-black text-slate-800/20 select-none pointer-events-none"
@@ -91,7 +96,7 @@
 					</div>
 
 					<div>
-						<div class="flex items-center justify-between mb-6">
+						<div class="flex items-center justify-between mb-4 sm:mb-6">
 							<div
 								class="w-12 h-12 rounded-2xl bg-blue-500/15 border border-blue-500/40 text-blue-300 flex items-center justify-center text-2xl shadow-[0_0_20px_rgba(59,130,246,0.2)]"
 							>
@@ -104,16 +109,21 @@
 							</span>
 						</div>
 
-						<h3 class="text-xl font-extrabold text-white mb-3 tracking-tight">
+						<h3 class="text-xl font-extrabold text-white mb-2 sm:mb-3 tracking-tight">
 							專屬<span class="inline-block">雙螢幕實作環境</span>
 						</h3>
-						<p class="text-base text-slate-200 leading-relaxed text-pretty text-justify">
+						<!-- 手機端精煉文案 -->
+						<p class="text-base text-slate-200 leading-relaxed text-pretty text-justify sm:hidden">
+							一邊看示範一邊敲代碼。親手實作拒絕紙上談兵，擺脫看懂卻寫不出的困境。
+						</p>
+						<!-- 桌機完整論述 -->
+						<p class="hidden sm:block text-base text-slate-200 leading-relaxed text-pretty text-justify">
 							降低實作與切換的摩擦。一邊看示範、一邊寫程式、查資料與測試結果能同時進行。讓學習當下就親手實作，徹底擺脫「看影片覺得懂、開編輯器一片空白」的困境。
 						</p>
 					</div>
 
 					<div
-						class="pt-5 mt-6 border-t border-slate-800/80 flex items-center justify-between text-sm text-slate-300 font-mono"
+						class="pt-4 sm:pt-5 mt-4 sm:mt-6 border-t border-slate-800/80 flex items-center justify-between text-sm text-slate-300 font-mono"
 					>
 						<span>降低阻力</span>
 						<span class="text-blue-400 font-bold">即時實作反饋</span>
@@ -122,7 +132,7 @@
 
 				<!-- 3. 同儕一起學習成長 (Purple Theme) -->
 				<div
-					class="highlight-card card-subsurface-glow relative rounded-3xl p-5 sm:p-6 bg-slate-900/80 backdrop-blur-xl border border-slate-800/90 shadow-xl shadow-slate-950/60 flex flex-col justify-between overflow-hidden cursor-default w-[84vw] sm:w-[320px] max-w-[340px] shrink-0 snap-start md:w-full md:max-w-none md:shrink"
+					class="highlight-card card-subsurface-glow relative rounded-3xl p-5 sm:p-6 bg-slate-900/80 backdrop-blur-xl border border-slate-800/90 shadow-xl shadow-slate-950/60 flex flex-col justify-between overflow-hidden cursor-default w-[78vw] sm:w-[320px] max-w-[340px] shrink-0 snap-start md:w-full md:max-w-none md:shrink"
 				>
 					<div
 						class="absolute -right-2 -bottom-4 text-7xl font-mono font-black text-slate-800/20 select-none pointer-events-none"
@@ -131,7 +141,7 @@
 					</div>
 
 					<div>
-						<div class="flex items-center justify-between mb-6">
+						<div class="flex items-center justify-between mb-4 sm:mb-6">
 							<div
 								class="w-12 h-12 rounded-2xl bg-purple-500/15 border border-purple-500/40 text-purple-300 flex items-center justify-center text-2xl shadow-[0_0_20px_rgba(168,85,247,0.2)]"
 							>
@@ -144,14 +154,19 @@
 							</span>
 						</div>
 
-						<h3 class="text-xl font-extrabold text-white mb-3 tracking-tight">同儕一起學習成長</h3>
-						<p class="text-base text-slate-200 leading-relaxed text-pretty text-justify">
+						<h3 class="text-xl font-extrabold text-white mb-2 sm:mb-3 tracking-tight">同儕一起學習成長</h3>
+						<!-- 手機端精煉文案 -->
+						<p class="text-base text-slate-200 leading-relaxed text-pretty text-justify sm:hidden">
+							卡關時身邊有同學能商量。在互相提問與討論中突破盲點，不再孤軍奮戰。
+						</p>
+						<!-- 桌機完整論述 -->
+						<p class="hidden sm:block text-base text-slate-200 leading-relaxed text-pretty text-justify">
 							你不需要一個人面對每一次卡關。在班級中，你會發現「原來別人也會卡住」，並開始練習把自己的問題說清楚。同儕並肩討論、互相提點，往往比孤軍奮戰更容易突破盲點。
 						</p>
 					</div>
 
 					<div
-						class="pt-5 mt-6 border-t border-slate-800/80 flex items-center justify-between text-sm text-slate-300 font-mono"
+						class="pt-4 sm:pt-5 mt-4 sm:mt-6 border-t border-slate-800/80 flex items-center justify-between text-sm text-slate-300 font-mono"
 					>
 						<span>心理支持</span>
 						<span class="text-purple-400 font-bold">同儕共同突破</span>
@@ -160,7 +175,7 @@
 
 				<!-- 4. 920 小時集中沉浸 (Emerald Theme) -->
 				<div
-					class="highlight-card card-subsurface-glow relative rounded-3xl p-5 sm:p-6 bg-slate-900/80 backdrop-blur-xl border border-slate-800/90 shadow-xl shadow-slate-950/60 flex flex-col justify-between overflow-hidden cursor-default w-[84vw] sm:w-[320px] max-w-[340px] shrink-0 snap-start md:w-full md:max-w-none md:shrink"
+					class="highlight-card card-subsurface-glow relative rounded-3xl p-5 sm:p-6 bg-slate-900/80 backdrop-blur-xl border border-slate-800/90 shadow-xl shadow-slate-950/60 flex flex-col justify-between overflow-hidden cursor-default w-[78vw] sm:w-[320px] max-w-[340px] shrink-0 snap-start md:w-full md:max-w-none md:shrink"
 				>
 					<div
 						class="absolute -right-2 -bottom-4 text-7xl font-mono font-black text-slate-800/20 select-none pointer-events-none"
@@ -169,7 +184,7 @@
 					</div>
 
 					<div>
-						<div class="flex items-center justify-between mb-6">
+						<div class="flex items-center justify-between mb-4 sm:mb-6">
 							<div
 								class="w-12 h-12 rounded-2xl bg-emerald-500/15 border border-emerald-500/40 text-emerald-300 flex items-center justify-center text-2xl shadow-[0_0_20px_rgba(16,185,129,0.2)]"
 							>
@@ -182,17 +197,22 @@
 							</span>
 						</div>
 
-						<h3 class="text-xl font-extrabold text-white mb-3 tracking-tight">
+						<h3 class="text-xl font-extrabold text-white mb-2 sm:mb-3 tracking-tight">
 							<span class="inline-block">920 小時</span>集中沉浸
 						</h3>
-						<p class="text-base text-slate-200 leading-relaxed text-pretty text-justify">
+						<!-- 手機端精煉文案 -->
+						<p class="text-base text-slate-200 leading-relaxed text-pretty text-justify sm:hidden">
+							920 小時全日制專注實作。將零碎知識淬鍊為獨立開發上線專案的硬核實力。
+						</p>
+						<!-- 桌機完整論述 -->
+						<p class="hidden sm:block text-base text-slate-200 leading-relaxed text-pretty text-justify">
 							自學可以很自由，但也容易因為時間零碎而難以持續。<span class="inline-block">920 小時</span
 							>給你一段足夠長、足夠專注的時間，讓零碎的知識在持續練習中逐漸沉澱，最後轉化為能獨立完成完整專案的實戰能力。
 						</p>
 					</div>
 
 					<div
-						class="pt-5 mt-6 border-t border-slate-800/80 flex items-center justify-between text-sm text-slate-300 font-mono"
+						class="pt-4 sm:pt-5 mt-4 sm:mt-6 border-t border-slate-800/80 flex items-center justify-between text-sm text-slate-300 font-mono"
 					>
 						<span>專注累積</span>
 						<span class="text-emerald-400 font-bold">零散知識轉為實戰</span>
@@ -200,8 +220,18 @@
 				</div>
 			</div>
 
-			<!-- 每天與人一起學習 ｜ 實體交流與協作底蘊 (靈魂人文橫幅) -->
-			<div class="mt-14 sm:mt-16 max-w-5xl xl:max-w-6xl mx-auto">
+			<!-- 手機端專屬精簡人文金句橫幅 (高穿透、僅 1 屏高，取代 480px 冗長區塊) -->
+			<div class="block md:hidden mt-6">
+				<div class="p-4 rounded-2xl bg-slate-900/90 border border-cyan-500/30 shadow-lg flex items-start gap-3">
+					<span class="text-2xl flex-shrink-0">💬</span>
+					<p class="text-base font-bold text-slate-100 leading-relaxed text-pretty">
+						每天與人一起面對面解題、練習表達與協作，這是職訓最難被自學取代的真實底蘊。
+					</p>
+				</div>
+			</div>
+
+			<!-- 每天與人一起學習 ｜ 實體交流與協作底蘊 (桌機完整人文橫幅) -->
+			<div class="hidden md:block mt-14 sm:mt-16 max-w-5xl xl:max-w-6xl mx-auto">
 				<div
 					class="relative rounded-3xl p-5 sm:p-8 lg:p-10 bg-gradient-to-br from-slate-900/95 via-slate-900/80 to-slate-950/95 border border-slate-800/90 backdrop-blur-xl shadow-2xl shadow-slate-950/70 overflow-hidden"
 				>

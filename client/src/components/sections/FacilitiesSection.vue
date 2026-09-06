@@ -40,7 +40,7 @@
         <div
           v-for="(fac, index) in displayFacilities"
           :key="fac.id || index"
-          class="facility-card card-subsurface-glow relative rounded-3xl overflow-hidden bg-slate-900/80 backdrop-blur-xl border border-slate-800/90 shadow-xl shadow-slate-950/60 flex flex-col justify-between transform-gpu cursor-default w-[86vw] sm:w-[460px] max-w-[500px] shrink-0 snap-start md:w-full md:max-w-none md:shrink"
+          class="facility-card card-subsurface-glow relative rounded-3xl overflow-hidden bg-slate-900/80 backdrop-blur-xl border border-slate-800/90 shadow-xl shadow-slate-950/60 flex flex-col justify-between transform-gpu cursor-default w-[80vw] sm:w-[460px] max-w-[500px] shrink-0 snap-start md:w-full md:max-w-none md:shrink"
         >
           <!-- 角落序號水印 (01, 02) -->
           <div class="absolute -right-2 -bottom-4 text-7xl font-mono font-black text-slate-800/20 select-none pointer-events-none z-20">
@@ -61,12 +61,12 @@
           </div>
 
           <!-- 說明區塊 -->
-          <div class="p-6 sm:p-8 flex-1 flex flex-col relative z-10">
+          <div class="p-5 sm:p-8 flex-1 flex flex-col relative z-10">
             <div class="flex items-center space-x-2 mb-2">
               <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
               <span class="text-sm font-mono text-cyan-400 font-bold uppercase tracking-wider">Professional Facility</span>
             </div>
-            <h3 class="mb-3">
+            <h3 class="mb-2 sm:mb-3">
               <span class="block text-xl sm:text-2xl font-black text-white tracking-tight leading-snug text-balance">
                 {{ fac.displayTitle }}
               </span>
@@ -77,7 +77,12 @@
                 {{ fac.displaySubtitle }}
               </span>
             </h3>
-            <p class="text-slate-200 leading-relaxed text-base sm:text-lg text-pretty text-justify">
+            <!-- 手機短金句 -->
+            <p class="text-slate-200 leading-relaxed text-base text-pretty text-justify sm:hidden">
+              {{ fac.displayDescriptionMobile }}
+            </p>
+            <!-- 桌機完整論述 -->
+            <p class="hidden sm:block text-slate-200 leading-relaxed text-base sm:text-lg text-pretty text-justify">
               {{ fac.description }}
             </p>
           </div>
@@ -146,6 +151,15 @@ withDefaults(
 
 const store = useCmsStore()
 
+function getMobileFacilityDesc(desc?: string) {
+  if (!desc) return ''
+  const sentences = desc.split('。').filter(Boolean)
+  if (sentences.length > 1) {
+    return sentences.slice(0, 2).join('。') + '。'
+  }
+  return desc
+}
+
 // 防禦性預處理設施清單，兼顧主副標智慧解析與安全圖片綁定，杜絕 template 重複呼叫
 const displayFacilities = computed(() => {
   return (store.facilities || []).map((fac, index) => {
@@ -154,6 +168,7 @@ const displayFacilities = computed(() => {
       ...fac,
       displayTitle: titles.title,
       displaySubtitle: titles.subtitle,
+      displayDescriptionMobile: getMobileFacilityDesc(fac.description),
       displayImage: getFacilityImage(fac, index)
     }
   })
