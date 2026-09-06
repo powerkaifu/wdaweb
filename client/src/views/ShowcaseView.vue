@@ -4,23 +4,9 @@
     <PageHeader
       badge="真實學員專題成果"
       title="歷屆學員專題成果牆"
+      subtitle="所有專案皆為學員於 920 小時培訓期間，100% 獨立開發的前後端分離＋資料庫 Web 專案。歷經一個月專題實戰，從期初企劃報告到期末成果展，完整淬鍊實戰能力！"
       theme="blue"
-    >
-      <template #subtitle>
-        <div class="text-base sm:text-lg max-w-5xl mx-auto leading-relaxed space-y-1 sm:space-y-1.5 text-left sm:text-center">
-          <p class="text-slate-300">
-            所有專案皆為學員於 920 小時培訓期間，100% 獨立開發的前後端分離＋資料庫 Web 專案。
-          </p>
-          <p class="text-slate-300">
-            歷經一個月專題實戰，從期初企劃報告到期末成果展，完整淬鍊實戰能力！
-          </p>
-          <p class="text-cyan-400 font-bold pt-0.5 sm:pt-1 flex items-center justify-start sm:justify-center gap-1.5">
-            <span>✨</span>
-            <span>點擊卡片可 3D 翻轉查看詳情與線上 Demo！</span>
-          </p>
-        </div>
-      </template>
-    </PageHeader>
+    />
 
     <!-- 學員作品成果牆 (支援 3D 翻轉卡片，由 PageHeader 統一引導) -->
     <ShowcaseSection hide-header />
