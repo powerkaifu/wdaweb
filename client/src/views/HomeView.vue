@@ -136,12 +136,9 @@
 				</div>
 
 				<!-- 溫馨提示與免責聲明 (中高齡老花眼 16px 大字閱讀友好) -->
-				<div class="pt-6 border-t border-slate-800/60 max-w-3xl mx-auto space-y-2">
+				<div class="pt-6 border-t border-slate-800/60 max-w-3xl mx-auto">
 					<p class="text-base text-slate-400 font-medium">
 						💡 正式報名一律透過勞動部「台灣就業通」官方網站辦理，本站為純招生推廣宣傳展示，不收集任何個人資料。
-					</p>
-					<p class="text-sm text-slate-300 font-mono">
-						招生諮詢專線：(02) 2901-8274 ｜ 訓練場：新北市泰山區貴子里致遠新村 55 之 1 號
 					</p>
 				</div>
 			</div>
