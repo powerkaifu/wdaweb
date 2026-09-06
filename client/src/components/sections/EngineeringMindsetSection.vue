@@ -68,26 +68,34 @@
 								<span>看懂代碼 · 自主除錯 · 模組整合交付產品</span>
 							</div>
 						</div>
-						<!-- 5 步心智緊湊流 -->
-						<div class="pt-2 border-t border-slate-800/80 space-y-1.5">
-							<div class="grid grid-cols-2 gap-1.5 text-xs font-mono font-bold">
-								<div class="p-1.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-200">
-									<span class="text-cyan-400">① 理解 ➔</span> 需求到底是什麼？
-								</div>
-								<div class="p-1.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-200">
-									<span class="text-cyan-400">② 拆解 ➔</span> 這個問題怎麼拆？
-								</div>
-								<div class="p-1.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-200">
-									<span class="text-cyan-400">③ 協作 ➔</span> 如何讓 AI 幫我加速？
-								</div>
-								<div class="p-1.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-200">
-									<span class="text-cyan-400">④ 驗證 ➔</span> AI 做的是對的嗎？
-								</div>
+						<!-- 5 步心智流程清單 (大字清晰呈現) -->
+						<div class="pt-2.5 border-t border-slate-800/80 space-y-2">
+							<div class="p-2.5 rounded-xl bg-slate-900/90 border border-slate-800 flex items-center justify-between text-sm shadow-sm">
+								<span class="font-bold text-cyan-400 font-mono">① 理解</span>
+								<span class="text-white font-medium">需求到底是什麼？</span>
+								<span class="text-xs text-slate-400 font-normal">需求定義</span>
+							</div>
+							<div class="p-2.5 rounded-xl bg-slate-900/90 border border-slate-800 flex items-center justify-between text-sm shadow-sm">
+								<span class="font-bold text-cyan-400 font-mono">② 拆解</span>
+								<span class="text-white font-medium">這個問題怎麼拆？</span>
+								<span class="text-xs text-slate-400 font-normal">架構拆解</span>
+							</div>
+							<div class="p-2.5 rounded-xl bg-slate-900/90 border border-slate-800 flex items-center justify-between text-sm shadow-sm">
+								<span class="font-bold text-cyan-400 font-mono">③ 協作</span>
+								<span class="text-white font-medium">如何讓 AI 幫我加速？</span>
+								<span class="text-xs text-slate-400 font-normal">精準協同</span>
+							</div>
+							<div class="p-2.5 rounded-xl bg-slate-900/90 border border-slate-800 flex items-center justify-between text-sm shadow-sm">
+								<span class="font-bold text-cyan-400 font-mono">④ 驗證</span>
+								<span class="text-white font-medium">AI 做的是對的嗎？</span>
+								<span class="text-xs text-slate-400 font-normal">修改與 Debug</span>
 							</div>
 							<div
-								class="p-2 rounded-xl bg-emerald-950/40 border border-emerald-500/40 text-xs font-bold text-emerald-300 text-center shadow-sm"
+								class="p-3 rounded-xl bg-emerald-950/50 border border-emerald-500/40 flex items-center justify-between text-sm font-bold text-emerald-300 shadow-md"
 							>
-								⑤ 整合 ➔ 如何讓所有東西真正運作並交付產品？
+								<span>⑤ 整合 🎯</span>
+								<span>如何真正運作？</span>
+								<span class="text-emerald-400 font-black">完成產品的人</span>
 							</div>
 						</div>
 					</div>
@@ -132,33 +140,41 @@
 										<span>5-STAGE ENGINEERING MINDSET</span>
 									</div>
 									<h4 class="text-base font-extrabold text-cyan-300">而是培養：能完成產品的人</h4>
-									<div class="space-y-1.5 text-xs font-semibold text-slate-200 mt-2">
+									<div class="space-y-2 text-sm sm:text-base font-semibold text-slate-200 mt-2.5">
 										<div
-											class="p-1.5 rounded-lg bg-slate-900/90 border border-slate-800/80 flex items-center justify-between"
+											class="p-2.5 rounded-xl bg-slate-900/90 border border-slate-800/80 flex items-center justify-between shadow-sm"
 										>
-											<span>① 理解</span><span class="text-slate-300 font-normal">需求到底是什麼？</span>
+											<span class="font-bold text-cyan-400 font-mono">① 理解</span>
+											<span class="text-white font-medium">需求到底是什麼？</span>
+											<span class="text-xs text-slate-400 font-normal">需求定義</span>
 										</div>
 										<div
-											class="p-1.5 rounded-lg bg-slate-900/90 border border-slate-800/80 flex items-center justify-between"
+											class="p-2.5 rounded-xl bg-slate-900/90 border border-slate-800/80 flex items-center justify-between shadow-sm"
 										>
-											<span>② 拆解</span><span class="text-slate-300 font-normal">這個問題怎麼拆？</span>
+											<span class="font-bold text-cyan-400 font-mono">② 拆解</span>
+											<span class="text-white font-medium">這個問題怎麼拆？</span>
+											<span class="text-xs text-slate-400 font-normal">架構拆解</span>
 										</div>
 										<div
-											class="p-1.5 rounded-lg bg-slate-900/90 border border-slate-800/80 flex items-center justify-between"
+											class="p-2.5 rounded-xl bg-slate-900/90 border border-slate-800/80 flex items-center justify-between shadow-sm"
 										>
-											<span>③ 協作</span><span class="text-slate-300 font-normal">如何讓 AI 幫我加速？</span>
+											<span class="font-bold text-cyan-400 font-mono">③ 協作</span>
+											<span class="text-white font-medium">如何讓 AI 幫我加速？</span>
+											<span class="text-xs text-slate-400 font-normal">精準協同</span>
 										</div>
 										<div
-											class="p-1.5 rounded-lg bg-slate-900/90 border border-slate-800/80 flex items-center justify-between"
+											class="p-2.5 rounded-xl bg-slate-900/90 border border-slate-800/80 flex items-center justify-between shadow-sm"
 										>
-											<span>④ 驗證</span><span class="text-slate-300 font-normal">AI 做的是對的嗎？(改/Debug)</span>
+											<span class="font-bold text-cyan-400 font-mono">④ 驗證</span>
+											<span class="text-white font-medium">AI 做的是對的嗎？</span>
+											<span class="text-xs text-slate-400 font-normal">修改與 Debug</span>
 										</div>
 									</div>
 								</div>
 								<div
-									class="text-xs font-bold text-emerald-300 text-center bg-emerald-950/50 p-2 rounded-xl border border-emerald-500/40"
+									class="text-sm sm:text-base font-bold text-emerald-300 text-center bg-emerald-950/60 p-3 rounded-xl border border-emerald-500/40 shadow-md"
 								>
-									⑤ 整合 ➔ 讓所有東西真正運作，完成產品！
+									⑤ 整合 🎯 ➔ 如何真正運作？【完成產品的人】
 								</div>
 							</div>
 						</div>
@@ -185,77 +201,77 @@
 								<span class="text-sm font-extrabold text-emerald-300">能完成產品的現代工程師</span>
 							</div>
 						</div>
-						<div class="grid grid-cols-5 gap-2 items-stretch text-center">
-							<div class="p-2.5 rounded-xl bg-slate-900/90 border border-slate-800 flex flex-col justify-between">
-								<div class="text-xs text-cyan-400 font-mono font-bold">① 理解</div>
-								<div class="text-xs font-extrabold text-white my-1">需求到底是什麼？</div>
-								<span class="text-xs text-slate-300">需求本質定義</span>
+						<div class="grid grid-cols-5 gap-2.5 items-stretch text-center">
+							<div class="p-3 rounded-2xl bg-slate-900/90 border border-slate-800 flex flex-col justify-between shadow-md">
+								<div class="text-xs sm:text-sm text-cyan-400 font-mono font-bold">① 理解</div>
+								<div class="text-sm sm:text-base font-extrabold text-white my-1.5 leading-snug">需求到底是什麼？</div>
+								<span class="text-xs sm:text-sm text-slate-300 font-medium">需求定義</span>
 							</div>
-							<div class="p-2.5 rounded-xl bg-slate-900/90 border border-slate-800 flex flex-col justify-between">
-								<div class="text-xs text-cyan-400 font-mono font-bold">② 拆解</div>
-								<div class="text-xs font-extrabold text-white my-1">這個問題怎麼拆？</div>
-								<span class="text-xs text-slate-300">架構模組拆解</span>
+							<div class="p-3 rounded-2xl bg-slate-900/90 border border-slate-800 flex flex-col justify-between shadow-md">
+								<div class="text-xs sm:text-sm text-cyan-400 font-mono font-bold">② 拆解</div>
+								<div class="text-sm sm:text-base font-extrabold text-white my-1.5 leading-snug">這個問題怎麼拆？</div>
+								<span class="text-xs sm:text-sm text-slate-300 font-medium">架構拆解</span>
 							</div>
-							<div class="p-2.5 rounded-xl bg-slate-900/90 border border-slate-800 flex flex-col justify-between">
-								<div class="text-xs text-cyan-400 font-mono font-bold">③ 協作</div>
-								<div class="text-xs font-extrabold text-white my-1">如何讓 AI 加速？</div>
-								<span class="text-xs text-slate-300">精準提示協同</span>
+							<div class="p-3 rounded-2xl bg-slate-900/90 border border-slate-800 flex flex-col justify-between shadow-md">
+								<div class="text-xs sm:text-sm text-cyan-400 font-mono font-bold">③ 協作</div>
+								<div class="text-sm sm:text-base font-extrabold text-white my-1.5 leading-snug">如何讓 AI 加速？</div>
+								<span class="text-xs sm:text-sm text-slate-300 font-medium">精準協同</span>
 							</div>
-							<div class="p-2.5 rounded-xl bg-slate-900/90 border border-slate-800 flex flex-col justify-between">
-								<div class="text-xs text-cyan-400 font-mono font-bold">④ 驗證</div>
-								<div class="text-xs font-extrabold text-white my-1">AI 做的是對的嗎？</div>
-								<span class="text-xs text-slate-300">修改與 Debug</span>
+							<div class="p-3 rounded-2xl bg-slate-900/90 border border-slate-800 flex flex-col justify-between shadow-md">
+								<div class="text-xs sm:text-sm text-cyan-400 font-mono font-bold">④ 驗證</div>
+								<div class="text-sm sm:text-base font-extrabold text-white my-1.5 leading-snug">AI 做的是對的嗎？</div>
+								<span class="text-xs sm:text-sm text-slate-300 font-medium">修改與 Debug</span>
 							</div>
 							<div
-								class="p-2.5 rounded-xl bg-emerald-950/40 border border-emerald-500/40 flex flex-col justify-between shadow-sm shadow-emerald-500/20"
+								class="p-3 rounded-2xl bg-emerald-950/40 border border-emerald-500/40 flex flex-col justify-between shadow-md shadow-emerald-500/20"
 							>
-								<div class="text-xs text-emerald-400 font-mono font-bold">⑤ 整合 🎯</div>
-								<div class="text-xs font-black text-emerald-300 my-1">如何真正運作？</div>
-								<span class="text-xs text-emerald-400 font-bold">完成商業產品</span>
+								<div class="text-xs sm:text-sm text-emerald-400 font-mono font-bold">⑤ 整合 🎯</div>
+								<div class="text-sm sm:text-base font-black text-emerald-300 my-1.5 leading-snug">如何真正運作？</div>
+								<span class="text-xs sm:text-sm text-emerald-400 font-bold">完成產品的人</span>
 							</div>
 						</div>
 					</div>
 
-					<!-- 4. 🖥️ 桌機端 (hidden xl:block)：旗艦科技對照展台，次表面微光大器展開 -->
+					<!-- 4. 🖥️ 桌機端 (hidden xl:block)：旗艦科技對照展台 (左 3 欄精實展台 + 右 9 欄寬版 5 步流水線，確保字字單行) -->
 					<div class="hidden xl:block p-6 rounded-3xl bg-slate-950/85 border border-cyan-500/30 shadow-2xl">
-						<div class="grid grid-cols-12 gap-6 items-stretch">
-							<!-- 左側 4 欄：核心工程能力展台 -->
+						<div class="grid grid-cols-12 gap-5 2xl:gap-6 items-stretch">
+							<!-- 左側 3 欄：核心工程能力展台 (精實凝練) -->
 							<div
-								class="col-span-4 p-5 rounded-2xl bg-slate-900/70 border border-slate-800/90 flex flex-col justify-center space-y-4"
+								class="col-span-3 p-5 rounded-2xl bg-slate-900/70 border border-slate-800/90 flex flex-col justify-center space-y-3"
 							>
-								<div class="space-y-3">
+								<div class="space-y-2.5">
 									<div
-										class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-300 border border-cyan-500/30 text-xs font-bold font-mono"
+										class="inline-flex items-center space-x-1.5 px-2.5 py-1 rounded-full bg-cyan-500/10 text-cyan-300 border border-cyan-500/30 text-xs font-bold font-mono"
 									>
 										<span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
-										<span>CORE ENGINEERING CAPABILITY</span>
+										<span>CORE CAPABILITY</span>
 									</div>
 									<h4 class="text-xl font-extrabold text-white leading-snug">
-										AI 時代，<br />
-										<span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-blue-300"
+										<span class="block">AI 時代，</span>
+										<span class="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-blue-300"
 											>更重要的是工程能力</span
 										>
 									</h4>
-									<ul class="space-y-3 text-sm sm:text-base text-slate-200">
-										<li class="flex items-start space-x-2.5">
-											<span class="text-cyan-400 mt-0.5 font-bold text-base">✓</span>
-											<span>看懂 AI 產生的程式碼，理解背後邏輯</span>
+									<ul class="space-y-2.5 text-sm text-slate-200">
+										<li class="flex items-start space-x-2">
+											<span class="text-cyan-400 mt-0.5 font-bold">✓</span>
+											<span class="leading-relaxed">看懂 AI 產生的程式碼，理解背後邏輯</span>
 										</li>
-										<li class="flex items-start space-x-2.5">
-											<span class="text-cyan-400 mt-0.5 font-bold text-base">✓</span>
-											<span>能自主分析問題、除錯與驗證</span>
+										<li class="flex items-start space-x-2">
+											<span class="text-cyan-400 mt-0.5 font-bold">✓</span>
+											<span class="leading-relaxed">能自主分析問題、除錯與驗證</span>
 										</li>
-										<li class="flex items-start space-x-2.5">
-											<span class="text-cyan-400 mt-0.5 font-bold text-base">✓</span>
-											<span>能整合模組，完成真正可交付的產品</span>
+										<li class="flex items-start space-x-2">
+											<span class="text-cyan-400 mt-0.5 font-bold">✓</span>
+											<span class="leading-relaxed">能整合模組，完成真正可交付的產品</span>
 										</li>
 									</ul>
 								</div>
 							</div>
 
-							<!-- 右側 8 欄：5 階段心智自問工程管線 (5-Stage Mental Pipeline) -->
+							<!-- 右側 9 欄：5 階段心智自問工程管線 (9 欄寬敞舒展，5 步驟文字 100% 單行不折行) -->
 							<div
-								class="col-span-8 p-5 rounded-2xl bg-cyan-950/20 border border-cyan-500/30 flex flex-col justify-between"
+								class="col-span-9 p-5 rounded-2xl bg-cyan-950/20 border border-cyan-500/30 flex flex-col justify-between"
 							>
 								<div class="flex items-center justify-between mb-3">
 									<div
@@ -267,41 +283,50 @@
 									<span class="text-sm font-extrabold text-cyan-300">我們真正培養的 5 大核心工程心智</span>
 								</div>
 
-								<div class="grid grid-cols-5 gap-2.5 items-stretch text-center">
+								<div class="grid grid-cols-5 gap-2.5 2xl:gap-3 items-stretch text-center">
+									<!-- ① 理解 -->
 									<div
-										class="p-3 rounded-xl bg-slate-900/90 border border-slate-800/90 flex flex-col justify-between hover:border-cyan-500/40 transition-colors"
+										class="py-4 px-2 2xl:px-3 rounded-2xl bg-slate-900/90 border border-slate-800/90 flex flex-col justify-between hover:border-cyan-500/40 transition-colors shadow-lg"
 									>
-										<span class="text-xs text-cyan-400 font-mono font-bold">① 理解</span>
-										<div class="text-sm font-extrabold text-white my-2">需求到底是什麼？</div>
-										<span class="text-xs text-slate-300">需求定義</span>
+										<span class="text-sm text-cyan-400 font-mono font-black tracking-wider">① 理解</span>
+										<div class="text-sm 2xl:text-base font-black text-white my-2.5 leading-snug whitespace-nowrap">需求到底是什麼？</div>
+										<span class="text-xs 2xl:text-sm font-bold text-slate-300 whitespace-nowrap">需求定義</span>
 									</div>
+
+									<!-- ② 拆解 -->
 									<div
-										class="p-3 rounded-xl bg-slate-900/90 border border-slate-800/90 flex flex-col justify-between hover:border-cyan-500/40 transition-colors"
+										class="py-4 px-2 2xl:px-3 rounded-2xl bg-slate-900/90 border border-slate-800/90 flex flex-col justify-between hover:border-cyan-500/40 transition-colors shadow-lg"
 									>
-										<span class="text-xs text-cyan-400 font-mono font-bold">② 拆解</span>
-										<div class="text-sm font-extrabold text-white my-2">這個問題怎麼拆？</div>
-										<span class="text-xs text-slate-300">架構拆解</span>
+										<span class="text-sm text-cyan-400 font-mono font-black tracking-wider">② 拆解</span>
+										<div class="text-sm 2xl:text-base font-black text-white my-2.5 leading-snug whitespace-nowrap">這個問題怎麼拆？</div>
+										<span class="text-xs 2xl:text-sm font-bold text-slate-300 whitespace-nowrap">架構拆解</span>
 									</div>
+
+									<!-- ③ 協作 -->
 									<div
-										class="p-3 rounded-xl bg-slate-900/90 border border-slate-800/90 flex flex-col justify-between hover:border-cyan-500/40 transition-colors"
+										class="py-4 px-2 2xl:px-3 rounded-2xl bg-slate-900/90 border border-slate-800/90 flex flex-col justify-between hover:border-cyan-500/40 transition-colors shadow-lg"
 									>
-										<span class="text-xs text-cyan-400 font-mono font-bold">③ 協作</span>
-										<div class="text-sm font-extrabold text-white my-2">如何讓 AI 幫我加速？</div>
-										<span class="text-xs text-slate-300">精準協同</span>
+										<span class="text-sm text-cyan-400 font-mono font-black tracking-wider">③ 協作</span>
+										<div class="text-sm 2xl:text-base font-black text-white my-2.5 leading-snug whitespace-nowrap">如何讓 AI 幫我加速？</div>
+										<span class="text-xs 2xl:text-sm font-bold text-slate-300 whitespace-nowrap">精準協同</span>
 									</div>
+
+									<!-- ④ 驗證 -->
 									<div
-										class="p-3 rounded-xl bg-slate-900/90 border border-slate-800/90 flex flex-col justify-between hover:border-cyan-500/40 transition-colors"
+										class="py-4 px-2 2xl:px-3 rounded-2xl bg-slate-900/90 border border-slate-800/90 flex flex-col justify-between hover:border-cyan-500/40 transition-colors shadow-lg"
 									>
-										<span class="text-xs text-cyan-400 font-mono font-bold">④ 驗證</span>
-										<div class="text-sm font-extrabold text-white my-2">AI 做的是對的嗎？</div>
-										<span class="text-xs text-slate-300">修改與 Debug</span>
+										<span class="text-sm text-cyan-400 font-mono font-black tracking-wider">④ 驗證</span>
+										<div class="text-sm 2xl:text-base font-black text-white my-2.5 leading-snug whitespace-nowrap">AI 做的是對的嗎？</div>
+										<span class="text-xs 2xl:text-sm font-bold text-slate-300 whitespace-nowrap">修改與 Debug</span>
 									</div>
+
+									<!-- ⑤ 整合 -->
 									<div
-										class="p-3 rounded-xl bg-gradient-to-b from-emerald-950/60 to-slate-900 border border-emerald-500/50 flex flex-col justify-between shadow-lg shadow-emerald-950/40"
+										class="py-4 px-2 2xl:px-3 rounded-2xl bg-gradient-to-b from-emerald-950/60 to-slate-900 border border-emerald-500/50 flex flex-col justify-between shadow-xl shadow-emerald-950/40"
 									>
-										<span class="text-xs text-emerald-400 font-mono font-bold">⑤ 整合 🎯</span>
-										<div class="text-sm font-black text-emerald-300 my-2">如何讓所有東西真正運作？</div>
-										<span class="text-xs text-emerald-400 font-bold">完成產品的人</span>
+										<span class="text-sm text-emerald-400 font-mono font-black tracking-wider">⑤ 整合 🎯</span>
+										<div class="text-sm 2xl:text-base font-black text-emerald-300 my-2.5 leading-snug whitespace-nowrap">如何真正運作？</div>
+										<span class="text-xs 2xl:text-sm font-black text-emerald-400 whitespace-nowrap">完成產品的人</span>
 									</div>
 								</div>
 							</div>
