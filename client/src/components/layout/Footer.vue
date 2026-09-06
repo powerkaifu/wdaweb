@@ -48,17 +48,17 @@
           </div>
         </div>
 
-        <!-- 頁尾快速導覽連結群 (手機版採整齊自適應網格，平板桌機採單行並排) -->
-        <div class="grid grid-cols-2 xs:grid-cols-3 sm:flex sm:flex-wrap items-center gap-2.5 sm:gap-x-5 sm:gap-y-2 text-xs sm:text-sm font-medium text-slate-300 w-full lg:w-auto pt-2 lg:pt-0 border-t border-slate-800/60 lg:border-t-0">
-          <router-link to="/" class="hover:text-cyan-400 transition-colors py-1 focus-visible:ring-2 focus-visible:ring-cyan-400 focus:outline-none rounded">課程特色</router-link>
+        <!-- 頁尾快速導覽連結群 (手機版採整齊自適應網格，平板桌機採單行並排，大字好讀) -->
+        <div class="grid grid-cols-2 xs:grid-cols-3 sm:flex sm:flex-wrap items-center gap-2.5 sm:gap-x-5 sm:gap-y-2 text-base font-medium text-slate-300 w-full lg:w-auto pt-2 lg:pt-0 border-t border-slate-800/60 lg:border-t-0">
+          <router-link to="/" class="hover:text-cyan-400 transition-colors py-1.5 focus-visible:ring-2 focus-visible:ring-cyan-400 focus:outline-none rounded">課程特色</router-link>
           <span class="hidden sm:inline text-slate-600" aria-hidden="true">•</span>
-          <router-link to="/showcase" class="hover:text-cyan-400 transition-colors py-1 focus-visible:ring-2 focus-visible:ring-cyan-400 focus:outline-none rounded">學員專題成果</router-link>
+          <router-link to="/showcase" class="hover:text-cyan-400 transition-colors py-1.5 focus-visible:ring-2 focus-visible:ring-cyan-400 focus:outline-none rounded">學員專題成果</router-link>
           <span class="hidden sm:inline text-slate-600" aria-hidden="true">•</span>
-          <router-link to="/admission" class="hover:text-cyan-400 transition-colors py-1 focus-visible:ring-2 focus-visible:ring-cyan-400 focus:outline-none rounded">招生期別與報名</router-link>
+          <router-link to="/admission" class="hover:text-cyan-400 transition-colors py-1.5 focus-visible:ring-2 focus-visible:ring-cyan-400 focus:outline-none rounded">招生期別與報名</router-link>
           <span class="hidden sm:inline text-slate-600" aria-hidden="true">•</span>
-          <router-link to="/community" class="hover:text-cyan-400 transition-colors py-1 focus-visible:ring-2 focus-visible:ring-cyan-400 focus:outline-none rounded">Discord 線上諮詢</router-link>
+          <router-link to="/community" class="hover:text-cyan-400 transition-colors py-1.5 focus-visible:ring-2 focus-visible:ring-cyan-400 focus:outline-none rounded">Discord 線上諮詢</router-link>
           <span class="hidden sm:inline text-slate-600" aria-hidden="true">•</span>
-          <router-link to="/faq" class="hover:text-cyan-400 transition-colors py-1 focus-visible:ring-2 focus-visible:ring-cyan-400 focus:outline-none rounded">常見問題 FAQ</router-link>
+          <router-link to="/faq" class="hover:text-cyan-400 transition-colors py-1.5 focus-visible:ring-2 focus-visible:ring-cyan-400 focus:outline-none rounded">常見問題 FAQ</router-link>
         </div>
       </div>
 
