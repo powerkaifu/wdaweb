@@ -12,7 +12,7 @@
     <div class="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 w-full relative z-10 flex-1 flex items-center my-auto -translate-y-2 sm:-translate-y-4 lg:-translate-y-6">
       <div v-if="currentSlide" class="w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center py-4">
         <!-- Left Text Content (8pt 垂直律動與格式塔群組精準重構) -->
-        <div id="hero-left-content" class="lg:col-span-6 flex flex-col items-center lg:items-start text-center lg:text-left self-center transform-gpu will-change-transform">
+        <div id="hero-left-content" class="w-full max-w-3xl lg:max-w-none lg:col-span-6 flex flex-col items-center lg:items-start text-center lg:text-left self-center transform-gpu will-change-transform">
           <!-- 1. 頂部認證標籤 Badge (權威背書) -->
           <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-slate-900/90 border border-cyan-500/30 text-sm font-bold text-cyan-400 shadow-sm shadow-cyan-950/40 mb-3 sm:mb-3.5 lg:mb-4">
             <span>✨ 勞動部自辦職前訓練 ｜ <span class="inline-block">920 小時實體培訓</span></span>
@@ -353,17 +353,19 @@ onMounted(() => {
       }
     })
 
-    // 2. 右側 AI Code 視窗速率差 (y: -20px, scrub: 1.2)
-    gsap.to('#hero-right-content', {
-      y: -20,
-      ease: 'power1.out',
-      scrollTrigger: {
-        trigger: '#hero',
-        start: 'top top',
-        end: 'bottom top',
-        scrub: 1.2
-      }
-    })
+    // 2. 右側 AI Code 視窗速率差 (僅在桌機 lg: 螢幕啟用，手機端完全不註冊以保持極致 FPS)
+    if (window.innerWidth >= 1024) {
+      gsap.to('#hero-right-content', {
+        y: -20,
+        ease: 'power1.out',
+        scrollTrigger: {
+          trigger: '#hero',
+          start: 'top top',
+          end: 'bottom top',
+          scrub: 1.2
+        }
+      })
+    }
   })
 })
 
