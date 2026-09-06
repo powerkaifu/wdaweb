@@ -97,6 +97,7 @@ interface CelestialMeteor {
   }
   isFireball: boolean
   isCodeMeteor: boolean
+  isWelcome?: boolean
   hasExploded: boolean
   flareAlpha: number
   flareRadius: number
@@ -226,46 +227,117 @@ const METEOR_PALETTES = [
   }
 ]
 
-function spawnMeteor(forceFireball = false, forceCode = false) {
+function spawnMeteor(forceFireball = false, forceCode = false, isWelcome = false) {
   if (!meteorCanvasRef.value) return
-  const w = meteorCanvasRef.value.width || window.innerWidth
-  const h = meteorCanvasRef.value.height || window.innerHeight
 
-  const dirMode = store.meteorConfig.direction
+  // 🌟 嚴格使用邏輯視窗尺寸（CSS 像素），徹底杜絕高 DPR / Retina 螢幕上流星座標外溢至可視範圍外的問題！
+  const w = window.innerWidth
+  const h = window.innerHeight
+  const isMobile = w < 768 || isMobileDevice
+
   let startX = 0
   let startY = 0
   let angle = 0
+  let customTravelDistance = 0
+  let customSpeed = 0
+  let customLength = 0
 
-  if (dirMode === 'radiant') {
-    startX = w * 0.5 + (Math.random() - 0.5) * (w * 0.2)
-    startY = h * 0.4 + (Math.random() - 0.5) * (h * 0.2)
-    angle = Math.random() * Math.PI * 2
-  } else if (dirMode === 'diagonal') {
-    startX = Math.random() * w * 0.8 + w * 0.2
-    startY = -40
-    angle = Math.PI * 0.75 + (Math.random() - 0.5) * 0.35
-  } else {
-    const side = Math.random()
-    if (side < 0.35) {
-      startX = Math.random() * w
-      startY = -30
-      angle = Math.PI * 0.25 + Math.random() * Math.PI * 0.50
-    } else if (side < 0.60) {
-      startX = Math.random() * w
-      startY = h + 30
-      angle = Math.PI * 1.25 + Math.random() * Math.PI * 0.50
-    } else if (side < 0.80) {
-      startX = -30
-      startY = Math.random() * h
-      angle = (Math.random() - 0.5) * (Math.PI * 0.60)
-    } else if (side < 0.95) {
-      startX = w + 30
-      startY = Math.random() * h
-      angle = Math.PI + (Math.random() - 0.5) * (Math.PI * 0.60)
+  if (isWelcome) {
+    // 🌟【第一顆首發流星 - 驚艷核心聚焦算法】
+    // 依據使用者指示：手機版第一顆流星劃過時剛好在中間附近，帶來最強視覺震撼張力
+    let targetX: number
+    let targetY: number
+
+    if (isMobile) {
+      // 📱 手機版直式螢幕：瞄準水平正中心附近，垂直在 Hero 核心視線焦點（35%~42% 高度處）
+      targetX = w * (0.48 + (Math.random() - 0.5) * 0.08)
+      targetY = h * (0.38 + (Math.random() - 0.5) * 0.06)
+
+      // 角度：經典 38°~42°（從左上斜穿至右下，掠過整片手機視野）或 138°~142°（從右上斜穿至左下）
+      const fromLeft = Math.random() < 0.65 // 65% 左上到右下，極度契合東亞由左至右閱讀視線習慣
+      angle = fromLeft
+        ? Math.PI * 0.22 + (Math.random() - 0.5) * 0.06
+        : Math.PI * 0.78 + (Math.random() - 0.5) * 0.06
+
+      // 半徑回退距離：讓流星在到達中心 (targetX, targetY) 時，剛好處於生命週期的 45%（彗尾與代碼微塵最壯觀顛峰）
+      const backDist = Math.min(w * 0.65, 260)
+      startX = targetX - Math.cos(angle) * backDist
+      startY = targetY - Math.sin(angle) * backDist
+
+      // 設置充足的穿透距離，讓它優雅掠過中心後自然消散
+      customTravelDistance = backDist * 2.25
+
+      // 速度與長度優化：速度適中約 720~820 px/s，持續約 0.85~1.0 秒，長度 200~240px，視覺張力拉滿
+      customSpeed = 720 + Math.random() * 100
+      customLength = 210 + Math.random() * 35
     } else {
-      startX = w * 0.3 + Math.random() * w * 0.4
-      startY = h * 0.3 + Math.random() * h * 0.4
+      // 🖥️ 電腦桌機/筆電版：瞄準開闊視野中心偏上方
+      targetX = w * (0.48 + (Math.random() - 0.5) * 0.10)
+      targetY = h * (0.36 + (Math.random() - 0.5) * 0.08)
+      angle = Math.PI * 0.23 + (Math.random() - 0.5) * 0.08
+      const backDist = Math.min(w * 0.35, 460)
+      startX = targetX - Math.cos(angle) * backDist
+      startY = targetY - Math.sin(angle) * backDist
+      customTravelDistance = backDist * 2.2
+      customSpeed = 1050 + Math.random() * 200
+      customLength = 220 + Math.random() * 50
+    }
+  } else {
+    // 常規自然偶發流星
+    const dirMode = store.meteorConfig.direction
+
+    if (dirMode === 'radiant') {
+      startX = w * 0.5 + (Math.random() - 0.5) * (w * 0.2)
+      startY = h * 0.4 + (Math.random() - 0.5) * (h * 0.2)
       angle = Math.random() * Math.PI * 2
+    } else if (dirMode === 'diagonal') {
+      startX = Math.random() * w * 0.75 + w * 0.15
+      startY = -35
+      angle = Math.PI * 0.75 + (Math.random() - 0.5) * 0.35
+    } else {
+      // 全天球仰望隨機軌跡（手機端特別優化起點與角度，確保軌跡穿越主視野中央 65% 區域，避免過度貼邊）
+      if (isMobile) {
+        const side = Math.random()
+        if (side < 0.45) {
+          // 頂部斜穿
+          startX = w * 0.15 + Math.random() * w * 0.70
+          startY = -30
+          angle = Math.PI * 0.25 + (Math.random() - 0.5) * 0.40
+        } else if (side < 0.75) {
+          // 左側進場，指向中央
+          startX = -25
+          startY = h * 0.15 + Math.random() * h * 0.45
+          angle = (Math.random() - 0.25) * (Math.PI * 0.40)
+        } else {
+          // 右側進場，指向中央
+          startX = w + 25
+          startY = h * 0.15 + Math.random() * h * 0.45
+          angle = Math.PI - (Math.random() - 0.25) * (Math.PI * 0.40)
+        }
+      } else {
+        const side = Math.random()
+        if (side < 0.35) {
+          startX = Math.random() * w
+          startY = -30
+          angle = Math.PI * 0.25 + Math.random() * Math.PI * 0.50
+        } else if (side < 0.60) {
+          startX = Math.random() * w
+          startY = h + 30
+          angle = Math.PI * 1.25 + Math.random() * Math.PI * 0.50
+        } else if (side < 0.80) {
+          startX = -30
+          startY = Math.random() * h
+          angle = (Math.random() - 0.5) * (Math.PI * 0.60)
+        } else if (side < 0.95) {
+          startX = w + 30
+          startY = Math.random() * h
+          angle = Math.PI + (Math.random() - 0.5) * (Math.PI * 0.60)
+        } else {
+          startX = w * 0.3 + Math.random() * w * 0.4
+          startY = h * 0.3 + Math.random() * h * 0.4
+          angle = Math.random() * Math.PI * 2
+        }
+      }
     }
   }
 
@@ -276,22 +348,25 @@ function spawnMeteor(forceFireball = false, forceCode = false) {
   if (isFireball) {
     palette = METEOR_PALETTES[2] // bolide_gold
   } else if (isCodeMeteor) {
-    palette = METEOR_PALETTES[4] // cyber_matrix
+    palette = METEOR_PALETTES[4] // cyber_matrix (鑽石青綠高能光譜)
   }
 
-  const speed = isFireball
+  const speed = customSpeed > 0 ? customSpeed : (isFireball
     ? 850 + Math.random() * 450
     : isCodeMeteor
-      ? 1500 + Math.random() * 600
-      : 1400 + Math.random() * 900
+      ? 1250 + Math.random() * 450
+      : 1200 + Math.random() * 600)
 
-  const length = isFireball
+  const length = customLength > 0 ? customLength : (isFireball
     ? 240 + Math.random() * 200
     : isCodeMeteor
-      ? 210 + Math.random() * 160
-      : 140 + Math.random() * 160
+      ? 200 + Math.random() * 120
+      : 140 + Math.random() * 120)
 
-  const travelDistance = Math.sqrt(w * w + h * h) * (0.45 + Math.random() * 0.40)
+  const travelDistance = customTravelDistance > 0
+    ? customTravelDistance
+    : Math.sqrt(w * w + h * h) * (0.42 + Math.random() * 0.35)
+
   const duration = travelDistance / speed
 
   const meteor: CelestialMeteor = {
@@ -308,11 +383,12 @@ function spawnMeteor(forceFireball = false, forceCode = false) {
     colorScheme: palette,
     isFireball,
     isCodeMeteor,
+    isWelcome,
     hasExploded: false,
     flareAlpha: 0,
     flareRadius: 0,
     age: 0,
-    duration: Math.max(0.45, Math.min(1.4, duration)),
+    duration: Math.max(0.55, Math.min(1.4, duration)),
     dead: false
   }
 
@@ -1007,7 +1083,7 @@ function updateAndRenderMeteors(dt: number) {
     if (nextMeteorCountdown <= 0) {
       if (!hasSpawnedWelcomeMeteor) {
         hasSpawnedWelcomeMeteor = true
-        spawnMeteor(false, true) // 🌟 進站 2.2 秒首發 100% 必定為幽靈代碼流星歡迎禮！
+        spawnMeteor(false, true, true) // 🌟 進站 2.2 秒首發 100% 必定為幽靈代碼流星歡迎禮（精準貫穿螢幕中央）！
       } else {
         spawnMeteor()
       }
@@ -1122,8 +1198,13 @@ function updateAndRenderMeteors(dt: number) {
     else if (progress > 0.80) opacity = (1.0 - progress) / 0.20
 
     // 幽靈代碼流星沿途拋灑發光代碼微塵 (職訓四大技能庫：前端、後端、資料庫、AI)
-    if (m.isCodeMeteor && Math.random() < 0.40) {
+    const dustSpawnChance = m.isWelcome ? (progress > 0.18 && progress < 0.75 ? 0.65 : 0.35) : 0.40
+    if (m.isCodeMeteor && Math.random() < dustSpawnChance) {
       const item = CODE_SYMBOLS[Math.floor(Math.random() * CODE_SYMBOLS.length)]
+      const dustSize = m.isWelcome && isMobileDevice
+        ? 13 + Math.random() * 4 // 手機端首發流星字級更醒目清晰（13~17px）
+        : 11 + Math.random() * 4
+
       activeCodeDusts.push({
         x: m.x + (Math.random() - 0.5) * 20,
         y: m.y + (Math.random() - 0.5) * 20,
@@ -1131,9 +1212,9 @@ function updateAndRenderMeteors(dt: number) {
         vy: (Math.random() - 0.5) * 36 - Math.sin(m.angle) * 35,
         text: item.text,
         alpha: 1.0,
-        decay: 0.70 + Math.random() * 0.50,
+        decay: m.isWelcome ? 0.55 + Math.random() * 0.40 : 0.70 + Math.random() * 0.50,
         color: item.color,
-        size: 11 + Math.random() * 4
+        size: dustSize
       })
     }
 
