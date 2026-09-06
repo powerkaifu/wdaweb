@@ -40,7 +40,7 @@
                 {{ brandParts.main }}
               </template>
             </div>
-            <div class="text-xs sm:text-sm text-slate-400 mt-1.5 flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2 leading-relaxed">
+            <div class="text-base text-slate-300 mt-1.5 flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2 leading-relaxed">
               <span>地址：{{ store.settings?.contact_address || '新北市泰山區貴子里致遠新村 55 之 1 號' }}</span>
               <span class="hidden sm:inline text-slate-600" aria-hidden="true">｜</span>
               <span>電話：<a :href="`tel:${(store.settings?.contact_phone || '(02) 2901-8274').replace(/[^0-9]/g, '')}`" class="hover:text-cyan-400 transition-colors underline-offset-2">{{ store.settings?.contact_phone || '(02) 2901-8274' }}</a></span>
