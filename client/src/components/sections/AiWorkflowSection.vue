@@ -66,8 +66,10 @@
 							class="p-6 rounded-2xl bg-slate-950/70 border border-slate-800/80 hover:border-cyan-500/40 transition-colors flex flex-col justify-between w-[80vw] max-w-[320px] shrink-0 snap-start md:w-auto md:max-w-none md:shrink"
 						>
 							<div>
-								<div class="text-3xl mb-3">💡</div>
-								<h3 class="text-xl font-bold text-white mb-2.5 tracking-tight">想法轉化為程式雛型</h3>
+								<div class="flex items-center gap-2.5 mb-2.5">
+									<span class="text-2xl sm:text-3xl shrink-0">💡</span>
+									<h3 class="text-xl font-bold text-white tracking-tight">想法轉化為程式雛型</h3>
+								</div>
 								<!-- 手機短金句 -->
 								<p class="text-base text-slate-300 leading-relaxed text-pretty text-justify sm:hidden">
 									用精確 Prompt 讓 AI 快速生成版面與雛型，大幅縮短從零摸索的時間。
@@ -96,8 +98,10 @@
 							class="p-6 rounded-2xl bg-slate-950/70 border border-slate-800/80 hover:border-blue-500/40 transition-colors flex flex-col justify-between w-[80vw] max-w-[320px] shrink-0 snap-start md:w-auto md:max-w-none md:shrink"
 						>
 							<div>
-								<div class="text-3xl mb-3">🔍</div>
-								<h3 class="text-xl font-bold text-white mb-2.5 tracking-tight">報錯解讀與輔助除錯</h3>
+								<div class="flex items-center gap-2.5 mb-2.5">
+									<span class="text-2xl sm:text-3xl shrink-0">🔍</span>
+									<h3 class="text-xl font-bold text-white tracking-tight">報錯解讀與輔助除錯</h3>
+								</div>
 								<!-- 手機短金句 -->
 								<p class="text-base text-slate-300 leading-relaxed text-pretty text-justify sm:hidden">
 									看不懂報錯時請 AI 翻譯成白話、分析原因，提供多元解題思路。
@@ -126,8 +130,10 @@
 							class="p-6 rounded-2xl bg-slate-950/70 border border-slate-800/80 hover:border-emerald-500/40 transition-colors flex flex-col justify-between w-[80vw] max-w-[320px] shrink-0 snap-start md:w-auto md:max-w-none md:shrink"
 						>
 							<div>
-								<div class="text-3xl mb-3">🛡️</div>
-								<h3 class="text-xl font-bold text-white mb-2.5 tracking-tight">批判審核與把關驗證</h3>
+								<div class="flex items-center gap-2.5 mb-2.5">
+									<span class="text-2xl sm:text-3xl shrink-0">🛡️</span>
+									<h3 class="text-xl font-bold text-white tracking-tight">批判審核與把關驗證</h3>
+								</div>
 								<!-- 手機短金句 -->
 								<p class="text-base text-slate-300 leading-relaxed text-pretty text-justify sm:hidden">
 									AI 也會犯錯。培養逐行審閱與除錯驗證能力，掌握專案最終主導權。
