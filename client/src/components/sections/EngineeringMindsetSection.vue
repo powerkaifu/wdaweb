@@ -65,7 +65,7 @@
 							</div>
 							<div class="text-xs text-cyan-300 font-medium flex items-center space-x-1 pt-0.5">
 								<span class="font-bold">✓</span>
-								<span>看懂代碼 · 自主除錯 · 模組整合交付產品</span>
+								<span>看懂背後邏輯 · 自主除錯驗證 · 整合前後端交付產品</span>
 							</div>
 						</div>
 						<!-- 5 步心智流程清單 (大字清晰呈現) -->
@@ -132,15 +132,15 @@
 									<ul class="space-y-2.5 text-sm sm:text-base text-slate-200">
 										<li class="flex items-start space-x-2">
 											<span class="text-cyan-400 font-bold">✓</span>
-											<span>看懂 AI 產生的程式碼，理解背後邏輯</span>
+											<span>看懂 AI 給的程式，掌握背後邏輯</span>
 										</li>
 										<li class="flex items-start space-x-2">
 											<span class="text-cyan-400 font-bold">✓</span>
-											<span>能自主分析問題、除錯與驗證</span>
+											<span>能自主分析問題，完成除錯與驗證</span>
 										</li>
 										<li class="flex items-start space-x-2">
 											<span class="text-cyan-400 font-bold">✓</span>
-											<span>能整合模組，完成真正可交付的產品</span>
+											<span>能整合前後端，完成可交付的產品</span>
 										</li>
 									</ul>
 								</div>
@@ -302,15 +302,15 @@
 									<ul class="space-y-2.5 text-base text-slate-200">
 										<li class="flex items-start space-x-2">
 											<span class="text-cyan-400 mt-0.5 font-bold">✓</span>
-											<span class="leading-relaxed">看懂 AI 產生的程式碼，理解背後邏輯</span>
+											<span class="leading-relaxed">看懂 AI 給的程式，掌握背後邏輯</span>
 										</li>
 										<li class="flex items-start space-x-2">
 											<span class="text-cyan-400 mt-0.5 font-bold">✓</span>
-											<span class="leading-relaxed">能自主分析問題、除錯與驗證</span>
+											<span class="leading-relaxed">能自主分析問題，完成除錯與驗證</span>
 										</li>
 										<li class="flex items-start space-x-2">
 											<span class="text-cyan-400 mt-0.5 font-bold">✓</span>
-											<span class="leading-relaxed">能整合模組，完成真正可交付的產品</span>
+											<span class="leading-relaxed">能整合前後端，完成可交付的產品</span>
 										</li>
 									</ul>
 								</div>
