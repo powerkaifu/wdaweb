@@ -86,7 +86,7 @@
 
 						<!-- 核心優勢 -->
 						<div class="mb-3 sm:mb-5 space-y-1 sm:space-y-2">
-							<div class="text-xs sm:text-base font-bold text-emerald-400 tracking-wide">核心優勢</div>
+							<div class="text-sm sm:text-base font-bold text-emerald-400 tracking-wide">核心優勢</div>
 							<p class="text-base text-slate-200 leading-relaxed text-pretty text-justify">
 								<span class="sm:hidden block">時間自由且成本極低，依照自己的節奏自由探索。</span>
 								<span class="hidden sm:inline">時間彈性最高、經濟成本極低，可以完全依照自己的節奏前進，自由探索感興趣的技術。</span>
@@ -95,7 +95,7 @@
 
 						<!-- 需要面對 -->
 						<div class="space-y-1 sm:space-y-2">
-							<div class="text-xs sm:text-base font-bold text-amber-400 tracking-wide">面對代價</div>
+							<div class="text-sm sm:text-base font-bold text-amber-400 tracking-wide">面對代價</div>
 							<p class="text-base text-slate-300 leading-relaxed text-pretty text-justify">
 								<span class="sm:hidden block">缺乏架構引導，遇到深層報錯需獨自苦思，易卡關放棄。</span>
 								<span class="hidden sm:inline">沒有專人協助規劃完整學習路徑，遇到深層報錯或觀念盲點時需獨自苦思，容易學了很多破碎的知識點，卻難以產出架構完整且具競爭力的代表專題。</span>
@@ -104,9 +104,9 @@
 					</div>
 
 					<div
-						class="pt-3.5 sm:pt-5 mt-4 sm:mt-6 border-t border-slate-800/80 flex items-center justify-between text-xs sm:text-sm text-slate-300 font-mono"
+						class="pt-3.5 sm:pt-5 mt-4 sm:mt-6 border-t border-slate-800/80 flex items-center justify-between text-base sm:text-lg text-slate-300"
 					>
-						<span>路徑屬性</span>
+						<span class="font-medium">路徑屬性</span>
 						<span class="text-blue-400 font-bold">高自由度 · 需極高自律</span>
 					</div>
 				</div>
@@ -157,7 +157,7 @@
 
 						<!-- 核心優勢 -->
 						<div class="mb-3 sm:mb-5 space-y-1 sm:space-y-2">
-							<div class="text-xs sm:text-base font-bold text-emerald-400 tracking-wide">核心優勢</div>
+							<div class="text-sm sm:text-base font-bold text-emerald-400 tracking-wide">核心優勢</div>
 							<p class="text-base text-slate-100 leading-relaxed text-pretty text-justify">
 								<span class="sm:hidden block">920小時雙螢幕沉浸實作，現場有老師即時討論除錯，專案獨立上線。</span>
 								<span class="hidden sm:inline">勞動部自辦 <span class="inline-block">920 小時</span>系統化培訓，專屬<span class="inline-block">雙螢幕實作教學</span>，每天高強度沉浸式編程，有專任老師與同學現場即時討論，確保每一位學員都能獨立產出完整<span class="inline-block">專案作品集</span>。</span>
@@ -166,7 +166,7 @@
 
 						<!-- 需要面對 -->
 						<div class="space-y-1 sm:space-y-2">
-							<div class="text-xs sm:text-base font-bold text-amber-400 tracking-wide">面對代價</div>
+							<div class="text-sm sm:text-base font-bold text-amber-400 tracking-wide">面對代價</div>
 							<p class="text-base text-slate-300 leading-relaxed text-pretty text-justify">
 								<span class="sm:hidden block">需全職投入整整半年時間，進度密集緊湊，絕非速成捷徑。</span>
 								<span class="hidden sm:inline">需要全職投入整整半年的專注時間，需要跟上密集緊湊的課程進度與實作要求，這絕不是一條輕鬆速成的捷徑。</span>
@@ -175,9 +175,9 @@
 					</div>
 
 					<div
-						class="pt-3.5 sm:pt-5 mt-4 sm:mt-6 border-t border-cyan-500/30 flex items-center justify-between text-xs sm:text-sm text-slate-200 font-mono"
+						class="pt-3.5 sm:pt-5 mt-4 sm:mt-6 border-t border-cyan-500/30 flex items-center justify-between text-base sm:text-lg text-slate-200"
 					>
-						<span>路徑屬性</span>
+						<span class="font-medium">路徑屬性</span>
 						<span class="text-cyan-300 font-bold">系統沉浸 · 紮實累積</span>
 					</div>
 				</div>
@@ -224,7 +224,7 @@
 
 						<!-- 核心優勢 -->
 						<div class="mb-3 sm:mb-5 space-y-1 sm:space-y-2">
-							<div class="text-xs sm:text-base font-bold text-emerald-400 tracking-wide">核心優勢</div>
+							<div class="text-sm sm:text-base font-bold text-emerald-400 tracking-wide">核心優勢</div>
 							<p class="text-base text-slate-200 leading-relaxed text-pretty text-justify">
 								<span class="sm:hidden block">直接身處商業戰場，面對真實需求累積一手實務即戰力。</span>
 								<span class="hidden sm:inline">身處最真實的商業開發情境，直接面對市場需求，累積具備即戰力的一手實務經驗。</span>
@@ -233,7 +233,7 @@
 
 						<!-- 需要面對 -->
 						<div class="space-y-1 sm:space-y-2">
-							<div class="text-xs sm:text-base font-bold text-amber-400 tracking-wide">面對代價</div>
+							<div class="text-sm sm:text-base font-bold text-amber-400 tracking-wide">面對代價</div>
 							<p class="text-base text-slate-300 leading-relaxed text-pretty text-justify">
 								<span class="sm:hidden block">對完全零基礎門檻極高；日常交付壓力容易壓縮基礎扎根時間。</span>
 								<span class="hidden sm:inline">對完全零基礎的轉職者門檻極高；日常工作的交付壓力與時程緊迫，可能大幅壓縮你從容打好底層基礎的學習時間。</span>
@@ -242,9 +242,9 @@
 					</div>
 
 					<div
-						class="pt-3.5 sm:pt-5 mt-4 sm:mt-6 border-t border-slate-800/80 flex items-center justify-between text-xs sm:text-sm text-slate-300 font-mono"
+						class="pt-3.5 sm:pt-5 mt-4 sm:mt-6 border-t border-slate-800/80 flex items-center justify-between text-base sm:text-lg text-slate-300"
 					>
-						<span>路徑屬性</span>
+						<span class="font-medium">路徑屬性</span>
 						<span class="text-purple-400 font-bold">實務連結 · 需既有門檻</span>
 					</div>
 				</div>
