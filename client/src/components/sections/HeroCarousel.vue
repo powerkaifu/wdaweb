@@ -1,6 +1,6 @@
 <template>
-  <!-- 全裝置 100dvh 首屏極致滿版架構 (Navbar + 最新快訊 + Hero Banner 剛好滿版一整屏) -->
-  <section id="hero" class="relative min-h-[100dvh] lg:h-[100dvh] lg:max-h-[100dvh] flex flex-col justify-between pt-20 sm:pt-28 lg:pt-32 pb-2 sm:pb-4 overflow-hidden bg-transparent">
+  <!-- 全裝置首屏極致自適應架構 (手機與桌機滿版定錨，筆電矮螢幕高度自然呼吸防截斷) -->
+  <section id="hero" class="relative min-h-[100dvh] lg:min-h-[100dvh] lg:h-auto xl:h-[100dvh] xl:max-h-[100dvh] flex flex-col justify-between pt-20 sm:pt-24 lg:pt-24 xl:pt-28 2xl:pt-32 pb-3 sm:pb-4 overflow-hidden bg-transparent">
     <!-- Background Decorative Glow -->
     <div class="absolute -top-40 -left-40 w-96 h-96 bg-cyan-500/15 rounded-full blur-3xl pointer-events-none"></div>
     <div class="absolute top-1/2 -right-40 w-96 h-96 bg-blue-600/15 rounded-full blur-3xl pointer-events-none"></div>
@@ -9,10 +9,10 @@
     <AnnouncementBar />
 
     <!-- 2. Middle Section: Hero Content Carousel (內容向上微調上提，視覺重心更佳) -->
-    <div class="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 w-full relative z-10 flex-1 flex items-center my-auto -translate-y-1 sm:-translate-y-4 lg:-translate-y-6">
+    <div class="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 w-full relative z-10 flex-1 flex items-center my-auto -translate-y-1 sm:-translate-y-2 lg:-translate-y-2 xl:-translate-y-4">
       <div v-if="currentSlide" class="w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center py-2 sm:py-4">
-        <!-- Left Text Content (8pt 垂直律動與格式塔群組精準重構) -->
-        <div id="hero-left-content" class="w-full max-w-3xl lg:max-w-none lg:col-span-6 flex flex-col items-center lg:items-start text-center lg:text-left self-center transform-gpu will-change-transform">
+        <!-- Left Text Content (8pt 垂直律動與格式塔群組精準重構，平板端居中穩健) -->
+        <div id="hero-left-content" class="w-full max-w-3xl mx-auto lg:mx-0 lg:max-w-none lg:col-span-6 flex flex-col items-center lg:items-start text-center lg:text-left self-center transform-gpu will-change-transform">
           <!-- 1. 頂部認證標籤 Badge (權威背書) -->
           <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-slate-900/90 border border-cyan-500/30 text-sm font-bold text-cyan-400 shadow-sm shadow-cyan-950/40 mb-2.5 sm:mb-3.5 lg:mb-4">
             <span>✨ 勞動部自辦職前訓練 ｜ <span class="inline-block">920 小時實體培訓</span></span>

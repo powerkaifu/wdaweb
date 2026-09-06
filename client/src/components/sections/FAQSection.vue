@@ -16,8 +16,8 @@
         </p>
       </div>
 
-      <!-- FAQ 手風琴清單 (直接呈現完整常見問答列表，無多餘篩選) -->
-      <div class="space-y-4">
+      <!-- FAQ 手風琴清單 (大螢幕置中限寬，最佳閱讀行長，避免文字橫向過寬) -->
+      <div class="space-y-4 max-w-4xl mx-auto">
         <div
           v-for="faq in store.faqs"
           :key="faq.id"
@@ -66,8 +66,8 @@
         </div>
       </div>
 
-            <!-- 官方規範指引與免責聲明卡片 (加大字級更清晰易讀) -->
-      <div class="mt-10 p-6 sm:p-8 rounded-3xl bg-slate-900/80 border border-cyan-500/30 shadow-xl shadow-slate-950/50 text-left flex items-start space-x-4">
+            <!-- 官方規範指引與免責聲明卡片 (加大字級更清晰易讀，寬度與手風琴一致置中) -->
+      <div class="mt-10 max-w-4xl mx-auto p-6 sm:p-8 rounded-3xl bg-slate-900/80 border border-cyan-500/30 shadow-xl shadow-slate-950/50 text-left flex items-start space-x-4">
         <span class="text-cyan-400 text-2xl sm:text-3xl flex-shrink-0 mt-0.5">ℹ️</span>
         <div class="space-y-2.5 flex-1">
           <div class="flex items-center space-x-3 flex-wrap gap-y-1">

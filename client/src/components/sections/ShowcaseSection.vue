@@ -85,8 +85,8 @@
                 </div>
               </div>
 
-              <!-- 2. 卡片背面 (對齊全站深色科技主題與極光流光線) -->
-              <div class="absolute inset-0 w-full h-full backface-hidden rotate-y-180 rounded-3xl p-6 bg-slate-900/95 backdrop-blur-2xl border border-cyan-500/50 flex flex-col justify-between shadow-2xl shadow-cyan-950/60 overflow-hidden">
+              <!-- 2. 卡片背面 (展示詳細資訊與 Demo 連結，加入滾動防呆保護) -->
+              <div class="card-subsurface-glow absolute inset-0 w-full h-full backface-hidden rotate-y-180 rounded-3xl p-5 sm:p-6 bg-slate-900/95 backdrop-blur-xl border border-cyan-500/40 flex flex-col justify-between shadow-2xl shadow-cyan-950/60 overflow-y-auto no-scrollbar">
                 <!-- 頂部流光光暈線 -->
                 <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-cyan-400 to-transparent"></div>
 

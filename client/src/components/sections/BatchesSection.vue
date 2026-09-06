@@ -74,8 +74,8 @@
         </div>
       </div>
 
-      <!-- 期別卡片網格清單 (大器寬闊排版，空間充裕舒展，杜絕緊湊壓迫) -->
-      <div id="batches-cards-grid" class="grid grid-cols-1 lg:grid-cols-2 gap-8 xl:gap-10 max-w-[1360px] mx-auto w-full">
+      <!-- 期別卡片網格清單 (平板單欄居中限寬，桌機雙欄大器舒展) -->
+      <div id="batches-cards-grid" class="grid grid-cols-1 lg:grid-cols-2 gap-8 xl:gap-10 max-w-2xl lg:max-w-[1360px] mx-auto w-full">
         <div
           v-for="(batch, index) in (sortedBatches.length > 0 ? sortedBatches : store.batches)"
           :key="batch.id"
@@ -146,7 +146,7 @@
             <!-- 課程生命週期 5 階段流程步進軸 (Course Lifecycle Stepper) -->
             <div class="mb-7 p-3.5 sm:p-6 rounded-2xl bg-slate-950/80 border border-slate-800/90 shadow-inner overflow-hidden">
               <!-- 5 階段節點步進軸 (直線與圓心 100% 絕對幾何居中) -->
-              <div class="relative px-1 sm:px-4">
+              <div class="relative px-0.5 min-[400px]:px-2 sm:px-4">
                 <!-- 圓圈與導軌線專用排 (高度固定 h-7，導軌線嚴格穿過圓心) -->
                 <div class="relative h-7 flex items-center justify-between">
                   <!-- 導軌專屬通道 (left-3.5 至 right-3.5：嚴格鎖定在第 1 個與第 5 個圓心之間，永不右溢) -->

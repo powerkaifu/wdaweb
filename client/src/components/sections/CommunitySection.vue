@@ -17,7 +17,7 @@
         </p>
       </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center w-full mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center max-w-5xl mx-auto w-full">
         <!-- 左側：即時問答卡片與一鍵加入按鈕 -->
         <div class="lg:col-span-6 space-y-6">
           <div class="p-6 sm:p-7 rounded-3xl bg-indigo-950/40 backdrop-blur-md border border-indigo-500/30 shadow-xl shadow-indigo-950/30">

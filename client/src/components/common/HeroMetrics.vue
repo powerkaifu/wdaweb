@@ -1,7 +1,7 @@
 <template>
-  <!-- 信任底座：水平分割線與 4 大核心指標 (大器呼吸空間與無障礙對比) -->
+  <!-- 信任底座：水平分割線與 4 大核心指標 (大器呼吸空間與無障礙對比，iPad 768px 以上優雅切 4 欄) -->
   <div class="w-full border-t border-slate-800/80 pt-4 sm:pt-6 mt-5 sm:mt-8 lg:mt-8 xl:mt-9 max-w-3xl">
-    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 xl:gap-6">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3.5 sm:gap-4 xl:gap-6">
       <div class="text-center lg:text-left">
         <div class="text-2xl sm:text-3xl font-black text-cyan-400 font-mono tracking-tight">{{ display100 }}%</div>
         <div class="text-sm font-semibold text-slate-200 mt-1">待業者全額免費補助</div>

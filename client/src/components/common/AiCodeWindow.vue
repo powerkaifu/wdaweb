@@ -1,7 +1,7 @@
 <template>
-  <!-- 外層容器：手機最小尺寸自適應高度 h-[395px] sm:h-[430px] lg:h-[475px] xl:h-[500px]，圓角 rounded-2xl sm:rounded-3xl -->
+  <!-- 外層容器：手機最小尺寸自適應高度 h-[395px] sm:h-[430px] lg:h-[440px] xl:h-[485px] 2xl:h-[500px]，圓角 rounded-2xl sm:rounded-3xl -->
   <div
-    class="relative w-full h-[395px] sm:h-[430px] lg:h-[475px] xl:h-[500px] rounded-2xl sm:rounded-3xl overflow-hidden border border-cyan-500/30 bg-slate-900/90 shadow-2xl shadow-cyan-950/50 backdrop-blur-xl flex flex-col justify-between"
+    class="relative w-full h-[395px] sm:h-[430px] lg:h-[440px] xl:h-[485px] 2xl:h-[500px] rounded-2xl sm:rounded-3xl overflow-hidden border border-cyan-500/30 bg-slate-900/90 shadow-2xl shadow-cyan-950/50 backdrop-blur-xl flex flex-col justify-between"
   >
     <!-- 背景流光發光層 -->
     <div class="absolute -top-24 -right-24 w-64 h-64 bg-cyan-500/15 rounded-full blur-3xl pointer-events-none"></div>
@@ -39,8 +39,8 @@
       <span class="inline-block w-1.5 sm:w-2 h-3.5 sm:h-4 bg-cyan-400 animate-pulse flex-shrink-0"></span>
     </div>
 
-    <!-- 3. VS Code 語法高亮即時代碼區域 (手機版 h-[235px] 內距 p-3.5，桌機 h-[300px]~[320px] 內距 p-6) -->
-    <div class="h-[235px] sm:h-[268px] lg:h-[300px] xl:h-[320px] p-3.5 sm:p-5 lg:p-6 font-mono text-xs lg:text-sm leading-relaxed text-slate-300 bg-slate-900/60 overflow-hidden flex flex-col justify-between flex-shrink-0">
+    <!-- 3. VS Code 語法高亮即時代碼區域 (手機版 h-[235px]，筆電 h-[265px]，桌機 h-[305px]~[320px]) -->
+    <div class="h-[235px] sm:h-[268px] lg:h-[265px] xl:h-[305px] 2xl:h-[320px] p-3.5 sm:p-5 lg:p-5 xl:p-6 font-mono text-xs lg:text-sm leading-relaxed text-slate-300 bg-slate-900/60 overflow-hidden flex flex-col justify-between flex-shrink-0">
       <div class="space-y-0.5 sm:space-y-1 lg:space-y-1.5 overflow-hidden">
         <div class="text-slate-500 truncate">// 前端網頁技術 × AI 智能串聯實戰架構</div>
         <div class="truncate">

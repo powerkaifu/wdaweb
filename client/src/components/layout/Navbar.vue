@@ -82,7 +82,7 @@
 							v-for="item in navItems"
 							:key="item.path"
 							:to="item.path"
-							class="relative px-3 xl:px-3.5 py-1.5 xl:py-2 rounded-xl text-sm xl:text-base font-bold transition-all duration-200 flex items-center space-x-1.5"
+							class="relative px-2.5 xl:px-3.5 py-1.5 xl:py-2 rounded-xl text-xs lg:text-sm xl:text-base font-bold transition-all duration-200 flex items-center space-x-1.5"
 							:class="[
 								$route.path === item.path
 									? 'text-cyan-300 font-extrabold'
@@ -112,13 +112,14 @@
 					</div>
 				</div>
 
-				<!-- Right: Action Button (維持大字 text-sm xl:text-base font-extrabold，滾動時不降字級) -->
+				<!-- Right: Action Button (窄平板顯示簡短文案，平板以上展開大字，筆電端空間自適應) -->
 				<div class="flex items-center justify-end flex-1 min-w-0 space-x-2 relative z-10">
 					<router-link
 						to="/admission"
-						class="hidden sm:inline-flex items-center font-extrabold text-sm xl:text-base text-white bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 shadow-md shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:scale-105 active:scale-95 transition-all flex-shrink-0 px-4 xl:px-5 py-2 xl:py-2.5 rounded-xl"
+						class="hidden sm:inline-flex items-center font-extrabold text-xs md:text-sm xl:text-base text-white bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 shadow-md shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:scale-105 active:scale-95 transition-all flex-shrink-0 px-3 md:px-4 xl:px-5 py-2 xl:py-2.5 rounded-xl"
 					>
-						<span>{{ admissionBadge ? admissionBadge.ctaText : '立即查看招生資訊' }}</span>
+						<span class="md:hidden">招生報名</span>
+						<span class="hidden md:inline">立即查看招生期別</span>
 						<span class="ml-1">→</span>
 					</router-link>
 
@@ -274,12 +275,12 @@
 		</Transition>
 
 		<!-- ========================================================================= -->
-		<!-- Mobile Drawer (全模式共用優質手機版選單) -->
+		<!-- Mobile Drawer (全模式共用優質手機/平板版選單，平板端居中限寬更精緻) -->
 		<!-- ========================================================================= -->
 		<Transition name="fade-slide">
 			<div
 				v-if="isOpen"
-				class="lg:hidden fixed inset-x-4 top-24 p-5 rounded-3xl bg-slate-900/95 backdrop-blur-2xl border border-slate-800 shadow-2xl shadow-black/80 space-y-2 z-50 max-h-[80vh] overflow-y-auto"
+				class="lg:hidden fixed inset-x-4 sm:inset-x-auto sm:left-1/2 sm:-translate-x-1/2 sm:w-full sm:max-w-lg top-[76px] sm:top-[88px] p-5 sm:p-6 rounded-3xl bg-slate-900/95 backdrop-blur-2xl border border-slate-800 shadow-2xl shadow-black/80 space-y-2 z-50 max-h-[calc(100dvh-100px)] overflow-y-auto"
 			>
 				<router-link
 					v-for="item in navItems"

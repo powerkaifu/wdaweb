@@ -31,8 +31,8 @@
 				</p>
 			</div>
 
-			<!-- 手機端橫向滑動提示 (桌機隱藏) -->
-			<div class="flex md:hidden items-center justify-center gap-2 text-base font-bold text-emerald-400 -mt-2 mb-4">
+			<!-- 手機端橫向滑動提示 (平板與桌機隱藏) -->
+			<div class="flex sm:hidden items-center justify-center gap-2 text-base font-bold text-emerald-400 -mt-2 mb-4">
 				<span>👈 左右滑動瀏覽 4 大起點軌道 👉</span>
 			</div>
 
@@ -61,7 +61,7 @@
 						</p>
 					</div>
 					<div
-						class="hidden sm:block p-3 rounded-2xl bg-slate-950/70 border border-slate-800/90 text-base font-bold text-cyan-300 xl:whitespace-nowrap overflow-hidden text-ellipsis"
+						class="hidden sm:block p-3 rounded-2xl bg-slate-950/70 border border-slate-800/90 text-sm 2xl:text-base font-bold text-cyan-300 xl:whitespace-nowrap overflow-hidden text-ellipsis"
 					>
 						💡 從第一行開始，也是一種開始
 					</div>
@@ -87,7 +87,7 @@
 						</p>
 					</div>
 					<div
-						class="hidden sm:block p-3 rounded-2xl bg-slate-950/70 border border-slate-800/90 text-base font-bold text-blue-300 xl:whitespace-nowrap overflow-hidden text-ellipsis"
+						class="hidden sm:block p-3 rounded-2xl bg-slate-950/70 border border-slate-800/90 text-sm 2xl:text-base font-bold text-blue-300 xl:whitespace-nowrap overflow-hidden text-ellipsis"
 					>
 						💡 把改變的念頭，化為每日累積
 					</div>
@@ -113,7 +113,7 @@
 						</p>
 					</div>
 					<div
-						class="hidden sm:block p-3 rounded-2xl bg-slate-950/70 border border-slate-800/90 text-base font-bold text-purple-300 xl:whitespace-nowrap overflow-hidden text-ellipsis"
+						class="hidden sm:block p-3 rounded-2xl bg-slate-950/70 border border-slate-800/90 text-sm 2xl:text-base font-bold text-purple-300 xl:whitespace-nowrap overflow-hidden text-ellipsis"
 					>
 						💡 讓設計不只畫面，而是被實現
 					</div>
@@ -139,7 +139,7 @@
 						</p>
 					</div>
 					<div
-						class="hidden sm:block p-3 rounded-2xl bg-slate-950/70 border border-slate-800/90 text-base font-bold text-emerald-300 xl:whitespace-nowrap overflow-hidden text-ellipsis"
+						class="hidden sm:block p-3 rounded-2xl bg-slate-950/70 border border-slate-800/90 text-sm 2xl:text-base font-bold text-emerald-300 xl:whitespace-nowrap overflow-hidden text-ellipsis"
 					>
 						💡 把零散的知識，整理成完整架構
 					</div>
