@@ -397,10 +397,10 @@
 
 					<!-- 底部心智理念收束引言 -->
 					<div
-						class="pt-3 sm:pt-4 border-t border-slate-800/80 flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-3 text-xs sm:text-base font-mono"
+						class="pt-3.5 sm:pt-5 border-t border-slate-800/80 flex flex-col lg:flex-row lg:items-center justify-between gap-2.5 sm:gap-4 text-base sm:text-lg leading-relaxed"
 					>
-						<span class="text-slate-400">💡 核心理念：AI 決定開發速度，而你的工程思維決定產品上限</span>
-						<span class="text-cyan-400 font-bold">🎯 培養獨立解決問題與系統交付的能力</span>
+						<span class="text-slate-300 font-medium">💡 核心理念：AI 決定開發速度，而你的工程思維決定產品上限</span>
+						<span class="text-cyan-400 font-bold tracking-wide">🎯 培養獨立解決問題與系統交付的能力</span>
 					</div>
 				</div>
 			</div>
