@@ -1,7 +1,7 @@
 <template>
 	<section
 		id="outcomes"
-		class="py-16 sm:py-24 lg:py-32 bg-transparent relative overflow-hidden"
+		class="py-10 sm:py-16 lg:py-24 xl:py-28 bg-transparent relative overflow-hidden"
 	>
 		<!-- 背景環境光暈 -->
 		<div
@@ -13,7 +13,7 @@
 
 		<div class="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 relative z-10 w-full">
 			<!-- 區塊前導標題 -->
-			<div class="text-center max-w-4xl mx-auto mb-10 sm:mb-14">
+			<div class="text-center max-w-4xl mx-auto mb-6 sm:mb-12 lg:mb-14">
 				<div
 					class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 text-sm font-bold uppercase tracking-wider shadow-sm mb-3"
 				>
@@ -33,7 +33,7 @@
 			</div>
 
 			<!-- 手機端橫向滑動提示 (桌機隱藏) -->
-			<div class="flex md:hidden items-center justify-center gap-2 text-base font-bold text-cyan-400 -mt-4 mb-4">
+			<div class="flex md:hidden items-center justify-center gap-2 text-base font-bold text-cyan-400 -mt-2 mb-4">
 				<span>👈 左右滑動瀏覽 6 大真實收穫 👉</span>
 			</div>
 

@@ -1,6 +1,6 @@
 <template>
   <!-- 全裝置 100dvh 首屏極致滿版架構 (Navbar + 最新快訊 + Hero Banner 剛好滿版一整屏) -->
-  <section id="hero" class="relative min-h-[100dvh] lg:h-[100dvh] lg:max-h-[100dvh] flex flex-col justify-between pt-24 sm:pt-28 lg:pt-32 pb-4 overflow-hidden bg-transparent">
+  <section id="hero" class="relative min-h-[100dvh] lg:h-[100dvh] lg:max-h-[100dvh] flex flex-col justify-between pt-20 sm:pt-28 lg:pt-32 pb-2 sm:pb-4 overflow-hidden bg-transparent">
     <!-- Background Decorative Glow -->
     <div class="absolute -top-40 -left-40 w-96 h-96 bg-cyan-500/15 rounded-full blur-3xl pointer-events-none"></div>
     <div class="absolute top-1/2 -right-40 w-96 h-96 bg-blue-600/15 rounded-full blur-3xl pointer-events-none"></div>
@@ -9,17 +9,17 @@
     <AnnouncementBar />
 
     <!-- 2. Middle Section: Hero Content Carousel (內容向上微調上提，視覺重心更佳) -->
-    <div class="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 w-full relative z-10 flex-1 flex items-center my-auto -translate-y-2 sm:-translate-y-4 lg:-translate-y-6">
-      <div v-if="currentSlide" class="w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center py-4">
+    <div class="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 w-full relative z-10 flex-1 flex items-center my-auto -translate-y-1 sm:-translate-y-4 lg:-translate-y-6">
+      <div v-if="currentSlide" class="w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center py-2 sm:py-4">
         <!-- Left Text Content (8pt 垂直律動與格式塔群組精準重構) -->
         <div id="hero-left-content" class="w-full max-w-3xl lg:max-w-none lg:col-span-6 flex flex-col items-center lg:items-start text-center lg:text-left self-center transform-gpu will-change-transform">
           <!-- 1. 頂部認證標籤 Badge (權威背書) -->
-          <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-slate-900/90 border border-cyan-500/30 text-sm font-bold text-cyan-400 shadow-sm shadow-cyan-950/40 mb-3 sm:mb-3.5 lg:mb-4">
+          <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-slate-900/90 border border-cyan-500/30 text-sm font-bold text-cyan-400 shadow-sm shadow-cyan-950/40 mb-2.5 sm:mb-3.5 lg:mb-4">
             <span>✨ 勞動部自辦職前訓練 ｜ <span class="inline-block">920 小時實體培訓</span></span>
           </div>
 
           <!-- 2. 主標題與副標題固定安全高度容器 (頂部定錨 0 抖動，精密貼合文案階梯高度) -->
-          <div class="relative h-[185px] sm:h-[155px] lg:h-[158px] xl:h-[178px] w-full [perspective:1000px]">
+          <div class="relative h-[148px] sm:h-[150px] lg:h-[158px] xl:h-[178px] w-full [perspective:1000px]">
             <div class="absolute inset-x-0 top-0 text-center lg:text-left [perspective:800px]">
               <h1 id="hero-main-title" class="text-3xl sm:text-4xl lg:text-4xl xl:text-5xl font-extrabold text-white tracking-tight leading-[1.2] sm:leading-[1.18] xl:leading-[1.15] [transform-style:preserve-3d] text-balance">
                 <template v-for="(token, tIdx) in splitTitleTokens" :key="`token-${currentIndex}-${tIdx}`">
@@ -70,7 +70,7 @@
           </div>
 
           <!-- 3. 行動按鈕列 (黃金間距滑落，大器飽滿) -->
-          <div class="w-full sm:w-auto flex items-center justify-center lg:justify-start mt-5 sm:mt-6 lg:mt-6 xl:mt-7">
+          <div class="w-full sm:w-auto flex items-center justify-center lg:justify-start mt-4 sm:mt-6 lg:mt-6 xl:mt-7">
             <a
               v-if="isExternalUrl(currentSlide.cta_link)"
               :href="currentSlide.cta_link"

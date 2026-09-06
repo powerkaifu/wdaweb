@@ -1,5 +1,5 @@
 <template>
-	<section id="tracks-starting-points" class="py-24 sm:py-28 lg:py-32 bg-transparent relative overflow-hidden">
+	<section id="tracks-starting-points" class="py-10 sm:py-16 lg:py-24 xl:py-28 bg-transparent relative overflow-hidden">
 		<!-- 背景流光點綴 -->
 		<div
 			class="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none"
@@ -10,7 +10,7 @@
 
 		<div class="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 relative z-10 w-full">
 			<!-- 區塊標題 (大器單行標題，中高齡友善閱讀) -->
-			<div class="text-center max-w-5xl mx-auto mb-16">
+			<div class="text-center max-w-5xl mx-auto mb-6 sm:mb-12 lg:mb-14">
 				<div
 					class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 text-sm font-bold uppercase tracking-wider shadow-sm mb-3"
 				>
@@ -18,23 +18,22 @@
 					<span>Personalized Starting Points ｜ 找到專屬起點</span>
 				</div>
 				<h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight text-balance">
-					<span class="block sm:inline">你的起點不同，</span>
+					<span class="block">你的起點不同，</span>
 					<span
-						class="block sm:inline mt-1 sm:mt-0 text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400"
+						class="block mt-1 sm:mt-1.5 text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400"
 						>但不代表從零開始</span
 					>
 				</h2>
-				<p class="text-slate-400 mt-4 text-base sm:text-lg max-w-4xl xl:max-w-5xl mx-auto leading-relaxed text-pretty">
-					<span class="block"
-						>每個人的背景不同。有人從未接觸過程式，有人正在思考轉職，也有人來自設計或資訊相關領域。</span
-					>
-					<span class="block mt-1 sm:mt-1.5">過去的經驗不會因為轉換跑道而歸零，它們也可能成為你下一段學習的起點。</span>
+				<p
+					class="text-slate-400 mt-4 text-base sm:text-lg max-w-none mx-auto leading-relaxed text-pretty text-justify sm:text-center"
+				>
+					每個人走進教室時的背景都不一樣。過去的經驗不是空白，而是你在理解問題與完成作品時，最獨特的切入點。
 				</p>
 			</div>
 
 			<!-- 手機端橫向滑動提示 (桌機隱藏) -->
-			<div class="flex sm:hidden items-center justify-center gap-2 text-base font-bold text-cyan-400 -mt-4 mb-4">
-				<span>👈 左右滑動瀏覽 4 種起點 👉</span>
+			<div class="flex md:hidden items-center justify-center gap-2 text-base font-bold text-emerald-400 -mt-2 mb-4">
+				<span>👈 左右滑動瀏覽 4 大起點軌道 👉</span>
 			</div>
 
 			<!-- 四大起點軌道 (手機版支援露邊橫向滑軌，桌機維持大器網格) -->

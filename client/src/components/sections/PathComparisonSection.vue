@@ -1,5 +1,5 @@
 <template>
-	<section id="path-comparison" class="py-24 sm:py-28 lg:py-32 bg-transparent relative overflow-hidden">
+	<section id="path-comparison" class="py-10 sm:py-16 lg:py-24 xl:py-28 bg-transparent relative overflow-hidden">
 		<!-- 背景環境微光 -->
 		<div
 			class="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl pointer-events-none"
@@ -10,7 +10,7 @@
 
 		<div class="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 relative z-10 w-full">
 			<!-- 區塊前導標頭 (大器單行標題，中高齡友善大字) -->
-			<div class="text-center max-w-4xl mx-auto mb-16">
+			<div class="text-center max-w-4xl mx-auto mb-6 sm:mb-12 lg:mb-14">
 				<div
 					class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 text-xs font-mono font-bold uppercase tracking-wider shadow-sm mb-3"
 				>
@@ -251,7 +251,7 @@
 			</div>
 
 			<!-- 誠懇決策收束橫幅 (手機端精簡為純粹金句，桌機保留三行完整結構) -->
-			<div class="mt-8 sm:mt-14 max-w-5xl xl:max-w-6xl mx-auto text-center">
+			<div class="mt-6 sm:mt-14 max-w-5xl xl:max-w-6xl mx-auto text-center">
 				<div class="p-4 sm:p-8 rounded-2xl sm:rounded-3xl bg-slate-900/60 border border-slate-800/80 backdrop-blur-md shadow-xl">
 					<h4 class="hidden sm:block text-xl sm:text-2xl font-extrabold text-white mb-3 tracking-tight text-balance">
 						沒有哪一種方式一定最好

@@ -3,8 +3,8 @@
 		id="tech-stack"
 		:class="[
 			hideHeader
-				? 'py-8 sm:py-12 bg-transparent relative'
-				: 'py-16 sm:py-24 lg:py-32 bg-transparent relative overflow-hidden',
+				? 'py-6 sm:py-10 bg-transparent relative'
+				: 'py-10 sm:py-16 lg:py-24 xl:py-28 bg-transparent relative overflow-hidden',
 		]"
 	>
 		<!-- 背景光暈 -->
@@ -17,7 +17,7 @@
 
 		<div class="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 relative z-10 w-full">
 			<!-- 區塊標題 (僅在未隱藏標頭時渲染) -->
-			<div v-if="!hideHeader" class="text-center max-w-4xl mx-auto mb-10 sm:mb-14">
+			<div v-if="!hideHeader" class="text-center max-w-4xl mx-auto mb-6 sm:mb-12 lg:mb-14">
 				<div
 					class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 text-sm font-bold uppercase tracking-wider shadow-sm mb-3"
 				>
@@ -37,7 +37,7 @@
 			<!-- 手機端橫向滑動提示 (桌機隱藏) -->
 			<div
 				v-if="!hideHeader"
-				class="flex sm:hidden items-center justify-center gap-2 text-base font-bold text-cyan-400 -mt-4 mb-4"
+				class="flex sm:hidden items-center justify-center gap-2 text-base font-bold text-cyan-400 -mt-2 mb-4"
 			>
 				<span>👈 左右滑動瀏覽 8 大核心技術 👉</span>
 			</div>
@@ -92,7 +92,7 @@
 			</div>
 
 			<!-- 2. AI 輔助應用旗艦橫幅 (橫跨四欄寬度，滿幅對齊上方 8 大技術卡片網格，內含 3 大精緻場景卡片) -->
-			<div class="mt-12 sm:mt-16 w-full">
+			<div class="mt-8 sm:mt-14 lg:mt-16 w-full">
 				<div
 					class="relative rounded-3xl p-6 sm:p-8 lg:p-10 bg-gradient-to-br from-slate-900/95 via-slate-900/85 to-slate-950/95 border border-cyan-500/30 hover:border-cyan-500/50 transition-all duration-300 backdrop-blur-xl shadow-2xl shadow-slate-950/70 overflow-hidden group"
 				>

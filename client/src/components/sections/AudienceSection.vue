@@ -1,7 +1,7 @@
 <template>
 	<section
 		id="audience-resonance"
-		class="py-16 sm:py-24 lg:py-32 bg-transparent relative overflow-hidden"
+		class="py-10 sm:py-16 lg:py-24 xl:py-28 bg-transparent relative overflow-hidden"
 	>
 		<!-- 背景流光點綴 -->
 		<div
@@ -13,7 +13,7 @@
 
 		<div class="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 relative z-10 w-full">
 			<!-- 受眾心聲共鳴標頭 -->
-			<div class="text-center max-w-5xl xl:max-w-6xl mx-auto mb-10 sm:mb-16">
+			<div class="text-center max-w-5xl xl:max-w-6xl mx-auto mb-6 sm:mb-12 lg:mb-14">
 				<div
 					class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 text-sm font-bold uppercase tracking-wider shadow-sm mb-3"
 				>

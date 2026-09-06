@@ -3,8 +3,8 @@
     id="facilities"
     :class="[
       hideHeader
-        ? 'py-8 sm:py-12 bg-transparent relative'
-        : 'py-16 sm:py-24 lg:py-32 bg-transparent relative overflow-hidden'
+        ? 'py-6 sm:py-10 bg-transparent relative'
+        : 'py-10 sm:py-16 lg:py-24 xl:py-28 bg-transparent relative overflow-hidden'
     ]"
   >
     <!-- 頂部與底部環境發光微暈 -->
@@ -13,7 +13,7 @@
 
     <div class="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 relative z-10 w-full">
       <!-- 區塊標題 -->
-      <div v-if="!hideHeader" class="text-center max-w-5xl mx-auto mb-10 sm:mb-14">
+      <div v-if="!hideHeader" class="text-center max-w-5xl mx-auto mb-6 sm:mb-12 lg:mb-14">
         <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 text-sm font-bold uppercase tracking-wider shadow-sm mb-3">
           <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping"></span>
           <span>Learning Environment ｜ 實體環境</span>
@@ -28,7 +28,7 @@
       </div>
 
       <!-- 手機端橫向滑動提示 (平板與桌機隱藏) -->
-      <div v-if="!hideHeader" class="flex md:hidden items-center justify-center gap-2 text-base font-bold text-cyan-400 -mt-4 mb-4">
+      <div v-if="!hideHeader" class="flex md:hidden items-center justify-center gap-2 text-base font-bold text-cyan-400 -mt-2 mb-4">
         <span>👈 左右滑動瀏覽教學環境實景 👉</span>
       </div>
 

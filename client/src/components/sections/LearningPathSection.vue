@@ -1,5 +1,5 @@
 <template>
-	<section id="learning-path" class="py-16 sm:py-24 lg:py-32 bg-transparent relative overflow-hidden">
+	<section id="learning-path" class="py-10 sm:py-16 lg:py-24 xl:py-28 bg-transparent relative overflow-hidden">
 		<!-- 背景環境柔和光暈 -->
 		<div
 			class="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl pointer-events-none"
@@ -10,7 +10,7 @@
 
 		<div class="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 relative z-10 w-full">
 			<!-- 區塊標題 (大器單行標題，中高齡友善閱讀) -->
-			<div class="text-center max-w-4xl mx-auto mb-10 sm:mb-16">
+			<div class="text-center max-w-4xl mx-auto mb-6 sm:mb-12 lg:mb-16">
 				<div
 					class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 text-sm font-bold uppercase tracking-wider shadow-sm mb-3"
 				>
@@ -32,7 +32,7 @@
 			</div>
 
 			<!-- 手機端橫向滑動提示 (桌機隱藏) -->
-			<div class="flex sm:hidden items-center justify-center gap-2 text-base font-bold text-cyan-400 -mt-4 mb-4">
+			<div class="flex sm:hidden items-center justify-center gap-2 text-base font-bold text-cyan-400 -mt-2 mb-4">
 				<span>👈 左右滑動瀏覽 4 階段實踐路徑 👉</span>
 			</div>
 
@@ -231,7 +231,7 @@
 			</div>
 
 			<!-- 核心理念總結金句 -->
-			<div class="mt-12 max-w-3xl mx-auto text-center">
+			<div class="mt-6 sm:mt-12 max-w-3xl mx-auto text-center">
 				<div class="p-5 sm:p-6 rounded-2xl bg-slate-900/50 border border-slate-800/80 text-pretty">
 					<p class="text-base sm:text-lg text-slate-200 font-medium leading-relaxed">
 						💡 <span class="text-cyan-300 font-bold">目標不是讓你記住更多語法，而是讓你逐漸知道自己正在做什麼。</span>
