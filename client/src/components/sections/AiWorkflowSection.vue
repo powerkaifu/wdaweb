@@ -28,7 +28,7 @@
 					>
 				</h2>
 				<p
-					class="text-slate-400 mt-4 text-base sm:text-lg max-w-4xl xl:max-w-5xl mx-auto leading-relaxed text-pretty text-justify sm:text-center"
+					class="text-slate-400 mt-4 text-base sm:text-lg max-w-4xl xl:max-w-5xl mx-auto leading-relaxed text-pretty text-left sm:text-center"
 				>
 					寫程式不再是枯燥死記每一行語法。在課程中，你將學會如何將現代生成式 AI 工具融入日常開發流程。AI 不是取代思考的捷徑，而是讓你能把寶貴注意力集中在「邏輯設計、架構規劃與使用者體驗」的強大助手。
 				</p>

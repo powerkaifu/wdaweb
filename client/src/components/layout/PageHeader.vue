@@ -23,7 +23,7 @@
 
       <!-- 頁面說明引言 (支援換行顯示或 slot 自訂顏色排版) -->
       <slot name="subtitle">
-        <p v-if="subtitle" class="text-slate-300 text-base sm:text-lg max-w-5xl mx-auto leading-relaxed whitespace-pre-line">
+        <p v-if="subtitle" class="text-slate-300 text-base sm:text-lg max-w-5xl mx-auto leading-relaxed whitespace-pre-line text-left sm:text-center">
           {{ subtitle }}
         </p>
       </slot>

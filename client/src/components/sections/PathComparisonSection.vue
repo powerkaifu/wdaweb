@@ -25,7 +25,7 @@
 					>
 				</h2>
 				<p
-					class="text-slate-400 mt-4 text-base sm:text-lg max-w-4xl mx-auto leading-relaxed text-pretty text-justify sm:text-center"
+					class="text-slate-400 mt-4 text-base sm:text-lg max-w-4xl mx-auto leading-relaxed text-pretty text-left sm:text-center"
 				>
 					如果你正在思考轉職，不一定只有「報名職訓」這一個答案。你也可以自學、使用 AI
 					學習，或在工作中逐步累積能力。不同方法適合不同的人，真正重要的是：<span class="text-slate-200 font-bold"
@@ -257,7 +257,7 @@
 						沒有哪一種方式一定最好
 					</h4>
 					<p
-						class="hidden sm:block text-base sm:text-lg text-slate-300 leading-relaxed text-justify sm:text-center xl:whitespace-nowrap"
+						class="hidden sm:block text-base sm:text-lg text-slate-300 leading-relaxed text-left sm:text-center xl:whitespace-nowrap"
 					>
 						如果你已經知道自己要什麼，自學可能就足夠；如果你需要一個完整環境、老師、同儕與大量實作，職訓可能更適合。
 					</p>

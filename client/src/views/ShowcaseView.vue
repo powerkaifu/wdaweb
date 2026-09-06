@@ -7,14 +7,14 @@
       theme="blue"
     >
       <template #subtitle>
-        <div class="text-base sm:text-lg max-w-5xl mx-auto leading-relaxed space-y-1 sm:space-y-1.5">
+        <div class="text-base sm:text-lg max-w-5xl mx-auto leading-relaxed space-y-1 sm:space-y-1.5 text-left sm:text-center">
           <p class="text-slate-300">
             所有專案皆為學員於 920 小時培訓期間「100% 獨立自主開發」之前後端分離＋資料庫 Web 專案。
           </p>
           <p class="text-slate-300">
             為期一個月的專題實戰，歷經「期初企劃報告」與「期末成果展」嚴謹淬鍊！
           </p>
-          <p class="text-cyan-400 font-bold pt-0.5 sm:pt-1 flex items-center justify-center gap-1.5">
+          <p class="text-cyan-400 font-bold pt-0.5 sm:pt-1 flex items-center justify-start sm:justify-center gap-1.5">
             <span>✨</span>
             <span>點擊卡片可 3D 翻轉查看詳情與線上 Demo！</span>
           </p>

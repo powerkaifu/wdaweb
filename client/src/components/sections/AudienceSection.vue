@@ -26,7 +26,7 @@
 						>也許不只是「要不要學程式」</span
 					>
 				</h2>
-				<p class="text-slate-400 mt-4 text-base sm:text-lg max-w-none mx-auto leading-relaxed text-pretty text-justify sm:text-center xl:whitespace-nowrap">
+				<p class="text-slate-400 mt-4 text-base sm:text-lg max-w-none mx-auto leading-relaxed text-pretty text-left sm:text-center xl:whitespace-nowrap">
 					踏入陌生的科技領域，害怕跟不上、害怕選錯方向，其實很正常。這些確實是現在許多轉職者正在面對的真實問題。
 				</p>
 			</div>

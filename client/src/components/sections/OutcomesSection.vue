@@ -27,7 +27,7 @@
 						>不只是一張結訓證明</span
 					>
 				</h2>
-				<p class="text-slate-400 mt-4 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed text-pretty text-justify sm:text-center">
+				<p class="text-slate-400 mt-4 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed text-pretty text-left sm:text-center">
 					<span class="inline-block">920 小時</span>的學習，目的不是讓你記住更多技術名詞，而是希望你離開教室後，仍然帶著可以繼續使用的實戰能力。
 				</p>
 			</div>

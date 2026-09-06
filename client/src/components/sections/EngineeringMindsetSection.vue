@@ -25,7 +25,7 @@
 					>
 				</h2>
 				<p
-					class="text-slate-400 mt-4 text-base sm:text-lg max-w-4xl xl:max-w-5xl mx-auto leading-relaxed text-pretty text-justify sm:text-center"
+					class="text-slate-400 mt-4 text-base sm:text-lg max-w-4xl xl:max-w-5xl mx-auto leading-relaxed text-pretty text-left sm:text-center"
 				>
 					AI 能在幾秒內生成程式碼，卻無法替你定義需求、拆解架構與確保品質。我們更重視的，是培養理解需求、拆解模組、AI 協作、驗證除錯、系統整合的完整工程能力。
 				</p>

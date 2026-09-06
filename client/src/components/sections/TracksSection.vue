@@ -25,7 +25,7 @@
 					>
 				</h2>
 				<p
-					class="text-slate-400 mt-4 text-base sm:text-lg max-w-none mx-auto leading-relaxed text-pretty text-justify sm:text-center"
+					class="text-slate-400 mt-4 text-base sm:text-lg max-w-none mx-auto leading-relaxed text-pretty text-left sm:text-center"
 				>
 					每個人走進教室時的背景都不一樣。過去的經驗不是空白，而是你在理解問題與完成作品時，最獨特的切入點。
 				</p>

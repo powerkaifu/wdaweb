@@ -8,7 +8,7 @@
         <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-4 tracking-tight">
           歷屆學員 Web 專題成果展示
         </h2>
-        <p class="mt-4 text-base sm:text-lg leading-relaxed">
+        <p class="mt-4 text-base sm:text-lg leading-relaxed text-left sm:text-center">
           <span class="block text-slate-300">所有專案皆為學員於 920 小時培訓期間「100% 獨立自主開發」之前後端分離＋資料庫 Web 專案。</span>
           <span class="block text-slate-300 mt-1">為期一個月的專題實戰，歷經「期初企劃報告」與「期末成果展」嚴謹淬鍊！</span>
           <span class="block text-cyan-400 font-bold mt-1.5">✨ 點擊卡片可 3D 翻轉查看詳情與線上 Demo！</span>

@@ -27,7 +27,7 @@
 					>
 				</h2>
 				<p
-					class="text-slate-400 mt-4 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed text-pretty text-justify sm:text-center"
+					class="text-slate-400 mt-4 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed text-pretty text-left sm:text-center"
 				>
 					自學可以走得很遠。但當你面對一個看不懂的錯誤訊息時，有人可以一起討論、有同學可以交流，往往能讓你少繞很多彎路。這也是實體學習最難被取代的地方。
 				</p>

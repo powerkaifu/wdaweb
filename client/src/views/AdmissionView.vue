@@ -7,7 +7,7 @@
       theme="cyan"
     >
       <template #subtitle>
-        <div class="text-base sm:text-lg max-w-4xl mx-auto leading-relaxed space-y-2 text-center">
+        <div class="text-base sm:text-lg max-w-4xl mx-auto leading-relaxed space-y-1.5 sm:space-y-2 text-left sm:text-center">
           <p class="text-slate-300">
             本專班為勞動部自辦訓練，待業民眾享 100% 全額免費培訓。
           </p>

@@ -11,7 +11,7 @@
         <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-4 tracking-tight">
           常見問題與解答
         </h2>
-        <p class="text-slate-400 mt-4 text-base sm:text-lg">
+        <p class="text-slate-400 mt-4 text-base sm:text-lg text-left sm:text-center">
           解答待業參訓者最關心的生活津貼、零基礎學習與就業輔導疑慮。
         </p>
       </div>

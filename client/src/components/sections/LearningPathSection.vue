@@ -24,7 +24,7 @@
 						>一步一步完成自己的作品</span
 					>
 				</h2>
-				<p class="text-slate-400 mt-4 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed text-pretty text-justify sm:text-center">
+				<p class="text-slate-400 mt-4 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed text-pretty text-left sm:text-center">
 					<span class="block"
 						>920 小時，從「看不懂」到「知道自己正在做什麼」，一步步累積能真正做出作品的實戰能力。</span
 					>

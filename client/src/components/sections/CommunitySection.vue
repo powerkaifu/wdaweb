@@ -12,7 +12,7 @@
         <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-4 tracking-tight">
           Discord 線上即時諮詢社群
         </h2>
-        <p class="text-slate-400 mt-4 text-base sm:text-lg">
+        <p class="text-slate-400 mt-4 text-base sm:text-lg text-left sm:text-center">
           隨時加入官方 Discord 頻道，直接向講師與結訓學長姐發問交流！
         </p>
       </div>
