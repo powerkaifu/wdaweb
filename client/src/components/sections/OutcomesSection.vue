@@ -18,7 +18,7 @@
 					class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 text-sm font-bold uppercase tracking-wider shadow-sm mb-3"
 				>
 					<span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping"></span>
-					<span>What You Truly Take Away ｜ 結訓真實收穫</span>
+					<span>Real Takeaways ｜ 結訓真實收穫</span>
 				</div>
 				<h2 class="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-black text-white tracking-tight leading-tight text-balance">
 					<span class="block sm:inline">你最後真正帶走的，</span>

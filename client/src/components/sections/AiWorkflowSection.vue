@@ -18,7 +18,7 @@
 					class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/30 text-sm font-bold uppercase tracking-wider shadow-sm mb-3"
 				>
 					<span class="w-1.5 h-1.5 rounded-full bg-blue-400 animate-ping"></span>
-					<span>AI-Assisted Development ｜ 現代人機協同</span>
+					<span>AI Workflow ｜ 現代人機協同</span>
 				</div>
 				<h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight text-balance">
 					<span class="block">AI 輔助應用：</span>
