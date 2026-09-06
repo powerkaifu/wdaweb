@@ -47,12 +47,10 @@
 					class="outcome-card card-subsurface-glow relative rounded-3xl p-5 sm:p-7 bg-slate-900/80 backdrop-blur-xl border border-slate-800/90 shadow-xl shadow-slate-950/60 flex flex-col justify-between overflow-hidden cursor-default w-[78vw] sm:w-[320px] max-w-[340px] shrink-0 snap-start md:w-full md:max-w-none md:shrink"
 				>
 					<div>
-						<div
-							class="w-12 h-12 rounded-2xl bg-cyan-500/15 border border-cyan-500/40 text-cyan-300 flex items-center justify-center text-2xl shadow-[0_0_20px_rgba(6,182,212,0.2)] mb-4 sm:mb-5"
-						>
-							🌐
+						<div class="flex items-center gap-2.5 mb-2.5 sm:mb-3">
+							<span class="text-2xl sm:text-3xl shrink-0">🌐</span>
+							<h3 class="text-xl font-extrabold text-white tracking-tight">真正做出屬於自己的作品</h3>
 						</div>
-						<h3 class="text-xl font-extrabold text-white mb-2 sm:mb-2.5 tracking-tight">真正做出屬於自己的作品</h3>
 						<!-- 手機短金句 -->
 						<p class="text-base text-slate-200 leading-relaxed text-pretty text-justify sm:hidden">
 							獨立完成可向面試官展示、說得出架構細節與選型理由的專案代表作。
@@ -72,12 +70,10 @@
 					class="outcome-card card-subsurface-blue relative rounded-3xl p-5 sm:p-7 bg-slate-900/80 backdrop-blur-xl border border-slate-800/90 shadow-xl shadow-slate-950/60 flex flex-col justify-between overflow-hidden cursor-default w-[78vw] sm:w-[320px] max-w-[340px] shrink-0 snap-start md:w-full md:max-w-none md:shrink"
 				>
 					<div>
-						<div
-							class="w-12 h-12 rounded-2xl bg-blue-500/15 border border-blue-500/40 text-blue-300 flex items-center justify-center text-2xl shadow-[0_0_20px_rgba(59,130,246,0.2)] mb-4 sm:mb-5"
-						>
-							🔍
+						<div class="flex items-center gap-2.5 mb-2.5 sm:mb-3">
+							<span class="text-2xl sm:text-3xl shrink-0">🔍</span>
+							<h3 class="text-xl font-extrabold text-white tracking-tight">建立拆解與解決問題的能力</h3>
 						</div>
-						<h3 class="text-xl font-extrabold text-white mb-2 sm:mb-2.5 tracking-tight">建立拆解與解決問題的能力</h3>
 						<!-- 手機短金句 -->
 						<p class="text-base text-slate-200 leading-relaxed text-pretty text-justify sm:hidden">
 							面對 Bug 不盲猜答案，學會從 Console 定位根因，具備獨立除錯思維。
@@ -97,12 +93,10 @@
 					class="outcome-card card-subsurface-glow relative rounded-3xl p-5 sm:p-7 bg-slate-900/80 backdrop-blur-xl border border-slate-800/90 shadow-xl shadow-slate-950/60 flex flex-col justify-between overflow-hidden cursor-default w-[78vw] sm:w-[320px] max-w-[340px] shrink-0 snap-start md:w-full md:max-w-none md:shrink"
 				>
 					<div>
-						<div
-							class="w-12 h-12 rounded-2xl bg-purple-500/15 border border-purple-500/40 text-purple-300 flex items-center justify-center text-2xl shadow-[0_0_20px_rgba(168,85,247,0.2)] mb-4 sm:mb-5"
-						>
-							🤖
+						<div class="flex items-center gap-2.5 mb-2.5 sm:mb-3">
+							<span class="text-2xl sm:text-3xl shrink-0">🤖</span>
+							<h3 class="text-xl font-extrabold text-white tracking-tight">理解如何與 AI 深度協作</h3>
 						</div>
-						<h3 class="text-xl font-extrabold text-white mb-2 sm:mb-2.5 tracking-tight">理解如何與 AI 深度協作</h3>
 						<!-- 手機短金句 -->
 						<p class="text-base text-slate-200 leading-relaxed text-pretty text-justify sm:hidden">
 							建立人機協同循環，把 AI 當成倍增效率的副駕駛而非盲抄工具。
@@ -122,12 +116,10 @@
 					class="outcome-card card-subsurface-glow relative rounded-3xl p-5 sm:p-7 bg-slate-900/80 backdrop-blur-xl border border-slate-800/90 shadow-xl shadow-slate-950/60 flex flex-col justify-between overflow-hidden cursor-default w-[78vw] sm:w-[320px] max-w-[340px] shrink-0 snap-start md:w-full md:max-w-none md:shrink"
 				>
 					<div>
-						<div
-							class="w-12 h-12 rounded-2xl bg-emerald-500/15 border border-emerald-500/40 text-emerald-300 flex items-center justify-center text-2xl shadow-[0_0_20px_rgba(160,185,129,0.2)] mb-4 sm:mb-5"
-						>
-							🏗️
+						<div class="flex items-center gap-2.5 mb-2.5 sm:mb-3">
+							<span class="text-2xl sm:text-3xl shrink-0">🏗️</span>
+							<h3 class="text-xl font-extrabold text-white tracking-tight">建立前端與系統整合基礎</h3>
 						</div>
-						<h3 class="text-xl font-extrabold text-white mb-2 sm:mb-2.5 tracking-tight">建立前端與系統整合基礎</h3>
 						<!-- 手機短金句 -->
 						<p class="text-base text-slate-200 leading-relaxed text-pretty text-justify sm:hidden">
 							掌握元件、狀態、API、資料庫與部署協同運作的系統全貌。
@@ -147,12 +139,10 @@
 					class="outcome-card card-subsurface-glow relative rounded-3xl p-5 sm:p-7 bg-slate-900/80 backdrop-blur-xl border border-slate-800/90 shadow-xl shadow-slate-950/60 flex flex-col justify-between overflow-hidden cursor-default w-[78vw] sm:w-[320px] max-w-[340px] shrink-0 snap-start md:w-full md:max-w-none md:shrink"
 				>
 					<div>
-						<div
-							class="w-12 h-12 rounded-2xl bg-amber-500/15 border border-amber-500/40 text-amber-300 flex items-center justify-center text-2xl shadow-[0_0_20px_rgba(245,158,11,0.2)] mb-4 sm:mb-5"
-						>
-							🤝
+						<div class="flex items-center gap-2.5 mb-2.5 sm:mb-3">
+							<span class="text-2xl sm:text-3xl shrink-0">🤝</span>
+							<h3 class="text-xl font-extrabold text-white tracking-tight">認識一起學習成長的夥伴</h3>
 						</div>
-						<h3 class="text-xl font-extrabold text-white mb-2 sm:mb-2.5 tracking-tight">認識一起學習成長的夥伴</h3>
 						<!-- 手機短金句 -->
 						<p class="text-base text-slate-200 leading-relaxed text-pretty text-justify sm:hidden">
 							半年朝夕相處的同學，將成為業界交流、內推與互相支持的同行夥伴。
@@ -172,12 +162,10 @@
 					class="outcome-card card-subsurface-glow relative rounded-3xl p-5 sm:p-7 bg-gradient-to-br from-cyan-950/40 via-slate-900/90 to-slate-900/80 backdrop-blur-xl border border-cyan-500/40 shadow-xl shadow-cyan-950/40 flex flex-col justify-between overflow-hidden cursor-default w-[78vw] sm:w-[320px] max-w-[340px] shrink-0 snap-start md:w-full md:max-w-none md:shrink"
 				>
 					<div>
-						<div
-							class="w-12 h-12 rounded-2xl bg-cyan-500/20 border border-cyan-400/50 text-cyan-300 flex items-center justify-center text-2xl shadow-[0_0_25px_rgba(6,182,212,0.3)] mb-4 sm:mb-5"
-						>
-							🧭
+						<div class="flex items-center gap-2.5 mb-2.5 sm:mb-3">
+							<span class="text-2xl sm:text-3xl shrink-0">🧭</span>
+							<h3 class="text-xl font-extrabold text-white tracking-tight">更清楚自己是否適合走這條路</h3>
 						</div>
-						<h3 class="text-xl font-extrabold text-white mb-2 sm:mb-2.5 tracking-tight">更清楚自己是否適合走這條路</h3>
 						<!-- 手機短金句 -->
 						<p class="text-base text-slate-100 leading-relaxed text-pretty text-justify sm:hidden">
 							六個月後，你將清楚看清自己擅長什麼、喜歡什麼，明確下一步的方向。
