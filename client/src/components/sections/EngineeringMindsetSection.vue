@@ -55,20 +55,17 @@
 
 					<!-- 1. 📱 手機端 (sm:hidden)：極致精煉，零長列表，5大心智微膠囊，高度僅約 120px -->
 					<div class="sm:hidden p-4 rounded-2xl bg-slate-950/80 border border-cyan-500/30 shadow-lg space-y-2.5">
-						<div class="space-y-1.5">
-							<div class="flex items-center space-x-2 text-rose-300 font-semibold text-sm">
-								<span
-									class="w-5 h-5 rounded-full bg-rose-500/15 border border-rose-500/30 flex items-center justify-center text-xs flex-shrink-0"
-									>✕</span
-								>
-								<span>不是培養「只會等 AI 幫忙寫」的人</span>
+						<div class="space-y-1">
+							<div class="inline-flex items-center space-x-1.5 text-xs font-bold text-cyan-400 font-mono">
+								<span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
+								<span>CORE CAPABILITY</span>
 							</div>
-							<div class="flex items-center space-x-2 text-cyan-300 font-extrabold text-base">
-								<span
-									class="w-5 h-5 rounded-full bg-cyan-500/20 border border-cyan-400/40 flex items-center justify-center text-xs text-cyan-300 flex-shrink-0"
-									>✓</span
-								>
-								<span>而是培養「能真正完成產品」的人</span>
+							<div class="text-base font-extrabold text-white">
+								AI 時代，更重要的是工程能力
+							</div>
+							<div class="text-xs text-cyan-300 font-medium flex items-center space-x-1 pt-0.5">
+								<span class="font-bold">✓</span>
+								<span>看懂代碼 · 自主除錯 · 模組整合交付產品</span>
 							</div>
 						</div>
 						<!-- 5 步心智緊湊流 -->
@@ -99,22 +96,30 @@
 					<div class="hidden sm:block lg:hidden p-5 rounded-3xl bg-slate-950/80 border border-cyan-500/30 shadow-xl">
 						<div class="grid grid-cols-2 gap-5 items-stretch">
 							<div
-								class="space-y-2.5 p-4 rounded-2xl bg-slate-900/70 border border-slate-800/80 flex flex-col justify-between"
+								class="space-y-3 p-5 rounded-2xl bg-slate-900/70 border border-slate-800/80 flex flex-col justify-center"
 							>
 								<div>
-									<div class="inline-flex items-center space-x-1.5 text-xs font-bold text-rose-400 font-mono mb-1">
-										<span class="w-1.5 h-1.5 rounded-full bg-rose-400"></span>
-										<span>WE DO NOT TRAIN</span>
+									<div class="inline-flex items-center space-x-1.5 text-xs font-bold text-cyan-400 font-mono mb-1.5">
+										<span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
+										<span>CORE CAPABILITY</span>
 									</div>
-									<h4 class="text-base font-extrabold text-white">
-										不是培養：<br /><span class="text-rose-300">只會等 AI 幫我寫程式的人</span>
+									<h4 class="text-base font-extrabold text-white leading-snug mb-2.5">
+										AI 時代，<br /><span class="text-cyan-300">更重要的是工程能力</span>
 									</h4>
-									<p class="text-xs text-slate-400 leading-relaxed mt-2">
-										看不懂底層邏輯、出 Bug 只能反覆追問、無法把片段組合成真實系統。
-									</p>
-								</div>
-								<div class="text-xs text-slate-300 pt-2 border-t border-slate-800/80 font-medium">
-									⚠️ 缺乏自主除錯與整合力最先被淘汰
+									<ul class="space-y-2 text-xs sm:text-sm text-slate-200">
+										<li class="flex items-start space-x-2">
+											<span class="text-cyan-400 font-bold">✓</span>
+											<span>看懂 AI 產生的程式碼，理解背後邏輯</span>
+										</li>
+										<li class="flex items-start space-x-2">
+											<span class="text-cyan-400 font-bold">✓</span>
+											<span>能自主分析問題、除錯與驗證</span>
+										</li>
+										<li class="flex items-start space-x-2">
+											<span class="text-cyan-400 font-bold">✓</span>
+											<span>能整合模組，完成真正可交付的產品</span>
+										</li>
+									</ul>
 								</div>
 							</div>
 
@@ -166,18 +171,18 @@
 						<div class="flex items-center justify-between border-b border-slate-800/80 pb-2.5">
 							<div class="flex items-center space-x-2">
 								<span
-									class="px-2.5 py-0.5 rounded-full bg-rose-500/15 text-rose-300 border border-rose-500/30 text-xs font-bold font-mono"
-									>不是培養</span
+									class="px-2.5 py-0.5 rounded-full bg-cyan-500/15 text-cyan-300 border border-cyan-500/30 text-xs font-bold font-mono"
+									>核心能力</span
 								>
-								<span class="text-sm font-bold text-slate-300">只會等 AI 幫我寫程式的人</span>
+								<span class="text-sm font-bold text-white">AI 時代，更重要的是工程能力</span>
 							</div>
-							<span class="text-xs font-mono text-cyan-400/80 font-bold">➔ 5 階段工程思維躍遷 ➔</span>
+							<span class="text-xs font-mono text-cyan-400/80 font-bold">➔ 5 階段工程心智自問 ➔</span>
 							<div class="flex items-center space-x-2">
 								<span
-									class="px-2.5 py-0.5 rounded-full bg-cyan-500/15 text-cyan-300 border border-cyan-500/30 text-xs font-bold font-mono"
-									>而是培養</span
+									class="px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 text-xs font-bold font-mono"
+									>結訓具備</span
 								>
-								<span class="text-sm font-extrabold text-white">能完成產品的現代工程師</span>
+								<span class="text-sm font-extrabold text-emerald-300">能完成產品的現代工程師</span>
 							</div>
 						</div>
 						<div class="grid grid-cols-5 gap-2 items-stretch text-center">
@@ -214,38 +219,37 @@
 					<!-- 4. 🖥️ 桌機端 (hidden xl:block)：旗艦科技對照展台，次表面微光大器展開 -->
 					<div class="hidden xl:block p-6 rounded-3xl bg-slate-950/85 border border-cyan-500/30 shadow-2xl">
 						<div class="grid grid-cols-12 gap-6 items-stretch">
-							<!-- 左側 4 欄：反思與警惕展台 -->
+							<!-- 左側 4 欄：核心工程能力展台 -->
 							<div
-								class="col-span-4 p-5 rounded-2xl bg-slate-900/70 border border-slate-800/90 flex flex-col justify-between"
+								class="col-span-4 p-5 rounded-2xl bg-slate-900/70 border border-slate-800/90 flex flex-col justify-center space-y-4"
 							>
 								<div class="space-y-3">
 									<div
-										class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-rose-500/10 text-rose-300 border border-rose-500/30 text-xs font-bold font-mono"
+										class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-300 border border-cyan-500/30 text-xs font-bold font-mono"
 									>
-										<span class="w-1.5 h-1.5 rounded-full bg-rose-400"></span>
-										<span>WE DO NOT TRAIN</span>
+										<span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
+										<span>CORE ENGINEERING CAPABILITY</span>
 									</div>
 									<h4 class="text-xl font-extrabold text-white leading-snug">
-										不是培養：<br />
-										<span class="text-rose-300">「只會等 AI 幫我寫程式的人」</span>
+										AI 時代，<br />
+										<span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-blue-300"
+											>更重要的是工程能力</span
+										>
 									</h4>
-									<ul class="space-y-2 text-sm text-slate-300">
-										<li class="flex items-start space-x-2">
-											<span class="text-rose-400 mt-0.5">✕</span>
-											<span>看不懂 AI 產生的底層代碼邏輯</span>
+									<ul class="space-y-3 text-sm sm:text-base text-slate-200">
+										<li class="flex items-start space-x-2.5">
+											<span class="text-cyan-400 mt-0.5 font-bold text-base">✓</span>
+											<span>看懂 AI 產生的程式碼，理解背後邏輯</span>
 										</li>
-										<li class="flex items-start space-x-2">
-											<span class="text-rose-400 mt-0.5">✕</span>
-											<span>一遇報錯就反覆提問、陷入死循環</span>
+										<li class="flex items-start space-x-2.5">
+											<span class="text-cyan-400 mt-0.5 font-bold text-base">✓</span>
+											<span>能自主分析問題、除錯與驗證</span>
 										</li>
-										<li class="flex items-start space-x-2">
-											<span class="text-rose-400 mt-0.5">✕</span>
-											<span>只能拼湊玩具，無法交付商業產品</span>
+										<li class="flex items-start space-x-2.5">
+											<span class="text-cyan-400 mt-0.5 font-bold text-base">✓</span>
+											<span>能整合模組，完成真正可交付的產品</span>
 										</li>
 									</ul>
-								</div>
-								<div class="text-xs text-slate-300 pt-3 border-t border-slate-800 font-medium">
-									⚠️ 缺乏自主除錯與系統整合能力的求職者，最先被技術浪潮淘汰
 								</div>
 							</div>
 
