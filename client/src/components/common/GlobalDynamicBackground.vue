@@ -242,48 +242,31 @@ function spawnMeteor(forceFireball = false, forceCode = false, isWelcome = false
   let customSpeed = 0
   let customLength = 0
 
-  if (isWelcome) {
-    // 🌟【第一顆首發流星 - 驚艷核心聚焦算法】
+  if (isWelcome && isMobile) {
+    // 📱【手機版首發流星 - 驚艷核心聚焦算法】
     // 依據使用者指示：手機版第一顆流星劃過時剛好在中間附近，帶來最強視覺震撼張力
-    let targetX: number
-    let targetY: number
+    const targetX = w * (0.48 + (Math.random() - 0.5) * 0.08)
+    const targetY = h * (0.38 + (Math.random() - 0.5) * 0.06)
 
-    if (isMobile) {
-      // 📱 手機版直式螢幕：瞄準水平正中心附近，垂直在 Hero 核心視線焦點（35%~42% 高度處）
-      targetX = w * (0.48 + (Math.random() - 0.5) * 0.08)
-      targetY = h * (0.38 + (Math.random() - 0.5) * 0.06)
+    // 角度：經典 38°~42°（從左上斜穿至右下，掠過整片手機視野）或 138°~142°（從右上斜穿至左下）
+    const fromLeft = Math.random() < 0.65 // 65% 左上到右下，極度契合東亞由左至右閱讀視線習慣
+    angle = fromLeft
+      ? Math.PI * 0.22 + (Math.random() - 0.5) * 0.06
+      : Math.PI * 0.78 + (Math.random() - 0.5) * 0.06
 
-      // 角度：經典 38°~42°（從左上斜穿至右下，掠過整片手機視野）或 138°~142°（從右上斜穿至左下）
-      const fromLeft = Math.random() < 0.65 // 65% 左上到右下，極度契合東亞由左至右閱讀視線習慣
-      angle = fromLeft
-        ? Math.PI * 0.22 + (Math.random() - 0.5) * 0.06
-        : Math.PI * 0.78 + (Math.random() - 0.5) * 0.06
+    // 半徑回退距離：讓流星在到達中心 (targetX, targetY) 時，剛好處於生命週期的 45%（彗尾與代碼微塵最壯觀顛峰）
+    const backDist = Math.min(w * 0.65, 260)
+    startX = targetX - Math.cos(angle) * backDist
+    startY = targetY - Math.sin(angle) * backDist
 
-      // 半徑回退距離：讓流星在到達中心 (targetX, targetY) 時，剛好處於生命週期的 45%（彗尾與代碼微塵最壯觀顛峰）
-      const backDist = Math.min(w * 0.65, 260)
-      startX = targetX - Math.cos(angle) * backDist
-      startY = targetY - Math.sin(angle) * backDist
+    // 設置充足的穿透距離，讓它優雅掠過中心後自然消散
+    customTravelDistance = backDist * 2.25
 
-      // 設置充足的穿透距離，讓它優雅掠過中心後自然消散
-      customTravelDistance = backDist * 2.25
-
-      // 速度與長度優化：速度適中約 720~820 px/s，持續約 0.85~1.0 秒，長度 200~240px，視覺張力拉滿
-      customSpeed = 720 + Math.random() * 100
-      customLength = 210 + Math.random() * 35
-    } else {
-      // 🖥️ 電腦桌機/筆電版：瞄準開闊視野中心偏上方
-      targetX = w * (0.48 + (Math.random() - 0.5) * 0.10)
-      targetY = h * (0.36 + (Math.random() - 0.5) * 0.08)
-      angle = Math.PI * 0.23 + (Math.random() - 0.5) * 0.08
-      const backDist = Math.min(w * 0.35, 460)
-      startX = targetX - Math.cos(angle) * backDist
-      startY = targetY - Math.sin(angle) * backDist
-      customTravelDistance = backDist * 2.2
-      customSpeed = 1050 + Math.random() * 200
-      customLength = 220 + Math.random() * 50
-    }
+    // 速度與長度優化：速度適中約 720~820 px/s，持續約 0.85~1.0 秒，長度 200~240px，視覺張力拉滿
+    customSpeed = 720 + Math.random() * 100
+    customLength = 210 + Math.random() * 35
   } else {
-    // 常規自然偶發流星
+    // 🖥️ 大螢幕首發流星（依使用者指示：大螢幕第一顆流星不用限定在中間，保持廣域開闊自然軌跡）與常規偶發流星
     const dirMode = store.meteorConfig.direction
 
     if (dirMode === 'radiant') {
