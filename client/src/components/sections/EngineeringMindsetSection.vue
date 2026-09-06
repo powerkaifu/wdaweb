@@ -31,9 +31,9 @@
 				</p>
 			</div>
 
-			<!-- 旗艦工程思維展台卡片 -->
+			<!-- 旗艦工程思維展台卡片 (手機端單一框框呈現) -->
 			<div
-				class="relative rounded-3xl p-6 sm:p-8 lg:p-10 bg-gradient-to-br from-slate-900/95 via-slate-900/85 to-slate-950/95 border border-cyan-500/30 hover:border-cyan-500/50 transition-all duration-300 backdrop-blur-xl shadow-2xl shadow-slate-950/70 overflow-hidden group"
+				class="relative rounded-2xl sm:rounded-3xl p-3.5 sm:p-8 lg:p-10 bg-gradient-to-br from-slate-900/95 via-slate-900/85 to-slate-950/95 border border-cyan-500/30 hover:border-cyan-500/50 transition-all duration-300 backdrop-blur-xl shadow-2xl shadow-slate-950/70 overflow-hidden group"
 			>
 				<!-- 頂部高光流線 -->
 				<div
@@ -48,13 +48,13 @@
 					class="absolute -bottom-24 -left-24 w-80 h-80 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"
 				></div>
 
-				<div class="relative z-10 space-y-6">
+				<div class="relative z-10 space-y-4 sm:space-y-6">
 					<!-- ========================================================================= -->
 					<!-- 工程思維核心理念看板 (跨裝置自適應資訊量分流：手機2x2 / 平板雙欄 / 筆電橫向管線 / 桌機旗艦展台) -->
 					<!-- ========================================================================= -->
 
-					<!-- 1. 📱 手機端 (sm:hidden)：極致精煉，零長列表，5大心智微膠囊，高度僅約 120px -->
-					<div class="sm:hidden p-4 rounded-2xl bg-slate-950/80 border border-cyan-500/30 shadow-lg space-y-2.5">
+					<!-- 1. 📱 手機端 (sm:hidden)：單一框框表示，徹底消除外框包內框的嵌套厚重感，釋放空間 -->
+					<div class="sm:hidden space-y-3">
 						<div class="space-y-1">
 							<div class="inline-flex items-center space-x-1.5 text-xs font-bold text-cyan-400 font-mono">
 								<span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
@@ -68,49 +68,49 @@
 								<span>看懂背後邏輯 · 自主除錯驗證 · 整合前後端交付產品</span>
 							</div>
 						</div>
-						<!-- 5 步心智流程清單 (大字清晰呈現) -->
-						<div class="pt-2.5 border-t border-slate-800/80 space-y-2.5">
-							<div class="p-3 rounded-xl bg-slate-900/90 border border-slate-800 flex items-center justify-between text-base shadow-sm">
-								<div class="inline-flex items-center space-x-1.5">
-									<span class="text-xl font-black text-cyan-400 leading-none">①</span>
+						<!-- 5 步心智流程清單 (大字清晰呈現，左右通透不縮擠) -->
+						<div class="pt-2 border-t border-slate-800/80 space-y-2">
+							<div class="p-2.5 rounded-xl bg-slate-900/80 border border-slate-800/80 flex items-center justify-between text-base shadow-sm">
+								<div class="inline-flex items-center space-x-1.5 shrink-0">
+									<span class="text-xl font-black text-cyan-400 leading-none font-sans">①</span>
 									<span class="text-base font-bold text-cyan-300">理解</span>
 								</div>
-								<span class="text-white font-bold text-base">需求到底是什麼？</span>
-								<span class="text-xs sm:text-sm text-slate-300 font-medium">需求定義</span>
+								<span class="text-white font-bold text-base px-1">需求到底是什麼？</span>
+								<span class="text-xs text-slate-300 font-medium shrink-0">需求定義</span>
 							</div>
-							<div class="p-3 rounded-xl bg-slate-900/90 border border-slate-800 flex items-center justify-between text-base shadow-sm">
-								<div class="inline-flex items-center space-x-1.5">
-									<span class="text-xl font-black text-cyan-400 leading-none">②</span>
+							<div class="p-2.5 rounded-xl bg-slate-900/80 border border-slate-800/80 flex items-center justify-between text-base shadow-sm">
+								<div class="inline-flex items-center space-x-1.5 shrink-0">
+									<span class="text-xl font-black text-cyan-400 leading-none font-sans">②</span>
 									<span class="text-base font-bold text-cyan-300">拆解</span>
 								</div>
-								<span class="text-white font-bold text-base">這個問題怎麼拆？</span>
-								<span class="text-xs sm:text-sm text-slate-300 font-medium">架構拆解</span>
+								<span class="text-white font-bold text-base px-1">這個問題怎麼拆？</span>
+								<span class="text-xs text-slate-300 font-medium shrink-0">架構拆解</span>
 							</div>
-							<div class="p-3 rounded-xl bg-slate-900/90 border border-slate-800 flex items-center justify-between text-base shadow-sm">
-								<div class="inline-flex items-center space-x-1.5">
-									<span class="text-xl font-black text-cyan-400 leading-none">③</span>
+							<div class="p-2.5 rounded-xl bg-slate-900/80 border border-slate-800/80 flex items-center justify-between text-base shadow-sm">
+								<div class="inline-flex items-center space-x-1.5 shrink-0">
+									<span class="text-xl font-black text-cyan-400 leading-none font-sans">③</span>
 									<span class="text-base font-bold text-cyan-300">協作</span>
 								</div>
-								<span class="text-white font-bold text-base">如何讓 AI 幫我加速？</span>
-								<span class="text-xs sm:text-sm text-slate-300 font-medium">精準協同</span>
+								<span class="text-white font-bold text-base px-1">如何讓 AI 幫我加速？</span>
+								<span class="text-xs text-slate-300 font-medium shrink-0">精準協同</span>
 							</div>
-							<div class="p-3 rounded-xl bg-slate-900/90 border border-slate-800 flex items-center justify-between text-base shadow-sm">
-								<div class="inline-flex items-center space-x-1.5">
-									<span class="text-xl font-black text-cyan-400 leading-none">④</span>
+							<div class="p-2.5 rounded-xl bg-slate-900/80 border border-slate-800/80 flex items-center justify-between text-base shadow-sm">
+								<div class="inline-flex items-center space-x-1.5 shrink-0">
+									<span class="text-xl font-black text-cyan-400 leading-none font-sans">④</span>
 									<span class="text-base font-bold text-cyan-300">驗證</span>
 								</div>
-								<span class="text-white font-bold text-base">AI 做的是對的嗎？</span>
-								<span class="text-xs sm:text-sm text-slate-300 font-medium">修改與 Debug</span>
+								<span class="text-white font-bold text-base px-1">AI 做的是對的嗎？</span>
+								<span class="text-xs text-slate-300 font-medium shrink-0">修改與 Debug</span>
 							</div>
 							<div
-								class="p-3 rounded-xl bg-emerald-950/50 border border-emerald-500/40 flex items-center justify-between text-base shadow-sm"
+								class="p-2.5 rounded-xl bg-emerald-950/40 border border-emerald-500/30 flex items-center justify-between text-base shadow-sm"
 							>
-								<div class="inline-flex items-center space-x-1.5">
-									<span class="text-xl font-black text-emerald-400 leading-none">⑤</span>
+								<div class="inline-flex items-center space-x-1.5 shrink-0">
+									<span class="text-xl font-black text-emerald-400 leading-none font-sans">⑤</span>
 									<span class="text-base font-bold text-emerald-300">整合</span>
 								</div>
-								<span class="text-emerald-200 font-bold text-base">如何真正運作？</span>
-								<span class="text-xs sm:text-sm text-emerald-400 font-bold">完成產品的人</span>
+								<span class="text-emerald-200 font-bold text-base px-1">如何真正運作？</span>
+								<span class="text-xs text-emerald-400 font-bold shrink-0">完成產品的人</span>
 							</div>
 						</div>
 					</div>
@@ -397,7 +397,7 @@
 
 					<!-- 底部心智理念收束引言 -->
 					<div
-						class="pt-4 border-t border-slate-800/80 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-sm sm:text-base font-mono"
+						class="pt-3 sm:pt-4 border-t border-slate-800/80 flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-3 text-xs sm:text-base font-mono"
 					>
 						<span class="text-slate-400">💡 核心理念：AI 決定開發速度，而你的工程思維決定產品上限</span>
 						<span class="text-cyan-400 font-bold">🎯 培養獨立解決問題與系統交付的能力</span>
