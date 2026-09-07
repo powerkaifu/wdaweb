@@ -148,6 +148,16 @@ CLOUDINARY_STORAGE = {
     'API_SECRET': CLOUDINARY_API_SECRET or 'placeholder_secret',
 }
 
+# 靜態檔案儲存架構 (智慧雙軌設計：本地開發熱重載 vs 生產環境快取壓縮防禦)
+# 本地開發模式 (DEBUG=True)：採用原生 StaticFilesStorage，支援即時讀取，徹底杜絕缺少 manifest 的 500 錯誤。
+# 生產環境 (DEBUG=False)：採用寬鬆型 WhiteNoise Manifest 儲存，壓縮檔案並開啟 manifest_strict=False 容錯防護。
+if DEBUG:
+    STATICFILES_STORAGE_BACKEND = "django.contrib.staticfiles.storage.StaticFilesStorage"
+else:
+    STATICFILES_STORAGE_BACKEND = "apps.cms.storage.RobustCompressedManifestStaticFilesStorage"
+
+WHITENOISE_MANIFEST_STRICT = False
+
 if IS_CLOUDINARY_CONFIGURED:
     import cloudinary
     cloudinary.config(
@@ -162,7 +172,7 @@ if IS_CLOUDINARY_CONFIGURED:
             "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
         },
         "staticfiles": {
-            "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+            "BACKEND": STATICFILES_STORAGE_BACKEND,
         },
     }
 else:
@@ -172,7 +182,7 @@ else:
             "BACKEND": "django.core.files.storage.FileSystemStorage",
         },
         "staticfiles": {
-            "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+            "BACKEND": STATICFILES_STORAGE_BACKEND,
         },
     }
 
