@@ -21,7 +21,7 @@
 					<span>AI Workflow ｜ 現代人機協同</span>
 				</div>
 				<h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight text-balance">
-					<span class="block">AI 輔助應用：</span>
+					<span class="block">AI 輔助應用</span>
 					<span
 						class="block mt-1 sm:mt-1.5 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-emerald-400"
 						>讓 AI 成為你的專業開發副駕駛</span
