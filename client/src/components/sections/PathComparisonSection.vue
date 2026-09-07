@@ -148,10 +148,6 @@
 									<span class="text-cyan-400 mt-0.5">•</span>
 									<span>希望全職集中時間，大量實作演練</span>
 								</li>
-								<li class="flex items-start space-x-2">
-									<span class="text-cyan-400 mt-0.5">•</span>
-									<span>想和一群志同道合的同儕並肩學習</span>
-								</li>
 							</ul>
 						</div>
 
