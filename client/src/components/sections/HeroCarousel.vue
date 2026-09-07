@@ -1,6 +1,6 @@
 <template>
   <!-- 全裝置首屏極致自適應架構 (手機與桌機滿版定錨，筆電矮螢幕高度自然呼吸防截斷) -->
-  <section id="hero" class="relative min-h-[100dvh] lg:min-h-[100dvh] lg:h-auto xl:h-[100dvh] xl:max-h-[100dvh] flex flex-col justify-between pt-20 sm:pt-24 lg:pt-24 xl:pt-28 2xl:pt-32 pb-3 sm:pb-4 overflow-hidden bg-transparent">
+  <section id="hero" class="relative min-h-[100dvh] lg:min-h-[100dvh] lg:h-auto xl:h-[100dvh] xl:max-h-[100dvh] flex flex-col justify-between pt-20 sm:pt-24 lg:pt-24 xl:pt-28 2xl:pt-32 pb-6 sm:pb-8 lg:pb-8 xl:pb-10 overflow-hidden bg-transparent">
     <!-- Background Decorative Glow -->
     <div class="absolute -top-40 -left-40 w-96 h-96 bg-cyan-500/15 rounded-full blur-3xl pointer-events-none"></div>
     <div class="absolute top-1/2 -right-40 w-96 h-96 bg-blue-600/15 rounded-full blur-3xl pointer-events-none"></div>
@@ -116,22 +116,6 @@
       </div>
     </div>
 
-    <!-- 3. Bottom Section: Carousel Indicators (進度指示點) -->
-    <div class="flex justify-center items-center space-x-2.5 flex-shrink-0 py-3">
-      <button
-        v-if="store.carousels.length > 1"
-        v-for="(slide, idx) in store.carousels"
-        :key="slide.id"
-        @click="switchSlide(idx)"
-        :class="[
-          'h-2 rounded-full transition-all duration-500',
-          currentIndex === idx
-            ? 'w-8 bg-gradient-to-r from-cyan-400 to-blue-500 shadow-sm shadow-cyan-500/50'
-            : 'w-2 bg-slate-800 hover:bg-slate-700'
-        ]"
-        :aria-label="`切換到第 ${idx + 1} 張輪播`"
-      />
-    </div>
   </section>
 </template>
 
