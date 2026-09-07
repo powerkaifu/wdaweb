@@ -103,14 +103,14 @@
 								<span class="text-xs text-slate-300 font-medium shrink-0">修改與 Debug</span>
 							</div>
 							<div
-								class="p-2.5 rounded-xl bg-emerald-950/40 border border-emerald-500/30 flex items-center justify-between text-base shadow-sm"
+								class="p-2.5 rounded-xl bg-slate-900/80 border border-slate-800/80 flex items-center justify-between text-base shadow-sm"
 							>
 								<div class="inline-flex items-center space-x-1.5 shrink-0">
-									<span class="text-xl font-black text-emerald-400 leading-none font-sans">⑤</span>
-									<span class="text-base font-bold text-emerald-300">整合</span>
+									<span class="text-xl font-black text-cyan-400 leading-none font-sans">⑤</span>
+									<span class="text-base font-bold text-cyan-300">整合</span>
 								</div>
-								<span class="text-emerald-200 font-bold text-base px-1">如何真正運作？</span>
-								<span class="text-xs text-emerald-400 font-bold shrink-0">完成產品的人</span>
+								<span class="text-white font-bold text-base px-1">如何真正運作？</span>
+								<span class="text-xs text-slate-300 font-medium shrink-0">完成產品的人</span>
 							</div>
 						</div>
 					</div>
@@ -197,14 +197,14 @@
 											<span class="text-xs sm:text-sm text-slate-300 font-medium">修改與 Debug</span>
 										</div>
 										<div
-											class="p-3 rounded-xl bg-emerald-950/50 border border-emerald-500/40 flex items-center justify-between shadow-sm"
+											class="p-3 rounded-xl bg-slate-900/90 border border-slate-800/80 flex items-center justify-between shadow-sm"
 										>
 											<div class="inline-flex items-center space-x-2">
-												<span class="text-xl sm:text-2xl font-black text-emerald-400 leading-none">⑤</span>
-												<span class="text-base sm:text-lg font-bold text-emerald-300">整合</span>
+												<span class="text-xl sm:text-2xl font-black text-cyan-400 leading-none">⑤</span>
+												<span class="text-base sm:text-lg font-bold text-cyan-300">整合</span>
 											</div>
-											<span class="text-emerald-200 font-bold text-base sm:text-lg">如何真正運作？</span>
-											<span class="text-xs sm:text-sm text-emerald-400 font-bold">完成產品的人</span>
+											<span class="text-white font-bold text-base sm:text-lg">如何真正運作？</span>
+											<span class="text-xs sm:text-sm text-slate-300 font-medium">完成產品的人</span>
 										</div>
 									</div>
 								</div>
@@ -266,15 +266,13 @@
 								<div class="text-base sm:text-lg font-extrabold text-white my-1.5 leading-snug">AI 做的是對的嗎？</div>
 								<span class="text-xs sm:text-sm text-slate-300 font-bold">修改與 Debug</span>
 							</div>
-							<div
-								class="p-3.5 rounded-2xl bg-emerald-950/40 border border-emerald-500/40 flex flex-col justify-between shadow-md shadow-emerald-500/20"
-							>
+							<div class="p-3.5 rounded-2xl bg-slate-900/90 border border-slate-800 flex flex-col justify-between shadow-md">
 								<div class="inline-flex items-center justify-center space-x-1">
-									<span class="text-xl sm:text-2xl font-black text-emerald-400 leading-none font-sans">⑤</span>
-									<span class="text-base font-bold text-emerald-300 tracking-wider">整合</span>
+									<span class="text-xl sm:text-2xl font-black text-cyan-400 leading-none font-sans">⑤</span>
+									<span class="text-base font-bold text-cyan-300 tracking-wider">整合</span>
 								</div>
-								<div class="text-base sm:text-lg font-black text-emerald-300 my-1.5 leading-snug">如何真正運作？</div>
-								<span class="text-xs sm:text-sm text-emerald-400 font-bold">完成產品的人</span>
+								<div class="text-base sm:text-lg font-extrabold text-white my-1.5 leading-snug">如何真正運作？</div>
+								<span class="text-xs sm:text-sm text-slate-300 font-bold">完成產品的人</span>
 							</div>
 						</div>
 					</div>
@@ -381,14 +379,14 @@
 
 									<!-- ⑤ 整合 -->
 									<div
-										class="py-4 px-1.5 2xl:px-3 rounded-2xl bg-gradient-to-b from-emerald-950/60 to-slate-900 border border-emerald-500/50 flex flex-col justify-between shadow-xl shadow-emerald-950/40"
+										class="py-4 px-1.5 2xl:px-3 rounded-2xl bg-slate-900/90 border border-slate-800/90 flex flex-col justify-between hover:border-cyan-500/40 transition-colors shadow-lg"
 									>
 										<div class="inline-flex items-center justify-center space-x-1.5">
-											<span class="text-2xl 2xl:text-3xl text-emerald-400 font-black leading-none font-sans">⑤</span>
-											<span class="text-base 2xl:text-lg text-emerald-300 font-bold tracking-wider">整合</span>
+											<span class="text-2xl 2xl:text-3xl text-cyan-400 font-black leading-none font-sans">⑤</span>
+											<span class="text-base 2xl:text-lg text-cyan-300 font-bold tracking-wider">整合</span>
 										</div>
-										<div class="text-base 2xl:text-lg font-black text-emerald-300 my-2.5 leading-snug whitespace-nowrap">如何真正運作？</div>
-										<span class="text-sm 2xl:text-base font-bold text-emerald-400 whitespace-nowrap">完成產品的人</span>
+										<div class="text-base 2xl:text-lg font-black text-white my-2.5 leading-snug whitespace-nowrap">如何真正運作？</div>
+										<span class="text-sm 2xl:text-base font-bold text-slate-300 whitespace-nowrap">完成產品的人</span>
 									</div>
 								</div>
 							</div>
