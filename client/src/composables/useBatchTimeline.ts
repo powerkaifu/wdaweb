@@ -241,36 +241,45 @@ export function useBatchTimeline(batchesInput: MaybeRefOrGetter<AdmissionBatch[]
     }
   }
 
+  function formatShortDate(dateStr?: string): string {
+    if (!dateStr) return ''
+    const parts = dateStr.split('-')
+    if (parts.length === 3) {
+      return `${Number(parts[1])}/${Number(parts[2])}`
+    }
+    return dateStr
+  }
+
   function getLifecycleDetailNotice(batch: AdmissionBatch): DetailNotice {
     if (isBatchTraining(batch)) {
       const prog = getTrainingProgress(batch)
       if (prog.remainingDays <= 14) {
         return {
           icon: '⏳',
-          text: `受訓倒數衝刺：已受訓 ${prog.elapsedDays}/${prog.totalDays} 天，距 ${batch.training_end_date} 正式結訓僅剩 ${prog.remainingDays} 天！`
+          text: `受訓倒數衝刺 · 已受訓 ${prog.elapsedDays}/${prog.totalDays} 天 · 距結訓剩 ${prog.remainingDays} 天！`
         }
       }
       return {
         icon: '🎓',
-        text: `920h 核心培訓進行中：已完成 ${prog.elapsedDays} / ${prog.totalDays} 天`
+        text: `920h 培訓進行中 · 已完成 ${prog.elapsedDays}/${prog.totalDays} 天`
       }
     }
     if (isBatchScreeningOrPreparing(batch)) {
       return {
         icon: '✨',
-        text: `甄試已圓滿結束 · 正備取名單造冊審核中，預計 ${batch.training_start_date} 正式開訓！`
+        text: `甄試已結束 · 名單造冊中，預計 ${formatShortDate(batch.training_start_date)} 正式開訓！`
       }
     }
     if (isBatchEnrolling(batch)) {
       return {
         icon: '🔥',
-        text: `官方熱烈報名中 · 把握 100% 全額補助參訓機會！`
+        text: `官方熱烈報名中 · 把握 100% 全額補助！`
       }
     }
     if (isBatchUpcoming(batch)) {
       return {
         icon: '⏳',
-        text: `新一期別籌備中 · 預定開訓日期即將公布`
+        text: `新一期別籌備中 · 開訓日期即將公布`
       }
     }
     return {

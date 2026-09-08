@@ -198,10 +198,10 @@
                 </div>
               </div>
 
-              <!-- 生命週期動態焦點看板 -->
-              <div class="mt-4 pt-3.5 border-t border-slate-800/80 text-sm sm:text-base flex items-start sm:items-center space-x-2 text-slate-200">
-                <span class="flex-shrink-0 mt-0.5 sm:mt-0">{{ getLifecycleDetailNotice(batch).icon }}</span>
-                <span class="leading-relaxed font-medium">{{ getLifecycleDetailNotice(batch).text }}</span>
+              <!-- 生命週期動態焦點看板 (單行大器展示，自適應字級防折行) -->
+              <div class="mt-4 pt-3.5 border-t border-slate-800/80 text-xs sm:text-sm lg:text-base flex items-center space-x-2 text-slate-200 min-w-0">
+                <span class="flex-shrink-0 text-sm sm:text-base">{{ getLifecycleDetailNotice(batch).icon }}</span>
+                <span class="leading-relaxed font-medium whitespace-nowrap overflow-hidden text-ellipsis">{{ getLifecycleDetailNotice(batch).text }}</span>
               </div>
             </div>
 
