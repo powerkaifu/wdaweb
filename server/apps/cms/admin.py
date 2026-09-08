@@ -228,6 +228,7 @@ class StudentProjectAdmin(SafeUploadAdminMixin, SoftDeleteAdminMixin, ModelAdmin
     list_filter = ['batch_tag', 'is_featured', 'is_active']
     search_fields = ['student_name', 'project_name']
     list_editable = ['is_featured', 'sort_order', 'is_active']
+    actions = ['action_capture_screenshots']
 
     def cover_preview(self, obj):
         try:
@@ -237,6 +238,31 @@ class StudentProjectAdmin(SafeUploadAdminMixin, SoftDeleteAdminMixin, ModelAdmin
             pass
         return '無縮圖'
     cover_preview.short_description = '作品縮圖'
+
+    @admin.action(description='⚡ 執行自動爬取縮圖（根據 Demo 網址截圖並同步 CDN）')
+    def action_capture_screenshots(self, request, queryset):
+        from apps.cms.services.screenshot_service import capture_single_project, get_headless_driver
+        success = 0
+        total = queryset.count()
+        driver = None
+        try:
+            driver = get_headless_driver()
+            for obj in queryset:
+                if obj.demo_url:
+                    if capture_single_project(obj.id, wait_sec=3.5, driver=driver):
+                        success += 1
+        finally:
+            if driver:
+                driver.quit()
+        self.message_user(request, f"🎉 處理完成！共成功截取並同步 {success}/{total} 個作品縮圖！")
+
+    def save_model(self, request, obj, form, change):
+        super().save_model(request, obj, form, change)
+        # 若有 Demo 網址且尚未上傳圖片，自動於背景執行非同步截圖
+        if obj.demo_url and not obj.cover_image:
+            from apps.cms.services.screenshot_service import trigger_async_capture
+            trigger_async_capture(obj.id)
+            messages.info(request, f"🚀 系統已於背景自動為《{obj.project_name}》啟動無頭瀏覽器截圖，數秒後重新整理即可看到最新作品縮圖！")
 
 
 @admin.register(FAQ)
