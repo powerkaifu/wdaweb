@@ -42,11 +42,11 @@
                 <div class="relative h-44 bg-slate-800 overflow-hidden">
                   <img
                     v-if="project.cover_image_url && !brokenProjectImages.has(project.id)"
-                    :src="getProjectImageUrl(project.cover_image_url)"
+                    :src="getProjectImageUrl(project)"
                     :alt="project.image_alt || project.project_name || '學員專題作品成果縮圖'"
                     loading="lazy"
                     decoding="async"
-                    @error="markProjectImgError(project.id)"
+                    @error="handleImgError(project)"
                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div v-else class="w-full h-full flex items-center justify-center text-4xl bg-gradient-to-br from-slate-800 to-slate-900 text-cyan-400 font-black">
@@ -235,6 +235,7 @@
 import { ref, computed, onMounted, onUnmounted, nextTick, watch } from 'vue'
 import { createScrollStagger, gsap } from '@/utils/motion'
 import { useCmsStore } from '@/stores/useCmsStore'
+import type { StudentProject } from '@/types'
 
 const PAGE_SIZE = 8 // 每頁固定 8 個學員專案
 
@@ -252,20 +253,27 @@ const store = useCmsStore()
 const currentPage = ref(1)
 const flippedIds = ref(new Set<number>())
 const brokenProjectImages = ref(new Set<number>())
+const fallbackMap = ref<Record<number, string>>({})
 
-// 統一靜態資產與遠端 CDN 縮圖網址解析
-function getProjectImageUrl(url: string | undefined): string {
-  if (!url) return ''
-  if (url.startsWith('http://') || url.startsWith('https://') || url.startsWith('data:')) {
-    return url
+// 統一靜態資產與遠端 CDN 縮圖網址解析 (支援本地降級)
+function getProjectImageUrl(project: StudentProject): string {
+  const customUrl = fallbackMap.value[project.id] || project.cover_image_url
+  if (!customUrl) return ''
+  if (customUrl.startsWith('http://') || customUrl.startsWith('https://') || customUrl.startsWith('data:')) {
+    return customUrl
   }
-  const cleanPath = url.replace(/^\.?\//, '')
+  const cleanPath = customUrl.replace(/^\.?\//, '')
   return `${import.meta.env.BASE_URL}${cleanPath}`
 }
 
-// 雙重防禦：遠端專題縮圖載入失敗時無縫降級切換至科技感占位卡片
-function markProjectImgError(id: number) {
-  brokenProjectImages.value.add(id)
+// 多階智慧防禦：遠端 CDN 載入失敗時優先自動切換至打包之本地 WebP，若皆失敗才降級為占位卡片
+function handleImgError(project: StudentProject) {
+  const localFallback = `./projects/project_${project.id}.webp`
+  if (fallbackMap.value[project.id] !== localFallback) {
+    fallbackMap.value[project.id] = localFallback
+  } else {
+    brokenProjectImages.value.add(project.id)
+  }
 }
 let scrollTriggerCtx: ReturnType<typeof createScrollStagger> | null = null
 

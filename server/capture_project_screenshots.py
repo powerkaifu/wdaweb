@@ -84,6 +84,22 @@ def capture_project(driver, url: str, output_webp: Path, client_webp: Path, wait
             temp_png.unlink()
         return False
 
+def sync_to_cloudinary(p_id: int, local_webp: Path):
+    """若系統有設定 Cloudinary，同步上傳至 CDN 避免 404"""
+    try:
+        from django.conf import settings
+        if getattr(settings, 'IS_CLOUDINARY_CONFIGURED', False):
+            import cloudinary.uploader
+            res = cloudinary.uploader.upload(
+                str(local_webp),
+                public_id=f"media/projects/project_{p_id}",
+                overwrite=True,
+                resource_type='image'
+            )
+            print(f"  ☁️ 已同步至 Cloudinary CDN: {res.get('secure_url')}")
+    except Exception as e:
+        print(f"  ⚠️ Cloudinary 上傳略過或失敗: {e}")
+
 def main():
     projects = StudentProject.objects.all().order_by('id')
     total = projects.count()
@@ -109,6 +125,7 @@ def main():
                 p.cover_image = f"projects/project_{p.id}.webp"
                 p.image_alt = f"{p.project_name} - 學員 {p.student_name} 專題作品首頁成果"
                 p.save(update_fields=['cover_image', 'image_alt'])
+                sync_to_cloudinary(p.id, server_file)
                 success_count += 1
             else:
                 print(f"  ❌ 專案 {p.project_name} 截圖失敗")
