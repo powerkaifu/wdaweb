@@ -53,10 +53,6 @@
                     💻
                   </div>
 
-                  <div v-if="project.is_featured" class="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-amber-500/90 text-white text-sm font-bold shadow-md">
-                    ⭐ 精選專案
-                  </div>
-
                   <div class="absolute bottom-2 right-2 px-2.5 py-0.5 rounded-md bg-black/75 backdrop-blur-md text-sm text-slate-200 font-mono">
                     👁️ {{ project.view_count }} 次瀏覽
                   </div>

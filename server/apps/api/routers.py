@@ -188,7 +188,7 @@ def get_student_projects(request, featured: Optional[bool] = None):
     qs = StudentProject.objects.filter(is_active=True)
     if featured is not None:
         qs = qs.filter(is_featured=featured)
-    qs = qs.order_by('-is_featured', 'sort_order', '-created_at')
+    qs = qs.order_by('sort_order', 'id')
     return [
         {
             "id": p.id,
