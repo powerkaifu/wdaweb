@@ -1,207 +1,468 @@
 <template>
-  <!-- 方案一：AI Copilot 對話視窗 — 模擬 Cursor AI / GitHub Copilot 即時對話介面 -->
+  <!-- 方案一：AI Copilot 對話視窗 — 模擬 Cursor / ChatGPT 即時對話訊息串流 -->
   <div
-    class="relative w-full h-[395px] sm:h-[430px] lg:h-[440px] xl:h-[485px] 2xl:h-[500px] rounded-2xl sm:rounded-3xl overflow-hidden border border-purple-500/30 bg-slate-900/90 shadow-2xl shadow-purple-950/50 backdrop-blur-xl flex flex-col"
+    class="relative w-full h-[395px] sm:h-[430px] lg:h-[440px] xl:h-[485px] 2xl:h-[500px] rounded-2xl sm:rounded-3xl overflow-hidden border border-purple-500/30 bg-slate-900/90 shadow-2xl shadow-purple-950/50 backdrop-blur-xl flex flex-col justify-between"
   >
     <!-- 背景流光發光層 -->
     <div class="absolute -top-24 -right-24 w-64 h-64 bg-purple-500/12 rounded-full blur-3xl pointer-events-none"></div>
     <div class="absolute -bottom-24 -left-24 w-64 h-64 bg-cyan-600/12 rounded-full blur-3xl pointer-events-none"></div>
 
     <!-- 1. Mac 風格視窗標題列 -->
-    <div class="h-[42px] sm:h-[44px] lg:h-[48px] px-3 sm:px-4 lg:px-5 bg-slate-950/80 border-b border-slate-800 flex items-center justify-between flex-shrink-0">
+    <div class="h-[42px] sm:h-[44px] lg:h-[48px] px-3 sm:px-4 lg:px-5 bg-slate-950/85 border-b border-slate-800 flex items-center justify-between flex-shrink-0 z-20">
       <!-- 視窗控制按鈕 -->
       <div class="flex items-center space-x-1.5 sm:space-x-2 overflow-hidden mr-2">
         <div class="w-2.5 h-2.5 sm:w-3 sm:h-3 lg:w-3.5 lg:h-3.5 rounded-full bg-red-500/80 flex-shrink-0"></div>
         <div class="w-2.5 h-2.5 sm:w-3 sm:h-3 lg:w-3.5 lg:h-3.5 rounded-full bg-amber-500/80 flex-shrink-0"></div>
         <div class="w-2.5 h-2.5 sm:w-3 sm:h-3 lg:w-3.5 lg:h-3.5 rounded-full bg-emerald-500/80 flex-shrink-0"></div>
-        <span class="ml-1 sm:ml-2 text-xs lg:text-sm font-mono text-slate-400 font-semibold flex items-center space-x-1 truncate">
+        <span class="ml-1 sm:ml-2 text-xs lg:text-sm font-mono text-slate-400 font-semibold flex items-center space-x-1.5 truncate">
           <span class="text-purple-400 flex-shrink-0">🤖</span>
-          <span class="truncate max-w-[110px] sm:max-w-none">AI 學習助教 — 泰山職訓</span>
+          <span class="truncate max-w-[120px] xs:max-w-[160px] sm:max-w-none">AI 學習助教 — 泰山職訓問答</span>
         </span>
       </div>
-      <!-- 狀態標籤 -->
-      <div class="flex items-center space-x-1.5 sm:space-x-2 flex-shrink-0">
-        <span class="relative flex h-2 w-2">
-          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-          <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+
+      <!-- 狀態標籤與當前輪數統計 -->
+      <div class="flex items-center space-x-2 sm:space-x-3 flex-shrink-0">
+        <span class="hidden xs:inline-flex text-xs font-mono px-2 py-0.5 rounded-full bg-purple-500/15 text-purple-300 border border-purple-500/30">
+          題庫 {{ currentDisplayRound }}/{{ conversations.length }}
         </span>
-        <span class="text-xs lg:text-sm font-mono text-emerald-300 font-bold tracking-wide">線上 Online</span>
+        <div class="flex items-center space-x-1.5">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+          </span>
+          <span class="text-xs lg:text-sm font-mono text-emerald-300 font-bold tracking-wide">
+            <span class="hidden sm:inline">線上 </span>Live
+          </span>
+        </div>
       </div>
     </div>
 
-    <!-- 2. 對話訊息列表區 (可滾動視覺) -->
-    <div class="flex-1 overflow-hidden px-3.5 sm:px-5 lg:px-5 xl:px-6 py-3 sm:py-4 space-y-3 sm:space-y-3.5 flex flex-col justify-end">
+    <!-- 2. 對話訊息列表區（無限往上移動滾動，不清空畫面） -->
+    <div class="relative flex-1 overflow-hidden">
+      <!-- 頂部平滑消隱遮罩：往上滾動的歷史訊息優雅漸漸融入深色背景 -->
+      <div class="absolute inset-x-0 top-0 h-8 bg-gradient-to-b from-slate-900 via-slate-900/60 to-transparent pointer-events-none z-10"></div>
 
-      <!-- 訊息泡泡容器（從下往上顯示最新的訊息） -->
+      <!-- 滾動容器 -->
       <div
-        v-for="(msg, idx) in visibleMessages"
-        :key="idx"
-        class="flex items-end gap-2.5"
-        :class="msg.role === 'user' ? 'flex-row-reverse' : 'flex-row'"
+        ref="scrollContainerRef"
+        class="h-full overflow-y-auto px-3.5 sm:px-5 lg:px-5 xl:px-6 py-4 space-y-3 sm:space-y-4 scroll-smooth custom-scrollbar"
       >
-        <!-- 頭像 -->
-        <div
-          class="w-7 h-7 sm:w-8 sm:h-8 rounded-xl flex items-center justify-center text-sm flex-shrink-0 font-bold"
-          :class="msg.role === 'user'
-            ? 'bg-gradient-to-tr from-slate-600 to-slate-700 text-slate-200'
-            : 'bg-gradient-to-tr from-purple-600 to-cyan-600 text-white shadow-md shadow-purple-500/30'"
-        >
-          {{ msg.role === 'user' ? '你' : '🤖' }}
-        </div>
+        <!-- 訊息串列 -->
+        <TransitionGroup name="chat-msg" tag="div" class="space-y-3 sm:space-y-4">
+          <div
+            v-for="(msg, idx) in chatHistory"
+            :key="msg.id"
+            class="flex items-start gap-2.5"
+            :class="msg.role === 'user' ? 'flex-row-reverse' : 'flex-row'"
+          >
+            <!-- 頭像 -->
+            <div
+              class="w-7 h-7 sm:w-8 sm:h-8 rounded-xl flex items-center justify-center text-xs sm:text-sm flex-shrink-0 font-bold shadow-md select-none mt-0.5"
+              :class="msg.role === 'user'
+                ? 'bg-gradient-to-tr from-slate-600 to-slate-700 text-slate-200'
+                : 'bg-gradient-to-tr from-purple-600 to-cyan-600 text-white shadow-purple-500/30'"
+            >
+              {{ msg.role === 'user' ? '你' : '🤖' }}
+            </div>
 
-        <!-- 訊息泡泡 -->
-        <div
-          class="max-w-[75%] px-3 py-2 sm:px-3.5 sm:py-2.5 rounded-2xl text-xs sm:text-sm leading-relaxed"
-          :class="msg.role === 'user'
-            ? 'bg-slate-700/80 text-slate-200 rounded-tr-sm'
-            : 'bg-gradient-to-br from-purple-950/70 to-slate-900 border border-purple-500/20 text-slate-100 rounded-tl-sm'"
-        >
-          <!-- AI 訊息：支援逐字打字動畫 -->
-          <template v-if="msg.role === 'assistant' && idx === visibleMessages.length - 1 && isTyping">
-            <span>{{ typingDisplayText }}</span>
-            <span class="inline-block w-1.5 h-3 sm:h-3.5 bg-purple-400 animate-pulse ml-0.5 align-middle"></span>
-          </template>
-          <template v-else>
-            {{ msg.content }}
-          </template>
-        </div>
-      </div>
+            <!-- 訊息泡泡 -->
+            <div
+              class="max-w-[82%] sm:max-w-[78%] px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-2xl text-xs sm:text-sm leading-relaxed tracking-wide shadow-sm"
+              :class="msg.role === 'user'
+                ? 'bg-slate-700/85 text-slate-100 rounded-tr-sm border border-slate-600/50'
+                : 'bg-gradient-to-br from-purple-950/75 via-slate-900/90 to-slate-950 border border-purple-500/30 text-slate-200 rounded-tl-sm'"
+            >
+              <!-- 提問人 / AI 助教標籤 -->
+              <div
+                class="text-xs font-mono font-semibold mb-1 select-none flex items-center gap-1.5"
+                :class="msg.role === 'user' ? 'text-slate-400 justify-end' : 'text-purple-300'"
+              >
+                <span>{{ msg.role === 'user' ? '轉職諮詢訪客' : '泰山職訓 AI 助教' }}</span>
+                <span v-if="msg.tag" class="px-1.5 py-0.5 rounded bg-purple-500/20 text-purple-200 text-xs font-normal">
+                  {{ msg.tag }}
+                </span>
+              </div>
 
-      <!-- 思考中指示器 (AI 正在回應時顯示) -->
-      <div v-if="showThinking" class="flex items-end gap-2.5">
-        <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-gradient-to-tr from-purple-600 to-cyan-600 text-white flex items-center justify-center text-sm flex-shrink-0">🤖</div>
-        <div class="px-3 py-2.5 rounded-2xl rounded-tl-sm bg-gradient-to-br from-purple-950/70 to-slate-900 border border-purple-500/20">
-          <div class="flex items-center space-x-1.5">
-            <span class="w-1.5 h-1.5 rounded-full bg-purple-400 animate-bounce" style="animation-delay:0ms"></span>
-            <span class="w-1.5 h-1.5 rounded-full bg-purple-400 animate-bounce" style="animation-delay:150ms"></span>
-            <span class="w-1.5 h-1.5 rounded-full bg-purple-400 animate-bounce" style="animation-delay:300ms"></span>
+              <!-- 內容顯示：AI 最新一條訊息支援打字串流光標 -->
+              <div class="whitespace-pre-line text-slate-200">
+                <template v-if="msg.role === 'assistant' && msg.id === currentTypingMsgId">
+                  <span>{{ typingDisplayText }}</span>
+                  <span class="inline-block w-1.5 h-3.5 sm:h-4 bg-purple-400 animate-pulse ml-0.5 align-middle"></span>
+                </template>
+                <template v-else>
+                  {{ msg.content }}
+                </template>
+              </div>
+            </div>
+          </div>
+        </TransitionGroup>
+
+        <!-- 思考中脈衝指示器 (AI 正在運算回應時推進畫面) -->
+        <div v-if="showThinking" class="flex items-start gap-2.5">
+          <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-gradient-to-tr from-purple-600 to-cyan-600 text-white flex items-center justify-center text-xs sm:text-sm flex-shrink-0 shadow-md shadow-purple-500/30 select-none mt-0.5">
+            🤖
+          </div>
+          <div class="px-3.5 py-2.5 rounded-2xl rounded-tl-sm bg-gradient-to-br from-purple-950/75 to-slate-900 border border-purple-500/30">
+            <div class="flex items-center space-x-1.5 py-0.5">
+              <span class="text-xs font-mono text-purple-300 mr-1.5">AI 思考回覆中</span>
+              <span class="w-1.5 h-1.5 rounded-full bg-purple-400 animate-bounce" style="animation-delay:0ms"></span>
+              <span class="w-1.5 h-1.5 rounded-full bg-purple-400 animate-bounce" style="animation-delay:160ms"></span>
+              <span class="w-1.5 h-1.5 rounded-full bg-purple-400 animate-bounce" style="animation-delay:320ms"></span>
+            </div>
           </div>
         </div>
+
+        <!-- 滾動定錨底部哨兵元素 -->
+        <div ref="bottomAnchorRef" class="h-1"></div>
       </div>
     </div>
 
-    <!-- 3. 底部輸入列 -->
-    <div class="h-[58px] sm:h-[62px] lg:h-[66px] px-3 sm:px-4 lg:px-5 bg-gradient-to-r from-slate-950 via-slate-900 to-purple-950/30 border-t border-purple-500/20 flex items-center space-x-2.5 sm:space-x-3 flex-shrink-0">
-      <!-- 模擬輸入框 -->
-      <div class="flex-1 h-9 sm:h-10 rounded-xl bg-slate-800/60 border border-slate-700/60 px-3 flex items-center overflow-hidden">
-        <span class="text-xs sm:text-sm text-slate-500 truncate">{{ currentQuestion }}</span>
-        <span class="inline-block w-1 h-3.5 sm:h-4 bg-slate-500 animate-pulse ml-1 flex-shrink-0"></span>
+    <!-- 3. 底部輸入模擬列 -->
+    <div class="h-[56px] sm:h-[60px] lg:h-[64px] px-3 sm:px-4 lg:px-5 bg-gradient-to-r from-slate-950 via-slate-900 to-purple-950/40 border-t border-purple-500/25 flex items-center space-x-2.5 sm:space-x-3 flex-shrink-0 z-20">
+      <!-- 模擬輸入框（動態顯示下一題提示） -->
+      <div class="flex-1 h-9 sm:h-10 rounded-xl bg-slate-950/60 border border-slate-800 hover:border-purple-500/40 px-3 flex items-center overflow-hidden transition-colors">
+        <span class="text-purple-400 font-mono text-xs mr-1.5 font-bold select-none">💬</span>
+        <span class="text-xs sm:text-sm text-slate-300 truncate font-sans">{{ currentQuestionPreview }}</span>
+        <span class="inline-block w-1.5 h-3.5 sm:h-4 bg-purple-400 animate-pulse ml-1 flex-shrink-0"></span>
       </div>
-      <!-- 傳送按鈕 -->
+
+      <!-- 下一題按鈕（手動加速快轉） -->
       <button
         type="button"
-        @click="nextConversation"
-        class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-purple-600 to-cyan-600 hover:from-purple-500 hover:to-cyan-500 text-white flex items-center justify-center text-base shadow-md shadow-purple-500/30 hover:scale-105 active:scale-95 transition-all flex-shrink-0 cursor-pointer"
-        title="切換下一組對話"
+        @click="fastForwardNext"
+        class="h-9 sm:h-10 px-3 rounded-xl bg-gradient-to-br from-purple-600 via-indigo-600 to-cyan-600 hover:from-purple-500 hover:to-cyan-500 text-white flex items-center justify-center space-x-1.5 text-xs font-bold shadow-md shadow-purple-500/25 hover:scale-105 active:scale-95 transition-all flex-shrink-0 cursor-pointer"
+        title="立即跳至下一個民眾關心議題"
       >
-        ↻
+        <span>下一題</span>
+        <span class="text-sm leading-none">→</span>
       </button>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { ref, nextTick, onMounted, onUnmounted } from 'vue'
 
-// 對話腳本庫（每組對話展示不同學習場景）
-interface Message {
+// 對話訊息模型
+interface ChatMessage {
+  id: string
   role: 'user' | 'assistant'
   content: string
+  tag?: string
 }
 
-const conversations: { question: string; messages: Message[] }[] = [
+// 題庫模型
+interface QAItem {
+  tag: string
+  question: string
+  answer: string
+}
+
+// ── 豐富多元的課程特色與民眾核心關切題庫（共 16 大精選問答）──────────
+const conversations: QAItem[] = [
   {
-    question: '我完全沒寫過程式，可以來學嗎？',
-    messages: [
-      { role: 'user', content: '我完全沒寫過程式，可以來學嗎？' },
-      { role: 'assistant', content: '當然！本課程從 HTML 第一行開始，0 基礎也能順利跟上。920 小時循序漸進，有老師全程陪伴，你只需要帶著想學的心就夠了 ✨' }
-    ]
+    tag: '零基礎轉職',
+    question: '我完全沒有程式底子、不是理工科系，真的學得會嗎？',
+    answer: '完全可以！課程從 HTML/CSS 最基礎的第一行語法教起。老師與助教全程實體駐點，遇到問題當場看螢幕解題，920 小時循序漸進，帶你從零開始獨立完成前後端專題作品！✨'
   },
   {
-    question: '學完之後能找到工作嗎？',
-    messages: [
-      { role: 'user', content: '學完之後能找到工作嗎？' },
-      { role: 'assistant', content: '我們的畢業學員透過期末 Demo Day 展示真實作品，多位已成功轉職前端工程師。課程結合 Vue 3、Django、AI 串接等熱門技術，技能樹完整！🚀' }
-    ]
+    tag: '政府補助',
+    question: '政府全額補助學費是真的嗎？受訓期間還有生活津貼？',
+    answer: '是真的！符合非自願離職、中高齡、特定對象或待業者身分，學費 100% 由政府全額補助。符合就業保險法規者，每月還能請領原投保薪資 60% 的職訓生活津貼，安心學習無負擔！💰'
   },
   {
-    question: '全額補助是怎麼申請的？',
-    messages: [
-      { role: 'user', content: '全額補助是怎麼申請的？' },
-      { role: 'assistant', content: '透過台灣就業通報名，符合資格者可獲得全額免費培訓，期間還有每月生活津貼補助。詳細資格請點擊下方「立即查看招生期別」了解 💰' }
-    ]
+    tag: '920h實作',
+    question: '為什麼訓練時數要長達 920 小時？跟外面 3 個月速成班差在哪？',
+    answer: '坊間速成班多偏向表面語法，缺乏動手深度。泰山 920 小時涵蓋「現代前端框架 + 後端 API 資料庫 + AI 輔助工作流 + 完整商業專題實作」，每天 8 小時高強度淬鍊，結訓具備即戰力！🔥'
+  },
+  {
+    tag: 'AI輔助開發',
+    question: '現在 AI 寫程式這麼厲害，學網頁會不會被 AI 取代？',
+    answer: '不會！本專班正是專門培訓你「如何成為駕馭 AI 的工程師」。課程教你運用 Claude、Cursor、ChatGPT 融入開發日常，做架構設計、自動除錯與 API 串聯，讓你一人具備抵三人工作效率的現代開發實力！🤖'
+  },
+  {
+    tag: '一人雙螢幕',
+    question: '泰山職訓場的教學環境與電腦設備好嗎？',
+    answer: '非常完善！每位學員享有專屬工作位，配置高效能主機與「一人雙螢幕」，一邊寫 Code 一邊即時看瀏覽器渲染。冷氣空調教室、高速光纖網路，打造專業工程師沉浸式實體學習環境！🖥️'
+  },
+  {
+    tag: '就業媒合',
+    question: '結訓後的就業出路有哪些？會有廠商媒合嗎？',
+    answer: '結訓前夕會舉辦專屬的「期末成果發表 Demo Day」，直接邀請雙北軟體資訊廠商、企業主管到場看作品面試！主要就業職缺包含前端工程師、Web 全端助理工程師、UI/UX 前端開發者等。🎯'
+  },
+  {
+    tag: '商業專題',
+    question: '結訓時每個人都會有自己的獨立專題作品嗎？',
+    answer: '是的！第七模組（M7）就是完整的商業專題實戰。每位學員都會獨立從需求規劃、資料庫設計到前後端雲端部署，完成具備公開網址與 GitHub 原始碼的個人代表作，面試直接秀給主管看！🏆'
+  },
+  {
+    tag: '全端技能樹',
+    question: '除了前端 Vue 3，還會學到後端與資料庫技術嗎？',
+    answer: '會的！課程包含 Python Django 後端框架、RESTful API 設計、SQLite/PostgreSQL 資料庫存取與雲端部署，讓你不只是純切版，而是擁有打通前後端完整閉環架構的全方位能力！🌐'
+  },
+  {
+    tag: '破除年齡焦慮',
+    question: '我已經 35 歲以上或 40 歲了，跨領域轉職軟體業會太晚嗎？',
+    answer: '歷屆都有許多 30 歲、40 歲以上學員順利轉職成功！企業在乎的是你能否解決問題與主動學習的態度，920 小時累積的實戰作品加上過去職場累積的溝通成熟度，往往是你的獨特加分優勢！💪'
+  },
+  {
+    tag: '甄試指南',
+    question: '報名後需要筆試或口試嗎？該如何準備甄試？',
+    answer: '報名截止後會有筆試（國中數理邏輯、基礎電腦常識）與面試（評估學習動機、就業決心與出席穩定度）。展現誠懇積極的轉職態度與全力以赴的準備，錄取機會非常高！📋'
+  },
+  {
+    tag: '師資助教',
+    question: '如果上課遇到 Bug 卡關、跟不上進度時怎麼辦？',
+    answer: '實體班最大的價值就是「隨叫隨到的助教與專業講師在身邊」！卡關時老師直接看你的螢幕解惑。下課與週末還有專屬 Discord 班級社群，同學互相交流討論，絕不讓你孤軍奮戰！🤝'
+  },
+  {
+    tag: '交通地理',
+    question: '泰山訓練場的位置在哪裡？通勤交通方便嗎？',
+    answer: '位於新北市泰山區貴子里致遠新村 55 之 1 號（近輔仁大學）。可搭乘捷運新莊線至「輔大站」或機場捷運「泰山貴和站」，轉乘公車即可抵達，訓練場亦備有汽機車停車場方便通勤！🚌'
+  },
+  {
+    tag: '文組跨考',
+    question: '我是文組、商科或設計背景，邏輯不好也能學嗎？',
+    answer: '完全不用擔心！程式開發如同學習一種結構嚴謹的新語言，文組的文字組織力、商科的商業邏輯、設計的美學感受，在前端領域都是非常亮眼的特質，往年很多最優秀的學員都是跨領域出身！🎨'
+  },
+  {
+    tag: '生活津貼金額',
+    question: '非自願離職者領取的職訓生活津貼金額大概是多少？',
+    answer: '依《就業保險法》規定，非自願離職者經公立就業服務機構推介參訓，受訓期間每月按退保前 6 個月平均月投保薪資的 60% 發給，最長發給 6 個月，讓你在 920 小時培訓期間無經濟後顧之憂！💵'
+  },
+  {
+    tag: '最新技術棧',
+    question: '課程中前端技術棧包含哪些最新工具？',
+    answer: '涵蓋現代前端必備核心：HTML5/CSS3、JavaScript ES6+、Vue 3 Composition API、TypeScript 強型別、Tailwind CSS、Pinia 狀態管理、Vite 建置工具與 Git 版本控制，緊跟當前業界招募主流標準！⚡'
+  },
+  {
+    tag: '結訓出勤規範',
+    question: '上課時間是如何安排的？請假會有時數限制嗎？',
+    answer: '週一至週五白天（8:20~16:45）實體授課，比照公務機關嚴謹出勤管理。請假時數不得超過總訓練時數的 8%（約 73 小時），確保每位學員都能扎實吸收完整的 920 小時專業課程！⏰'
   }
 ]
 
-const currentConvIdx = ref(0)
-const visibleMessages = ref<Message[]>([])
-const showThinking = ref(false)
-const isTyping = ref(false)
-const typingDisplayText = ref('')
-const currentQuestion = ref(conversations[0].question)
+// ── 狀態管理 ────────────────────────────────────────────────────────
+const chatHistory = ref<ChatMessage[]>([])
+const scrollContainerRef = ref<HTMLElement | null>(null)
+const bottomAnchorRef = ref<HTMLElement | null>(null)
 
-let typingTimer: ReturnType<typeof setInterval> | null = null
-let cycleTimer: ReturnType<typeof setTimeout> | null = null
+const showThinking = ref(false)
+const currentTypingMsgId = ref<string | null>(null)
+const typingDisplayText = ref('')
+const currentQuestionPreview = ref('')
+const currentDisplayRound = ref(1)
+
+// 洗牌抽樣隊列（不重複顯示直至全部抽完，再重啟新一輪）
+let unvisitedIndices: number[] = []
+let activeTimer: ReturnType<typeof setTimeout> | null = null
+let typingInterval: ReturnType<typeof setInterval> | null = null
+
+// 隨機不重複取得下一個問題索引
+function getNextIndex(): number {
+  if (unvisitedIndices.length === 0) {
+    // 重新產生完整索引陣列 [0, 1, 2, ..., N-1]
+    unvisitedIndices = Array.from({ length: conversations.length }, (_, i) => i)
+    // Fisher-Yates 洗牌演算法
+    for (let i = unvisitedIndices.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1))
+      ;[unvisitedIndices[i], unvisitedIndices[j]] = [unvisitedIndices[j], unvisitedIndices[i]]
+    }
+  }
+  // 計算當前輪次已展示題數（1 ~ N）
+  currentDisplayRound.value = conversations.length - unvisitedIndices.length + 1
+  return unvisitedIndices.pop()!
+}
+
+// 平滑自動捲動到底部，推動畫面向上推進
+function scrollToBottom(smooth = true) {
+  nextTick(() => {
+    if (scrollContainerRef.value) {
+      scrollContainerRef.value.scrollTo({
+        top: scrollContainerRef.value.scrollHeight,
+        behavior: smooth ? 'smooth' : 'auto'
+      })
+    }
+  })
+}
 
 // 逐字打字動畫
-function typeText(text: string, onDone?: () => void) {
-  if (typingTimer) clearInterval(typingTimer)
+function streamText(fullText: string, onDone: () => void) {
+  if (typingInterval) clearInterval(typingInterval)
   typingDisplayText.value = ''
-  isTyping.value = true
-  let idx = 0
-  typingTimer = setInterval(() => {
-    if (idx < text.length) {
-      typingDisplayText.value += text[idx]
-      idx++
+  let charIdx = 0
+
+  typingInterval = setInterval(() => {
+    if (charIdx < fullText.length) {
+      typingDisplayText.value += fullText[charIdx]
+      charIdx++
+      // 隨字數推進保持視窗往下捲動
+      if (charIdx % 3 === 0) {
+        scrollToBottom(false)
+      }
     } else {
-      clearInterval(typingTimer!)
-      typingTimer = null
-      isTyping.value = false
-      onDone?.()
+      if (typingInterval) clearInterval(typingInterval)
+      typingInterval = null
+      scrollToBottom(true)
+      onDone()
     }
-  }, 28)
+  }, 24)
 }
 
-// 播放一組對話
-function playConversation(idx: number) {
-  const conv = conversations[idx]
-  currentQuestion.value = conv.question
+// 推進一輪新的問答（不刷新既有畫面，只往上堆疊）
+function triggerNextQA() {
+  clearTimers()
 
-  // 先清空，顯示用戶訊息
-  visibleMessages.value = [conv.messages[0]]
+  const qIndex = getNextIndex()
+  const qa = conversations[qIndex]
+
+  // 1. 底部輸入框顯示即將發送的問題
+  currentQuestionPreview.value = qa.question
+
+  // 延遲 600ms 送出提問，模擬訪客輸入完送出
+  activeTimer = setTimeout(() => {
+    const userMsgId = `user-${Date.now()}`
+    chatHistory.value.push({
+      id: userMsgId,
+      role: 'user',
+      content: qa.question,
+      tag: qa.tag
+    })
+
+    // 防爆保護：如果歷史訊息過多（> 18 則），移除最前頭最早的 2 則以保證極致效能
+    if (chatHistory.value.length > 18) {
+      chatHistory.value.splice(0, 2)
+    }
+
+    scrollToBottom(true)
+
+    // 2. 顯示 AI 正在思考
+    activeTimer = setTimeout(() => {
+      showThinking.value = true
+      scrollToBottom(true)
+
+      // 3. 思考 1.1 秒後，AI 開始生成回覆
+      activeTimer = setTimeout(() => {
+        showThinking.value = false
+
+        const aiMsgId = `ai-${Date.now()}`
+        currentTypingMsgId.value = aiMsgId
+
+        chatHistory.value.push({
+          id: aiMsgId,
+          role: 'assistant',
+          content: qa.answer,
+          tag: qa.tag
+        })
+
+        scrollToBottom(true)
+
+        // 4. 打字機串流輸出
+        streamText(qa.answer, () => {
+          currentTypingMsgId.value = null
+
+          // 打字完成後，留出 5.5 秒讓使用者舒適閱讀，隨後自動觸發下一則（不刷新，一直往上跑）
+          activeTimer = setTimeout(() => {
+            triggerNextQA()
+          }, 5500)
+        })
+      }, 1100)
+    }, 700)
+  }, 600)
+}
+
+// 手動快速切換到下一題
+function fastForwardNext() {
+  clearTimers()
+  // 若當前正在打字，將當前訊息補齊
+  if (currentTypingMsgId.value) {
+    const activeMsg = chatHistory.value.find(m => m.id === currentTypingMsgId.value)
+    if (activeMsg) {
+      // 找到答案直接填入
+      const found = conversations.find(c => c.answer.startsWith(typingDisplayText.value.slice(0, 8)))
+      if (found) {
+        activeMsg.content = found.answer
+      }
+    }
+    currentTypingMsgId.value = null
+  }
   showThinking.value = false
-  isTyping.value = false
-
-  // 短暫延遲後出現「思考中」
-  cycleTimer = setTimeout(() => {
-    showThinking.value = true
-    // 再延遲後開始打字輸出 AI 回應
-    cycleTimer = setTimeout(() => {
-      showThinking.value = false
-      visibleMessages.value = [...conv.messages]
-      typeText(conv.messages[1].content, () => {
-        // 打字完成後 6 秒進入下一組
-        cycleTimer = setTimeout(() => {
-          nextConversation()
-        }, 6000)
-      })
-    }, 1200)
-  }, 900)
+  triggerNextQA()
 }
 
-function nextConversation() {
-  if (typingTimer) clearInterval(typingTimer)
-  if (cycleTimer) clearTimeout(cycleTimer)
-  currentConvIdx.value = (currentConvIdx.value + 1) % conversations.length
-  playConversation(currentConvIdx.value)
+function clearTimers() {
+  if (activeTimer) {
+    clearTimeout(activeTimer)
+    activeTimer = null
+  }
+  if (typingInterval) {
+    clearInterval(typingInterval)
+    typingInterval = null
+  }
 }
 
 onMounted(() => {
-  playConversation(0)
+  // 初次掛載時先預先置入一組歷史對話，讓視窗有對話感
+  const firstIdx = getNextIndex()
+  const firstQA = conversations[firstIdx]
+
+  chatHistory.value.push(
+    {
+      id: 'init-1',
+      role: 'user',
+      content: firstQA.question,
+      tag: firstQA.tag
+    },
+    {
+      id: 'init-2',
+      role: 'assistant',
+      content: firstQA.answer,
+      tag: firstQA.tag
+    }
+  )
+
+  scrollToBottom(false)
+
+  // 3.5 秒後自然推進下一題，開始滾動
+  activeTimer = setTimeout(() => {
+    triggerNextQA()
+  }, 3500)
 })
 
 onUnmounted(() => {
-  if (typingTimer) clearInterval(typingTimer)
-  if (cycleTimer) clearTimeout(cycleTimer)
+  clearTimers()
 })
 </script>
+
+<style scoped>
+/* 專屬極致暗黑低調滾動條 */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(168, 85, 247, 0.2);
+  border-radius: 9999px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(168, 85, 247, 0.4);
+}
+
+/* 訊息進入過渡動畫：由下往上平滑推入 */
+.chat-msg-enter-active {
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.chat-msg-enter-from {
+  opacity: 0;
+  transform: translateY(18px) scale(0.98);
+}
+.chat-msg-leave-active {
+  transition: all 0.25s ease-out;
+}
+.chat-msg-leave-to {
+  opacity: 0;
+  transform: translateY(-12px);
+}
+</style>
