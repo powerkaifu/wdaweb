@@ -16,7 +16,7 @@
       <div class="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 space-y-4">
         <div class="max-w-3xl mx-auto space-y-4">
           <h3 class="text-2xl sm:text-3xl font-black text-white tracking-tight">還有其他問題想即時提問？</h3>
-          <p class="text-slate-300 text-base">歡迎加入我們的 Discord 官方線上社群，有學長姐與助教即時線上為您解答！</p>
+          <p class="text-slate-300 text-base">歡迎加入我們的 Discord 官方線上社群，有熱心學長姐與同學即時線上交流！</p>
           <div class="pt-2">
             <router-link
               to="/community"
