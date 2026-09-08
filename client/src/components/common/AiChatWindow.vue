@@ -196,9 +196,9 @@ const conversations: QAItem[] = [
     answer: '是的！第七模組（M7）就是完整的商業專題實戰。每位學員都會獨立從需求規劃、資料庫設計到前後端雲端部署，完成具備公開網址與 GitHub 原始碼的個人代表作，面試直接秀給主管看！🏆'
   },
   {
-    tag: '全端技能樹',
+    tag: '全端資料庫',
     question: '除了前端 Vue 3，還會學到後端與資料庫技術嗎？',
-    answer: '會的！課程包含 Python Django 後端框架、RESTful API 設計、SQLite/PostgreSQL 資料庫存取與雲端部署，讓你不只是純切版，而是擁有打通前後端完整閉環架構的全方位能力！🌐'
+    answer: '會的！課程包含 Node.js 執行環境、RESTful API 設計與 MongoDB NoSQL 資料庫塑模與操作，讓你不只是單純切版，而是擁有打通「前端介面 ➔ API 串接 ➔ 資料庫存取」完整閉環架構的全端思維！🌐'
   },
   {
     tag: '破除年齡焦慮',
