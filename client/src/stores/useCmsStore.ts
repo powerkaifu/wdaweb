@@ -7,7 +7,7 @@ import type {
   StudentProject, FAQItem
 } from '@/types'
 
-const CACHE_KEY = 'wdaweb_cms_cache_v1'
+const CACHE_KEY = 'wdaweb_cms_cache_v2'
 
 // 預設靜態快照 (確保 0.01 秒秒開與 Render 後端休眠冷啟動零等待體驗)
 const defaultSettings: SiteSetting = {
@@ -119,20 +119,20 @@ const defaultModules: CurriculumModule[] = [
 ]
 
 const defaultProjects: StudentProject[] = [
-  { id: 1, student_name: '蔡昀容', batch_tag: '結訓成果', project_name: '夢百貨', cover_image_url: '', image_alt: '夢百貨', demo_url: 'https://blackcat0708.github.io/DreamDepartmentStore-front/#/', github_url: '', view_count: 0, is_featured: true, sort_order: 1 },
-  { id: 2, student_name: '董元琪', batch_tag: '結訓成果', project_name: 'Matching TRPG', cover_image_url: '', image_alt: 'Matching TRPG', demo_url: 'https://chichitung.github.io/MatchingTRPG-front/#/', github_url: '', view_count: 0, is_featured: true, sort_order: 2 },
-  { id: 3, student_name: '仲崇安', batch_tag: '結訓成果', project_name: 'Voice Land', cover_image_url: '', image_alt: 'Voice Land', demo_url: 'https://josh19961201.github.io/VoiceLand_front/#/', github_url: '', view_count: 0, is_featured: true, sort_order: 3 },
-  { id: 4, student_name: '楊詠茜', batch_tag: '結訓成果', project_name: '桌下吧', cover_image_url: '', image_alt: '桌下吧', demo_url: 'https://cloris222.github.io/quasar-project/#/', github_url: '', view_count: 0, is_featured: true, sort_order: 4 },
-  { id: 5, student_name: '黃姿瑄', batch_tag: '結訓成果', project_name: '團購趣', cover_image_url: '', image_alt: '團購趣', demo_url: 'https://a733181.github.io/2022-buytogether/#/', github_url: '', view_count: 0, is_featured: true, sort_order: 5 },
-  { id: 6, student_name: '許凱炫', batch_tag: '結訓成果', project_name: '一個地方', cover_image_url: '', image_alt: '一個地方', demo_url: 'https://qweasd333ee.github.io/a-place-bar-front/', github_url: '', view_count: 0, is_featured: false, sort_order: 6 },
-  { id: 7, student_name: '徐嘉伶', batch_tag: '結訓成果', project_name: 'AZ.ZERO', cover_image_url: '', image_alt: 'AZ.ZERO', demo_url: 'https://lisia229.github.io/AZFront/#/', github_url: '', view_count: 0, is_featured: false, sort_order: 7 },
-  { id: 8, student_name: '郭思緯', batch_tag: '結訓成果', project_name: 'Show Time', cover_image_url: '', image_alt: 'Show Time', demo_url: 'https://kkone0275.github.io/top-free-time-front/#/', github_url: '', view_count: 0, is_featured: false, sort_order: 8 },
-  { id: 9, student_name: '王政文', batch_tag: '結訓成果', project_name: 'Ocean', cover_image_url: '', image_alt: 'Ocean', demo_url: 'https://nailshort.github.io/Ocean-front/#/', github_url: '', view_count: 0, is_featured: false, sort_order: 9 },
-  { id: 10, student_name: '胡俊宇', batch_tag: '結訓成果', project_name: '揪遊 (JoYo)', cover_image_url: '', image_alt: '揪遊 (JoYo)', demo_url: 'https://lilmax922.github.io/JoYo-Front/#/', github_url: '', view_count: 0, is_featured: false, sort_order: 10 },
-  { id: 11, student_name: '張雅涵', batch_tag: '結訓成果', project_name: 'Sunday', cover_image_url: '', image_alt: 'Sunday', demo_url: 'https://vvn719.github.io/SUNDAY-vue-project/#/', github_url: '', view_count: 0, is_featured: false, sort_order: 11 },
-  { id: 12, student_name: '黃佳琦', batch_tag: '結訓成果', project_name: '綠善生活農場', cover_image_url: '', image_alt: '綠善生活農場', demo_url: 'https://gagiherdesign.github.io/susi-front/#/', github_url: '', view_count: 0, is_featured: false, sort_order: 12 },
-  { id: 13, student_name: '蔡文瑜', batch_tag: '結訓成果', project_name: 'BCoffee', cover_image_url: '', image_alt: 'BCoffee', demo_url: 'https://pato830729.github.io/BCcoffee-front/#/', github_url: '', view_count: 0, is_featured: false, sort_order: 13 },
-  { id: 14, student_name: '蘇俞甄', batch_tag: '結訓成果', project_name: 'MAUNA COFFEE', cover_image_url: '', image_alt: 'MAUNA COFFEE', demo_url: 'https://a5a5aa.github.io/TSFP-front/#/', github_url: '', view_count: 0, is_featured: false, sort_order: 14 }
+  { id: 1, student_name: '蔡昀容', batch_tag: '結訓成果', project_name: '夢百貨', cover_image_url: './projects/project_1.webp', image_alt: '夢百貨 - 學員蔡昀容專題作品成果', demo_url: 'https://blackcat0708.github.io/DreamDepartmentStore-front/#/', github_url: '', view_count: 128, is_featured: true, sort_order: 1 },
+  { id: 2, student_name: '董元琪', batch_tag: '結訓成果', project_name: 'Matching TRPG', cover_image_url: './projects/project_2.webp', image_alt: 'Matching TRPG - 學員董元琪專題作品成果', demo_url: 'https://chichitung.github.io/MatchingTRPG-front/#/', github_url: '', view_count: 96, is_featured: true, sort_order: 2 },
+  { id: 3, student_name: '仲崇安', batch_tag: '結訓成果', project_name: 'Voice Land', cover_image_url: './projects/project_3.webp', image_alt: 'Voice Land - 學員仲崇安專題作品成果', demo_url: 'https://josh19961201.github.io/VoiceLand_front/#/', github_url: '', view_count: 112, is_featured: true, sort_order: 3 },
+  { id: 4, student_name: '楊詠茜', batch_tag: '結訓成果', project_name: '桌下吧', cover_image_url: './projects/project_4.webp', image_alt: '桌下吧 - 學員楊詠茜專題作品成果', demo_url: 'https://cloris222.github.io/quasar-project/#/', github_url: '', view_count: 85, is_featured: true, sort_order: 4 },
+  { id: 5, student_name: '黃姿瑄', batch_tag: '結訓成果', project_name: '團購趣', cover_image_url: './projects/project_5.webp', image_alt: '團購趣 - 學員黃姿瑄專題作品成果', demo_url: 'https://a733181.github.io/2022-buytogether/#/', github_url: '', view_count: 73, is_featured: true, sort_order: 5 },
+  { id: 6, student_name: '許凱炫', batch_tag: '結訓成果', project_name: '一個地方', cover_image_url: './projects/project_6.webp', image_alt: '一個地方 - 學員許凱炫專題作品成果', demo_url: 'https://qweasd333ee.github.io/a-place-bar-front/', github_url: '', view_count: 64, is_featured: false, sort_order: 6 },
+  { id: 7, student_name: '徐嘉伶', batch_tag: '結訓成果', project_name: 'AZ.ZERO', cover_image_url: './projects/project_7.webp', image_alt: 'AZ.ZERO - 學員徐嘉伶專題作品成果', demo_url: 'https://lisia229.github.io/AZFront/#/', github_url: '', view_count: 91, is_featured: false, sort_order: 7 },
+  { id: 8, student_name: '郭思緯', batch_tag: '結訓成果', project_name: 'Show Time', cover_image_url: './projects/project_8.webp', image_alt: 'Show Time - 學員郭思緯專題作品成果', demo_url: 'https://kkone0275.github.io/top-free-time-front/#/', github_url: '', view_count: 105, is_featured: false, sort_order: 8 },
+  { id: 9, student_name: '王政文', batch_tag: '結訓成果', project_name: 'Ocean', cover_image_url: './projects/project_9.webp', image_alt: 'Ocean - 學員王政文專題作品成果', demo_url: 'https://nailshort.github.io/Ocean-front/#/', github_url: '', view_count: 58, is_featured: false, sort_order: 9 },
+  { id: 10, student_name: '胡俊宇', batch_tag: '結訓成果', project_name: '揪遊 (JoYo)', cover_image_url: './projects/project_10.webp', image_alt: '揪遊 (JoYo) - 學員胡俊宇專題作品成果', demo_url: 'https://lilmax922.github.io/JoYo-Front/#/', github_url: '', view_count: 79, is_featured: false, sort_order: 10 },
+  { id: 11, student_name: '張雅涵', batch_tag: '結訓成果', project_name: 'Sunday', cover_image_url: './projects/project_11.webp', image_alt: 'Sunday - 學員張雅涵專題作品成果', demo_url: 'https://vvn719.github.io/SUNDAY-vue-project/#/', github_url: '', view_count: 67, is_featured: false, sort_order: 11 },
+  { id: 12, student_name: '黃佳琦', batch_tag: '結訓成果', project_name: '綠善生活農場', cover_image_url: './projects/project_12.webp', image_alt: '綠善生活農場 - 學員黃佳琦專題作品成果', demo_url: 'https://gagiherdesign.github.io/susi-front/#/', github_url: '', view_count: 82, is_featured: false, sort_order: 12 },
+  { id: 13, student_name: '蔡文瑜', batch_tag: '結訓成果', project_name: 'BCoffee', cover_image_url: './projects/project_13.webp', image_alt: 'BCoffee - 學員蔡文瑜專題作品成果', demo_url: 'https://pato830729.github.io/BCcoffee-front/#/', github_url: '', view_count: 74, is_featured: false, sort_order: 13 },
+  { id: 14, student_name: '蘇俞甄', batch_tag: '結訓成果', project_name: 'MAUNA COFFEE', cover_image_url: './projects/project_14.webp', image_alt: 'MAUNA COFFEE - 學員蘇俞甄專題作品成果', demo_url: 'https://a5a5aa.github.io/TSFP-front/#/', github_url: '', view_count: 63, is_featured: false, sort_order: 14 }
 ]
 
 const defaultTechCards: TechCard[] = [
@@ -223,7 +223,11 @@ export const useCmsStore = defineStore('cms', () => {
   const modules = ref<CurriculumModule[]>(cachedData?.modules || defaultModules)
   const techCards = ref<TechCard[]>(cachedData?.techCards || defaultTechCards)
   const facilities = ref<Facility[]>(cachedData?.facilities || defaultFacilities)
-  const projects = ref<StudentProject[]>(cachedData?.projects || defaultProjects)
+  const initialProjects = (cachedData?.projects || defaultProjects).map(p => ({
+    ...p,
+    cover_image_url: p.cover_image_url || `./projects/project_${p.id}.webp`
+  }))
+  const projects = ref<StudentProject[]>(initialProjects)
   const faqs = ref<FAQItem[]>(cachedData?.faqs || defaultFAQs)
 
   const isLiveConnected = ref(false)
@@ -261,7 +265,12 @@ export const useCmsStore = defineStore('cms', () => {
       if (Array.isArray(modulesRes)) modules.value = modulesRes
       if (Array.isArray(techCardsRes)) techCards.value = techCardsRes
       if (Array.isArray(facilitiesRes)) facilities.value = facilitiesRes
-      if (Array.isArray(projectsRes)) projects.value = projectsRes
+      if (Array.isArray(projectsRes)) {
+        projects.value = projectsRes.map(p => ({
+          ...p,
+          cover_image_url: p.cover_image_url || `./projects/project_${p.id}.webp`
+        }))
+      }
       if (Array.isArray(faqsRes)) faqs.value = faqsRes
 
       const hasValidData = !!(settingsRes || batchesRes || carouselsRes)

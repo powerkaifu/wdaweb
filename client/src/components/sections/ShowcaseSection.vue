@@ -42,8 +42,10 @@
                 <div class="relative h-44 bg-slate-800 overflow-hidden">
                   <img
                     v-if="project.cover_image_url && !brokenProjectImages.has(project.id)"
-                    :src="project.cover_image_url"
+                    :src="getProjectImageUrl(project.cover_image_url)"
                     :alt="project.image_alt || project.project_name || '學員專題作品成果縮圖'"
+                    loading="lazy"
+                    decoding="async"
                     @error="markProjectImgError(project.id)"
                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
@@ -250,6 +252,16 @@ const store = useCmsStore()
 const currentPage = ref(1)
 const flippedIds = ref(new Set<number>())
 const brokenProjectImages = ref(new Set<number>())
+
+// 統一靜態資產與遠端 CDN 縮圖網址解析
+function getProjectImageUrl(url: string | undefined): string {
+  if (!url) return ''
+  if (url.startsWith('http://') || url.startsWith('https://') || url.startsWith('data:')) {
+    return url
+  }
+  const cleanPath = url.replace(/^\.?\//, '')
+  return `${import.meta.env.BASE_URL}${cleanPath}`
+}
 
 // 雙重防禦：遠端專題縮圖載入失敗時無縫降級切換至科技感占位卡片
 function markProjectImgError(id: number) {
