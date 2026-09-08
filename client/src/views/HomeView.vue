@@ -161,7 +161,7 @@ import AiWorkflowSection from '@/components/sections/AiWorkflowSection.vue'
 import TracksSection from '@/components/sections/TracksSection.vue'
 
 useSeoMeta({
-  title: '泰山職訓「前端網頁技術與AI應用」招生專班 ｜ 勞動部自辦 920h 全額免費培訓',
+  title: '泰山職訓「前端網頁技術與AI應用」｜920 小時實體培訓，全額補助，從零開始',
   description: '勞動部泰山職訓場「前端網頁技術與AI應用」培訓專班！920 小時實體密集培訓，一人獨立雙螢幕實作工位，完整涵蓋 Vue 3、TypeScript、AI 開發工具整合與專案作品集。待業民眾經甄試錄取享 100% 全額免費受訓與生活津貼補助，正式報名請至台灣就業通官方網站。諮詢專線：(02) 2901-8274。',
   canonicalPath: '/',
   robots: 'index, follow'
