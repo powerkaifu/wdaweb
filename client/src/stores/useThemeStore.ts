@@ -3,6 +3,8 @@ import { ref } from 'vue'
 
 export type NavbarStyleType = 'smart_morph' | 'full_autohide'
 export type GlowMotionPreset = 'cosmic_pulse' | 'gentle_aurora' | 'quantum_radar' | 'hyperdrive_warp'
+// Hero 右側視覺方案：code_window (程式碼視窗) | ai_chat (AI 對話視窗) | project_cards (學員成果卡牌)
+export type HeroRightVariant = 'code_window' | 'ai_chat' | 'project_cards'
 
 export interface NebulaFeatures {
   mouseParallax: boolean
@@ -31,6 +33,7 @@ export interface SynapticConfig {
 const NAVBAR_STYLE_KEY = 'wda_navbar_style'
 const GLOW_PRESET_KEY = 'wda_glow_preset'
 const GLOW_SPEED_KEY = 'wda_glow_speed'
+const HERO_RIGHT_VARIANT_KEY = 'wda_hero_right_variant'
 
 /**
  * 全站主題與 3D 視覺特效狀態 Store
@@ -79,7 +82,18 @@ export const useThemeStore = defineStore('theme', () => {
     } catch (e) {}
   }
 
-  // 3. 3D 宇宙深空星雲與微塵 4 大核心物理特性開關
+  // 3. Hero 右側視覺方案 (3 種可切換並持久化：程式碼視窗 / AI 對話視窗 / 學員成果卡牌)
+  const savedHeroVariant = (localStorage.getItem(HERO_RIGHT_VARIANT_KEY) as HeroRightVariant) || 'code_window'
+  const heroRightVariant = ref<HeroRightVariant>(savedHeroVariant)
+
+  function setHeroRightVariant(variant: HeroRightVariant) {
+    heroRightVariant.value = variant
+    try {
+      localStorage.setItem(HERO_RIGHT_VARIANT_KEY, variant)
+    } catch (e) {}
+  }
+
+  // 4. 3D 宇宙深空星雲與微塵 4 大核心物理特性開關
   const nebulaFeatures = ref<NebulaFeatures>({
     mouseParallax: true,    // 1. 游標引力透鏡視差
     filamentNoise: true,    // 2. 絲狀雲氣纖維紋理
@@ -133,6 +147,8 @@ export const useThemeStore = defineStore('theme', () => {
     glowSpeedMultiplier,
     setGlowPreset,
     setGlowSpeedMultiplier,
+    heroRightVariant,
+    setHeroRightVariant,
     nebulaFeatures,
     meteorConfig,
     synapticConfig,

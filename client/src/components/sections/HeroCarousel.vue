@@ -95,10 +95,10 @@
           <HeroMetrics />
         </div>
 
-        <!-- Right Hero Visual / AI Code Generator Interactive Window (手機端隱藏以達成 100dvh 定錨，桌機 lg: 展現旗艦科技視窗) -->
+        <!-- Right Hero Visual (桌機 lg: 展現旗艦科技視窗，手機端隱藏) -->
         <div id="hero-right-content" class="hidden lg:flex lg:col-span-6 w-full relative self-center items-center justify-center transform-gpu will-change-transform">
           <Transition name="fade-slide" mode="out-in">
-            <!-- 若有上傳圖片且非預設，顯示照片；否則展示頂級科技感的 AI Code Generator 互動視窗 -->
+            <!-- 若有輪播自訂圖片且載入正常，優先顯示圖片 -->
             <div v-if="currentSlide.image_url && !brokenSlideImages.has(currentSlide.id)" :key="currentSlide.image_url" class="w-full relative rounded-3xl overflow-hidden border border-slate-800/80 bg-slate-900/60 p-3 shadow-2xl shadow-cyan-950/40 backdrop-blur-xl group">
               <div class="relative aspect-[4/3] rounded-2xl overflow-hidden bg-slate-800 flex items-center justify-center">
                 <img
@@ -109,10 +109,14 @@
                 />
               </div>
             </div>
-            <!-- AI Code Generator 即時互動編輯器視窗 (方案 A) -->
+            <!-- 依 heroRightVariant 切換右側視覺方案 -->
+            <AiChatWindow v-else-if="themeStore.heroRightVariant === 'ai_chat'" key="ai-chat" />
+            <ProjectCardCarousel v-else-if="themeStore.heroRightVariant === 'project_cards'" key="project-cards" />
+            <!-- 預設：原始 AI Code Generator 視窗 (code_window) -->
             <AiCodeWindow v-else key="ai-window" />
           </Transition>
         </div>
+
       </div>
     </div>
 
@@ -124,13 +128,17 @@ import { ref, computed, onMounted, onUnmounted, nextTick } from 'vue'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useCmsStore } from '@/stores/useCmsStore'
+import { useThemeStore } from '@/stores/useThemeStore'
 import AiCodeWindow from '@/components/common/AiCodeWindow.vue'
+import AiChatWindow from '@/components/common/AiChatWindow.vue'
+import ProjectCardCarousel from '@/components/common/ProjectCardCarousel.vue'
 import AnnouncementBar from '@/components/common/AnnouncementBar.vue'
 import HeroMetrics from '@/components/common/HeroMetrics.vue'
 
 gsap.registerPlugin(ScrollTrigger)
 
 const store = useCmsStore()
+const themeStore = useThemeStore()
 
 const currentIndex = ref(0)
 const brokenSlideImages = ref<Set<number>>(new Set())
