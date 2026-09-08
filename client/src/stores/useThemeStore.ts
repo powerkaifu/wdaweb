@@ -3,8 +3,8 @@ import { ref } from 'vue'
 
 export type NavbarStyleType = 'smart_morph' | 'full_autohide'
 export type GlowMotionPreset = 'cosmic_pulse' | 'gentle_aurora' | 'quantum_radar' | 'hyperdrive_warp'
-// Hero 右側視覺方案：code_window (程式碼視窗) | ai_chat (AI 對話視窗) | project_cards (學員成果卡牌)
-export type HeroRightVariant = 'code_window' | 'ai_chat' | 'project_cards'
+// Hero 右側視覺方案：code_window (程式碼視窗) | ai_chat (AI 對話視窗)
+export type HeroRightVariant = 'code_window' | 'ai_chat'
 
 export interface NebulaFeatures {
   mouseParallax: boolean

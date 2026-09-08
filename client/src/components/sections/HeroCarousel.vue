@@ -111,7 +111,6 @@
             </div>
             <!-- 依 heroRightVariant 切換右側視覺方案 -->
             <AiChatWindow v-else-if="themeStore.heroRightVariant === 'ai_chat'" key="ai-chat" />
-            <ProjectCardCarousel v-else-if="themeStore.heroRightVariant === 'project_cards'" key="project-cards" />
             <!-- 預設：原始 AI Code Generator 視窗 (code_window) -->
             <AiCodeWindow v-else key="ai-window" />
           </Transition>
@@ -131,7 +130,6 @@ import { useCmsStore } from '@/stores/useCmsStore'
 import { useThemeStore } from '@/stores/useThemeStore'
 import AiCodeWindow from '@/components/common/AiCodeWindow.vue'
 import AiChatWindow from '@/components/common/AiChatWindow.vue'
-import ProjectCardCarousel from '@/components/common/ProjectCardCarousel.vue'
 import AnnouncementBar from '@/components/common/AnnouncementBar.vue'
 import HeroMetrics from '@/components/common/HeroMetrics.vue'
 

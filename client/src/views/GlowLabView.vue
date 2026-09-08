@@ -61,9 +61,9 @@
           </div>
         </div>
 
-        <!-- 3 大方案卡片 + 即時預覽 雙欄佈局 -->
+        <!-- 2 大方案卡片 + 即時預覽 雙欄佈局 -->
         <div class="grid grid-cols-1 lg:grid-cols-5 gap-6">
-          <!-- 左側：3 大方案卡片選擇器 -->
+          <!-- 左側：2 大方案卡片選擇器 -->
           <div class="lg:col-span-2 grid grid-cols-1 gap-4">
             <div
               v-for="v in heroVariants"
@@ -119,40 +119,33 @@
             <!-- 預覽標題 -->
             <div class="flex items-center justify-between">
               <span class="text-xs font-mono font-bold px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-400">
-                📺 Hero 右側即時預覽（縮圖模擬）
+                📺 Hero 右側即時預覽
               </span>
               <span class="text-xs font-mono text-slate-500">
                 點擊「返回官網」查看實際效果
               </span>
             </div>
 
-            <!-- 預覽容器 (縮小比例展示) -->
-            <div class="relative rounded-3xl overflow-hidden border border-slate-800/80 bg-slate-950/60 p-4 shadow-2xl shadow-slate-950/60 backdrop-blur-xl">
-              <!-- 縮放容器：以 scale 模擬縮小預覽，保持正確寬高比 -->
-              <div class="w-full overflow-hidden rounded-2xl" style="aspect-ratio: 16/10;">
-                <div
-                  class="origin-top-left w-[700px]"
-                  style="transform: scale(var(--preview-scale)); transform-origin: top left; transition: transform 0.3s ease;"
-                  ref="previewScaleEl"
-                >
-                  <!-- 即時組件預覽 (Teleport 到此) -->
-                  <Transition name="fade-slide" mode="out-in">
-                    <AiChatWindow v-if="store.heroRightVariant === 'ai_chat'" key="preview-ai-chat" />
-                    <ProjectCardCarousel v-else-if="store.heroRightVariant === 'project_cards'" key="preview-project-cards" />
-                    <AiCodeWindow v-else key="preview-code-window" />
-                  </Transition>
+            <!-- 預覽容器：CSS scale 縮小展示，純 CSS 不依賴 JS ResizeObserver -->
+            <!-- 固定寬高比容器（700px 寬 × 組件高度 485px → 縮放比約 56%） -->
+            <div class="relative rounded-3xl overflow-hidden border border-slate-800/80 bg-slate-950/60 shadow-2xl shadow-slate-950/60 backdrop-blur-xl" style="height: 280px;">
+              <!-- scale 容器：固定 700px 寬的組件縮放到容器內 -->
+              <div class="absolute top-2 left-2 right-2 bottom-2 overflow-hidden rounded-2xl">
+                <div style="width: 700px; transform: scale(0.54); transform-origin: top left;">
+                  <!-- 🔑 動態組件：依 store.heroRightVariant 即時切換，無需 F5 -->
+                  <component :is="previewComponent" />
                 </div>
               </div>
 
               <!-- 預覽 Overlay 標示 -->
-              <div class="absolute top-6 left-6 pointer-events-none">
+              <div class="absolute top-4 left-4 pointer-events-none z-10">
                 <span class="px-2 py-1 rounded-lg text-xs font-mono font-bold bg-slate-950/80 text-purple-300 border border-purple-500/30 backdrop-blur-sm">
                   🔍 縮圖預覽
                 </span>
               </div>
             </div>
 
-            <!-- 方案說明說明卡 -->
+            <!-- 方案說明卡 -->
             <div class="p-4 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-2">
               <h4 class="font-bold text-sm text-white flex items-center gap-2">
                 <span>{{ heroVariantInfo.icon }}</span>
@@ -1174,12 +1167,11 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, onMounted, onUnmounted } from 'vue'
+import { computed } from 'vue'
 import { useThemeStore, type NavbarStyleType, type GlowMotionPreset, type HeroRightVariant } from '@/stores/useThemeStore'
 import { useSeoMeta } from '@/composables/useSeoMeta'
 import AiChatWindow from '@/components/common/AiChatWindow.vue'
 import AiCodeWindow from '@/components/common/AiCodeWindow.vue'
-import ProjectCardCarousel from '@/components/common/ProjectCardCarousel.vue'
 
 useSeoMeta({
   title: 'Kaifu 視覺與動效實驗室',
@@ -1204,7 +1196,7 @@ const heroVariants: {
     tagline: '模擬 AI 即時生成代碼，強調技術氛圍與 920h 課程深度',
     icon: '⚡',
     tags: ['語法高亮', '打字機動畫', 'AI Generating'],
-    description: '現有旗艦方案。Mac 風格視窗搭配 Vue 3 語法高亮程式碼，AI 狀態列滾動顯示「Generating」，強調課程的工程深度與 AI 整合特色。適合吸引技術背景的潛在學員。'
+    description: '現有旗艦方案。Mac 風格視窗搭配 Vue 3 語法高亮程式碼，AI 狀態列顯示「Generating」，強調課程的工程深度與 AI 整合特色。適合吸引技術背景的潛在學員。'
   },
   {
     id: 'ai_chat',
@@ -1213,14 +1205,6 @@ const heroVariants: {
     icon: '🤖',
     tags: ['打字機動畫', '輪播問答', '0 基礎友善'],
     description: '方案一。模擬 AI 助教即時回答學員問題的對話介面，輪播展示「0 基礎能學嗎？」「補助怎麼申請？」等真實疑問，降低非技術背景訪客的心理門檻，提升報名意願。'
-  },
-  {
-    id: 'project_cards',
-    name: '學員成果作品卡牌輪播',
-    tagline: '直接用 14 位學員真實作品截圖說話，轉化說服力最強',
-    icon: '🏆',
-    tags: ['真實截圖', '3D 層疊視覺', '5秒自動輪播'],
-    description: '方案三。展示第一期 14 位學員的真實 Demo 截圖，3 張層疊卡片給予深度感，5 秒自動輪播。「成果會說話」是最有力的招生工具，對轉職族群的說服力遠勝純技術展示。'
   }
 ]
 
@@ -1228,37 +1212,9 @@ const heroVariantInfo = computed(() => {
   return heroVariants.find(v => v.id === store.heroRightVariant) || heroVariants[0]
 })
 
-// 預覽縮放：讓 700px 寬的組件自動縮放到容器寬度
-const previewScaleEl = ref<HTMLElement | null>(null)
-
-function updatePreviewScale() {
-  if (!previewScaleEl.value) return
-  const container = previewScaleEl.value.parentElement
-  if (!container) return
-  const containerWidth = container.offsetWidth
-  const scale = containerWidth / 700
-  previewScaleEl.value.style.setProperty('--preview-scale', String(scale))
-  previewScaleEl.value.style.transform = `scale(${scale})`
-  // 更新容器高度以符合縮放後的實際高度
-  const originalHeight = previewScaleEl.value.offsetHeight
-  container.style.height = `${originalHeight * scale}px`
-}
-
-const resizeObserver = typeof ResizeObserver !== 'undefined'
-  ? new ResizeObserver(updatePreviewScale)
-  : null
-
-onMounted(() => {
-  updatePreviewScale()
-  if (resizeObserver && previewScaleEl.value?.parentElement) {
-    resizeObserver.observe(previewScaleEl.value.parentElement)
-  }
-  window.addEventListener('resize', updatePreviewScale)
-})
-
-onUnmounted(() => {
-  resizeObserver?.disconnect()
-  window.removeEventListener('resize', updatePreviewScale)
+// 🔑 動態組件 computed：依 store.heroRightVariant 即時切換，確保預覽窗格無需 F5 即時更新
+const previewComponent = computed(() => {
+  return store.heroRightVariant === 'ai_chat' ? AiChatWindow : AiCodeWindow
 })
 // ── End Hero 右側視覺方案資料 ──────────────────────────────────────────
 
