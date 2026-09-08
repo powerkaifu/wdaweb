@@ -97,6 +97,18 @@
 
         <!-- Right Hero Visual (桌機 lg: 展現旗艦科技視窗，手機端隱藏) -->
         <div id="hero-right-content" class="hidden lg:flex lg:col-span-6 w-full relative self-center items-center justify-center transform-gpu will-change-transform">
+          <!-- 🌟 方案 B【量子能量科技光艙】：雙色溫環境大氣光暈 + 重力底座 (僅桌機 lg: 渲染，手機 0 負擔) -->
+          <div class="absolute -inset-4 sm:-inset-6 lg:-inset-8 -z-10 pointer-events-none overflow-visible select-none">
+            <!-- 右上角：電光青高能光核 (7s 深空有機呼吸) -->
+            <div class="absolute -top-10 -right-10 w-72 h-72 sm:w-88 sm:h-88 rounded-full bg-gradient-to-br from-cyan-400/22 via-cyan-500/14 to-transparent blur-[85px] animate-hero-ambient-pulse transform-gpu"></div>
+
+            <!-- 左下角：深邃科技藍底座光核 (180° 相位對沖延遲呼吸) -->
+            <div class="absolute -bottom-10 -left-10 w-72 h-72 sm:w-88 sm:h-88 rounded-full bg-gradient-to-tr from-blue-600/25 via-indigo-600/12 to-transparent blur-[95px] animate-hero-ambient-pulse-delayed transform-gpu"></div>
+
+            <!-- 下方立體懸浮重力接觸陰影 (Contact Shadow) -->
+            <div class="absolute inset-x-12 -bottom-4 h-10 bg-cyan-950/40 blur-2xl rounded-full"></div>
+          </div>
+
           <Transition name="fade-slide" mode="out-in">
             <!-- 若有輪播自訂圖片且載入正常，優先顯示圖片 -->
             <div v-if="currentSlide.image_url && !brokenSlideImages.has(currentSlide.id)" :key="currentSlide.image_url" class="w-full relative rounded-3xl overflow-hidden border border-slate-800/80 bg-slate-900/60 p-3 shadow-2xl shadow-cyan-950/40 backdrop-blur-xl group">
@@ -381,6 +393,38 @@ onUnmounted(() => {
 .fade-slide-leave-to {
   opacity: 0;
   transform: translateY(-6px);
+}
+
+/* 🌟 方案 B：7s 深空悠揚微呼吸動畫 (僅動 opacity 與 scale，純 GPU 合成無重繪) */
+@keyframes heroAmbientPulse {
+  0%, 100% {
+    opacity: 0.18;
+    transform: scale(0.98) translate3d(0, 0, 0);
+  }
+  50% {
+    opacity: 0.32;
+    transform: scale(1.06) translate3d(0, -4px, 0);
+  }
+}
+
+.animate-hero-ambient-pulse {
+  animation: heroAmbientPulse 7s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+  will-change: transform, opacity;
+}
+
+.animate-hero-ambient-pulse-delayed {
+  animation: heroAmbientPulse 7s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+  animation-delay: -3.5s;
+  will-change: transform, opacity;
+}
+
+/* 無障礙守護：開啟減少動態時轉為靜態柔和常駐 */
+@media (prefers-reduced-motion: reduce) {
+  .animate-hero-ambient-pulse,
+  .animate-hero-ambient-pulse-delayed {
+    animation: none !important;
+    opacity: 0.22 !important;
+  }
 }
 </style>
 

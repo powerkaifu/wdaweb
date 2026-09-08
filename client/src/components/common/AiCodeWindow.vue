@@ -1,8 +1,11 @@
 <template>
   <!-- 外層容器：手機最小尺寸自適應高度 h-[395px] sm:h-[430px] lg:h-[440px] xl:h-[485px] 2xl:h-[500px]，圓角 rounded-2xl sm:rounded-3xl -->
   <div
-    class="relative w-full h-[395px] sm:h-[430px] lg:h-[440px] xl:h-[485px] 2xl:h-[500px] rounded-2xl sm:rounded-3xl overflow-hidden border border-cyan-500/30 bg-slate-900/90 shadow-2xl shadow-cyan-950/50 backdrop-blur-xl flex flex-col justify-between"
+    class="relative w-full h-[395px] sm:h-[430px] lg:h-[440px] xl:h-[485px] 2xl:h-[500px] rounded-2xl sm:rounded-3xl overflow-hidden border border-cyan-500/35 hover:border-cyan-400/50 bg-slate-900/90 shadow-[0_25px_60px_-15px_rgba(2,6,23,0.95),0_0_40px_-5px_rgba(6,182,212,0.18)] backdrop-blur-xl flex flex-col justify-between transition-colors duration-500"
   >
+    <!-- 1px 頂部晶鑽鏡面反光倒角 (Specular Rim Light) -->
+    <div class="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-cyan-400/60 to-transparent z-30 pointer-events-none"></div>
+
     <!-- 背景流光發光層 -->
     <div class="absolute -top-24 -right-24 w-64 h-64 bg-cyan-500/15 rounded-full blur-3xl pointer-events-none"></div>
     <div class="absolute -bottom-24 -left-24 w-64 h-64 bg-blue-600/15 rounded-full blur-3xl pointer-events-none"></div>

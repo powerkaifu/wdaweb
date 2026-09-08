@@ -129,6 +129,10 @@
             <!-- 預覽容器：CSS scale 縮小展示，純 CSS 不依賴 JS ResizeObserver -->
             <!-- 固定寬高比容器（700px 寬 × 組件高度 485px → 縮放比約 56%） -->
             <div class="relative rounded-3xl overflow-hidden border border-slate-800/80 bg-slate-950/60 shadow-2xl shadow-slate-950/60 backdrop-blur-xl" style="height: 280px;">
+              <!-- 背景量子大氣微光層 -->
+              <div class="absolute -top-12 -right-12 w-64 h-64 bg-cyan-500/15 rounded-full blur-3xl pointer-events-none"></div>
+              <div class="absolute -bottom-12 -left-12 w-64 h-64 bg-blue-600/15 rounded-full blur-3xl pointer-events-none"></div>
+
               <!-- scale 容器：固定 700px 寬的組件縮放到容器內 -->
               <div class="absolute top-2 left-2 right-2 bottom-2 overflow-hidden rounded-2xl">
                 <div style="width: 700px; transform: scale(0.54); transform-origin: top left;">
