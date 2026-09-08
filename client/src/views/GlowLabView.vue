@@ -43,7 +43,7 @@
       <section id="sec-hero-visual" class="space-y-6">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800 pb-4">
           <div>
-            <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full text-xs font-mono font-bold bg-purple-500/10 text-purple-400 border border-purple-500/30 mb-2">
+            <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full text-xs font-mono font-bold bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 mb-2">
               <span>SECTION 00</span>
               <span>｜</span>
               <span>HERO RIGHT VISUAL LAB</span>
@@ -52,11 +52,11 @@
               00. Hero Banner 右側視覺方案切換
             </h2>
             <p class="text-sm text-slate-400 mt-1">
-              當前方案：<span class="text-purple-300 font-bold">{{ heroVariantInfo.name }}</span>（{{ heroVariantInfo.tagline }}）
+              當前方案：<span class="text-cyan-300 font-bold">{{ heroVariantInfo.name }}</span>（{{ heroVariantInfo.tagline }}）
             </p>
           </div>
 
-          <div class="text-xs font-mono text-purple-400 bg-purple-500/10 px-3 py-1.5 rounded-xl border border-purple-500/30 self-start sm:self-auto">
+          <div class="text-xs font-mono text-cyan-400 bg-cyan-500/10 px-3 py-1.5 rounded-xl border border-cyan-500/30 self-start sm:self-auto">
             🎨 點擊卡片即時套用至官網
           </div>
         </div>
@@ -72,14 +72,14 @@
               class="p-5 rounded-3xl border transition-all cursor-pointer flex items-start gap-4 group relative overflow-hidden"
               :class="[
                 store.heroRightVariant === v.id
-                  ? 'bg-gradient-to-br from-purple-950/60 via-slate-900/90 to-slate-950 border-purple-500/70 shadow-2xl shadow-purple-950/60 text-white'
+                  ? 'bg-gradient-to-br from-cyan-950/60 via-slate-900/90 to-slate-950 border-cyan-500/70 shadow-2xl shadow-cyan-950/60 text-white'
                   : 'bg-slate-900/60 hover:bg-slate-850 border-slate-800 text-slate-300 hover:border-slate-700'
               ]"
             >
               <!-- 選中左側光邊 -->
               <div
                 v-if="store.heroRightVariant === v.id"
-                class="absolute left-0 top-0 bottom-0 w-1.5 bg-purple-400 shadow-[0_0_12px_#a855f7]"
+                class="absolute left-0 top-0 bottom-0 w-1.5 bg-cyan-400 shadow-[0_0_12px_#06b6d4]"
               ></div>
 
               <!-- 圖示 -->
@@ -92,7 +92,7 @@
                   <h3 class="font-extrabold text-base text-white">{{ v.name }}</h3>
                   <span
                     class="text-xs font-mono font-bold px-2 py-0.5 rounded-full flex-shrink-0 ml-2"
-                    :class="store.heroRightVariant === v.id ? 'bg-purple-500/20 text-purple-300 border border-purple-500/40' : 'bg-slate-800 text-slate-400'"
+                    :class="store.heroRightVariant === v.id ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/40' : 'bg-slate-800 text-slate-400'"
                   >
                     {{ store.heroRightVariant === v.id ? 'ACTIVE ✓' : '點擊選擇' }}
                   </span>
@@ -105,7 +105,7 @@
                     v-for="tag in v.tags"
                     :key="tag"
                     class="px-2 py-0.5 rounded-full text-xs font-mono"
-                    :class="store.heroRightVariant === v.id ? 'bg-purple-500/15 text-purple-300 border border-purple-500/25' : 'bg-slate-800/80 text-slate-500 border border-slate-700/40'"
+                    :class="store.heroRightVariant === v.id ? 'bg-cyan-500/15 text-cyan-300 border border-cyan-500/25' : 'bg-slate-800/80 text-slate-500 border border-slate-700/40'"
                   >
                     {{ tag }}
                   </span>
@@ -139,7 +139,7 @@
 
               <!-- 預覽 Overlay 標示 -->
               <div class="absolute top-4 left-4 pointer-events-none z-10">
-                <span class="px-2 py-1 rounded-lg text-xs font-mono font-bold bg-slate-950/80 text-purple-300 border border-purple-500/30 backdrop-blur-sm">
+                <span class="px-2 py-1 rounded-lg text-xs font-mono font-bold bg-slate-950/80 text-cyan-300 border border-cyan-500/30 backdrop-blur-sm">
                   🔍 縮圖預覽
                 </span>
               </div>

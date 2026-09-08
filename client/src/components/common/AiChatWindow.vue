@@ -1,11 +1,11 @@
 <template>
   <!-- 方案一：AI Copilot 對話視窗 — 模擬 Cursor / ChatGPT 即時對話訊息串流 -->
   <div
-    class="relative w-full h-[395px] sm:h-[430px] lg:h-[440px] xl:h-[485px] 2xl:h-[500px] rounded-2xl sm:rounded-3xl overflow-hidden border border-purple-500/30 bg-slate-900/90 shadow-2xl shadow-purple-950/50 backdrop-blur-xl flex flex-col justify-between"
+    class="relative w-full h-[395px] sm:h-[430px] lg:h-[440px] xl:h-[485px] 2xl:h-[500px] rounded-2xl sm:rounded-3xl overflow-hidden border border-cyan-500/35 bg-slate-900/90 shadow-2xl shadow-cyan-950/40 backdrop-blur-xl flex flex-col justify-between"
   >
     <!-- 背景流光發光層 -->
-    <div class="absolute -top-24 -right-24 w-64 h-64 bg-purple-500/12 rounded-full blur-3xl pointer-events-none"></div>
-    <div class="absolute -bottom-24 -left-24 w-64 h-64 bg-cyan-600/12 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute -top-24 -right-24 w-64 h-64 bg-cyan-500/12 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute -bottom-24 -left-24 w-64 h-64 bg-blue-600/12 rounded-full blur-3xl pointer-events-none"></div>
 
     <!-- 1. Mac 風格視窗標題列 -->
     <div class="h-[42px] sm:h-[44px] lg:h-[48px] px-3 sm:px-4 lg:px-5 bg-slate-950/85 border-b border-slate-800 flex items-center justify-between flex-shrink-0 z-20">
@@ -15,14 +15,14 @@
         <div class="w-2.5 h-2.5 sm:w-3 sm:h-3 lg:w-3.5 lg:h-3.5 rounded-full bg-amber-500/80 flex-shrink-0"></div>
         <div class="w-2.5 h-2.5 sm:w-3 sm:h-3 lg:w-3.5 lg:h-3.5 rounded-full bg-emerald-500/80 flex-shrink-0"></div>
         <span class="ml-1 sm:ml-2 text-xs lg:text-sm font-mono text-slate-400 font-semibold flex items-center space-x-1.5 truncate">
-          <span class="text-purple-400 flex-shrink-0">🤖</span>
+          <span class="text-cyan-400 flex-shrink-0">🤖</span>
           <span class="truncate max-w-[120px] xs:max-w-[160px] sm:max-w-none">AI 學習助教 — 泰山職訓問答</span>
         </span>
       </div>
 
       <!-- 狀態標籤與當前輪數統計 -->
       <div class="flex items-center space-x-2 sm:space-x-3 flex-shrink-0">
-        <span class="hidden xs:inline-flex text-xs font-mono px-2 py-0.5 rounded-full bg-purple-500/15 text-purple-300 border border-purple-500/30">
+        <span class="hidden xs:inline-flex text-xs font-mono px-2 py-0.5 rounded-full bg-cyan-500/15 text-cyan-300 border border-cyan-500/30">
           題庫 {{ currentDisplayRound }}/{{ conversations.length }}
         </span>
         <div class="flex items-center space-x-1.5">
@@ -60,7 +60,7 @@
               class="w-7 h-7 sm:w-8 sm:h-8 rounded-xl flex items-center justify-center text-xs sm:text-sm flex-shrink-0 font-bold shadow-md select-none mt-0.5"
               :class="msg.role === 'user'
                 ? 'bg-gradient-to-tr from-slate-600 to-slate-700 text-slate-200'
-                : 'bg-gradient-to-tr from-purple-600 to-cyan-600 text-white shadow-purple-500/30'"
+                : 'bg-gradient-to-tr from-cyan-500 to-blue-600 text-white shadow-cyan-500/30'"
             >
               {{ msg.role === 'user' ? '你' : '🤖' }}
             </div>
@@ -70,15 +70,15 @@
               class="max-w-[82%] sm:max-w-[78%] px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-2xl text-xs sm:text-sm leading-relaxed tracking-wide shadow-sm"
               :class="msg.role === 'user'
                 ? 'bg-slate-700/85 text-slate-100 rounded-tr-sm border border-slate-600/50'
-                : 'bg-gradient-to-br from-purple-950/75 via-slate-900/90 to-slate-950 border border-purple-500/30 text-slate-200 rounded-tl-sm'"
+                : 'bg-gradient-to-br from-slate-900 via-slate-900/95 to-cyan-950/40 border border-cyan-500/30 text-slate-200 rounded-tl-sm'"
             >
               <!-- 提問人 / AI 助教標籤 -->
               <div
                 class="text-xs font-mono font-semibold mb-1 select-none flex items-center gap-1.5"
-                :class="msg.role === 'user' ? 'text-slate-400 justify-end' : 'text-purple-300'"
+                :class="msg.role === 'user' ? 'text-slate-400 justify-end' : 'text-cyan-300'"
               >
                 <span>{{ msg.role === 'user' ? '轉職諮詢訪客' : '泰山職訓 AI 助教' }}</span>
-                <span v-if="msg.tag" class="px-1.5 py-0.5 rounded bg-purple-500/20 text-purple-200 text-xs font-normal">
+                <span v-if="msg.tag" class="px-1.5 py-0.5 rounded bg-cyan-500/20 text-cyan-200 text-xs font-normal">
                   {{ msg.tag }}
                 </span>
               </div>
@@ -87,7 +87,7 @@
               <div class="whitespace-pre-line text-slate-200">
                 <template v-if="msg.role === 'assistant' && msg.id === currentTypingMsgId">
                   <span>{{ typingDisplayText }}</span>
-                  <span class="inline-block w-1.5 h-3.5 sm:h-4 bg-purple-400 animate-pulse ml-0.5 align-middle"></span>
+                  <span class="inline-block w-1.5 h-3.5 sm:h-4 bg-cyan-400 animate-pulse ml-0.5 align-middle"></span>
                 </template>
                 <template v-else>
                   {{ msg.content }}
@@ -99,15 +99,15 @@
 
         <!-- 思考中脈衝指示器 (AI 正在運算回應時推進畫面) -->
         <div v-if="showThinking" class="flex items-start gap-2.5">
-          <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-gradient-to-tr from-purple-600 to-cyan-600 text-white flex items-center justify-center text-xs sm:text-sm flex-shrink-0 shadow-md shadow-purple-500/30 select-none mt-0.5">
+          <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-gradient-to-tr from-cyan-500 to-blue-600 text-white flex items-center justify-center text-xs sm:text-sm flex-shrink-0 shadow-md shadow-cyan-500/30 select-none mt-0.5">
             🤖
           </div>
-          <div class="px-3.5 py-2.5 rounded-2xl rounded-tl-sm bg-gradient-to-br from-purple-950/75 to-slate-900 border border-purple-500/30">
+          <div class="px-3.5 py-2.5 rounded-2xl rounded-tl-sm bg-gradient-to-br from-slate-900 to-cyan-950/40 border border-cyan-500/30">
             <div class="flex items-center space-x-1.5 py-0.5">
-              <span class="text-xs font-mono text-purple-300 mr-1.5">AI 思考回覆中</span>
-              <span class="w-1.5 h-1.5 rounded-full bg-purple-400 animate-bounce" style="animation-delay:0ms"></span>
-              <span class="w-1.5 h-1.5 rounded-full bg-purple-400 animate-bounce" style="animation-delay:160ms"></span>
-              <span class="w-1.5 h-1.5 rounded-full bg-purple-400 animate-bounce" style="animation-delay:320ms"></span>
+              <span class="text-xs font-mono text-cyan-300 mr-1.5">AI 思考回覆中</span>
+              <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-bounce" style="animation-delay:0ms"></span>
+              <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-bounce" style="animation-delay:160ms"></span>
+              <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-bounce" style="animation-delay:320ms"></span>
             </div>
           </div>
         </div>
@@ -118,19 +118,19 @@
     </div>
 
     <!-- 3. 底部輸入模擬列 -->
-    <div class="h-[56px] sm:h-[60px] lg:h-[64px] px-3 sm:px-4 lg:px-5 bg-gradient-to-r from-slate-950 via-slate-900 to-purple-950/40 border-t border-purple-500/25 flex items-center space-x-2.5 sm:space-x-3 flex-shrink-0 z-20">
+    <div class="h-[56px] sm:h-[60px] lg:h-[64px] px-3 sm:px-4 lg:px-5 bg-gradient-to-r from-slate-950 via-slate-900 to-cyan-950/40 border-t border-cyan-500/25 flex items-center space-x-2.5 sm:space-x-3 flex-shrink-0 z-20">
       <!-- 模擬輸入框（動態顯示下一題提示） -->
-      <div class="flex-1 h-9 sm:h-10 rounded-xl bg-slate-950/60 border border-slate-800 hover:border-purple-500/40 px-3 flex items-center overflow-hidden transition-colors">
-        <span class="text-purple-400 font-mono text-xs mr-1.5 font-bold select-none">💬</span>
+      <div class="flex-1 h-9 sm:h-10 rounded-xl bg-slate-950/60 border border-slate-800 hover:border-cyan-500/40 px-3 flex items-center overflow-hidden transition-colors">
+        <span class="text-cyan-400 font-mono text-xs mr-1.5 font-bold select-none">💬</span>
         <span class="text-xs sm:text-sm text-slate-300 truncate font-sans">{{ currentQuestionPreview }}</span>
-        <span class="inline-block w-1.5 h-3.5 sm:h-4 bg-purple-400 animate-pulse ml-1 flex-shrink-0"></span>
+        <span class="inline-block w-1.5 h-3.5 sm:h-4 bg-cyan-400 animate-pulse ml-1 flex-shrink-0"></span>
       </div>
 
       <!-- 下一題按鈕（手動加速快轉） -->
       <button
         type="button"
         @click="fastForwardNext"
-        class="h-9 sm:h-10 px-3 rounded-xl bg-gradient-to-br from-purple-600 via-indigo-600 to-cyan-600 hover:from-purple-500 hover:to-cyan-500 text-white flex items-center justify-center space-x-1.5 text-xs font-bold shadow-md shadow-purple-500/25 hover:scale-105 active:scale-95 transition-all flex-shrink-0 cursor-pointer"
+        class="h-9 sm:h-10 px-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white flex items-center justify-center space-x-1.5 text-xs font-bold shadow-md shadow-cyan-500/30 hover:scale-105 active:scale-95 transition-all flex-shrink-0 cursor-pointer"
         title="立即跳至下一個民眾關心議題"
       >
         <span>下一題</span>
@@ -443,11 +443,11 @@ onUnmounted(() => {
   background: transparent;
 }
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: rgba(168, 85, 247, 0.2);
+  background: rgba(6, 182, 212, 0.25);
   border-radius: 9999px;
 }
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: rgba(168, 85, 247, 0.4);
+  background: rgba(6, 182, 212, 0.5);
 }
 
 /* 訊息進入過渡動畫：由下往上平滑推入 */
