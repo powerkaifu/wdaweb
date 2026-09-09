@@ -82,20 +82,26 @@
           class="batch-card group relative rounded-3xl p-4 sm:p-8 lg:p-11 backdrop-blur-xl border transition-all duration-300 flex flex-col justify-between overflow-hidden transform-gpu cursor-default w-full"
           :class="[
             isBatchEnded(batch)
-              ? 'bg-slate-950/45 border-slate-800/40 opacity-60 hover:opacity-85 grayscale-[40%] hover:grayscale-0 shadow-none'
+              ? (isTodayGraduation(batch)
+                  ? 'border-emerald-500/60 bg-slate-900/90 shadow-2xl shadow-emerald-950/50 ring-1 ring-emerald-500/30'
+                  : 'bg-slate-950/45 border-slate-800/40 opacity-60 hover:opacity-85 grayscale-[40%] hover:grayscale-0 shadow-none')
               : 'card-subsurface-glow bg-slate-900/70 hover:bg-slate-900/90 border-slate-800/90 shadow-xl shadow-slate-950/60'
           ]"
         >
-          <!-- 頂部流光光暈線 (僅活躍班級 Hover 時優雅顯現) -->
+          <!-- 頂部流光光暈線 (今日結訓班級常駐顯現翡翠光輝，活躍班級 Hover 顯現) -->
           <div
-            v-if="!isBatchEnded(batch)"
+            v-if="isTodayGraduation(batch) && isBatchEnded(batch)"
+            class="absolute top-0 left-0 right-0 h-[2.5px] bg-gradient-to-r from-transparent via-emerald-400 to-transparent shadow-[0_0_12px_rgba(16,185,129,0.8)] pointer-events-none"
+          ></div>
+          <div
+            v-else-if="!isBatchEnded(batch)"
             class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-cyan-400 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
           ></div>
 
           <!-- 角落序號水印 (01, 02) -->
           <div
             class="absolute -right-2 -bottom-4 text-7xl font-mono font-black select-none pointer-events-none transition-colors"
-            :class="isBatchEnded(batch) ? 'text-slate-900/50' : 'text-slate-800/20 group-hover:text-cyan-500/10'"
+            :class="isBatchEnded(batch) ? (isTodayGraduation(batch) ? 'text-emerald-500/15' : 'text-slate-900/50') : 'text-slate-800/20 group-hover:text-cyan-500/10'"
           >
             {{ String(index + 1).padStart(2, '0') }}
           </div>
@@ -177,6 +183,12 @@
                     >
                       <span v-if="getStepStatus(batch, sIndex + 1) === 'completed'">✓</span>
                       <span v-else>{{ sIndex + 1 }}</span>
+
+                      <!-- 今日結訓專屬：聲納波紋擴散光環 (Sonar Ripple Pulse) -->
+                      <span
+                        v-if="sIndex + 1 === 5 && getStepStatus(batch, 5) === 'completed' && isTodayGraduation(batch)"
+                        class="absolute inset-0 rounded-full bg-emerald-400 animate-ping opacity-35 pointer-events-none"
+                      ></span>
                     </div>
                   </div>
                 </div>
@@ -199,9 +211,24 @@
               </div>
 
               <!-- 生命週期動態焦點看板 (單行大器展示，自適應字級防折行) -->
-              <div class="mt-4 pt-3.5 border-t border-slate-800/80 text-xs sm:text-sm lg:text-base flex items-center space-x-2 text-slate-200 min-w-0">
-                <span class="flex-shrink-0 text-sm sm:text-base">{{ getLifecycleDetailNotice(batch).icon }}</span>
-                <span class="leading-relaxed font-medium whitespace-nowrap overflow-hidden text-ellipsis">{{ getLifecycleDetailNotice(batch).text }}</span>
+              <div class="mt-4 pt-3.5 border-t border-slate-800/80 text-xs sm:text-sm lg:text-base flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 text-slate-200 min-w-0">
+                <div class="flex items-center space-x-2 min-w-0 overflow-hidden">
+                  <span class="flex-shrink-0 text-sm sm:text-base">{{ getLifecycleDetailNotice(batch).icon }}</span>
+                  <span class="leading-relaxed font-medium whitespace-nowrap overflow-hidden text-ellipsis">{{ getLifecycleDetailNotice(batch).text }}</span>
+                </div>
+
+                <!-- 🎉 方案 B：祝賀微互動按鈕 (僅在今日圓滿結訓時現身) -->
+                <button
+                  v-if="isTodayGraduation(batch) && isBatchEnded(batch)"
+                  type="button"
+                  @click.stop="triggerCongratulations($event)"
+                  title="點擊為結訓學員送上祝賀星塵禮花"
+                  class="flex-shrink-0 inline-flex items-center space-x-1.5 px-3.5 py-1.5 rounded-xl text-xs font-bold text-emerald-300 bg-emerald-500/15 hover:bg-emerald-500/25 border border-emerald-500/40 hover:border-emerald-400 active:scale-95 transition-all shadow-sm shadow-emerald-500/20 cursor-pointer select-none group/btn self-start sm:self-auto"
+                >
+                  <span class="text-sm group-hover/btn:scale-125 transition-transform">🎉</span>
+                  <span>送上祝賀</span>
+                  <span class="font-mono bg-emerald-950/80 px-1.5 py-0.5 rounded text-xs text-emerald-200 border border-emerald-500/30 font-semibold">{{ celebrationCount }}</span>
+                </button>
               </div>
             </div>
 
@@ -335,7 +362,8 @@
 </template>
 
 <script setup lang="ts">
-import { computed, toRef, onMounted, nextTick, watch } from 'vue'
+import { ref, computed, toRef, onMounted, onUnmounted, nextTick, watch } from 'vue'
+import confetti from 'canvas-confetti'
 import { gsap } from '@/utils/motion'
 import { useScrollStagger } from '@/composables/useScrollStagger'
 import { useBatchTimeline } from '@/composables/useBatchTimeline'
@@ -375,6 +403,131 @@ const {
   getTrainingProgress,
   getLifecycleDetailNotice
 } = useBatchTimeline(() => store.batches)
+
+// ===========================================================================
+// 🎉 結訓榮耀慶典系統 (A + B + C 方案融合：量子禮花 + 祝福互動 + 榮耀光艙)
+// ===========================================================================
+
+// 判斷期別是否為今天日曆天結訓
+function isTodayGraduation(batch: { training_end_date?: string }): boolean {
+  if (!batch.training_end_date) return false
+  try {
+    const end = new Date(batch.training_end_date.replace(/-/g, '/'))
+    const now = new Date()
+    return end.getFullYear() === now.getFullYear() &&
+           end.getMonth() === now.getMonth() &&
+           end.getDate() === now.getDate()
+  } catch {
+    return false
+  }
+}
+
+// 方案 B：祝賀祝福計數器 (預設溫暖基底 68 次，支援持久化儲存)
+const celebrationCount = ref<number>(68)
+try {
+  const saved = localStorage.getItem('wdaweb_grad_cheer_count')
+  if (saved) {
+    celebrationCount.value = Math.max(68, Number(saved) || 68)
+  }
+} catch (e) {}
+
+// 當前是否有任何班級剛好於今日圓滿結訓
+const hasTodayGraduatedBatch = computed(() => {
+  const list = sortedBatches.value.length > 0 ? sortedBatches.value : store.batches
+  return list.some(b => isTodayGraduation(b) && isBatchEnded(b))
+})
+
+// 方案 A：量子科技星塵禮花慶典 (雙側拋物線高雅發射)
+function fireGraduationConfetti() {
+  // 符合全站暗黑科技之高雅配色：電光青、翡翠綠、天藍、星輝金、高能白
+  const colors = ['#06b6d4', '#10b981', '#38bdf8', '#fbbf24', '#ffffff']
+
+  // 左側向右上方劃出優雅弧線
+  confetti({
+    particleCount: 52,
+    angle: 60,
+    spread: 58,
+    origin: { x: 0.12, y: 0.68 },
+    colors,
+    ticks: 240,
+    gravity: 0.85,
+    scalar: 1.15,
+    shapes: ['circle', 'square'],
+    disableForReducedMotion: true
+  })
+
+  // 右側向左上方劃出優雅弧線
+  confetti({
+    particleCount: 52,
+    angle: 120,
+    spread: 58,
+    origin: { x: 0.88, y: 0.68 },
+    colors,
+    ticks: 240,
+    gravity: 0.85,
+    scalar: 1.15,
+    shapes: ['circle', 'square'],
+    disableForReducedMotion: true
+  })
+}
+
+// 方案 B：點擊按鈕主動送祝福 (游標專屬微型星塵爆發)
+function triggerCongratulations(event: MouseEvent) {
+  celebrationCount.value++
+  try {
+    localStorage.setItem('wdaweb_grad_cheer_count', String(celebrationCount.value))
+  } catch (e) {}
+
+  const rect = (event.currentTarget as HTMLElement)?.getBoundingClientRect()
+  const x = rect ? (rect.left + rect.width / 2) / window.innerWidth : 0.5
+  const y = rect ? (rect.top + rect.height / 2) / window.innerHeight : 0.5
+
+  confetti({
+    particleCount: 38,
+    spread: 68,
+    origin: { x, y },
+    colors: ['#10b981', '#06b6d4', '#fbbf24', '#38bdf8', '#ffffff'],
+    ticks: 170,
+    gravity: 0.92,
+    scalar: 1.05,
+    disableForReducedMotion: true
+  })
+}
+
+// 方案 A 入場自動施放守護 (每 session 僅自發施放一次，絕不擾民)
+let confettiObserver: IntersectionObserver | null = null
+
+onMounted(() => {
+  nextTick(() => {
+    if (hasTodayGraduatedBatch.value && typeof IntersectionObserver !== 'undefined') {
+      const gridEl = document.getElementById('batches-cards-grid')
+      if (gridEl) {
+        confettiObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const hasFired = sessionStorage.getItem('wdaweb_grad_confetti_auto_fired')
+              if (!hasFired) {
+                sessionStorage.setItem('wdaweb_grad_confetti_auto_fired', 'true')
+                setTimeout(() => {
+                  fireGraduationConfetti()
+                }, 350)
+              }
+              confettiObserver?.disconnect()
+            }
+          })
+        }, { threshold: 0.25 })
+        confettiObserver.observe(gridEl)
+      }
+    }
+  })
+})
+
+onUnmounted(() => {
+  if (confettiObserver) {
+    confettiObserver.disconnect()
+    confettiObserver = null
+  }
+})
 
 // 動效管理：僅在首頁有標頭滾動時啟用 ScrollTrigger；在獨立招生頁面由外層 page transition 驅動，維持 100% 穩定立即可見
 if (!props.hideHeader) {
