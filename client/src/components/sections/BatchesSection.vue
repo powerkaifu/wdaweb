@@ -292,6 +292,7 @@
 
           <!-- 下方行動按鈕區 -->
           <div class="pt-4 border-t border-slate-800/80">
+            <!-- 1. 報名中 -->
             <a
               v-if="isBatchEnrolling(batch)"
               :href="batch.apply_url"
@@ -305,34 +306,8 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
               </svg>
             </a>
-            <div
-              v-else-if="isBatchTraining(batch)"
-              class="w-full py-3.5 sm:py-4 px-3 rounded-2xl text-center font-semibold text-emerald-400/90 bg-slate-900/90 border border-emerald-500/30 shadow-inner flex items-center justify-center space-x-2 select-none text-base lg:text-lg"
-            >
-              <svg class="w-5 h-5 text-emerald-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-              </svg>
-              <span>🎓 本期正全力培訓衝刺中</span>
-            </div>
-            <div
-              v-else-if="isBatchScreeningOrPreparing(batch)"
-              class="w-full py-3.5 sm:py-4 px-3 rounded-2xl text-center font-semibold text-cyan-300 bg-slate-900/90 border border-cyan-500/30 shadow-inner flex flex-wrap items-center justify-center gap-1.5 select-none text-base lg:text-lg"
-            >
-              <svg class="w-5 h-5 text-cyan-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              <span class="text-center">✨ 甄試結束 · 待開訓 ({{ batch.training_start_date }} 開課)</span>
-            </div>
-            <div
-              v-else-if="isBatchUpcoming(batch)"
-              class="w-full py-3.5 sm:py-4 px-3 rounded-2xl text-center font-semibold text-purple-300/90 bg-slate-900/90 border border-purple-500/30 shadow-inner flex items-center justify-center space-x-2 select-none text-base lg:text-lg"
-            >
-              <svg class="w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              <span>⏳ 尚未開放報名（敬請期待）</span>
-            </div>
-            <!-- 結訓榮耀底端按鈕列：顯示「本期已圓滿結訓」並內嵌「送上祝賀」按鈕 -->
+
+            <!-- 2. 圓滿結訓 (優先判定！顯示「本期已圓滿結訓」並內嵌「送上祝賀」按鈕) -->
             <div
               v-else-if="isBatchEnded(batch)"
               class="w-full py-2.5 sm:py-3 px-3.5 sm:px-5 rounded-2xl bg-gradient-to-r from-emerald-950/80 via-slate-900/95 to-emerald-950/80 border border-emerald-500/50 shadow-lg shadow-emerald-950/40 flex items-center justify-between gap-3 text-base lg:text-lg select-none"
@@ -355,6 +330,41 @@
                 <span class="font-mono bg-emerald-950/90 px-2 py-0.5 rounded text-xs text-emerald-200 border border-emerald-400/40 font-semibold">{{ celebrationCount }}</span>
               </button>
             </div>
+
+            <!-- 3. 正全力培訓衝刺中 -->
+            <div
+              v-else-if="isBatchTraining(batch)"
+              class="w-full py-3.5 sm:py-4 px-3 rounded-2xl text-center font-semibold text-emerald-400/90 bg-slate-900/90 border border-emerald-500/30 shadow-inner flex items-center justify-center space-x-2 select-none text-base lg:text-lg"
+            >
+              <svg class="w-5 h-5 text-emerald-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+              </svg>
+              <span>🎓 本期正全力培訓衝刺中</span>
+            </div>
+
+            <!-- 4. 甄試結束待開訓 -->
+            <div
+              v-else-if="isBatchScreeningOrPreparing(batch)"
+              class="w-full py-3.5 sm:py-4 px-3 rounded-2xl text-center font-semibold text-cyan-300 bg-slate-900/90 border border-cyan-500/30 shadow-inner flex flex-wrap items-center justify-center gap-1.5 select-none text-base lg:text-lg"
+            >
+              <svg class="w-5 h-5 text-cyan-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span class="text-center">✨ 甄試結束 · 待開訓 ({{ batch.training_start_date }} 開課)</span>
+            </div>
+
+            <!-- 5. 尚未開放報名 -->
+            <div
+              v-else-if="isBatchUpcoming(batch)"
+              class="w-full py-3.5 sm:py-4 px-3 rounded-2xl text-center font-semibold text-purple-300/90 bg-slate-900/90 border border-purple-500/30 shadow-inner flex items-center justify-center space-x-2 select-none text-base lg:text-lg"
+            >
+              <svg class="w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span>⏳ 尚未開放報名（敬請期待）</span>
+            </div>
+
+            <!-- 6. 報名截止 -->
             <div
               v-else
               class="w-full py-3.5 sm:py-4 px-3 rounded-2xl text-center font-semibold text-slate-400 bg-slate-900/90 border border-slate-800 shadow-inner flex items-center justify-center space-x-2 select-none text-base lg:text-lg"
@@ -407,7 +417,7 @@ import { useBatchTimeline } from '@/composables/useBatchTimeline'
 import { useCmsStore } from '@/stores/useCmsStore'
 import {
   isBatchEnded as rawIsBatchEnded,
-  isBatchTraining,
+  isBatchTraining as rawIsBatchTraining,
   isBatchClosed,
   isBatchEnrolling,
   isBatchScreeningOrPreparing,
@@ -447,6 +457,11 @@ const {
 function isBatchEnded(batch: AdmissionBatch): boolean {
   if (isCelebrationSimulated.value && batch.id === 1) return true
   return rawIsBatchEnded(batch)
+}
+
+function isBatchTraining(batch: AdmissionBatch): boolean {
+  if (isBatchEnded(batch)) return false
+  return rawIsBatchTraining(batch)
 }
 
 function handleTogglePreview() {
