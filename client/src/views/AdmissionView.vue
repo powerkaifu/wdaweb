@@ -96,13 +96,13 @@ useSeoMeta({
         '@type': 'ListItem',
         'position': 1,
         'name': '首頁',
-        'item': 'https://powerkaifu.github.io/wdaweb/'
+        'item': 'https://wdaweb.github.io/frontend/'
       },
       {
         '@type': 'ListItem',
         'position': 2,
         'name': '招生期別與報名',
-        'item': 'https://powerkaifu.github.io/wdaweb/admission'
+        'item': 'https://wdaweb.github.io/frontend/admission'
       }
     ]
   }

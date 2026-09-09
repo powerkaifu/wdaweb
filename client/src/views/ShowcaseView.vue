@@ -30,13 +30,13 @@ useSeoMeta({
         '@type': 'ListItem',
         'position': 1,
         'name': '首頁',
-        'item': 'https://powerkaifu.github.io/wdaweb/'
+        'item': 'https://wdaweb.github.io/frontend/'
       },
       {
         '@type': 'ListItem',
         'position': 2,
         'name': '學員專題成果',
-        'item': 'https://powerkaifu.github.io/wdaweb/showcase'
+        'item': 'https://wdaweb.github.io/frontend/showcase'
       }
     ]
   }

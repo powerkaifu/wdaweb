@@ -17,5 +17,5 @@ User-agent: ClaudeBot
 Allow: /
 
 # 網站地圖與 AI 知識導覽檔案
-Sitemap: https://powerkaifu.github.io/wdaweb/sitemap.xml
-# LLM & AI Agents Context: https://powerkaifu.github.io/wdaweb/llms.txt
+Sitemap: https://wdaweb.github.io/frontend/sitemap.xml
+# AI Agent Context: https://wdaweb.github.io/frontend/llms.txt

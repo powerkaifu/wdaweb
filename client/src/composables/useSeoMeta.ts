@@ -8,7 +8,7 @@ export interface SeoMetaOptions {
   jsonLd?: Record<string, any> | Array<Record<string, any>>
 }
 
-const BASE_URL = 'https://powerkaifu.github.io/wdaweb'
+const BASE_URL = 'https://wdaweb.github.io/frontend'
 const SITE_NAME = '泰山職訓「前端網頁技術與AI應用」專班'
 
 /**
