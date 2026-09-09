@@ -307,17 +307,17 @@
               </svg>
             </a>
 
-            <!-- 2. 圓滿結訓 (優先判定！顯示「本期已圓滿結訓」並內嵌「送上祝賀」按鈕) -->
+            <!-- 2. 圓滿結訓 (優先判定！水平置中顯示「本期已圓滿結訓」並內嵌「送上祝賀」按鈕) -->
             <div
               v-else-if="isBatchEnded(batch)"
-              class="w-full py-2.5 sm:py-3 px-3.5 sm:px-5 rounded-2xl bg-gradient-to-r from-emerald-950/80 via-slate-900/95 to-emerald-950/80 border border-emerald-500/50 shadow-lg shadow-emerald-950/40 flex items-center justify-between gap-3 text-base lg:text-lg select-none"
+              class="w-full py-2.5 sm:py-3 px-4 rounded-2xl bg-gradient-to-r from-emerald-950/80 via-slate-900/95 to-emerald-950/80 border border-emerald-500/50 shadow-lg shadow-emerald-950/40 flex flex-wrap items-center justify-center gap-3 sm:gap-4.5 text-base lg:text-lg select-none"
             >
               <div class="flex items-center space-x-2 text-emerald-300 font-bold tracking-wide text-sm sm:text-base lg:text-lg">
                 <span class="text-lg sm:text-xl">🎓</span>
                 <span>本期已圓滿結訓</span>
               </div>
 
-              <!-- 🎉 送上祝賀互動按鈕 (完美內嵌於底部按鈕右側) -->
+              <!-- 🎉 送上祝賀互動按鈕 (與文字一同水平置中呈現) -->
               <button
                 v-if="isCelebrationBatch(batch)"
                 type="button"

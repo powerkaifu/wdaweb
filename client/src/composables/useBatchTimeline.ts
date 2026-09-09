@@ -359,7 +359,7 @@ export function useBatchTimeline(batchesInput: MaybeRefOrGetter<AdmissionBatch[]
       if (isTodayGrad || isCelebration) {
         return {
           icon: '🎓',
-          text: '本期圓滿結訓 · 祝賀大家未來旅途一切順利！'
+          text: '本期已圓滿結訓 · 祝賀大家未來旅途一切順利！'
         }
       }
       return {
