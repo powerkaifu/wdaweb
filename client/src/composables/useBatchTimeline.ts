@@ -356,16 +356,10 @@ export function useBatchTimeline(batchesInput: MaybeRefOrGetter<AdmissionBatch[]
     if (isBatchEnded(batch)) {
       const isTodayGrad = (isCelebrationSimulated.value && batch.id === 1) || isTodayGraduationDay(batch.training_end_date)
       const isCelebration = isCelebrationBatch(batch)
-      if (isTodayGrad) {
+      if (isTodayGrad || isCelebration) {
         return {
           icon: '🎓',
-          text: '本期已於今日圓滿結訓 · 祝賀大家未來旅途一切順利！'
-        }
-      }
-      if (isCelebration) {
-        return {
-          icon: '🎓',
-          text: '本期已圓滿結訓 · 祝賀大家未來旅途一切順利！'
+          text: '本期圓滿結訓 · 祝賀大家未來旅途一切順利！'
         }
       }
       return {
