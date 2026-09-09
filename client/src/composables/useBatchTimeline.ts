@@ -1,15 +1,26 @@
-import { computed, toValue, type MaybeRefOrGetter } from 'vue'
+import { ref, computed, toValue, type MaybeRefOrGetter } from 'vue'
 import type { AdmissionBatch } from '@/types'
 import { defaultBatches } from '@/stores/useCmsStore'
 import {
   isBatchEnrolling,
   isBatchUpcoming,
   isBatchTraining,
-  isBatchEnded,
+  isBatchEnded as rawIsBatchEnded,
   isBatchScreeningOrPreparing,
   getCountdownText,
   getTrainingEndTime,
 } from '@/utils/batchStatus'
+
+/** 全域可控的結訓慶典模擬狀態 (支援 URL 參數 ?preview=celebration 或點擊開關即時切換) */
+export const isCelebrationSimulated = ref(
+  typeof window !== 'undefined' &&
+  (new URLSearchParams(window.location.search).get('preview') === 'celebration' ||
+   window.location.hash.includes('preview=celebration'))
+)
+
+export function toggleCelebrationSimulation() {
+  isCelebrationSimulated.value = !isCelebrationSimulated.value
+}
 
 export interface LifecycleStep {
   key: string
@@ -136,7 +147,15 @@ export function useBatchTimeline(batchesInput: MaybeRefOrGetter<AdmissionBatch[]
     return endTime > 0 && Date.now() >= endTime
   }
 
+  function isBatchEnded(batch: AdmissionBatch): boolean {
+    if (isCelebrationSimulated.value && batch.id === 1) return true
+    return rawIsBatchEnded(batch)
+  }
+
   function getStepStatus(batch: AdmissionBatch, stepNumber: number): 'completed' | 'active' | 'pending' {
+    if (isCelebrationSimulated.value && batch.id === 1) {
+      return 'completed'
+    }
     const now = Date.now()
     const enrollEnd = batch.enroll_end_date ? new Date(batch.enroll_end_date.replace(/-/g, '/')).getTime() + 24 * 60 * 60 * 1000 - 1000 : 0
     const screeningEndTime = getScreeningEndTime(batch.screening_date)
@@ -176,6 +195,7 @@ export function useBatchTimeline(batchesInput: MaybeRefOrGetter<AdmissionBatch[]
    * 2. 且該期別為全站「最新結訓的榮耀代表」（在後端下一期資料出現並輪替前，始終維持慶典氛圍）
    */
   function isCelebrationBatch(batch: AdmissionBatch): boolean {
+    if (isCelebrationSimulated.value && batch.id === 1) return true
     if (!isBatchEnded(batch)) return false
     const rawList = toValue(batchesInput)
     const list = Array.isArray(rawList) && rawList.length > 0 ? rawList : defaultBatches
@@ -194,7 +214,7 @@ export function useBatchTimeline(batchesInput: MaybeRefOrGetter<AdmissionBatch[]
 
   function getFastStatusPill(batch: AdmissionBatch): StatusPill {
     if (isBatchEnded(batch)) {
-      const isTodayGrad = isTodayGraduationDay(batch.training_end_date)
+      const isTodayGrad = (isCelebrationSimulated.value && batch.id === 1) || isTodayGraduationDay(batch.training_end_date)
       const isCelebration = isCelebrationBatch(batch)
 
       if (isTodayGrad) {
@@ -334,7 +354,7 @@ export function useBatchTimeline(batchesInput: MaybeRefOrGetter<AdmissionBatch[]
 
   function getLifecycleDetailNotice(batch: AdmissionBatch): DetailNotice {
     if (isBatchEnded(batch)) {
-      const isTodayGrad = isTodayGraduationDay(batch.training_end_date)
+      const isTodayGrad = (isCelebrationSimulated.value && batch.id === 1) || isTodayGraduationDay(batch.training_end_date)
       const isCelebration = isCelebrationBatch(batch)
       if (isTodayGrad) {
         return {
@@ -404,6 +424,8 @@ export function useBatchTimeline(batchesInput: MaybeRefOrGetter<AdmissionBatch[]
     getStepNodeClass,
     getStepTextClass,
     getTrainingProgress,
-    getLifecycleDetailNotice
+    getLifecycleDetailNotice,
+    isCelebrationSimulated,
+    toggleCelebrationSimulation
   }
 }
