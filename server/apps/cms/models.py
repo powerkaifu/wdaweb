@@ -132,7 +132,7 @@ class AdmissionBatch(SoftDeleteModel):
         if self.status_override != 'auto':
             return self.status_override
         
-        today = timezone.now().date()
+        today = timezone.localdate()
         if today < self.enroll_start_date:
             return 'upcoming'
         elif self.enroll_start_date <= today <= self.enroll_end_date:

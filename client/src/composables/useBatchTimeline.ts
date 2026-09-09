@@ -164,7 +164,9 @@ export function useBatchTimeline(batchesInput: MaybeRefOrGetter<AdmissionBatch[]
       const prog = getTrainingProgress(batch)
       const days = prog.remainingDays
       return {
-        label: days <= 14 ? `🏁 倒數結訓 · 距結訓僅剩 ${days} 天` : `🟢 920h 實體培訓進行中`,
+        label: days <= 14 
+          ? (days === 0 ? '🏁 今日正式結訓 · 圓滿達成 920h' : `🏁 倒數結訓 · 距結訓僅剩 ${days} 天`) 
+          : `🟢 920h 實體培訓進行中`,
         class: 'bg-emerald-500/15 text-emerald-300 border border-emerald-500/40 shadow-sm shadow-emerald-500/10'
       }
     }
@@ -182,13 +184,13 @@ export function useBatchTimeline(batchesInput: MaybeRefOrGetter<AdmissionBatch[]
     }
     if (isBatchUpcoming(batch)) {
       return {
-        label: `⏳ 新期別籌備中`,
-        class: 'bg-purple-500/15 text-purple-300 border border-purple-500/30'
+        label: `⏳ 招生籌備中 · 即將開放`,
+        class: 'bg-slate-800/80 text-slate-400 border border-slate-700/60 shadow-none'
       }
     }
     return {
-      label: `🏁 本期已結訓（報名截止）`,
-      class: 'bg-slate-800 text-slate-400 border border-slate-700'
+      label: `📢 ${batch.dynamic_status || '招生資訊'}`,
+      class: 'bg-slate-800/80 text-slate-400 border border-slate-700/60 shadow-none'
     }
   }
 
@@ -228,13 +230,36 @@ export function useBatchTimeline(batchesInput: MaybeRefOrGetter<AdmissionBatch[]
       return { elapsedDays: 0, totalDays: 169, percent: 0, remainingDays: 0 }
     }
     try {
-      const start = new Date(batch.training_start_date.replace(/-/g, '/')).getTime()
-      const end = new Date(batch.training_end_date.replace(/-/g, '/')).getTime() + 24 * 60 * 60 * 1000 - 1000
-      const now = Date.now()
-      const totalDays = Math.max(1, Math.round((end - start) / (1000 * 60 * 60 * 24)))
-      const elapsedDays = Math.max(1, Math.min(totalDays, Math.round((now - start) / (1000 * 60 * 60 * 24))))
+      // 依台灣本地日曆天對齊至當日 00:00:00，徹底消除 Math.round 四捨五入晚 12 小時跳日的缺陷
+      const sDate = new Date(batch.training_start_date.replace(/-/g, '/'))
+      sDate.setHours(0, 0, 0, 0)
+      const sMid = sDate.getTime()
+
+      const eDate = new Date(batch.training_end_date.replace(/-/g, '/'))
+      eDate.setHours(0, 0, 0, 0)
+      const eMid = eDate.getTime()
+
+      const nowDate = new Date()
+      nowDate.setHours(0, 0, 0, 0)
+      const nMid = nowDate.getTime()
+
+      const MS_PER_DAY = 1000 * 60 * 60 * 24
+
+      // 總日曆天數（首尾皆算在內，例如 3/25~9/10 共 170 天）
+      const totalDays = Math.max(1, Math.round((eMid - sMid) / MS_PER_DAY) + 1)
+
+      // 已受訓天數（當天一踏入午夜 0 點即算入當天）
+      let elapsedDays = 0
+      if (nMid >= sMid) {
+        elapsedDays = Math.min(totalDays, Math.round((nMid - sMid) / MS_PER_DAY) + 1)
+      }
+
+      // 距結訓天數（倒數計日）：
+      // 9/9 距 9/10 結訓日剩 1 天；
+      // 一過台灣時間 9/9 24:00 (即 9/10 00:00:00 結訓日當天)，距結訓立刻精準變成 0 天！
+      const remainingDays = Math.max(0, Math.round((eMid - nMid) / MS_PER_DAY))
       const percent = Math.min(100, Math.round((elapsedDays / totalDays) * 100))
-      const remainingDays = Math.max(0, totalDays - elapsedDays)
+
       return { elapsedDays, totalDays, percent, remainingDays }
     } catch {
       return { elapsedDays: 0, totalDays: 169, percent: 0, remainingDays: 0 }
@@ -254,9 +279,12 @@ export function useBatchTimeline(batchesInput: MaybeRefOrGetter<AdmissionBatch[]
     if (isBatchTraining(batch)) {
       const prog = getTrainingProgress(batch)
       if (prog.remainingDays <= 14) {
+        const remainNotice = prog.remainingDays === 0
+          ? '距結訓剩 0 天（今日結訓）！'
+          : `距結訓剩 ${prog.remainingDays} 天！`
         return {
           icon: '⏳',
-          text: `受訓倒數衝刺 · 已受訓 ${prog.elapsedDays}/${prog.totalDays} 天 · 距結訓剩 ${prog.remainingDays} 天！`
+          text: `受訓倒數衝刺 · 已受訓 ${prog.elapsedDays}/${prog.totalDays} 天 · ${remainNotice}`
         }
       }
       return {
