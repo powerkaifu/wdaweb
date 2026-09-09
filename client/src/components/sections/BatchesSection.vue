@@ -105,6 +105,7 @@
         <div
           v-for="(batch, index) in (sortedBatches.length > 0 ? sortedBatches : store.batches)"
           :key="batch.id"
+          :id="isCelebrationBatch(batch) ? 'batch-card-celebration' : undefined"
           class="batch-card group relative rounded-3xl p-4 sm:p-8 lg:p-11 backdrop-blur-xl border transition-all duration-300 flex flex-col justify-between overflow-hidden transform-gpu cursor-default w-full"
           :class="[
             isBatchEnded(batch)
@@ -464,35 +465,52 @@ const hasCelebrationBatch = computed(() => {
   return list.some(b => isCelebrationBatch(b) && isBatchEnded(b))
 })
 
-// 方案 A：量子科技星塵禮花慶典 (雙側拋物線高雅發射)
+// 方案 A：第 1 期卡片兩側精準定錨・微光星塵禮花 (聚焦於卡片兩側，不遮擋全螢幕)
 function fireGraduationConfetti() {
   // 符合全站暗黑科技之高雅配色：電光青、翡翠綠、天藍、星輝金、高能白
   const colors = ['#06b6d4', '#10b981', '#38bdf8', '#fbbf24', '#ffffff']
 
-  // 左側向右上方劃出優雅弧線
+  // 動態精確抓取第 1 期卡片的視窗幾何座標 (BoundingClientRect)
+  const cardEl = document.getElementById('batch-card-celebration') || document.querySelector('.batch-card')
+  let leftX = 0.22
+  let rightX = 0.48
+  let originY = 0.65
+
+  if (cardEl) {
+    const rect = cardEl.getBoundingClientRect()
+    // 依卡片實際寬高，定錨於卡片左緣與右緣內縮 15px 處
+    leftX = Math.max(0.05, Math.min(0.95, (rect.left + 15) / window.innerWidth))
+    rightX = Math.max(0.05, Math.min(0.95, (rect.right - 15) / window.innerWidth))
+    // 發射高度定錨在卡片中下部 65% 處
+    originY = Math.max(0.15, Math.min(0.85, (rect.top + rect.height * 0.65) / window.innerHeight))
+  }
+
+  // 卡片左側向上內側拋射弧線 (聚焦於卡片左上方)
   confetti({
-    particleCount: 52,
-    angle: 60,
-    spread: 58,
-    origin: { x: 0.12, y: 0.68 },
+    particleCount: 32,
+    angle: 68,
+    spread: 38,
+    startVelocity: 30,
+    origin: { x: leftX, y: originY },
     colors,
-    ticks: 240,
-    gravity: 0.85,
-    scalar: 1.15,
+    ticks: 190,
+    gravity: 1.12,
+    scalar: 0.95,
     shapes: ['circle', 'square'],
     disableForReducedMotion: true
   })
 
-  // 右側向左上方劃出優雅弧線
+  // 卡片右側向上內側拋射弧線 (聚焦於卡片右上方)
   confetti({
-    particleCount: 52,
-    angle: 120,
-    spread: 58,
-    origin: { x: 0.88, y: 0.68 },
+    particleCount: 32,
+    angle: 112,
+    spread: 38,
+    startVelocity: 30,
+    origin: { x: rightX, y: originY },
     colors,
-    ticks: 240,
-    gravity: 0.85,
-    scalar: 1.15,
+    ticks: 190,
+    gravity: 1.12,
+    scalar: 0.95,
     shapes: ['circle', 'square'],
     disableForReducedMotion: true
   })
