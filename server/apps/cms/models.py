@@ -145,6 +145,11 @@ class AdmissionBatch(SoftDeleteModel):
                 return 'screening'
             return 'preparing'
         elif self.training_start_date <= today <= self.training_end_date:
+            # 若剛好為結訓日當天，且台灣本地時間已超過 16:35 下課時間，直接切換為正式結訓狀態
+            if today == self.training_end_date:
+                now_local = timezone.localtime()
+                if now_local.hour > 16 or (now_local.hour == 16 and now_local.minute >= 35):
+                    return 'ended'
             return 'training'
         else:
             return 'ended'

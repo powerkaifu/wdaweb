@@ -8,6 +8,7 @@ import {
   isBatchEnded,
   isBatchScreeningOrPreparing,
   getCountdownText,
+  getTrainingEndTime,
 } from '@/utils/batchStatus'
 
 export interface LifecycleStep {
@@ -30,6 +31,22 @@ export interface StatusPill {
 export interface DetailNotice {
   icon: string
   text: string
+}
+
+/**
+ * 判斷指定日期字串是否為「今天」的日曆天
+ */
+function isTodayGraduationDay(dateStr?: string | null): boolean {
+  if (!dateStr) return false
+  try {
+    const end = new Date(dateStr.replace(/-/g, '/'))
+    const now = new Date()
+    return end.getFullYear() === now.getFullYear() &&
+           end.getMonth() === now.getMonth() &&
+           end.getDate() === now.getDate()
+  } catch {
+    return false
+  }
 }
 
 /**
@@ -124,7 +141,7 @@ export function useBatchTimeline(batchesInput: MaybeRefOrGetter<AdmissionBatch[]
     const enrollEnd = batch.enroll_end_date ? new Date(batch.enroll_end_date.replace(/-/g, '/')).getTime() + 24 * 60 * 60 * 1000 - 1000 : 0
     const screeningEndTime = getScreeningEndTime(batch.screening_date)
     const trainStart = batch.training_start_date ? new Date(batch.training_start_date.replace(/-/g, '/')).getTime() : 0
-    const trainEnd = batch.training_end_date ? new Date(batch.training_end_date.replace(/-/g, '/')).getTime() + 24 * 60 * 60 * 1000 - 1000 : 0
+    const trainEnd = getTrainingEndTime(batch.training_end_date)
 
     if (stepNumber === 1) {
       if (now > enrollEnd && enrollEnd > 0) return 'completed'
@@ -142,8 +159,8 @@ export function useBatchTimeline(batchesInput: MaybeRefOrGetter<AdmissionBatch[]
       return 'pending'
     }
     if (stepNumber === 4) {
-      if (now > trainEnd && trainEnd > 0) return 'completed'
-      if (now >= trainStart && now <= trainEnd) return 'active'
+      if (now >= trainEnd && trainEnd > 0) return 'completed'
+      if (now >= trainStart && (trainEnd === 0 || now < trainEnd)) return 'active'
       return 'pending'
     }
     if (stepNumber === 5) {
@@ -155,18 +172,22 @@ export function useBatchTimeline(batchesInput: MaybeRefOrGetter<AdmissionBatch[]
 
   function getFastStatusPill(batch: AdmissionBatch): StatusPill {
     if (isBatchEnded(batch)) {
+      const isTodayGrad = isTodayGraduationDay(batch.training_end_date)
       return {
-        label: `🏁 本期已結訓 · 報名截止`,
-        class: 'bg-slate-900/90 text-slate-400 border border-slate-800 shadow-none'
+        label: isTodayGrad ? '🎉 今日圓滿結訓 · 邁向職場' : `🏁 本期已結訓 · 報名截止`,
+        class: isTodayGrad
+          ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-400/40 shadow-md shadow-emerald-500/20'
+          : 'bg-slate-900/90 text-slate-400 border border-slate-800 shadow-none'
       }
     }
     if (isBatchTraining(batch)) {
       const prog = getTrainingProgress(batch)
       const days = prog.remainingDays
+      const isTodayGrad = isTodayGraduationDay(batch.training_end_date)
       return {
-        label: days <= 14 
-          ? (days === 0 ? '🏁 今日正式結訓 · 圓滿達成 920h' : `🏁 倒數結訓 · 距結訓僅剩 ${days} 天`) 
-          : `🟢 920h 實體培訓進行中`,
+        label: isTodayGrad
+          ? '🏁 今日結訓日 · 920h 最後衝刺'
+          : (days <= 14 ? `🏁 倒數結訓 · 距結訓僅剩 ${days} 天` : `🟢 920h 實體培訓進行中`),
         class: 'bg-emerald-500/15 text-emerald-300 border border-emerald-500/40 shadow-sm shadow-emerald-500/10'
       }
     }
@@ -276,6 +297,15 @@ export function useBatchTimeline(batchesInput: MaybeRefOrGetter<AdmissionBatch[]
   }
 
   function getLifecycleDetailNotice(batch: AdmissionBatch): DetailNotice {
+    if (isBatchEnded(batch)) {
+      const isTodayGrad = isTodayGraduationDay(batch.training_end_date)
+      return {
+        icon: isTodayGrad ? '🎓' : '🎉',
+        text: isTodayGrad
+          ? '本期已於今日圓滿結訓 · 歡迎查閱精彩學員專題成果！'
+          : '本期已圓滿結訓 · 歡迎查閱精彩專題成果！'
+      }
+    }
     if (isBatchTraining(batch)) {
       const prog = getTrainingProgress(batch)
       if (prog.remainingDays <= 14) {

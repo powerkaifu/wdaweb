@@ -35,17 +35,38 @@ export function isBatchUpcoming(batch: AdmissionBatch): boolean {
 }
 
 /**
+ * 取得結訓當天的正式結訓精確時間戳（結訓當日下午 16:35 下課時間）
+ */
+export function getTrainingEndTime(trainingEndDateStr?: string): number {
+  if (!trainingEndDateStr) return 0
+  try {
+    const d = new Date(trainingEndDateStr.replace(/-/g, '/'))
+    d.setHours(16, 35, 0, 0)
+    return d.getTime()
+  } catch {
+    return 0
+  }
+}
+
+/**
  * 判斷期別是否正在實體培訓進行中
  */
 export function isBatchTraining(batch: AdmissionBatch): boolean {
   if (batch.status_override === 'training') return true
   if (batch.status_override === 'ended' || batch.status_override === 'open' || batch.status_override === 'closing_soon' || batch.status_override === 'upcoming') return false
+  
+  // 若已超過結訓日 16:35 下課時間，一律進入結訓狀態，不再視為培訓中
+  if (batch.training_end_date) {
+    const trainEnd = getTrainingEndTime(batch.training_end_date)
+    if (trainEnd > 0 && Date.now() > trainEnd) return false
+  }
+
   if (batch.dynamic_status === 'training') return true
   
   if (batch.training_start_date && batch.training_end_date) {
     try {
       const trainStart = new Date(batch.training_start_date.replace(/-/g, '/')).getTime()
-      const trainEnd = new Date(batch.training_end_date.replace(/-/g, '/')).getTime() + 24 * 60 * 60 * 1000 - 1000
+      const trainEnd = getTrainingEndTime(batch.training_end_date)
       const now = Date.now()
       return now >= trainStart && now <= trainEnd
     } catch {
@@ -56,14 +77,15 @@ export function isBatchTraining(batch: AdmissionBatch): boolean {
 }
 
 /**
- * 判斷期別是否已圓滿結訓
+ * 判斷期別是否已圓滿結訓（以結訓當日下午 16:35 為正式結訓切換點）
  */
 export function isBatchEnded(batch: AdmissionBatch): boolean {
   if (batch.status_override === 'ended') return true
+  if (batch.status_override === 'training') return false
   if (batch.dynamic_status === 'ended') return true
   if (!batch.training_end_date) return false
   try {
-    const end = new Date(batch.training_end_date.replace(/-/g, '/')).getTime() + 24 * 60 * 60 * 1000 - 1000
+    const end = getTrainingEndTime(batch.training_end_date)
     return Date.now() > end
   } catch {
     return false
