@@ -74,32 +74,6 @@
         </div>
       </div>
 
-      <!-- 結訓慶典即時預覽控制開關 (提供使用者提前體驗明日結訓動效) -->
-      <div class="max-w-2xl lg:max-w-[1360px] mx-auto w-full flex justify-end mb-4 px-2">
-        <button
-          type="button"
-          @click="handleTogglePreview"
-          class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full text-xs font-bold transition-all duration-300 cursor-pointer select-none group/toggle shadow-md"
-          :class="isCelebrationSimulated
-            ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/50 shadow-emerald-500/25 ring-1 ring-emerald-400/40'
-            : 'bg-slate-900/80 hover:bg-slate-800 text-slate-400 hover:text-cyan-300 border border-slate-800 hover:border-cyan-500/40 shadow-slate-950/40'"
-          title="切換模擬明日 16:35 正式結訓後的慶典動效"
-        >
-          <span class="text-sm group-hover/toggle:scale-125 transition-transform">
-            {{ isCelebrationSimulated ? '🎉' : '👀' }}
-          </span>
-          <span>
-            {{ isCelebrationSimulated ? '正在預覽第 1 期明日結訓慶典效果（點擊還原）' : '點此預覽明日第 1 期結訓慶典動效' }}
-          </span>
-          <span
-            class="px-1.5 py-0.5 rounded text-[11px] font-mono"
-            :class="isCelebrationSimulated ? 'bg-emerald-950 text-emerald-300 border border-emerald-500/30' : 'bg-slate-800 text-slate-400'"
-          >
-            {{ isCelebrationSimulated ? 'ON' : 'PREVIEW' }}
-          </span>
-        </button>
-      </div>
-
       <!-- 期別卡片網格清單 (平板單欄居中限寬，桌機雙欄大器舒展) -->
       <div id="batches-cards-grid" class="grid grid-cols-1 lg:grid-cols-2 gap-8 xl:gap-10 max-w-2xl lg:max-w-[1360px] mx-auto w-full">
         <div
@@ -450,8 +424,7 @@ const {
   getStepTextClass,
   getTrainingProgress,
   getLifecycleDetailNotice,
-  isCelebrationSimulated,
-  toggleCelebrationSimulation
+  isCelebrationSimulated
 } = useBatchTimeline(() => store.batches)
 
 function isBatchEnded(batch: AdmissionBatch): boolean {
@@ -462,13 +435,6 @@ function isBatchEnded(batch: AdmissionBatch): boolean {
 function isBatchTraining(batch: AdmissionBatch): boolean {
   if (isBatchEnded(batch)) return false
   return rawIsBatchTraining(batch)
-}
-
-function handleTogglePreview() {
-  toggleCelebrationSimulation()
-  if (isCelebrationSimulated.value) {
-    fireGraduationConfetti()
-  }
 }
 
 // ===========================================================================
