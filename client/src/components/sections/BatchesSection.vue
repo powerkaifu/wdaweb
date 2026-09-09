@@ -238,24 +238,11 @@
               </div>
 
               <!-- 生命週期動態焦點看板 (單行大器展示，自適應字級防折行) -->
-              <div class="mt-4 pt-3.5 border-t border-slate-800/80 text-xs sm:text-sm lg:text-base flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 text-slate-200 min-w-0">
+              <div class="mt-4 pt-3.5 border-t border-slate-800/80 text-xs sm:text-sm lg:text-base flex items-center text-slate-200 min-w-0">
                 <div class="flex items-center space-x-2 min-w-0 overflow-hidden">
                   <span class="flex-shrink-0 text-sm sm:text-base">{{ getLifecycleDetailNotice(batch).icon }}</span>
                   <span class="leading-relaxed font-medium whitespace-nowrap overflow-hidden text-ellipsis">{{ getLifecycleDetailNotice(batch).text }}</span>
                 </div>
-
-                <!-- 🎉 方案 B：祝賀微互動按鈕 (在長效結訓慶典中常駐現身，直到新期別出現交棒) -->
-                <button
-                  v-if="isCelebrationBatch(batch) && isBatchEnded(batch)"
-                  type="button"
-                  @click.stop="triggerCongratulations($event)"
-                  title="點擊為結訓學員送上祝賀星塵禮花"
-                  class="flex-shrink-0 inline-flex items-center space-x-1.5 px-3.5 py-1.5 rounded-xl text-xs font-bold text-emerald-300 bg-emerald-500/15 hover:bg-emerald-500/25 border border-emerald-500/40 hover:border-emerald-400 active:scale-95 transition-all shadow-sm shadow-emerald-500/20 cursor-pointer select-none group/btn self-start sm:self-auto"
-                >
-                  <span class="text-sm group-hover/btn:scale-125 transition-transform">🎉</span>
-                  <span>送上祝賀</span>
-                  <span class="font-mono bg-emerald-950/80 px-1.5 py-0.5 rounded text-xs text-emerald-200 border border-emerald-500/30 font-semibold">{{ celebrationCount }}</span>
-                </button>
               </div>
             </div>
 
@@ -344,6 +331,29 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
               <span>⏳ 尚未開放報名（敬請期待）</span>
+            </div>
+            <!-- 結訓榮耀底端按鈕列：顯示「本期已圓滿結訓」並內嵌「送上祝賀」按鈕 -->
+            <div
+              v-else-if="isBatchEnded(batch)"
+              class="w-full py-2.5 sm:py-3 px-3.5 sm:px-5 rounded-2xl bg-gradient-to-r from-emerald-950/80 via-slate-900/95 to-emerald-950/80 border border-emerald-500/50 shadow-lg shadow-emerald-950/40 flex items-center justify-between gap-3 text-base lg:text-lg select-none"
+            >
+              <div class="flex items-center space-x-2 text-emerald-300 font-bold tracking-wide text-sm sm:text-base lg:text-lg">
+                <span class="text-lg sm:text-xl">🎓</span>
+                <span>本期已圓滿結訓</span>
+              </div>
+
+              <!-- 🎉 送上祝賀互動按鈕 (完美內嵌於底部按鈕右側) -->
+              <button
+                v-if="isCelebrationBatch(batch)"
+                type="button"
+                @click.stop="triggerCongratulations($event)"
+                title="點擊為結訓學員送上祝賀星塵禮花"
+                class="inline-flex items-center space-x-1.5 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl text-xs sm:text-sm font-bold text-white bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 active:scale-95 transition-all shadow-md shadow-emerald-500/30 cursor-pointer select-none group/btn shrink-0"
+              >
+                <span class="text-sm sm:text-base group-hover/btn:scale-125 transition-transform">🎉</span>
+                <span>送上祝賀</span>
+                <span class="font-mono bg-emerald-950/90 px-2 py-0.5 rounded text-xs text-emerald-200 border border-emerald-400/40 font-semibold">{{ celebrationCount }}</span>
+              </button>
             </div>
             <div
               v-else
