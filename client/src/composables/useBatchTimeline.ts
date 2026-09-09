@@ -302,7 +302,7 @@ export function useBatchTimeline(batchesInput: MaybeRefOrGetter<AdmissionBatch[]
       return {
         icon: isTodayGrad ? '🎓' : '🎉',
         text: isTodayGrad
-          ? '本期已於今日圓滿結訓 · 歡迎查閱精彩學員專題成果！'
+          ? '本期已於今日圓滿結訓 · 祝賀大家未來旅途一切順利！'
           : '本期已圓滿結訓 · 歡迎查閱精彩專題成果！'
       }
     }
