@@ -60,8 +60,55 @@ def sync_file_to_cloudinary(p_id: int, local_webp: Path) -> str:
     return ""
 
 
+def capture_via_cloud_api(url: str, temp_png: Path) -> bool:
+    """
+    雲端免安裝截圖引擎 (Microlink API + Thum.io 備援)
+    當伺服器 (如 Render Linux 容器) 未安裝 Chrome / ChromeDriver 時自動啟用，
+    由雲端遠端渲染單頁應用 (SPA) 並回傳高清二進位截圖。
+    """
+    import urllib.parse
+    import requests
+
+    encoded_url = urllib.parse.quote(url, safe='')
+
+    # 引擎 1: Microlink API (專門針對 SPA / Vue 3 高畫質渲染)
+    microlink_url = f"https://api.microlink.io/?url={encoded_url}&screenshot=true&meta=false&embed=screenshot.url&viewport.width=1280&viewport.height=800"
+    try:
+        logger.info(f"[ScreenshotService] ⚡ 啟用雲端免安裝截圖引擎 (Microlink API): {url}")
+        res = requests.get(microlink_url, timeout=25)
+        if res.status_code == 200 and len(res.content) > 1000:
+            with open(temp_png, 'wb') as f:
+                f.write(res.content)
+            logger.info(f"[ScreenshotService] ✅ 雲端 Microlink 截圖成功 ({len(res.content)} bytes)")
+            return True
+        else:
+            logger.warning(f"[ScreenshotService] Microlink 回應異常 ({res.status_code})，嘗試備援 Thum.io...")
+    except Exception as e:
+        logger.warning(f"[ScreenshotService] Microlink API 請求失敗: {e}，切換備援引擎...")
+
+    # 引擎 2: Thum.io API (全域穩定備援)
+    thum_url = f"https://image.thum.io/get/width/1280/crop/800/{url}"
+    try:
+        logger.info(f"[ScreenshotService] ⚡ 啟用備援截圖引擎 (Thum.io API): {url}")
+        res = requests.get(thum_url, timeout=20)
+        if res.status_code == 200 and len(res.content) > 2000:
+            with open(temp_png, 'wb') as f:
+                f.write(res.content)
+            logger.info(f"[ScreenshotService] ✅ 雲端 Thum.io 截圖成功 ({len(res.content)} bytes)")
+            return True
+    except Exception as e:
+        logger.error(f"[ScreenshotService] ❌ 雲端 Thum.io 截圖亦失敗: {e}")
+
+    return False
+
+
 def capture_single_project(project_id: int, wait_sec: float = 3.5, driver=None) -> bool:
-    """針對單一專案執行無頭截圖、WebP 轉換、本機與前端同步及 Cloudinary 上架"""
+    """
+    針對單一專案執行雙軌無頭截圖、WebP 轉換、本機與前端同步及 Cloudinary 上架
+    雙軌架構：
+      1. 優先嘗試本機 Selenium Headless Chrome
+      2. 若無 Chrome 驅動 (如 Render Linux 雲端主機)，自動無縫切換至雲端免安裝 API
+    """
     from apps.cms.models import StudentProject
 
     try:
@@ -75,38 +122,62 @@ def capture_single_project(project_id: int, wait_sec: float = 3.5, driver=None) 
         logger.warning(f"[ScreenshotService] 專案 ID {project_id} 沒有有效 Demo URL: {url}")
         return False
 
-    should_close_driver = False
-    if driver is None:
-        driver = get_headless_driver()
-        should_close_driver = True
-
     server_file = SERVER_MEDIA_DIR / f"project_{project.id}.webp"
     client_file = CLIENT_PUBLIC_DIR / f"project_{project.id}.webp"
     temp_png = server_file.with_suffix('.png')
 
+    captured = False
+    should_close_driver = False
+
+    # 軌道一：嘗試本地 Selenium Chrome 截圖
     try:
-        logger.info(f"[ScreenshotService] 正在拜訪專案 {project.id} ({project.project_name}): {url}")
+        if driver is None:
+            driver = get_headless_driver()
+            should_close_driver = True
+
+        logger.info(f"[ScreenshotService] 正在使用本地無頭 Chrome 拜訪專案 {project.id} ({project.project_name}): {url}")
         try:
             driver.get(url)
         except Exception as e:
-            logger.warning(f"[ScreenshotService] 頁面可能超時，仍嘗試等待 SPA 渲染: {e}")
+            logger.warning(f"[ScreenshotService] 頁面載入可能超時，仍嘗試等待 SPA 渲染: {e}")
 
         time.sleep(wait_sec)
         driver.save_screenshot(str(temp_png))
 
-        if not temp_png.exists() or temp_png.stat().st_size == 0:
-            logger.error(f"[ScreenshotService] 截圖檔案生成失敗或為空: {url}")
-            return False
+        if temp_png.exists() and temp_png.stat().st_size > 0:
+            captured = True
+            logger.info(f"[ScreenshotService] ✅ 本地 Chrome 截圖成功: {url}")
+    except Exception as e:
+        logger.warning(f"[ScreenshotService] ⚠️ 本地無頭 Chrome 驅動不可用 ({e})，自動無縫切換至雲端免安裝截圖引擎！")
+    finally:
+        if should_close_driver and driver:
+            try:
+                driver.quit()
+            except Exception:
+                pass
 
-        # 使用 Pillow 轉成優質 WebP
+    # 軌道二：若本地 Chrome 失敗或環境無 Chrome (如 Render 雲端 Linux)，自動啟用雲端 API 備援！
+    if not captured:
+        captured = capture_via_cloud_api(url, temp_png)
+
+    if not captured or not temp_png.exists() or temp_png.stat().st_size == 0:
+        logger.error(f"[ScreenshotService] ❌ 雙軌截圖皆失敗，無法生成有效圖片: {url}")
+        if temp_png.exists():
+            temp_png.unlink()
+        return False
+
+    try:
+        # 使用 Pillow 轉成高品質輕量 WebP
         with Image.open(temp_png) as img:
             if img.mode in ('RGBA', 'LA'):
                 img.save(server_file, 'WEBP', quality=85, method=6)
-                img.save(client_file, 'WEBP', quality=85, method=6)
+                if CLIENT_PUBLIC_DIR.exists():
+                    img.save(client_file, 'WEBP', quality=85, method=6)
             else:
                 rgb_img = img.convert('RGB')
                 rgb_img.save(server_file, 'WEBP', quality=85, method=6)
-                rgb_img.save(client_file, 'WEBP', quality=85, method=6)
+                if CLIENT_PUBLIC_DIR.exists():
+                    rgb_img.save(client_file, 'WEBP', quality=85, method=6)
 
         if temp_png.exists():
             temp_png.unlink()
@@ -117,18 +188,15 @@ def capture_single_project(project_id: int, wait_sec: float = 3.5, driver=None) 
             project.image_alt = f"{project.project_name} - 學員 {project.student_name} 專題作品首頁成果"
         project.save(update_fields=['cover_image', 'image_alt'])
 
-        # 同步上傳至 Cloudinary
+        # 同步上傳至 Cloudinary CDN (保障全域存取與 Render 冷啟動防丟失)
         sync_file_to_cloudinary(project.id, server_file)
-        logger.info(f"[ScreenshotService] ✅ 專案 ID {project.id} ({project.project_name}) 截圖與同步完成！")
+        logger.info(f"[ScreenshotService] 🎉 專案 ID {project.id} ({project.project_name}) 截圖、WebP 壓縮與 CDN 同步全數完成！")
         return True
     except Exception as e:
-        logger.error(f"[ScreenshotService] ❌ 專案 ID {project.id} 截圖失敗: {e}")
+        logger.error(f"[ScreenshotService] ❌ 圖片 WebP 壓縮或資料庫儲存失敗: {e}")
         if temp_png.exists():
             temp_png.unlink()
         return False
-    finally:
-        if should_close_driver:
-            driver.quit()
 
 
 def capture_missing_projects(force_all: bool = False) -> tuple[int, int]:
