@@ -82,15 +82,15 @@
           class="batch-card group relative rounded-3xl p-4 sm:p-8 lg:p-11 backdrop-blur-xl border transition-all duration-300 flex flex-col justify-between overflow-hidden transform-gpu cursor-default w-full"
           :class="[
             isBatchEnded(batch)
-              ? (isTodayGraduation(batch)
+              ? (isCelebrationBatch(batch)
                   ? 'border-emerald-500/60 bg-slate-900/90 shadow-2xl shadow-emerald-950/50 ring-1 ring-emerald-500/30'
                   : 'bg-slate-950/45 border-slate-800/40 opacity-60 hover:opacity-85 grayscale-[40%] hover:grayscale-0 shadow-none')
               : 'card-subsurface-glow bg-slate-900/70 hover:bg-slate-900/90 border-slate-800/90 shadow-xl shadow-slate-950/60'
           ]"
         >
-          <!-- 頂部流光光暈線 (今日結訓班級常駐顯現翡翠光輝，活躍班級 Hover 顯現) -->
+          <!-- 頂部流光光暈線 (結訓慶典榮耀班級常駐顯現翡翠光輝，活躍班級 Hover 顯現) -->
           <div
-            v-if="isTodayGraduation(batch) && isBatchEnded(batch)"
+            v-if="isCelebrationBatch(batch) && isBatchEnded(batch)"
             class="absolute top-0 left-0 right-0 h-[2.5px] bg-gradient-to-r from-transparent via-emerald-400 to-transparent shadow-[0_0_12px_rgba(16,185,129,0.8)] pointer-events-none"
           ></div>
           <div
@@ -101,7 +101,7 @@
           <!-- 角落序號水印 (01, 02) -->
           <div
             class="absolute -right-2 -bottom-4 text-7xl font-mono font-black select-none pointer-events-none transition-colors"
-            :class="isBatchEnded(batch) ? (isTodayGraduation(batch) ? 'text-emerald-500/15' : 'text-slate-900/50') : 'text-slate-800/20 group-hover:text-cyan-500/10'"
+            :class="isBatchEnded(batch) ? (isCelebrationBatch(batch) ? 'text-emerald-500/15' : 'text-slate-900/50') : 'text-slate-800/20 group-hover:text-cyan-500/10'"
           >
             {{ String(index + 1).padStart(2, '0') }}
           </div>
@@ -184,9 +184,9 @@
                       <span v-if="getStepStatus(batch, sIndex + 1) === 'completed'">✓</span>
                       <span v-else>{{ sIndex + 1 }}</span>
 
-                      <!-- 今日結訓專屬：聲納波紋擴散光環 (Sonar Ripple Pulse) -->
+                      <!-- 結訓慶典專屬：聲納波紋擴散光環 (Sonar Ripple Pulse) -->
                       <span
-                        v-if="sIndex + 1 === 5 && getStepStatus(batch, 5) === 'completed' && isTodayGraduation(batch)"
+                        v-if="sIndex + 1 === 5 && getStepStatus(batch, 5) === 'completed' && isCelebrationBatch(batch)"
                         class="absolute inset-0 rounded-full bg-emerald-400 animate-ping opacity-35 pointer-events-none"
                       ></span>
                     </div>
@@ -217,9 +217,9 @@
                   <span class="leading-relaxed font-medium whitespace-nowrap overflow-hidden text-ellipsis">{{ getLifecycleDetailNotice(batch).text }}</span>
                 </div>
 
-                <!-- 🎉 方案 B：祝賀微互動按鈕 (僅在今日圓滿結訓時現身) -->
+                <!-- 🎉 方案 B：祝賀微互動按鈕 (在長效結訓慶典中常駐現身，直到新期別出現交棒) -->
                 <button
-                  v-if="isTodayGraduation(batch) && isBatchEnded(batch)"
+                  v-if="isCelebrationBatch(batch) && isBatchEnded(batch)"
                   type="button"
                   @click.stop="triggerCongratulations($event)"
                   title="點擊為結訓學員送上祝賀星塵禮花"
@@ -396,6 +396,7 @@ const {
   sortedBatches,
   getStepStatus,
   isScreeningEnded,
+  isCelebrationBatch,
   getFastStatusPill,
   getLifecycleLineWidth,
   getStepNodeClass,
@@ -408,20 +409,6 @@ const {
 // 🎉 結訓榮耀慶典系統 (A + B + C 方案融合：量子禮花 + 祝福互動 + 榮耀光艙)
 // ===========================================================================
 
-// 判斷期別是否為今天日曆天結訓
-function isTodayGraduation(batch: { training_end_date?: string }): boolean {
-  if (!batch.training_end_date) return false
-  try {
-    const end = new Date(batch.training_end_date.replace(/-/g, '/'))
-    const now = new Date()
-    return end.getFullYear() === now.getFullYear() &&
-           end.getMonth() === now.getMonth() &&
-           end.getDate() === now.getDate()
-  } catch {
-    return false
-  }
-}
-
 // 方案 B：祝賀祝福計數器 (預設溫暖基底 68 次，支援持久化儲存)
 const celebrationCount = ref<number>(68)
 try {
@@ -431,10 +418,10 @@ try {
   }
 } catch (e) {}
 
-// 當前是否有任何班級剛好於今日圓滿結訓
-const hasTodayGraduatedBatch = computed(() => {
+// 當前是否有任何班級處於結訓慶典守護中（最新結訓班級，直到新期別出現交棒）
+const hasCelebrationBatch = computed(() => {
   const list = sortedBatches.value.length > 0 ? sortedBatches.value : store.batches
-  return list.some(b => isTodayGraduation(b) && isBatchEnded(b))
+  return list.some(b => isCelebrationBatch(b) && isBatchEnded(b))
 })
 
 // 方案 A：量子科技星塵禮花慶典 (雙側拋物線高雅發射)
@@ -499,7 +486,7 @@ let confettiObserver: IntersectionObserver | null = null
 
 onMounted(() => {
   nextTick(() => {
-    if (hasTodayGraduatedBatch.value && typeof IntersectionObserver !== 'undefined') {
+    if (hasCelebrationBatch.value && typeof IntersectionObserver !== 'undefined') {
       const gridEl = document.getElementById('batches-cards-grid')
       if (gridEl) {
         confettiObserver = new IntersectionObserver((entries) => {

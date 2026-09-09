@@ -170,14 +170,50 @@ export function useBatchTimeline(batchesInput: MaybeRefOrGetter<AdmissionBatch[]
     return 'pending'
   }
 
+  /**
+   * 智慧判定該期別是否具備「結訓慶典榮耀資格」：
+   * 1. 該期別已結訓 (isBatchEnded)
+   * 2. 且該期別為全站「最新結訓的榮耀代表」（在後端下一期資料出現並輪替前，始終維持慶典氛圍）
+   */
+  function isCelebrationBatch(batch: AdmissionBatch): boolean {
+    if (!isBatchEnded(batch)) return false
+    const rawList = toValue(batchesInput)
+    const list = Array.isArray(rawList) && rawList.length > 0 ? rawList : defaultBatches
+    const endedBatches = list.filter(isBatchEnded)
+    if (endedBatches.length === 0) return false
+
+    // 依結訓日期降序排列，最新結訓者排首位
+    const latestEnded = [...endedBatches].sort((a, b) => {
+      const timeA = a.training_end_date ? new Date(a.training_end_date.replace(/-/g, '/')).getTime() : 0
+      const timeB = b.training_end_date ? new Date(b.training_end_date.replace(/-/g, '/')).getTime() : 0
+      return timeB - timeA
+    })[0]
+
+    return latestEnded.id === batch.id
+  }
+
   function getFastStatusPill(batch: AdmissionBatch): StatusPill {
     if (isBatchEnded(batch)) {
       const isTodayGrad = isTodayGraduationDay(batch.training_end_date)
+      const isCelebration = isCelebrationBatch(batch)
+
+      if (isTodayGrad) {
+        return {
+          label: '🎉 今日圓滿結訓 · 邁向職場',
+          class: 'bg-emerald-500/20 text-emerald-300 border border-emerald-400/40 shadow-md shadow-emerald-500/20 animate-pulse'
+        }
+      }
+
+      if (isCelebration) {
+        return {
+          label: '🎉 圓滿結訓 · 邁向職場',
+          class: 'bg-emerald-500/20 text-emerald-300 border border-emerald-400/40 shadow-md shadow-emerald-500/20'
+        }
+      }
+
       return {
-        label: isTodayGrad ? '🎉 今日圓滿結訓 · 邁向職場' : `🏁 本期已結訓 · 報名截止`,
-        class: isTodayGrad
-          ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-400/40 shadow-md shadow-emerald-500/20'
-          : 'bg-slate-900/90 text-slate-400 border border-slate-800 shadow-none'
+        label: `🏁 本期已結訓 · 報名截止`,
+        class: 'bg-slate-900/90 text-slate-400 border border-slate-800 shadow-none'
       }
     }
     if (isBatchTraining(batch)) {
@@ -299,11 +335,22 @@ export function useBatchTimeline(batchesInput: MaybeRefOrGetter<AdmissionBatch[]
   function getLifecycleDetailNotice(batch: AdmissionBatch): DetailNotice {
     if (isBatchEnded(batch)) {
       const isTodayGrad = isTodayGraduationDay(batch.training_end_date)
+      const isCelebration = isCelebrationBatch(batch)
+      if (isTodayGrad) {
+        return {
+          icon: '🎓',
+          text: '本期已於今日圓滿結訓 · 祝賀大家未來旅途一切順利！'
+        }
+      }
+      if (isCelebration) {
+        return {
+          icon: '🎓',
+          text: '本期已圓滿結訓 · 祝賀大家未來旅途一切順利！'
+        }
+      }
       return {
-        icon: isTodayGrad ? '🎓' : '🎉',
-        text: isTodayGrad
-          ? '本期已於今日圓滿結訓 · 祝賀大家未來旅途一切順利！'
-          : '本期已圓滿結訓 · 歡迎查閱精彩專題成果！'
+        icon: '🎉',
+        text: '本期已圓滿結訓 · 歡迎查閱精彩專題成果！'
       }
     }
     if (isBatchTraining(batch)) {
@@ -351,6 +398,7 @@ export function useBatchTimeline(batchesInput: MaybeRefOrGetter<AdmissionBatch[]
     sortedBatches,
     getStepStatus,
     isScreeningEnded,
+    isCelebrationBatch,
     getFastStatusPill,
     getLifecycleLineWidth,
     getStepNodeClass,
