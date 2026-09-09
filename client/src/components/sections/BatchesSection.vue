@@ -485,38 +485,38 @@ function fireGraduationConfetti() {
     originY = Math.max(0.15, Math.min(0.85, (rect.top + rect.height * 0.65) / window.innerHeight))
   }
 
-  // 卡片左側向上內側拋射弧線 (聚焦於卡片左上方)
+  // 卡片左側向上內側拋射弧線 (聚焦於卡片左上方，大號飽滿星塵禮花)
   confetti({
-    particleCount: 32,
+    particleCount: 48,
     angle: 68,
-    spread: 38,
-    startVelocity: 30,
+    spread: 46,
+    startVelocity: 35,
     origin: { x: leftX, y: originY },
     colors,
-    ticks: 190,
-    gravity: 1.12,
-    scalar: 0.95,
+    ticks: 220,
+    gravity: 1.02,
+    scalar: 1.45,
     shapes: ['circle', 'square'],
     disableForReducedMotion: true
   })
 
-  // 卡片右側向上內側拋射弧線 (聚焦於卡片右上方)
+  // 卡片右側向上內側拋射弧線 (聚焦於卡片右上方，大號飽滿星塵禮花)
   confetti({
-    particleCount: 32,
+    particleCount: 48,
     angle: 112,
-    spread: 38,
-    startVelocity: 30,
+    spread: 46,
+    startVelocity: 35,
     origin: { x: rightX, y: originY },
     colors,
-    ticks: 190,
-    gravity: 1.12,
-    scalar: 0.95,
+    ticks: 220,
+    gravity: 1.02,
+    scalar: 1.45,
     shapes: ['circle', 'square'],
     disableForReducedMotion: true
   })
 }
 
-// 方案 B：點擊按鈕主動送祝福 (游標專屬微型星塵爆發)
+// 方案 B：點擊按鈕主動送祝福 (游標專屬飽滿星塵爆發)
 function triggerCongratulations(event: MouseEvent) {
   celebrationCount.value++
   try {
@@ -528,13 +528,13 @@ function triggerCongratulations(event: MouseEvent) {
   const y = rect ? (rect.top + rect.height / 2) / window.innerHeight : 0.5
 
   confetti({
-    particleCount: 38,
-    spread: 68,
+    particleCount: 45,
+    spread: 72,
     origin: { x, y },
     colors: ['#10b981', '#06b6d4', '#fbbf24', '#38bdf8', '#ffffff'],
-    ticks: 170,
-    gravity: 0.92,
-    scalar: 1.05,
+    ticks: 190,
+    gravity: 0.95,
+    scalar: 1.35,
     disableForReducedMotion: true
   })
 }
