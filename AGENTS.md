@@ -8,6 +8,7 @@
 ## 1. 系統核心定位（不可偏離）
 
 本系統為**純招生推廣宣傳展示網站**，核心功能是：
+
 1. 展示「前端網頁技術與AI應用」課程內容與學員成果。
 2. 將訪客導引至官方「台灣就業通」平台完成報名。
 3. **不收集、不留存任何民眾個人資料**（無留單表單）。
@@ -16,29 +17,29 @@
 
 ## 2. 官方核心資料（禁止自行修改，需向使用者確認）
 
-| 資料項目 | 值 |
-| :--- | :--- |
-| 第 1 期課程代碼 | 159268 |
+| 資料項目        | 值                                                    |
+| :-------------- | :---------------------------------------------------- |
+| 第 1 期課程代碼 | 159268                                                |
 | 第 1 期報名連結 | https://its.taiwanjobs.gov.tw/Course/Detail?ID=159268 |
-| 第 2 期課程代碼 | 159269 |
+| 第 2 期課程代碼 | 159269                                                |
 | 第 2 期報名連結 | https://its.taiwanjobs.gov.tw/Course/Detail?ID=159269 |
-| 招生諮詢專線 | (02) 2901-8274 |
-| Discord | https://discord.gg/TrerFKG |
-| 訓練場地址 | 新北市泰山區貴子里致遠新村 55 之 1 號 |
-| 總訓練時數 | 920 小時 |
-| 後台管理帳號 | 預設 admin（密碼由環境變數或後台安全設定） |
+| 招生諮詢專線    | (02) 2901-8274                                        |
+| Discord         | https://discord.gg/TrerFKG                            |
+| 訓練場地址      | 新北市泰山區貴子里致遠新村 55 之 1 號                 |
+| 總訓練時數      | 920 小時                                              |
+| 後台管理帳號    | 預設 admin（密碼由環境變數或後台安全設定）            |
 
 ---
 
 ## 3. 技術棧快速索引
 
-| 層級 | 技術棧 |
-| :--- | :--- |
-| 前台 | Vue 3 + Vite + TypeScript + Pinia + Tailwind CSS |
-| 後端 | Python 3.12 + Django 6.1 + Django Ninja + Django Unfold |
-| 資料庫 | SQLite（本地）/ Render PostgreSQL（生產） |
-| 前台部署 | GitHub Pages + GitHub Actions CI/CD |
-| 後端部署 | Render Web Service（Gunicorn + WhiteNoise） |
+| 層級     | 技術棧                                                  |
+| :------- | :------------------------------------------------------ |
+| 前台     | Vue 3 + Vite + TypeScript + Pinia + Tailwind CSS        |
+| 後端     | Python 3.12 + Django 6.1 + Django Ninja + Django Unfold |
+| 資料庫   | SQLite（本地）/ Render PostgreSQL（生產）               |
+| 前台部署 | GitHub Pages + GitHub Actions CI/CD                     |
+| 後端部署 | Render Web Service（Gunicorn + WhiteNoise）             |
 
 ---
 
@@ -64,14 +65,14 @@
 
 ## 6. Multi-Agents 角色索引
 
-| 角色名稱 | 負責範疇 |
-| :--- | :--- |
-| frontend-architect | Vue 3 整體組件架構、Pinia Store 設計 |
+| 角色名稱             | 負責範疇                                       |
+| :------------------- | :--------------------------------------------- |
+| frontend-architect   | Vue 3 整體組件架構、Pinia Store 設計           |
 | ui-component-builder | 建立 Tailwind + shadcn-vue 規範的 Section 組件 |
-| a11y-guardian | WCAG 2.1 AA 無障礙全站稽核與修復 |
-| backend-architect | Django Model/API 架構設計與 Migration 管理 |
-| cms-content-manager | CMS Model 欄位維護、Admin 設定、種子資料 |
-| deploy-ops | GitHub Pages + Render 雲端部署診斷 |
+| a11y-guardian        | WCAG 2.1 AA 無障礙全站稽核與修復               |
+| backend-architect    | Django Model/API 架構設計與 Migration 管理     |
+| cms-content-manager  | CMS Model 欄位維護、Admin 設定、種子資料       |
+| deploy-ops           | GitHub Pages + Render 雲端部署診斷             |
 
 ---
 
