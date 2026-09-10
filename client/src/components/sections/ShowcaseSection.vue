@@ -118,17 +118,6 @@
                   >
                     <span>🌐 線上即時展示 (Demo) ↗</span>
                   </a>
-                  <a
-                    v-if="project.github_url"
-                    :href="project.github_url"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    :tabindex="flippedIds.has(project.id) ? 0 : -1"
-                    :aria-label="`${project.project_name} GitHub 原始碼（另開新分頁）`"
-                    class="w-full py-2 rounded-xl text-center font-semibold text-sm text-slate-200 hover:text-white bg-slate-800 hover:bg-slate-700 border border-slate-700 transition-all flex items-center justify-center space-x-1.5 focus-visible:ring-2 focus-visible:ring-cyan-400 focus:outline-none cursor-pointer"
-                  >
-                    <span>🐙 GitHub 原始碼 ↗</span>
-                  </a>
                   <button
                     type="button"
                     :tabindex="flippedIds.has(project.id) ? 0 : -1"
