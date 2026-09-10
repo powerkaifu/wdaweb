@@ -110,7 +110,7 @@
           </div>
 
           <Transition name="fade-slide" mode="out-in">
-            <!-- 若有輪播自訂圖片且載入正常，優先顯示圖片 -->
+            <!-- 優先：若有輪播自訂圖片且載入正常，顯示圖片 -->
             <div v-if="currentSlide.image_url && !brokenSlideImages.has(currentSlide.id)" :key="currentSlide.image_url" class="w-full relative rounded-3xl overflow-hidden border border-slate-800/80 bg-slate-900/60 p-3 shadow-2xl shadow-cyan-950/40 backdrop-blur-xl group">
               <div class="relative aspect-[4/3] rounded-2xl overflow-hidden bg-slate-800 flex items-center justify-center">
                 <img
@@ -121,8 +121,8 @@
                 />
               </div>
             </div>
-            <!-- 依 heroRightVariant 切換右側視覺方案 -->
-            <AiChatWindow v-if="themeStore.heroRightVariant === 'ai_chat'" key="ai-chat" />
+            <!-- 次選：AI 學習助教對話視窗 -->
+            <AiChatWindow v-else-if="themeStore.heroRightVariant === 'ai_chat'" key="ai-chat" />
             <!-- 備選：VS Code 程式碼視窗 (code_window) -->
             <AiCodeWindow v-else key="ai-window" />
           </Transition>
