@@ -27,7 +27,7 @@
         </p>
 
         <!-- 即時報名狀態指示看板 (讓民眾一眼秒懂當前報名狀態) -->
-        <div class="mt-5 max-w-2xl mx-auto w-full px-2 sm:px-0">
+        <div class="mt-5 max-w-xl mx-auto w-full px-2 sm:px-0">
           <div
             class="relative rounded-2xl p-3.5 sm:p-4.5 border backdrop-blur-xl transition-all duration-300 overflow-hidden shadow-xl"
             :class="notice.isOpen
