@@ -83,7 +83,7 @@ export const useThemeStore = defineStore('theme', () => {
   }
 
   // 3. Hero 右側視覺方案 (3 種可切換並持久化：程式碼視窗 / AI 對話視窗 / 學員成果卡牌)
-  const savedHeroVariant = (localStorage.getItem(HERO_RIGHT_VARIANT_KEY) as HeroRightVariant) || 'code_window'
+  const savedHeroVariant = (localStorage.getItem(HERO_RIGHT_VARIANT_KEY) as HeroRightVariant) || 'ai_chat'
   const heroRightVariant = ref<HeroRightVariant>(savedHeroVariant)
 
   function setHeroRightVariant(variant: HeroRightVariant) {

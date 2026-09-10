@@ -122,8 +122,8 @@
               </div>
             </div>
             <!-- 依 heroRightVariant 切換右側視覺方案 -->
-            <AiChatWindow v-else-if="themeStore.heroRightVariant === 'ai_chat'" key="ai-chat" />
-            <!-- 預設：原始 AI Code Generator 視窗 (code_window) -->
+            <AiChatWindow v-if="themeStore.heroRightVariant === 'ai_chat'" key="ai-chat" />
+            <!-- 備選：VS Code 程式碼視窗 (code_window) -->
             <AiCodeWindow v-else key="ai-window" />
           </Transition>
         </div>
