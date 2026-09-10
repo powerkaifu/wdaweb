@@ -19,9 +19,9 @@
 
       <!-- 即時期別報名狀態指示看板 (讓民眾一眼秒懂當前報名狀態) -->
       <template #extra>
-        <div class="mt-6 max-w-3xl mx-auto w-full px-2">
+        <div class="mt-5 max-w-2xl mx-auto w-full px-2 sm:px-0">
           <div
-            class="relative rounded-2xl p-4 sm:p-5 border backdrop-blur-xl transition-all duration-300 overflow-hidden shadow-xl"
+            class="relative rounded-2xl p-3.5 sm:p-4.5 border backdrop-blur-xl transition-all duration-300 overflow-hidden shadow-xl"
             :class="notice.isOpen
               ? 'bg-emerald-950/40 border-emerald-500/40 shadow-emerald-950/50'
               : 'bg-slate-900/85 border-amber-500/30 shadow-slate-950/60'"
