@@ -230,6 +230,23 @@ class StudentProjectAdmin(SafeUploadAdminMixin, SoftDeleteAdminMixin, ModelAdmin
     list_editable = ['is_featured', 'sort_order', 'is_active']
     actions = ['action_capture_screenshots']
 
+    fieldsets = (
+        ("📋 學員與作品基本資訊", {
+            "fields": ("student_name", "batch_tag", "project_name"),
+        }),
+        ("🔗 展示連結", {
+            "description": "填入作品的線上 Demo 網址，系統將自動於背景截圖並同步縮圖。",
+            "fields": ("demo_url",),
+        }),
+        ("🖼️ 作品縮圖", {
+            "description": "可手動上傳封面圖，或留空讓系統依 Demo 網址自動截圖。",
+            "fields": ("cover_image", "image_alt"),
+        }),
+        ("⚙️ 展示控制", {
+            "fields": ("is_featured", "is_active", "sort_order"),
+        }),
+    )
+
     def cover_preview(self, obj):
         try:
             if obj.cover_image:
