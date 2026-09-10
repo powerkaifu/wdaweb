@@ -457,9 +457,9 @@ const hasCelebrationBatch = computed(() => {
 })
 
 // 方案 A：第 1 期卡片兩側精準定錨・微光星塵禮花 (聚焦於卡片兩側，不遮擋全螢幕)
-function fireGraduationConfetti() {
-  // 符合全站暗黑科技之高雅配色：電光青、翡翠綠、天藍、星輝金、高能白
-  const colors = ['#06b6d4', '#10b981', '#38bdf8', '#fbbf24', '#ffffff']
+function fireGraduationConfetti(spreadAngle: number = 46, particleCount: number = 48) {
+  // 符合全站暗黑科技之高雅配色：電光青、翡翠綠、天藍、星輝金、高能白、星輝紫
+  const colors = ['#06b6d4', '#10b981', '#38bdf8', '#fbbf24', '#ffffff', '#a78bfa']
 
   // 動態精確抓取第 1 期卡片的視窗幾何座標 (BoundingClientRect)
   const cardEl = document.getElementById('batch-card-celebration') || document.querySelector('.batch-card')
@@ -476,33 +476,33 @@ function fireGraduationConfetti() {
     originY = Math.max(0.15, Math.min(0.85, (rect.top + rect.height * 0.65) / window.innerHeight))
   }
 
-  // 卡片左側向上內側拋射弧線 (聚焦於卡片左上方，大號飽滿星塵禮花)
+  // 卡片左側向上內側拋射弧線
   confetti({
-    particleCount: 48,
+    particleCount,
     angle: 68,
-    spread: 46,
+    spread: spreadAngle,
     startVelocity: 35,
     origin: { x: leftX, y: originY },
     colors,
     ticks: 220,
     gravity: 1.02,
     scalar: 1.45,
-    shapes: ['circle', 'square'],
+    shapes: ['circle', 'square', 'star'],
     disableForReducedMotion: true
   })
 
-  // 卡片右側向上內側拋射弧線 (聚焦於卡片右上方，大號飽滿星塵禮花)
+  // 卡片右側向上內側拋射弧線
   confetti({
-    particleCount: 48,
+    particleCount,
     angle: 112,
-    spread: 46,
+    spread: spreadAngle,
     startVelocity: 35,
     origin: { x: rightX, y: originY },
     colors,
     ticks: 220,
     gravity: 1.02,
     scalar: 1.45,
-    shapes: ['circle', 'square'],
+    shapes: ['circle', 'square', 'star'],
     disableForReducedMotion: true
   })
 }
@@ -530,7 +530,7 @@ function triggerCongratulations(event: MouseEvent) {
   })
 }
 
-// 方案 A 入場自動施放守護 (每 session 僅自發施放一次，絕不擾民)
+// 方案 A 入場自動施放守護 (三波遞進式慶典禮花，每次瀏覽皆可欣賞)
 let confettiObserver: IntersectionObserver | null = null
 
 onMounted(() => {
@@ -541,13 +541,35 @@ onMounted(() => {
         confettiObserver = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
             if (entry.isIntersecting) {
-              const hasFired = sessionStorage.getItem('wdaweb_grad_confetti_auto_fired')
-              if (!hasFired) {
-                sessionStorage.setItem('wdaweb_grad_confetti_auto_fired', 'true')
-                setTimeout(() => {
-                  fireGraduationConfetti()
-                }, 350)
-              }
+              // 🎓 第 1 波：入場啟幕（350ms）
+              setTimeout(() => {
+                fireGraduationConfetti()
+              }, 350)
+
+              // 🎉 第 2 波：中場加強（900ms，粒子加倍、擴散更廣）
+              setTimeout(() => {
+                fireGraduationConfetti(72, 60)
+              }, 900)
+
+              // 🏆 第 3 波：收尾高潮（1600ms，中央升空彩帶）
+              setTimeout(() => {
+                fireGraduationConfetti(90, 70)
+                // 🎊 同步從畫面中央噴出彩帶收尾
+                confetti({
+                  particleCount: 80,
+                  angle: 90,
+                  spread: 120,
+                  startVelocity: 42,
+                  origin: { x: 0.5, y: 0.75 },
+                  colors: ['#06b6d4', '#10b981', '#38bdf8', '#fbbf24', '#a78bfa', '#ffffff'],
+                  ticks: 260,
+                  gravity: 0.9,
+                  scalar: 1.3,
+                  shapes: ['circle', 'square', 'star'],
+                  disableForReducedMotion: true
+                })
+              }, 1600)
+
               confettiObserver?.disconnect()
             }
           })
