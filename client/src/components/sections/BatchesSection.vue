@@ -86,13 +86,19 @@
               ? (isCelebrationBatch(batch)
                   ? 'border-emerald-500/60 bg-slate-900/90 shadow-2xl shadow-emerald-950/50 ring-1 ring-emerald-500/30'
                   : 'bg-slate-950/45 border-slate-800/40 opacity-60 hover:opacity-85 grayscale-[40%] hover:grayscale-0 shadow-none')
-              : 'card-subsurface-glow bg-slate-900/70 hover:bg-slate-900/90 border-slate-800/90 shadow-xl shadow-slate-950/60'
+              : (isBatchUrgentClosing(batch)
+                  ? 'border-amber-500/70 bg-slate-900/90 shadow-2xl shadow-amber-950/60 ring-1 ring-amber-400/50'
+                  : 'card-subsurface-glow bg-slate-900/70 hover:bg-slate-900/90 border-slate-800/90 shadow-xl shadow-slate-950/60')
           ]"
         >
-          <!-- 頂部流光光暈線 (結訓慶典榮耀班級常駐顯現翡翠光輝，活躍班級 Hover 顯現) -->
+          <!-- 頂部流光光暈線 (結訓慶典翡翠光輝、緊急倒數琥珀金光、活躍班級青色微光) -->
           <div
             v-if="isCelebrationBatch(batch) && isBatchEnded(batch)"
             class="absolute top-0 left-0 right-0 h-[2.5px] bg-gradient-to-r from-transparent via-emerald-400 to-transparent shadow-[0_0_12px_rgba(16,185,129,0.8)] pointer-events-none"
+          ></div>
+          <div
+            v-else-if="isBatchUrgentClosing(batch)"
+            class="absolute top-0 left-0 right-0 h-[2.5px] bg-gradient-to-r from-transparent via-amber-400 to-transparent shadow-[0_0_14px_rgba(251,191,36,0.9)] pointer-events-none"
           ></div>
           <div
             v-else-if="!isBatchEnded(batch)"
@@ -218,6 +224,25 @@
                   <span class="leading-relaxed font-medium whitespace-nowrap overflow-hidden text-ellipsis">{{ getLifecycleDetailNotice(batch).text }}</span>
                 </div>
               </div>
+
+              <!-- 結訓專題成果一鍵傳送門 (以真實學員獨立代表作激發信任感) -->
+              <div
+                v-if="isBatchEnded(batch)"
+                class="mt-3.5 pt-3 border-t border-slate-800/70 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5"
+              >
+                <span class="text-xs sm:text-sm text-slate-400 font-medium">
+                  想見證 920h 實體培訓真實成果？
+                </span>
+                <button
+                  type="button"
+                  @click="handleNavigateToShowcase"
+                  title="點擊前往學員專題成果展示區"
+                  class="inline-flex items-center justify-center space-x-1.5 px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-bold text-cyan-300 bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/30 hover:border-cyan-400 transition-all cursor-pointer shadow-sm group/portal select-none shrink-0 active:scale-95"
+                >
+                  <span>觀摩 22 位學員專題成果</span>
+                  <span class="group-hover/portal:translate-x-1 transition-transform">↗</span>
+                </button>
+              </div>
             </div>
 
             <div class="space-y-4 text-base text-slate-300 mb-8">
@@ -266,16 +291,20 @@
 
           <!-- 下方行動按鈕區 -->
           <div class="pt-4 border-t border-slate-800/80">
-            <!-- 1. 報名中 -->
+            <!-- 1. 報名中 (最後 72h 倒數升級為琥珀金信標按鈕) -->
             <a
               v-if="isBatchEnrolling(batch)"
               :href="batch.apply_url"
               target="_blank"
               rel="noopener noreferrer"
               @click="store.trackBatchClick(batch.id)"
-              class="w-full py-3.5 sm:py-4 px-3 rounded-2xl text-center font-bold text-white bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 shadow-xl shadow-cyan-500/30 hover:shadow-cyan-500/50 hover:-translate-y-0.5 active:scale-95 transition-all duration-200 flex items-center justify-center space-x-2 text-base lg:text-lg cursor-pointer"
+              class="w-full py-3.5 sm:py-4 px-3 rounded-2xl text-center font-bold text-white shadow-xl hover:-translate-y-0.5 active:scale-95 transition-all duration-200 flex items-center justify-center space-x-2 text-base lg:text-lg cursor-pointer"
+              :class="isBatchUrgentClosing(batch)
+                ? 'bg-gradient-to-r from-amber-500 via-orange-500 to-rose-600 hover:from-amber-400 hover:to-rose-500 shadow-amber-500/40 hover:shadow-amber-500/60'
+                : 'bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 shadow-cyan-500/30 hover:shadow-cyan-500/50'"
             >
-              <span>🔥 立即至<span class="inline-block">台灣就業通</span>報名</span>
+              <span v-if="isBatchUrgentClosing(batch)">⚠️ 席次倒數 · 立即前往台灣就業通報名</span>
+              <span v-else>🔥 立即至<span class="inline-block">台灣就業通</span>報名</span>
               <svg class="w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
               </svg>
@@ -352,19 +381,41 @@
         </div>
       </div>
 
-      <!-- 錯過本期之轉化與諮詢引導列 (打破死胡同，留住潛在學員) -->
-      <div class="mt-12 p-5 sm:p-6 rounded-3xl bg-slate-900/60 backdrop-blur-xl border border-slate-800/80 max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-5 shadow-xl shadow-slate-950/40 w-full overflow-hidden">
-        <div class="flex items-start sm:items-center space-x-3 text-slate-300 text-sm w-full sm:w-auto">
-          <span class="text-2xl shrink-0">💡</span>
+      <!-- 錯過本期之轉化與諮詢引導列 (在全站空窗期時自動增強高亮，留住潛在學員) -->
+      <div
+        class="mt-12 p-5 sm:p-7 rounded-3xl backdrop-blur-xl border max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-5 transition-all duration-300 w-full overflow-hidden relative"
+        :class="!hasEnrollingBatch
+          ? 'bg-gradient-to-br from-slate-900/95 via-cyan-950/20 to-slate-900/95 border-cyan-500/40 shadow-2xl shadow-cyan-950/60 ring-1 ring-cyan-400/30'
+          : 'bg-slate-900/60 border-slate-800/80 shadow-xl shadow-slate-950/40'"
+      >
+        <!-- 頂部呼吸流光微線 (在全站空窗期時常駐顯現) -->
+        <div
+          v-if="!hasEnrollingBatch"
+          class="absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-cyan-400/70 to-transparent shadow-[0_0_10px_rgba(6,182,212,0.6)] pointer-events-none"
+        ></div>
+
+        <div class="flex items-start sm:items-center space-x-3.5 text-slate-300 text-sm w-full sm:w-auto">
+          <div
+            class="w-10 h-10 rounded-2xl flex items-center justify-center shrink-0"
+            :class="!hasEnrollingBatch ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/30' : 'bg-slate-800/80 text-amber-300'"
+          >
+            <span class="text-xl">💡</span>
+          </div>
           <div class="text-left">
-            <span class="font-bold text-white block sm:inline">錯過本期報名？</span>
-            <span class="text-slate-400 block sm:inline">新一年度開班規劃中，歡迎預先諮詢掌握第一手快訊！</span>
+            <div class="flex items-center space-x-2">
+              <span class="font-bold text-white text-base sm:text-lg">錯過本期報名？</span>
+              <span v-if="!hasEnrollingBatch" class="px-2 py-0.5 rounded-full text-xs font-semibold bg-cyan-500/20 text-cyan-300 border border-cyan-500/40">下一梯次籌備中</span>
+            </div>
+            <p class="mt-0.5 text-xs sm:text-sm text-slate-300 leading-relaxed">
+              新梯次正密集籌備中，歡迎預先加入 Discord 或致電諮詢，鎖定第一手簡訊通知！
+            </p>
           </div>
         </div>
+
         <div class="grid grid-cols-2 gap-2.5 shrink-0 w-full sm:w-auto sm:flex sm:space-x-3 justify-end">
           <a
             :href="`tel:${(store.settings?.contact_phone || '(02) 2901-8274').replace(/[^0-9]/g, '')}`"
-            class="px-3.5 py-2.5 rounded-xl text-sm font-bold text-cyan-300 bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/30 transition-all flex items-center justify-center space-x-1 shadow-sm active:scale-95"
+            class="px-4 py-2.5 rounded-xl text-sm font-bold text-cyan-300 bg-cyan-500/15 hover:bg-cyan-500/25 border border-cyan-500/40 hover:border-cyan-300 transition-all flex items-center justify-center space-x-1.5 shadow-sm active:scale-95 cursor-pointer"
           >
             <span>📞 招生專線</span>
           </a>
@@ -372,7 +423,7 @@
             :href="store.settings?.discord_invite_url || 'https://discord.gg/TrerFKG'"
             target="_blank"
             rel="noopener noreferrer"
-            class="px-3.5 py-2.5 rounded-xl text-sm font-bold text-indigo-300 bg-indigo-500/10 hover:bg-indigo-500/20 border border-indigo-500/30 transition-all flex items-center justify-center space-x-1 shadow-sm active:scale-95"
+            class="px-4 py-2.5 rounded-xl text-sm font-bold text-indigo-300 bg-indigo-500/15 hover:bg-indigo-500/25 border border-indigo-500/40 hover:border-indigo-300 transition-all flex items-center justify-center space-x-1.5 shadow-sm active:scale-95 cursor-pointer"
           >
             <span>💬 官方 Discord</span>
           </a>
@@ -384,7 +435,9 @@
 
 <script setup lang="ts">
 import { ref, computed, toRef, onMounted, onUnmounted, nextTick, watch } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
 import confetti from 'canvas-confetti'
+import type { AdmissionBatch } from '@/types'
 import { gsap } from '@/utils/motion'
 import { useScrollStagger } from '@/composables/useScrollStagger'
 import { useBatchTimeline } from '@/composables/useBatchTimeline'
@@ -408,6 +461,8 @@ const props = withDefaults(
   }
 )
 
+const router = useRouter()
+const route = useRoute()
 const store = useCmsStore()
 const notice = computed(() => getBatchEnrollmentNotice(store.batches))
 
@@ -435,6 +490,39 @@ function isBatchEnded(batch: AdmissionBatch): boolean {
 function isBatchTraining(batch: AdmissionBatch): boolean {
   if (isBatchEnded(batch)) return false
   return rawIsBatchTraining(batch)
+}
+
+// 判斷全站目前是否處於「兩期皆非報名中」之空窗期（用於加強錯過本期之引導看板）
+const hasEnrollingBatch = computed(() => {
+  const list = sortedBatches.value.length > 0 ? sortedBatches.value : store.batches
+  return list.some(b => isBatchEnrolling(b))
+})
+
+// 判斷期別是否處於「最後 72 小時報名倒數」之緊急黃金信標階段
+function isBatchUrgentClosing(batch: AdmissionBatch): boolean {
+  if (!isBatchEnrolling(batch)) return false
+  if (batch.status_override === 'closing_soon' || batch.dynamic_status === 'closing_soon') return true
+  if (!batch.enroll_end_date) return false
+  try {
+    const end = new Date(batch.enroll_end_date.replace(/-/g, '/')).getTime() + 24 * 60 * 60 * 1000 - 1000
+    const now = Date.now()
+    const diffHours = (end - now) / (1000 * 60 * 60)
+    return diffHours > 0 && diffHours <= 72 // 距離截止日 72 小時內
+  } catch {
+    return false
+  }
+}
+
+// 結訓卡片專屬：平滑導覽至專題成果區塊 / 頁面
+function handleNavigateToShowcase() {
+  if (route.path === '/') {
+    const el = document.getElementById('showcase')
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' })
+      return
+    }
+  }
+  router.push('/showcase')
 }
 
 // ===========================================================================
