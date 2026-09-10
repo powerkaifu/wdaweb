@@ -224,25 +224,6 @@
                   <span class="leading-relaxed font-medium whitespace-nowrap overflow-hidden text-ellipsis">{{ getLifecycleDetailNotice(batch).text }}</span>
                 </div>
               </div>
-
-              <!-- 結訓專題成果一鍵傳送門 (以真實學員獨立代表作激發信任感) -->
-              <div
-                v-if="isBatchEnded(batch)"
-                class="mt-3.5 pt-3 border-t border-slate-800/70 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5"
-              >
-                <span class="text-xs sm:text-sm text-slate-400 font-medium">
-                  想見證 920h 實體培訓真實成果？
-                </span>
-                <button
-                  type="button"
-                  @click="handleNavigateToShowcase"
-                  title="點擊前往學員專題成果展示區"
-                  class="inline-flex items-center justify-center space-x-1.5 px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-bold text-cyan-300 bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/30 hover:border-cyan-400 transition-all cursor-pointer shadow-sm group/portal select-none shrink-0 active:scale-95"
-                >
-                  <span>觀摩 22 位學員專題成果</span>
-                  <span class="group-hover/portal:translate-x-1 transition-transform">↗</span>
-                </button>
-              </div>
             </div>
 
             <div class="space-y-4 text-base text-slate-300 mb-8">
@@ -435,7 +416,6 @@
 
 <script setup lang="ts">
 import { ref, computed, toRef, onMounted, onUnmounted, nextTick, watch } from 'vue'
-import { useRouter, useRoute } from 'vue-router'
 import confetti from 'canvas-confetti'
 import type { AdmissionBatch } from '@/types'
 import { gsap } from '@/utils/motion'
@@ -461,8 +441,6 @@ const props = withDefaults(
   }
 )
 
-const router = useRouter()
-const route = useRoute()
 const store = useCmsStore()
 const notice = computed(() => getBatchEnrollmentNotice(store.batches))
 
@@ -511,18 +489,6 @@ function isBatchUrgentClosing(batch: AdmissionBatch): boolean {
   } catch {
     return false
   }
-}
-
-// 結訓卡片專屬：平滑導覽至專題成果區塊 / 頁面
-function handleNavigateToShowcase() {
-  if (route.path === '/') {
-    const el = document.getElementById('showcase')
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' })
-      return
-    }
-  }
-  router.push('/showcase')
 }
 
 // ===========================================================================
