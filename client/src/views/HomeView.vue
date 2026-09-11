@@ -135,9 +135,9 @@
 					</router-link>
 				</div>
 
-				<!-- 溫馨提示與免責聲明 (中高齡老花眼 16px 大字閱讀友好) -->
-				<div class="pt-6 border-t border-slate-800/60 max-w-3xl mx-auto">
-					<p class="text-base text-slate-400 font-medium">
+				<!-- 溫馨提示與免責聲明 (電腦版大器單行不斷行，手機版自適應換行) -->
+				<div class="pt-6 border-t border-slate-800/60 max-w-5xl mx-auto">
+					<p class="text-base text-slate-400 font-medium whitespace-normal lg:whitespace-nowrap">
 						💡 正式報名一律透過勞動部「台灣就業通」官方網站辦理，本站為純招生推廣宣傳展示，不收集任何個人資料。
 					</p>
 				</div>
