@@ -89,7 +89,7 @@ if not AdmissionBatch.objects.exists():
         planned_trainees=24,
         applicants_count=36,
         apply_url="https://its.taiwanjobs.gov.tw/Course/Detail?ID=159268",
-        status_override="auto",
+        status_override="ended",
         sort_order=1
     )
     AdmissionBatch.objects.create(
@@ -109,7 +109,12 @@ if not AdmissionBatch.objects.exists():
     )
     print("[OK] 招生期別官方預設資料建立完成")
 else:
-    print("[INFO] 招生期別已存在，保留既有設定")
+    # 確保第 1 期已結訓狀態鎖定
+    b1 = AdmissionBatch.objects.filter(course_code="159268").first()
+    if b1 and b1.status_override != "ended":
+        b1.status_override = "ended"
+        b1.save(update_fields=["status_override"])
+    print("[INFO] 招生期別已存在，第 1 期狀態已確認為已結訓")
 
 # 5. 7 大課程模組 (僅在完全無模組時建立預設值)
 if not CurriculumModule.objects.exists():

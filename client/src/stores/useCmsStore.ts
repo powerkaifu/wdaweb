@@ -83,8 +83,8 @@ export const defaultBatches: AdmissionBatch[] = [
     applicants_count: 36,
     apply_url: 'https://its.taiwanjobs.gov.tw/Course/Detail?ID=159268',
     course_code: '159268',
-    dynamic_status: 'training',
-    status_override: 'auto',
+    dynamic_status: 'ended',
+    status_override: 'ended',
     click_count: 0,
     sort_order: 1
   },
