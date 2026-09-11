@@ -9,7 +9,7 @@
           歷屆學員 Web 專題成果展示
         </h2>
         <p class="mt-4 text-slate-300 text-base sm:text-lg leading-relaxed text-center">
-          所有專案皆為學員於 920 小時培訓期間，100% 獨立開發的前後端分離＋資料庫 Web 專案。歷經一個月專題實戰，從期初企劃報告到期末成果展，完整淬鍊實戰能力！
+          所有專案皆為學員於 920 小時培訓期間，<span class="text-cyan-400 font-bold">100% 獨立開發的前後端分離＋資料庫 Web 專案</span>。歷經一個月專題實戰，從期初企劃報告到期末成果展，完整淬鍊實戰能力！
         </p>
       </div>
 
