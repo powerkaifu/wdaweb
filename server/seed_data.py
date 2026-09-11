@@ -31,23 +31,26 @@ if created:
 else:
     print(f"[OK] 管理員帳號密碼已強制重設對齊：{admin_user}")
 
-# 2. 全域站台設定 (僅在完全無設定時建立預設值)
-if not SiteSetting.objects.exists():
-    SiteSetting.objects.create(
-        id=1,
-        site_title="泰山職訓－前端網頁技術與AI應用",
-        seo_description="勞動部勞動力發展署北基宜花金馬分署－泰山職業訓練場「前端網頁技術與AI應用」專班。920 小時紮實養成、待業者享 100% 全額免費培訓與每月職訓生活津貼補助，一人配置獨立雙螢幕電腦，輔導專題實作與就業媒合。官方諮詢專線：(02) 2901-8274。",
-        seo_keywords="泰山職訓, 前端網頁技術與AI應用, 泰山職業訓練場, 勞動部職訓, 前端工程師培訓, 網頁設計課程, 免費職訓課程, 職訓生活津貼, 待業者全額免費, Vue3課程, TypeScript職訓, AI網頁開發, 轉職前端工程師, 青年職訓補助, 台灣就業通, 北分署職訓",
-        announcement_bar_enabled=True,
-        announcement_text="🔥 第 1 期熱烈招生中！待業民眾享全額免費受訓與生活津貼補助！",
-        announcement_link="#batches",
-        contact_phone="(02) 2901-8274",
-        contact_address="新北市泰山區貴子里致遠新村 55 之 1 號",
-        footer_copyright="本網站為前端班師資自主推廣與學員成果展示網頁"
-    )
-    print("[OK] 站台全域設定建立完成")
-else:
-    print("[INFO] 站台設定已存在，保留既有設定")
+# 2. 全域站台設定 (確保 GA4 評估 ID 與全站預設對齊)
+setting, _ = SiteSetting.objects.get_or_create(
+    id=1,
+    defaults={
+        "site_title": "泰山職訓－前端網頁技術與AI應用",
+        "seo_description": "勞動部勞動力發展署北基宜花金馬分署－泰山職業訓練場「前端網頁技術與AI應用」專班。920 小時紮實養成、待業者享 100% 全額免費培訓與每月職訓生活津貼補助，一人配置獨立雙螢幕電腦，輔導專題實作與就業媒合。官方諮詢專線：(02) 2901-8274。",
+        "seo_keywords": "泰山職訓, 前端網頁技術與AI應用, 泰山職業訓練場, 勞動部職訓, 前端工程師培訓, 網頁設計課程, 免費職訓課程, 職訓生活津貼, 待業者全額免費, Vue3課程, TypeScript職訓, AI網頁開發, 轉職前端工程師, 青年職訓補助, 台灣就業通, 北分署職訓",
+        "announcement_bar_enabled": True,
+        "announcement_text": "🔥 第 1 期熱烈招生中！待業民眾享全額免費受訓與生活津貼補助！",
+        "announcement_link": "#batches",
+        "contact_phone": "(02) 2901-8274",
+        "contact_address": "新北市泰山區貴子里致遠新村 55 之 1 號",
+        "footer_copyright": "本網站為前端班師資自主推廣與學員成果展示網頁",
+        "ga4_measurement_id": "G-BYR7TFXX2P"
+    }
+)
+if setting.ga4_measurement_id != "G-BYR7TFXX2P":
+    setting.ga4_measurement_id = "G-BYR7TFXX2P"
+    setting.save()
+print(f"[OK] 站台全域設定已對齊 (GA4: {setting.ga4_measurement_id})")
 
 # 3. 首頁輪播圖 (僅在完全無輪播圖時建立預設 3 筆)
 if not Carousel.objects.exists():

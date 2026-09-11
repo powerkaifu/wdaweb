@@ -278,7 +278,7 @@
               :href="batch.apply_url"
               target="_blank"
               rel="noopener noreferrer"
-              @click="store.trackBatchClick(batch.id)"
+              @click="handleApplyClick(batch)"
               class="w-full py-3.5 sm:py-4 px-3 rounded-2xl text-center font-bold text-white shadow-xl hover:-translate-y-0.5 active:scale-95 transition-all duration-200 flex items-center justify-center space-x-2 text-base lg:text-lg cursor-pointer"
               :class="isBatchUrgentClosing(batch)
                 ? 'bg-gradient-to-r from-amber-500 via-orange-500 to-rose-600 hover:from-amber-400 hover:to-rose-500 shadow-amber-500/40 hover:shadow-amber-500/60'
@@ -561,11 +561,18 @@ function fireGraduationConfetti(spreadAngle: number = 46, particleCount: number 
   })
 }
 
-// 方案 B：點擊按鈕主動送祝福 (游標專屬飽滿星塵爆發)
+// 方案 B：點擊按鈕主動送祝福 (游標專屬飽滿星塵爆發 ＋ GA4 互動事件)
 function triggerCongratulations(event: MouseEvent) {
   celebrationCount.value++
   try {
     localStorage.setItem('wdaweb_grad_cheer_count', String(celebrationCount.value))
+    if (typeof window !== 'undefined' && typeof (window as any).gtag === 'function') {
+      (window as any).gtag('event', 'celebration_cheer', {
+        event_category: 'engagement',
+        event_label: '送上祝賀',
+        value: celebrationCount.value
+      })
+    }
   } catch (e) {}
 
   const rect = (event.currentTarget as HTMLElement)?.getBoundingClientRect()
@@ -582,6 +589,20 @@ function triggerCongratulations(event: MouseEvent) {
     scalar: 1.35,
     disableForReducedMotion: true
   })
+}
+
+// 核心轉換：報名按鈕點擊追蹤 (送出 GA4 官方報名導流轉換事件)
+function handleApplyClick(batch: AdmissionBatch) {
+  store.trackBatchClick(batch.id)
+  try {
+    if (typeof window !== 'undefined' && typeof (window as any).gtag === 'function') {
+      (window as any).gtag('event', 'conversion_apply_click', {
+        event_category: 'outbound_apply',
+        event_label: batch.batch_name,
+        course_code: batch.course_code
+      })
+    }
+  } catch (e) {}
 }
 
 // 方案 A 入場自動施放守護 (三波遞進式慶典禮花，每次瀏覽皆可欣賞)

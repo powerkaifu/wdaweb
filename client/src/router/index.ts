@@ -63,4 +63,19 @@ const router = createRouter({
   }
 })
 
+// Google Analytics 4 (GA4) SPA 路由無縫換頁追蹤
+router.afterEach((to) => {
+  try {
+    if (typeof window !== 'undefined' && typeof (window as any).gtag === 'function') {
+      (window as any).gtag('event', 'page_view', {
+        page_title: to.meta.title || document.title,
+        page_location: window.location.href,
+        page_path: to.fullPath
+      })
+    }
+  } catch (e) {
+    // 防禦性捕獲，絕不阻斷正常路由跳轉
+  }
+})
+
 export default router

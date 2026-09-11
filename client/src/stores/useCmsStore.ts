@@ -18,7 +18,7 @@ const defaultSettings: SiteSetting = {
   seo_keywords: '前端網頁, AI應用, Vue, 職訓, 泰山職業訓練場, 免費課程, 生活津貼',
   og_image_url: '',
   gtm_id: '',
-  ga4_measurement_id: '',
+  ga4_measurement_id: 'G-BYR7TFXX2P',
   announcement_bar_enabled: true,
   announcement_text: '第 1 期招生中 ｜ 待業民眾可申請全額免費受訓與生活津貼',
   announcement_link: '#batches',
