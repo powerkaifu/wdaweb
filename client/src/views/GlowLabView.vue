@@ -627,15 +627,15 @@
                   />
                 </label>
 
-                <!-- 4. 滾動深空穿梭推進 -->
+                <!-- 4. 滾動星空視差 (GSAP ScrollTrigger Scrub) -->
                 <label class="flex items-center justify-between p-2.5 rounded-xl bg-slate-950/60 border border-slate-800 hover:border-cyan-500/40 cursor-pointer transition-all">
                   <div class="flex items-center space-x-2.5 text-xs sm:text-sm">
-                    <span>🚀</span>
-                    <span class="font-bold text-slate-200">滾動深空穿梭推進 (Scroll Warp)</span>
+                    <span>🌌</span>
+                    <span class="font-bold text-slate-200">滾動星空視差 (GSAP Scroll Scrub)</span>
                   </div>
                   <input
                     type="checkbox"
-                    v-model="store.nebulaFeatures.scrollWarp"
+                    v-model="store.nebulaFeatures.scrollParallax"
                     class="w-4 h-4 rounded text-cyan-500 bg-slate-900 border-slate-700 focus:ring-cyan-500 focus:ring-offset-0 cursor-pointer"
                   />
                 </label>

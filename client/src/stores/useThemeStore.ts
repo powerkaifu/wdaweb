@@ -10,7 +10,8 @@ export interface NebulaFeatures {
   mouseParallax: boolean
   filamentNoise: boolean
   entangledPulse: boolean
-  scrollWarp: boolean
+  scrollParallax: boolean
+  scrollWarp?: boolean
 }
 
 export interface MeteorConfig {
@@ -98,7 +99,8 @@ export const useThemeStore = defineStore('theme', () => {
     mouseParallax: true,    // 1. 游標引力透鏡視差
     filamentNoise: true,    // 2. 絲狀雲氣纖維紋理
     entangledPulse: true,   // 3. 引力波能量交織呼吸
-    scrollWarp: false,      // 4. 滾動深空穿梭推進 (已停用，保持閱讀平穩舒適)
+    scrollParallax: true,   // 4. GSAP ScrollTrigger 滾動星空視差 (向下滾動星空上移，向上滾動星空下移)
+    scrollWarp: false,      // 5. 滾動深空穿梭推進 (相容舊版)
   })
 
   // 4. Awwwards 級 360° 天球仰望偶發流星物理系統 (支援火流星與幽靈代碼流星彩蛋)

@@ -9,12 +9,20 @@
 
 <script setup lang="ts">
 import { ref, watch, onMounted, onUnmounted } from 'vue'
+import { useRoute } from 'vue-router'
 import * as THREE from 'three'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useThemeStore } from '@/stores/useThemeStore'
+
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger)
+}
 
 const canvasRef = ref<HTMLCanvasElement | null>(null)
 const meteorCanvasRef = ref<HTMLCanvasElement | null>(null)
 const store = useThemeStore()
+const route = useRoute()
 
 // Three.js 核心實例
 let scene: THREE.Scene | null = null
@@ -22,6 +30,56 @@ let camera: THREE.PerspectiveCamera | null = null
 let renderer: THREE.WebGLRenderer | null = null
 let clock: THREE.Clock | null = null
 let animId: number | null = null
+
+// 🌌 滾動視差狀態 (GSAP + ScrollTrigger + Scrub 1.2s 物理阻尼)
+// 當滑鼠向下滾動時，星空背景往上慢慢移動 (Y 軸正向位移)；反之往上滾動時，星空背景往下慢慢復位
+const scrollParallaxState = {
+  progress: 0,
+  parallaxY: 0
+}
+let parallaxTween: gsap.core.Tween | null = null
+let scrollTriggerInstance: ScrollTrigger | null = null
+
+function initScrollParallax() {
+  if (typeof window === 'undefined') return
+  if (prefersReducedMotion) {
+    scrollParallaxState.parallaxY = 0
+    if (currentModeGroup) currentModeGroup.position.y = 0
+    return
+  }
+
+  if (parallaxTween) {
+    parallaxTween.kill()
+    parallaxTween = null
+  }
+  if (scrollTriggerInstance) {
+    scrollTriggerInstance.kill()
+    scrollTriggerInstance = null
+  }
+
+  // 3D 空間 Y 軸最大位移量：桌機 7.5 單位（約半個視窗視野高度），手機端 4.5 單位（平緩舒適）
+  const maxParallaxY = isMobileDevice ? 4.5 : 7.5
+
+  parallaxTween = gsap.to(scrollParallaxState, {
+    parallaxY: maxParallaxY,
+    progress: 1,
+    ease: 'none',
+    scrollTrigger: {
+      trigger: document.documentElement,
+      start: 'top top',
+      end: 'bottom bottom',
+      scrub: 1.2, // 🎯 1.2 秒天鵝絨般柔和物理阻尼與慣性跟隨，完美還原 GSAP + ScrollTrigger + scrub 質感
+      invalidateOnRefresh: true,
+      onUpdate: (self) => {
+        scrollParallaxState.progress = self.progress
+      }
+    }
+  })
+
+  if (parallaxTween.scrollTrigger) {
+    scrollTriggerInstance = parallaxTween.scrollTrigger
+  }
+}
 
 // 當前啟用的 3D 物件群組與更新函式
 let currentModeGroup: THREE.Group | null = null
@@ -908,6 +966,15 @@ function initNebulaFlowScene() {
       starShaderMaterial.uniforms.uMouse.value.set(currentMouseX, currentMouseY)
       starShaderMaterial.uniforms.uMouseParallax.value = store.nebulaFeatures.mouseParallax ? 1.0 : 0.0
     }
+
+    // C. 🌌 應用 GSAP ScrollTrigger Scrub 驅動的星空滾動視差 (向下滾動 -> 星空往上慢慢移動；向上滾動 -> 星空往下復位)
+    if (currentModeGroup) {
+      if (store.nebulaFeatures.scrollParallax && !prefersReducedMotion) {
+        currentModeGroup.position.y = scrollParallaxState.parallaxY
+      } else {
+        currentModeGroup.position.y = 0
+      }
+    }
   }
 }
 
@@ -1353,6 +1420,11 @@ function handleResize() {
     meteorCanvasRef.value.width = Math.round(w * dpr)
     meteorCanvasRef.value.height = Math.round(h * dpr)
   }
+
+  // 視窗尺寸改變時自動重新校準滾動視差端點
+  if (scrollTriggerInstance) {
+    scrollTriggerInstance.refresh()
+  }
 }
 
 // 🔋 分頁切換與螢幕鎖定自動休眠鎖（防發燙、防耗電、防切回瞬移爆衝）
@@ -1401,6 +1473,30 @@ function renderLoop() {
   updateAndRenderMeteors(delta)
 }
 
+// 監聽後台/實驗室星空滾動視差開關即時響應
+watch(
+  () => store.nebulaFeatures.scrollParallax,
+  (enabled) => {
+    if (!enabled && currentModeGroup) {
+      currentModeGroup.position.y = 0
+    }
+  }
+)
+
+// 監聽 SPA 路由切換，在新頁面高度渲染完成後自動刷新 ScrollTrigger
+watch(
+  () => route?.path,
+  () => {
+    setTimeout(() => {
+      if (scrollTriggerInstance) {
+        scrollTriggerInstance.refresh()
+      } else {
+        ScrollTrigger.refresh()
+      }
+    }, 150)
+  }
+)
+
 onMounted(() => {
   if (!canvasRef.value || !meteorCanvasRef.value) return
 
@@ -1436,6 +1532,7 @@ onMounted(() => {
   clock = new THREE.Clock()
 
   initNebulaFlowScene()
+  initScrollParallax()
 
   window.addEventListener('resize', handleResize)
   window.addEventListener('mousemove', handleMouseMove, { passive: true })
@@ -1448,6 +1545,15 @@ onUnmounted(() => {
   window.removeEventListener('resize', handleResize)
   window.removeEventListener('mousemove', handleMouseMove)
   document.removeEventListener('visibilitychange', handleVisibilityChange)
+
+  if (parallaxTween) {
+    parallaxTween.kill()
+    parallaxTween = null
+  }
+  if (scrollTriggerInstance) {
+    scrollTriggerInstance.kill()
+    scrollTriggerInstance = null
+  }
 
   if (animId) {
     cancelAnimationFrame(animId)
