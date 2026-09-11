@@ -68,7 +68,7 @@ function initScrollParallax() {
       trigger: document.documentElement,
       start: 'top top',
       end: 'bottom bottom',
-      scrub: 1.2, // 🎯 1.2 秒天鵝絨般柔和物理阻尼與慣性跟隨，完美還原 GSAP + ScrollTrigger + scrub 質感
+      scrub: 2, // 🎯 2 秒電影級悠揚物理阻尼與深空天體慣性滑行，質感更加舒緩深邃
       invalidateOnRefresh: true,
       onUpdate: (self) => {
         scrollParallaxState.progress = self.progress
