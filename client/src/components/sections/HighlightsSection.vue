@@ -170,6 +170,17 @@
 					</div>
 				</div>
 			</div>
+
+			<!-- 實體價值核心收束金句 (單行不換行，文字極致精煉) -->
+			<div class="mt-8 sm:mt-12 text-center">
+				<div
+					class="inline-block px-4 sm:px-6 py-2.5 sm:py-3 rounded-2xl bg-slate-900/60 border border-slate-800/80 backdrop-blur-md shadow-lg max-w-full"
+				>
+					<p class="text-sm sm:text-base text-slate-200 whitespace-nowrap">
+						🤝 <span class="text-purple-300 font-bold">卡住時隨時有人可問，</span>學習就不用孤軍奮戰。
+					</p>
+				</div>
+			</div>
 		</div>
 	</section>
 </template>

@@ -210,11 +210,13 @@
 				</div>
 			</div>
 
-			<!-- 核心理念總結金句 -->
-			<div class="mt-6 sm:mt-12 max-w-3xl mx-auto text-center">
-				<div class="p-5 sm:p-6 rounded-2xl bg-slate-900/50 border border-slate-800/80 text-pretty">
-					<p class="text-base sm:text-lg text-slate-200 font-medium leading-relaxed">
-						💡 <span class="text-cyan-300 font-bold">目標不是讓你記住更多語法，而是讓你逐漸知道自己正在做什麼。</span>
+			<!-- 核心理念總結金句 (單行不換行，文字極致精煉) -->
+			<div class="mt-8 sm:mt-12 text-center">
+				<div
+					class="inline-block px-4 sm:px-6 py-2.5 sm:py-3 rounded-2xl bg-slate-900/60 border border-slate-800/80 backdrop-blur-md shadow-lg max-w-full"
+				>
+					<p class="text-sm sm:text-base text-slate-200 whitespace-nowrap">
+						💡 <span class="text-cyan-300 font-bold">目標不是記住語法，</span>而是知道自己正在做什麼。
 					</p>
 				</div>
 			</div>

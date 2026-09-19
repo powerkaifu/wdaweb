@@ -142,13 +142,13 @@
 				</div>
 			</div>
 
-			<!-- 共同收束：拉向決策與自主判斷 (桌機 md: 顯示，手機端隱藏以減少垂直長度) -->
-			<div class="hidden md:block mt-14 max-w-5xl xl:max-w-6xl mx-auto text-center">
+			<!-- 共同收束：拉向決策與自主判斷 (單行不換行，文字極致精煉) -->
+			<div class="mt-8 sm:mt-12 text-center">
 				<div
-					class="p-5 sm:p-7 rounded-3xl bg-slate-900/60 border border-slate-800/80 backdrop-blur-md shadow-xl text-pretty"
+					class="inline-block px-4 sm:px-6 py-2.5 sm:py-3 rounded-2xl bg-slate-900/60 border border-slate-800/80 backdrop-blur-md shadow-lg max-w-full"
 				>
-					<p class="text-base sm:text-lg text-slate-200 leading-relaxed xl:whitespace-nowrap">
-						<span class="text-emerald-400 font-bold">你不需要符合某一種標準答案，才有資格開始。</span>重要的是先了解自己的起點，再找到適合自己的學習方式。
+					<p class="text-sm sm:text-base text-slate-200 whitespace-nowrap">
+						🌱 <span class="text-emerald-400 font-bold">不用符合標準答案，</span>找到適合的起點就能開始。
 					</p>
 				</div>
 			</div>
