@@ -30,7 +30,7 @@
 				<p
 					class="hidden sm:block text-slate-400 mt-4 text-base sm:text-lg max-w-4xl xl:max-w-5xl mx-auto leading-relaxed text-pretty text-center"
 				>
-					技術不是一串需要背下來的英文單字。它們不是需要背下來的名詞，而是你完成作品時會真正用到的工具。你會依照學習階段，逐步接觸不同領域的技術。
+					不用死背這些英文單字。這些是你做作品時會用到的工具，我們會依照學習進度，帶你一步步親手使用。
 				</p>
 			</div>
 
@@ -83,7 +83,7 @@
 					</div>
 
 					<div
-						class="pt-5 mt-6 border-t border-slate-800/80 flex items-center justify-between text-sm text-slate-300 font-mono"
+						class="hidden sm:flex pt-5 mt-6 border-t border-slate-800/80 items-center justify-between text-sm text-slate-300 font-mono"
 					>
 						<span>核心能力</span>
 						<span class="text-cyan-400 font-bold">專題實作</span>

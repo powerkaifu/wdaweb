@@ -71,19 +71,19 @@
 						<p class="text-base text-slate-200 leading-relaxed text-pretty text-justify">
 							<!-- 手機端穿透金句 -->
 							<span class="sm:hidden block">
-								從最基礎排版教起、每日動手實作，重點在於願不願意花時間把不會變成會。
+								別擔心，歷屆超過八成學員都是零基礎。老師會從最基礎的畫面帶你敲代碼，每天親手練，一步步把不會變會。
 							</span>
 							<!-- 桌機端完整論述 -->
 							<span class="hidden sm:inline">
-								學習程式不需要一開始就懂所有事情。課程從網頁最基礎的結構與排版教起，親手看見每一行程式碼如何產生變化，循序建立扎實手感。<br />
+								學習程式不需要一開始就懂所有事情。歷屆超過八成的學員都是從零開始，課程從最基礎的網頁結構教起，每天動手敲代碼，一步步建立手感與信心。<br />
 								<span class="text-cyan-300 font-bold mt-2.5 block text-base sm:text-lg">
-									真正需要確認的，不是「我現在會不會」，而是「我願不願意花時間，把不會變成會」。
+									不用怕自己現在不會，只要你願意每天跟著練習，老師會陪你把它弄懂。
 								</span>
 							</span>
 						</p>
 					</div>
 					<div
-						class="pt-3.5 sm:pt-5 mt-4 sm:mt-6 border-t border-slate-800/80 flex items-center justify-between text-xs sm:text-sm text-slate-300 font-mono"
+						class="hidden sm:flex pt-3.5 sm:pt-5 mt-4 sm:mt-6 border-t border-slate-800/80 items-center justify-between text-xs sm:text-sm text-slate-300 font-mono"
 					>
 						<span>學習心態</span>
 						<span class="text-cyan-400 font-bold"> 時間投入 · 循序打底 </span>
@@ -119,19 +119,19 @@
 						<p class="text-base text-slate-200 leading-relaxed text-pretty text-justify">
 							<!-- 手機端穿透金句 -->
 							<span class="sm:hidden block">
-								AI 讓生成變容易，但架構思維、獨立除錯與系統判斷力更加關鍵。
+								AI 敲鍵盤再快，企業真正要花錢請的，是能看懂程式碼、抓出 Bug、把完整網站做出來的人。
 							</span>
 							<!-- 桌機端完整論述 -->
 							<span class="hidden sm:inline">
-								AI 讓產生程式碼變得容易，但同時也讓架構思維、判斷合理性、除錯與整體系統能力變得更加重要。課程不只教「怎麼寫」，而是教你「理解自己正在做什麼」，讓 AI 成為最強協同副駕駛。<br />
+								AI 雖然能快速產生代碼，但也更容易產生難以察覺的錯誤。企業真正需要的不是只會複製貼上的人，而是能看懂程式邏輯、抓得出 Bug、能把專案完整做出來的工程師。<br />
 								<span class="text-blue-300 font-bold mt-2.5 block text-base sm:text-lg">
-									AI 讓生成變容易，但讓理解、判斷與架構能力更加關鍵。
+									AI 是你的強大副駕駛，但掌握方向盤與品質把關的永遠是你。
 								</span>
 							</span>
 						</p>
 					</div>
 					<div
-						class="pt-3.5 sm:pt-5 mt-4 sm:mt-6 border-t border-slate-800/80 flex items-center justify-between text-xs sm:text-sm text-slate-300 font-mono"
+						class="hidden sm:flex pt-3.5 sm:pt-5 mt-4 sm:mt-6 border-t border-slate-800/80 items-center justify-between text-xs sm:text-sm text-slate-300 font-mono"
 					>
 						<span>未來趨勢</span>
 						<span class="text-blue-400 font-bold"> 人機協作 · 核心理解 </span>
@@ -167,19 +167,19 @@
 						<p class="text-base text-slate-200 leading-relaxed text-pretty text-justify">
 							<!-- 手機端穿透金句 -->
 							<span class="sm:hidden block">
-								你缺的不是更多免費教材，而是卡關有人即時討論的實體環境。
+								看教學影片卡在一個 Bug 三天就想放棄對吧？在職訓，轉頭就能問老師和同學，不用一個人孤軍奮戰。
 							</span>
 							<!-- 桌機端完整論述 -->
 							<span class="hidden sm:inline">
-								網路上有成千上萬的免費教學與影音。真正值得思考的是：你現在缺的到底是一套新教材，還是缺一個能讓你排除干擾、遇到卡關有人即時討論、並能持續走完半年的實體環境？<br />
+								自學最大的阻礙往往不是教材不夠多，而是卡在一個報錯好幾天沒人問，熱情慢慢被磨光。在實體職訓，轉頭就能跟老師討論、跟同學切磋，讓你不再一個人孤軍奮戰。<br />
 								<span class="text-purple-300 font-bold mt-2.5 block text-base sm:text-lg">
-									你缺的是更多教材，還是一個能讓你持續走下去的學習環境？
+									你缺的不是更多教學影片，而是一個能陪你走完半年的真實環境。
 								</span>
 							</span>
 						</p>
 					</div>
 					<div
-						class="pt-3.5 sm:pt-5 mt-4 sm:mt-6 border-t border-slate-800/80 flex items-center justify-between text-xs sm:text-sm text-slate-300 font-mono"
+						class="hidden sm:flex pt-3.5 sm:pt-5 mt-4 sm:mt-6 border-t border-slate-800/80 items-center justify-between text-xs sm:text-sm text-slate-300 font-mono"
 					>
 						<span>實體價值</span>
 						<span class="text-purple-400 font-bold"> 專注環境 · 即時討論 </span>

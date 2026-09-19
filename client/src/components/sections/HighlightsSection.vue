@@ -69,16 +69,16 @@
 						<h3 class="text-xl font-extrabold text-white mb-2 sm:mb-3 tracking-tight">老師陪你拆解問題</h3>
 						<!-- 手機端精煉文案 -->
 						<p class="text-base text-slate-200 leading-relaxed text-pretty text-justify sm:hidden">
-							遇到報錯不必猜。老師帶你理解成因、練習拆解思維，而非只給暫時解答。
+							遇到紅字報錯不用慌。老師坐在你旁邊，帶你看懂錯誤訊息，教你以後自己也能解開。
 						</p>
 						<!-- 桌機完整論述 -->
 						<p class="hidden sm:block text-base text-slate-200 leading-relaxed text-pretty text-justify">
-							遇到問題，不必一個人對著錯誤訊息反覆猜測。不是直接告訴你答案，而是協助你理解「為什麼會錯、問題出在哪裡」，練習拆解問題的思維，而不是只找到一個暫時運作的答案。
+							遇到問題，不必一個人對著錯誤訊息反覆猜測。老師坐在你身邊，一步一步帶你看懂報錯根因，練習拆解問題的邏輯，教你以後走進職場也能自己解開。
 						</p>
 					</div>
 
 					<div
-						class="pt-4 sm:pt-5 mt-4 sm:mt-6 border-t border-slate-800/80 flex items-center justify-between text-sm text-slate-300 font-mono"
+						class="hidden sm:flex pt-4 sm:pt-5 mt-4 sm:mt-6 border-t border-slate-800/80 items-center justify-between text-sm text-slate-300 font-mono"
 					>
 						<span>思維訓練</span>
 						<span class="text-cyan-400 font-bold">理解原因而非死背</span>
@@ -114,16 +114,16 @@
 						</h3>
 						<!-- 手機端精煉文案 -->
 						<p class="text-base text-slate-200 leading-relaxed text-pretty text-justify sm:hidden">
-							一邊看示範一邊敲代碼。親手實作拒絕紙上談兵，擺脫看懂卻寫不出的困境。
+							一人一台專屬電腦配雙螢幕。左邊看老師示範、右邊跟著敲代碼，當場做、當場搞懂。
 						</p>
 						<!-- 桌機完整論述 -->
 						<p class="hidden sm:block text-base text-slate-200 leading-relaxed text-pretty text-justify">
-							降低實作與切換的摩擦。一邊看示範、一邊寫程式、查資料與測試結果能同時進行。讓學習當下就親手實作，徹底擺脫「看影片覺得懂、開編輯器一片空白」的困境。
+							一人一機獨立雙螢幕實作工位。左邊看老師操作示範，右邊打開編輯器跟著敲代碼與即時預覽，徹底擺脫「看影片覺得懂、開編輯器一片空白」的困境。
 						</p>
 					</div>
 
 					<div
-						class="pt-4 sm:pt-5 mt-4 sm:mt-6 border-t border-slate-800/80 flex items-center justify-between text-sm text-slate-300 font-mono"
+						class="hidden sm:flex pt-4 sm:pt-5 mt-4 sm:mt-6 border-t border-slate-800/80 items-center justify-between text-sm text-slate-300 font-mono"
 					>
 						<span>降低阻力</span>
 						<span class="text-blue-400 font-bold">即時實作反饋</span>
@@ -157,16 +157,16 @@
 						<h3 class="text-xl font-extrabold text-white mb-2 sm:mb-3 tracking-tight">同儕一起學習成長</h3>
 						<!-- 手機端精煉文案 -->
 						<p class="text-base text-slate-200 leading-relaxed text-pretty text-justify sm:hidden">
-							卡關時身邊有同學能商量。在互相提問與討論中突破盲點，不再孤軍奮戰。
+							你不是一個人在戰鬥。身邊同學都在同一個進度上，互相提問討論，卡關更容易走出來。
 						</p>
 						<!-- 桌機完整論述 -->
 						<p class="hidden sm:block text-base text-slate-200 leading-relaxed text-pretty text-justify">
-							你不需要一個人面對每一次卡關。在班級中，你會發現「原來別人也會卡住」，並開始練習把自己的問題說清楚。同儕並肩討論、互相提點，往往比孤軍奮戰更容易突破盲點。
+							轉職路上最怕孤單。全班三十位同學跟你一樣認真投入，大家一起卡關、互相討論提點，在彼此切磋中打破盲點，結訓後更是同行互挺的人脈。
 						</p>
 					</div>
 
 					<div
-						class="pt-4 sm:pt-5 mt-4 sm:mt-6 border-t border-slate-800/80 flex items-center justify-between text-sm text-slate-300 font-mono"
+						class="hidden sm:flex pt-4 sm:pt-5 mt-4 sm:mt-6 border-t border-slate-800/80 items-center justify-between text-sm text-slate-300 font-mono"
 					>
 						<span>心理支持</span>
 						<span class="text-purple-400 font-bold">同儕共同突破</span>
@@ -202,17 +202,16 @@
 						</h3>
 						<!-- 手機端精煉文案 -->
 						<p class="text-base text-slate-200 leading-relaxed text-pretty text-justify sm:hidden">
-							920 小時全日制專注實作。將零碎知識淬鍊為獨立開發上線專案的硬核實力。
+							整整半年專心衝刺，待業全額補助。不用下班疲累自學，每天有完整 8 小時把技術練扎實。
 						</p>
 						<!-- 桌機完整論述 -->
 						<p class="hidden sm:block text-base text-slate-200 leading-relaxed text-pretty text-justify">
-							自學可以很自由，但也容易因為時間零碎而難以持續。<span class="inline-block">920 小時</span
-							>給你一段足夠長、足夠專注的時間，讓零碎的知識在持續練習中逐漸沉澱，最後轉化為能獨立完成完整專案的實戰能力。
+							下班自學常常因為加班或疲累而中斷。920 小時給你一段全心全意的專注時光，在半年密集實作中把破碎的知識串起來，做出能讓面試官眼睛一亮的完整代表作。
 						</p>
 					</div>
 
 					<div
-						class="pt-4 sm:pt-5 mt-4 sm:mt-6 border-t border-slate-800/80 flex items-center justify-between text-sm text-slate-300 font-mono"
+						class="hidden sm:flex pt-4 sm:pt-5 mt-4 sm:mt-6 border-t border-slate-800/80 items-center justify-between text-sm text-slate-300 font-mono"
 					>
 						<span>專注累積</span>
 						<span class="text-emerald-400 font-bold">零散知識轉為實戰</span>

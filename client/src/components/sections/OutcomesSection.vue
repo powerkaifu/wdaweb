@@ -53,11 +53,11 @@
 						</div>
 						<!-- 手機短金句 -->
 						<p class="text-base text-slate-200 leading-relaxed text-pretty text-justify sm:hidden">
-							獨立完成可向面試官展示、說得出架構細節與選型理由的專案代表作。
+							不套用現成模板。做出能上線給親友用、面試時能自信 demo 給老闆看的個人代表作。
 						</p>
 						<!-- 桌機完整論述 -->
 						<p class="hidden sm:block text-base text-slate-200 leading-relaxed text-pretty text-justify">
-							不只是套用模板或完成課堂作業，而是真正獨立完成可以向面試官展示、說得出架構細節與技術選型原因的專案代表作。
+							不只是套用現成模板或完成隨堂作業，而是做出真正能對外公開上線、說得出每一處架構與技術細節的個人專案代表作。
 						</p>
 					</div>
 					<div class="pt-4 mt-4 sm:mt-5 border-t border-slate-800/80 text-base font-bold text-cyan-400">
@@ -76,11 +76,11 @@
 						</div>
 						<!-- 手機短金句 -->
 						<p class="text-base text-slate-200 leading-relaxed text-pretty text-justify sm:hidden">
-							面對 Bug 不盲猜答案，學會從 Console 定位根因，具備獨立除錯思維。
+							遇到報錯不慌張。學會看懂 Console 錯誤資訊，能自己動手一步一步找出 Bug 根因。
 						</p>
 						<!-- 桌機完整論述 -->
 						<p class="hidden sm:block text-base text-slate-200 leading-relaxed text-pretty text-justify">
-							遇到問題與 Bug 時，不再只盲目問「答案是什麼」，而是學會從程式碼與 Console 分析「問題到底發生在哪裡」，具備獨立除錯的思維。
+							遇到問題與 Bug 時，不再只盲目上網搜尋「答案是什麼」，而是學會從程式碼與 Console 分析錯誤根因，具備獨立排錯並解決問題的實戰思維。
 						</p>
 					</div>
 					<div class="pt-4 mt-4 sm:mt-5 border-t border-slate-800/80 text-base font-bold text-blue-400">
@@ -99,11 +99,11 @@
 						</div>
 						<!-- 手機短金句 -->
 						<p class="text-base text-slate-200 leading-relaxed text-pretty text-justify sm:hidden">
-							建立人機協同循環，把 AI 當成倍增效率的副駕駛而非盲抄工具。
+							把 AI 當成高產能的開發助手，由你掌握主導權，提問、驗證並把關程式品質。
 						</p>
 						<!-- 桌機完整論述 -->
 						<p class="hidden sm:block text-base text-slate-200 leading-relaxed text-pretty text-justify">
-							不把 AI 當成複製貼上的萬能答案機，而是建立「提問 ➔ 理解 ➔ 驗證 ➔ 修改 ➔ 除錯」的人機協同循環，讓 AI 成為實戰加速器。
+							不把 AI 當成複製貼上的萬能答案機，而是建立「提問 ➔ 理解 ➔ 驗證 ➔ 修改 ➔ 除錯」的高效人機協同循環，讓 AI 成為實戰加速器。
 						</p>
 					</div>
 					<div class="pt-4 mt-4 sm:mt-5 border-t border-slate-800/80 text-base font-bold text-purple-400">
@@ -122,15 +122,15 @@
 						</div>
 						<!-- 手機短金句 -->
 						<p class="text-base text-slate-200 leading-relaxed text-pretty text-justify sm:hidden">
-							掌握元件、狀態、API、資料庫與部署協同運作的系統全貌。
+							不只切版排版。學會把前端畫面、API 資料與資料庫串聯起來，完成整套系統交付。
 						</p>
 						<!-- 桌機完整論述 -->
 						<p class="hidden sm:block text-base text-slate-200 leading-relaxed text-pretty text-justify">
-							清楚知道一個完整系統不是只有排版畫面，而是由前端元件、狀態資料、後端 API、資料庫與部署流程共同協同運作的全貌。
+							清楚知道一個能商業運轉的專案，不只有排版畫面，而是涵蓋前端元件、狀態資料流、後端 API 與部署上線的完整系統整合能力。
 						</p>
 					</div>
 					<div class="pt-4 mt-4 sm:mt-5 border-t border-slate-800/80 text-base font-bold text-emerald-400">
-						✓ 系統全貌架構思維
+						✓ 系統全貌整合能力
 					</div>
 				</div>
 
@@ -145,11 +145,11 @@
 						</div>
 						<!-- 手機短金句 -->
 						<p class="text-base text-slate-200 leading-relaxed text-pretty text-justify sm:hidden">
-							半年朝夕相處的同學，將成為業界交流、內推與互相支持的同行夥伴。
+							半年朝夕相處的同學，就是你進入軟體業能互相推薦、交流情報的第一批戰友。
 						</p>
 						<!-- 桌機完整論述 -->
 						<p class="hidden sm:block text-base text-slate-200 leading-relaxed text-pretty text-justify">
-							半年朝夕相處的同學，未來可能成為你在軟體業界交流情報、彼此推薦與互相支持的同行者。這是孤軍自學難以複製的人脈資產。
+							半年朝夕相處的同學，未來可能成為你在軟體業界交流情報、彼此推薦與互相支持的同行夥伴。這是孤軍自學難以複製的人脈資產。
 						</p>
 					</div>
 					<div class="pt-4 mt-4 sm:mt-5 border-t border-slate-800/80 text-base font-bold text-amber-400">
@@ -168,11 +168,11 @@
 						</div>
 						<!-- 手機短金句 -->
 						<p class="text-base text-slate-100 leading-relaxed text-pretty text-justify sm:hidden">
-							六個月後，你將清楚看清自己擅長什麼、喜歡什麼，明確下一步的方向。
+							六個月認真試過一次，你將真正看清自己的熱情與方向，不再只是空想與焦慮。
 						</p>
 						<!-- 桌機完整論述 -->
 						<p class="hidden sm:block text-base text-slate-100 leading-relaxed text-pretty text-justify">
-							不是每個人結訓後都會走向相同道路。六個月後，你未必會得到唯一的標準答案；但你應該比現在更知道自己喜歡什麼、擅長什麼，以及下一步可以往哪裡走。
+							六個月全心投入試過一次，你未必會得到唯一的標準答案；但你將清楚知道自己喜歡什麼、擅長什麼，踏實看清屬於自己的下一步。
 						</p>
 					</div>
 					<div class="pt-4 mt-4 sm:mt-5 border-t border-cyan-500/30 text-base font-extrabold text-cyan-300">

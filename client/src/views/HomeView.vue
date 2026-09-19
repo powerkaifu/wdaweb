@@ -9,9 +9,6 @@
 		<!-- 3. 四大起點圖譜 (你的起點不同，但不代表從零開始) -->
 		<TracksSection />
 
-		<!-- 4. 不只有一條路，你可以怎麼開始？ (自學+AI vs 實體職訓 vs 工作中學習 橫向決策輔助) -->
-		<PathComparisonSection />
-
 		<!-- 5. 實體沉浸價值 ｜ 當你真的卡住時 (解決問題視角：拆問題/雙螢幕/同儕/920h) -->
 		<HighlightsSection />
 
@@ -141,7 +138,6 @@ import HeroCarousel from '@/components/sections/HeroCarousel.vue'
 import HighlightsSection from '@/components/sections/HighlightsSection.vue'
 import LearningPathSection from '@/components/sections/LearningPathSection.vue'
 import OutcomesSection from '@/components/sections/OutcomesSection.vue'
-import PathComparisonSection from '@/components/sections/PathComparisonSection.vue'
 import TechStackSection from '@/components/sections/TechStackSection.vue'
 import AiWorkflowSection from '@/components/sections/AiWorkflowSection.vue'
 import TracksSection from '@/components/sections/TracksSection.vue'
