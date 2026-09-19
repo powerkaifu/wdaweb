@@ -12,7 +12,7 @@
 		></div>
 
 		<div class="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 relative z-10 w-full">
-			<!-- 大區塊標題區 (標準一級 Section 規格) -->
+			<!-- 大區塊標題區 (標準一級 Section 規格，升級為靈魂核心) -->
 			<div class="text-center max-w-5xl mx-auto mb-4 sm:mb-12 lg:mb-14">
 				<div
 					class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/30 text-sm font-bold uppercase tracking-wider shadow-sm mb-3"
@@ -20,17 +20,17 @@
 					<span class="w-1.5 h-1.5 rounded-full bg-blue-400 animate-ping"></span>
 					<span>AI Workflow ｜ 現代人機協同</span>
 				</div>
-				<h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight text-balance">
-					<span class="block">AI 輔助應用</span>
+				<h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight text-balance lg:whitespace-nowrap">
+					<span class="block sm:inline">在 AI 時代，</span>
 					<span
-						class="block mt-1 sm:mt-1.5 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-emerald-400"
-						>讓 AI 成為你的專業開發副駕駛</span
+						class="block sm:inline mt-1 sm:mt-0 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-emerald-400"
+						>我們培養的是能完成產品的人</span
 					>
 				</h2>
 				<p
 					class="hidden sm:block text-slate-400 mt-4 text-base sm:text-lg max-w-4xl xl:max-w-5xl mx-auto leading-relaxed text-pretty text-center"
 				>
-					寫程式不再是枯燥死記每一行語法。在課程中，你將學會如何將現代生成式 AI 工具融入日常開發流程。AI 不是取代思考的捷徑，而是讓你能把寶貴注意力集中在「邏輯設計、架構規劃與使用者體驗」的強大助手。
+					AI 敲鍵盤再快，也無法替你定義需求與確保架構。我們將現代生成式 AI 工具融入日常開發，讓 AI 成為副駕駛——但由你主導邏輯設計、驗證除錯，並整合前後端交付真正的商業專案。
 				</p>
 			</div>
 
@@ -160,10 +160,10 @@
 
 					<!-- 底部核心共鳴收束引言 -->
 					<div
-						class="pt-5 border-t border-slate-800/80 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-sm sm:text-base font-mono"
+						class="pt-4 sm:pt-5 border-t border-slate-800/80 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 sm:gap-3 text-sm sm:text-base leading-relaxed"
 					>
-						<span class="text-slate-400">💡 核心工作流：人機協同 ➔ 提問 · 理解 · 驗證 · 修改</span>
-						<span class="text-cyan-400 font-bold">✨ 培養與 AI 協同的高效工作習慣</span>
+						<span class="text-slate-200 font-medium">💡 核心理念：AI 敲鍵盤再快，企業真正花錢僱用的，是能看懂程式碼、抓出 Bug、交付完整產品的人</span>
+						<span class="text-cyan-400 font-bold tracking-wide">🎯 培養獨立解決問題與系統交付的能力</span>
 					</div>
 				</div>
 			</div>

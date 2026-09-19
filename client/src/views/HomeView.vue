@@ -18,9 +18,6 @@
 		<!-- 6. 核心技術工具 (你會接觸到哪些技術) -->
 		<TechStackSection />
 
-		<!-- 7. 工程思維核心 (在 AI 時代，我們培養的是能完成產品的人) -->
-		<EngineeringMindsetSection />
-
 		<!-- 8. 現代人機協同實務 (AI 輔助應用：讓 AI 成為你的專業開發副駕駛) -->
 		<AiWorkflowSection />
 
@@ -156,7 +153,6 @@ import LearningPathSection from '@/components/sections/LearningPathSection.vue'
 import OutcomesSection from '@/components/sections/OutcomesSection.vue'
 import PathComparisonSection from '@/components/sections/PathComparisonSection.vue'
 import TechStackSection from '@/components/sections/TechStackSection.vue'
-import EngineeringMindsetSection from '@/components/sections/EngineeringMindsetSection.vue'
 import AiWorkflowSection from '@/components/sections/AiWorkflowSection.vue'
 import TracksSection from '@/components/sections/TracksSection.vue'
 
