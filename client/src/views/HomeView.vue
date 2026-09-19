@@ -49,7 +49,7 @@
 					>
 				</h2>
 
-				<p class="text-slate-300 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed text-pretty text-center">
+				<p class="hidden sm:block text-slate-300 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed text-pretty text-center">
 					每一個作品的開始，都不是一個完整的工程師，而是一個願意從不熟悉的第一行開始學習的人。
 				</p>
 

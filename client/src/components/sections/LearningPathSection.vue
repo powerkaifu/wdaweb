@@ -10,7 +10,7 @@
 
 		<div class="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 relative z-10 w-full">
 			<!-- 區塊標題 (大器單行標題，中高齡友善閱讀) -->
-			<div class="text-center max-w-4xl mx-auto mb-6 sm:mb-12 lg:mb-16">
+			<div class="text-center max-w-4xl mx-auto mb-4 sm:mb-12 lg:mb-16">
 				<div
 					class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 text-sm font-bold uppercase tracking-wider shadow-sm mb-3"
 				>
@@ -24,7 +24,7 @@
 						>一步一步完成自己的作品</span
 					>
 				</h2>
-				<p class="text-slate-400 mt-4 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed text-pretty text-center">
+				<p class="hidden sm:block text-slate-400 mt-4 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed text-pretty text-center">
 					<span class="block"
 						>920 小時，從「看不懂」到「知道自己正在做什麼」，一步步累積能真正做出作品的實戰能力。</span
 					>

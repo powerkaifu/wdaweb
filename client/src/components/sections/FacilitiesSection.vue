@@ -13,7 +13,7 @@
 
     <div class="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 relative z-10 w-full">
       <!-- 區塊標題 -->
-      <div v-if="!hideHeader" class="text-center max-w-5xl mx-auto mb-6 sm:mb-12 lg:mb-14">
+      <div v-if="!hideHeader" class="text-center max-w-5xl mx-auto mb-4 sm:mb-12 lg:mb-14">
         <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 text-sm font-bold uppercase tracking-wider shadow-sm mb-3">
           <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping"></span>
           <span>Learning Environment ｜ 實體環境</span>
@@ -22,7 +22,7 @@
           <span class="block">接下來的半年，</span>
           <span class="block mt-1 sm:mt-1.5 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-emerald-400">你會在這樣的地方學習</span>
         </h2>
-        <p class="text-slate-400 mt-4 text-base sm:text-lg max-w-none mx-auto leading-relaxed text-pretty">
+        <p class="hidden sm:block text-slate-400 mt-4 text-base sm:text-lg max-w-none mx-auto leading-relaxed text-pretty">
           專注的空間、一起學習的人，以及一段真正投入的時間。
         </p>
       </div>

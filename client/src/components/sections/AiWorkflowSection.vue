@@ -13,7 +13,7 @@
 
 		<div class="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 relative z-10 w-full">
 			<!-- 大區塊標題區 (標準一級 Section 規格) -->
-			<div class="text-center max-w-5xl mx-auto mb-6 sm:mb-12 lg:mb-14">
+			<div class="text-center max-w-5xl mx-auto mb-4 sm:mb-12 lg:mb-14">
 				<div
 					class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/30 text-sm font-bold uppercase tracking-wider shadow-sm mb-3"
 				>
@@ -28,7 +28,7 @@
 					>
 				</h2>
 				<p
-					class="text-slate-400 mt-4 text-base sm:text-lg max-w-4xl xl:max-w-5xl mx-auto leading-relaxed text-pretty text-center"
+					class="hidden sm:block text-slate-400 mt-4 text-base sm:text-lg max-w-4xl xl:max-w-5xl mx-auto leading-relaxed text-pretty text-center"
 				>
 					寫程式不再是枯燥死記每一行語法。在課程中，你將學會如何將現代生成式 AI 工具融入日常開發流程。AI 不是取代思考的捷徑，而是讓你能把寶貴注意力集中在「邏輯設計、架構規劃與使用者體驗」的強大助手。
 				</p>

@@ -13,7 +13,7 @@
 
 		<div class="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 relative z-10 w-full">
 			<!-- 區塊前導標題 -->
-			<div class="text-center max-w-4xl mx-auto mb-6 sm:mb-12 lg:mb-14">
+			<div class="text-center max-w-4xl mx-auto mb-4 sm:mb-12 lg:mb-14">
 				<div
 					class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 text-sm font-bold uppercase tracking-wider shadow-sm mb-3"
 				>
@@ -27,7 +27,7 @@
 						>不只是一張結訓證明</span
 					>
 				</h2>
-				<p class="text-slate-400 mt-4 text-base sm:text-lg max-w-3xl lg:max-w-none mx-auto leading-relaxed text-center whitespace-normal lg:whitespace-nowrap">
+				<p class="hidden sm:block text-slate-400 mt-4 text-base sm:text-lg max-w-3xl lg:max-w-none mx-auto leading-relaxed text-center whitespace-normal lg:whitespace-nowrap">
 					<span class="inline-block">920 小時</span>的學習，目的不是讓你記住更多技術名詞，而是希望你離開教室後，仍然帶著可以繼續使用的實戰能力。
 				</p>
 			</div>

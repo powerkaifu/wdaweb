@@ -10,7 +10,7 @@
 
 		<div class="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 relative z-10 w-full">
 			<!-- 區塊前導標頭 (大器單行標題，中高齡友善大字) -->
-			<div class="text-center max-w-4xl mx-auto mb-6 sm:mb-12 lg:mb-14">
+			<div class="text-center max-w-4xl mx-auto mb-4 sm:mb-12 lg:mb-14">
 				<div
 					class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 text-xs font-mono font-bold uppercase tracking-wider shadow-sm mb-3"
 				>
@@ -25,7 +25,7 @@
 					>
 				</h2>
 				<p
-					class="text-slate-400 mt-4 text-base sm:text-lg max-w-4xl mx-auto leading-relaxed text-pretty text-center"
+					class="hidden sm:block text-slate-400 mt-4 text-base sm:text-lg max-w-4xl mx-auto leading-relaxed text-pretty text-center"
 				>
 					如果你正在思考轉職，不一定只有「報名職訓」這一個答案。你也可以自學、使用 AI
 					學習，或在工作中逐步累積能力。不同方法適合不同的人，真正重要的是：<span class="text-slate-200 font-bold"

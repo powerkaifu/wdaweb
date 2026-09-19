@@ -10,7 +10,7 @@
 
 		<div class="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 relative z-10 w-full">
 			<!-- 大區塊標題區 (標準一級 Section 規格) -->
-			<div class="text-center max-w-5xl mx-auto mb-6 sm:mb-12 lg:mb-14">
+			<div class="text-center max-w-5xl mx-auto mb-4 sm:mb-12 lg:mb-14">
 				<div
 					class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 text-sm font-bold uppercase tracking-wider shadow-sm mb-3"
 				>
@@ -25,7 +25,7 @@
 					>
 				</h2>
 				<p
-					class="text-slate-400 mt-4 text-base sm:text-lg max-w-4xl xl:max-w-5xl mx-auto leading-relaxed text-pretty text-center"
+					class="hidden sm:block text-slate-400 mt-4 text-base sm:text-lg max-w-4xl xl:max-w-5xl mx-auto leading-relaxed text-pretty text-center"
 				>
 					AI 能在幾秒內生成程式碼，卻無法替你定義需求、拆解架構與確保品質。我們更重視的，是培養理解需求、拆解模組、AI 協作、驗證除錯、系統整合的完整工程能力。
 				</p>

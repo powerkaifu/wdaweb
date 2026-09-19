@@ -10,7 +10,7 @@
 
 		<div class="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 relative z-10 w-full">
 			<!-- 區塊前導標題 -->
-			<div class="text-center max-w-4xl mx-auto mb-6 sm:mb-12 lg:mb-14">
+			<div class="text-center max-w-4xl mx-auto mb-4 sm:mb-12 lg:mb-14">
 				<div
 					class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 text-sm font-bold uppercase tracking-wider shadow-sm mb-3"
 				>
@@ -27,7 +27,7 @@
 					>
 				</h2>
 				<p
-					class="text-slate-400 mt-4 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed text-pretty text-center"
+					class="hidden sm:block text-slate-400 mt-4 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed text-pretty text-center"
 				>
 					自學可以走得很遠。但當你面對一個看不懂的錯誤訊息時，有人可以一起討論、有同學可以交流，往往能讓你少繞很多彎路。這也是實體學習最難被取代的地方。
 				</p>

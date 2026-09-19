@@ -13,7 +13,7 @@
 
 		<div class="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 relative z-10 w-full">
 			<!-- 受眾心聲共鳴標頭 -->
-			<div class="text-center max-w-5xl xl:max-w-6xl mx-auto mb-6 sm:mb-12 lg:mb-14">
+			<div class="text-center max-w-5xl xl:max-w-6xl mx-auto mb-4 sm:mb-12 lg:mb-14">
 				<div
 					class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 text-sm font-bold uppercase tracking-wider shadow-sm mb-3"
 				>
@@ -26,7 +26,7 @@
 						>也許不只是「要不要學程式」</span
 					>
 				</h2>
-				<p class="text-slate-400 mt-4 text-base sm:text-lg max-w-none mx-auto leading-relaxed text-pretty text-center xl:whitespace-nowrap">
+				<p class="hidden sm:block text-slate-400 mt-4 text-base sm:text-lg max-w-none mx-auto leading-relaxed text-pretty text-center xl:whitespace-nowrap">
 					踏入陌生的科技領域，害怕跟不上、害怕選錯方向，其實很正常。這些確實是現在許多轉職者正在面對的真實問題。
 				</p>
 			</div>
