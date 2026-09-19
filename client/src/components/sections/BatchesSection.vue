@@ -291,28 +291,13 @@
               </svg>
             </a>
 
-            <!-- 2. 圓滿結訓 (優先判定！水平置中顯示「本期已圓滿結訓」並內嵌「送上祝賀」按鈕) -->
+            <!-- 2. 圓滿結訓 (水平置中顯示「本期已圓滿結訓」) -->
             <div
               v-else-if="isBatchEnded(batch)"
-              class="w-full py-2.5 sm:py-3 px-4 rounded-2xl bg-gradient-to-r from-emerald-950/80 via-slate-900/95 to-emerald-950/80 border border-emerald-500/50 shadow-lg shadow-emerald-950/40 flex flex-wrap items-center justify-center gap-3 sm:gap-4.5 text-base lg:text-lg select-none"
+              class="w-full py-3.5 sm:py-4 px-4 rounded-2xl bg-gradient-to-r from-emerald-950/80 via-slate-900/95 to-emerald-950/80 border border-emerald-500/50 shadow-lg shadow-emerald-950/40 flex items-center justify-center space-x-2 select-none text-base lg:text-lg"
             >
-              <div class="flex items-center space-x-2 text-emerald-300 font-bold tracking-wide text-sm sm:text-base lg:text-lg">
-                <span class="text-lg sm:text-xl">🎓</span>
-                <span>本期已圓滿結訓</span>
-              </div>
-
-              <!-- 🎉 送上祝賀互動按鈕 (與文字一同水平置中呈現) -->
-              <button
-                v-if="isCelebrationBatch(batch)"
-                type="button"
-                @click.stop="triggerCongratulations($event)"
-                title="點擊為結訓學員送上祝賀星塵禮花"
-                class="inline-flex items-center space-x-1.5 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl text-xs sm:text-sm font-bold text-white bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 active:scale-95 transition-all shadow-md shadow-emerald-500/30 cursor-pointer select-none group/btn shrink-0"
-              >
-                <span class="text-sm sm:text-base group-hover/btn:scale-125 transition-transform">🎉</span>
-                <span>送上祝賀</span>
-                <span class="font-mono bg-emerald-950/90 px-2 py-0.5 rounded text-xs text-emerald-200 border border-emerald-400/40 font-semibold">{{ celebrationCount }}</span>
-              </button>
+              <span class="text-lg sm:text-xl">🎓</span>
+              <span class="text-emerald-300 font-bold tracking-wide">本期已圓滿結訓</span>
             </div>
 
             <!-- 3. 正全力培訓衝刺中 -->
@@ -492,17 +477,8 @@ function isBatchUrgentClosing(batch: AdmissionBatch): boolean {
 }
 
 // ===========================================================================
-// 🎉 結訓榮耀慶典系統 (A + B + C 方案融合：量子禮花 + 祝福互動 + 榮耀光艙)
+// 🎉 結訓榮耀慶典系統 (量子禮花 + 榮耀光艙)
 // ===========================================================================
-
-// 方案 B：祝賀祝福計數器 (預設溫暖基底 68 次，支援持久化儲存)
-const celebrationCount = ref<number>(68)
-try {
-  const saved = localStorage.getItem('wdaweb_grad_cheer_count')
-  if (saved) {
-    celebrationCount.value = Math.max(68, Number(saved) || 68)
-  }
-} catch (e) {}
 
 // 當前是否有任何班級處於結訓慶典守護中（最新結訓班級，直到新期別出現交棒）
 const hasCelebrationBatch = computed(() => {
@@ -561,39 +537,6 @@ function fireGraduationConfetti(spreadAngle: number = 46, particleCount: number 
     gravity: 1.02,
     scalar: isMobile ? 1.25 : 1.45,
     shapes: ['circle', 'square', 'star'],
-    zIndex: 99999,
-    disableForReducedMotion: false
-  })
-}
-
-// 方案 B：點擊按鈕主動送祝福 (游標專屬飽滿星塵爆發 ＋ GA4 互動事件)
-function triggerCongratulations(event: MouseEvent) {
-  celebrationCount.value++
-  try {
-    localStorage.setItem('wdaweb_grad_cheer_count', String(celebrationCount.value))
-    if (typeof window !== 'undefined' && typeof (window as any).gtag === 'function') {
-      (window as any).gtag('event', 'celebration_cheer', {
-        event_category: 'engagement',
-        event_label: '送上祝賀',
-        value: celebrationCount.value
-      })
-    }
-  } catch (e) {}
-
-  const rect = (event.currentTarget as HTMLElement)?.getBoundingClientRect()
-  const winW = window.innerWidth || 375
-  const winH = window.innerHeight || 667
-  const x = rect ? (rect.left + rect.width / 2) / winW : 0.5
-  const y = rect ? (rect.top + rect.height / 2) / winH : 0.5
-
-  confetti({
-    particleCount: 50,
-    spread: 76,
-    origin: { x, y },
-    colors: ['#10b981', '#06b6d4', '#fbbf24', '#38bdf8', '#ffffff', '#a78bfa'],
-    ticks: 190,
-    gravity: 0.95,
-    scalar: 1.35,
     zIndex: 99999,
     disableForReducedMotion: false
   })
