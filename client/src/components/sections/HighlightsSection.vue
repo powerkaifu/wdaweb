@@ -101,7 +101,7 @@
 							專屬<span class="inline-block">雙螢幕實作環境</span>
 						</h3>
 						<p class="text-base text-slate-200 leading-relaxed text-pretty text-justify">
-							一人一台專屬電腦配雙螢幕。左邊看老師示範、右邊跟著敲代碼，當場做、當場搞懂。
+							一人一台專屬電腦配雙螢幕。上方看老師示範、下方跟著敲代碼，當場做、當場搞懂。
 						</p>
 					</div>
 				</div>
