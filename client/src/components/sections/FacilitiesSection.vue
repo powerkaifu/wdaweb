@@ -4,7 +4,7 @@
     :class="[
       hideHeader
         ? 'py-6 sm:py-10 bg-transparent relative'
-        : 'py-10 sm:py-16 lg:py-24 xl:py-28 bg-transparent relative overflow-hidden'
+        : 'py-16 sm:py-20 lg:py-24 xl:py-28 bg-transparent relative overflow-hidden'
     ]"
   >
     <!-- 頂部與底部環境發光微暈 -->

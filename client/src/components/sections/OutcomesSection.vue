@@ -1,7 +1,7 @@
 <template>
 	<section
 		id="outcomes"
-		class="py-10 sm:py-16 lg:py-24 xl:py-28 bg-transparent relative overflow-hidden"
+		class="py-16 sm:py-20 lg:py-24 xl:py-28 bg-transparent relative overflow-hidden"
 	>
 		<!-- 背景環境光暈 -->
 		<div

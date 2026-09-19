@@ -28,7 +28,7 @@
 		<LearningPathSection />
 
 		<!-- 10. 他們也是從第一行開始 (學員成果心理信任橋樑，定稿版核心章節) -->
-		<section class="py-10 sm:py-16 lg:py-24 xl:py-28 bg-slate-950/50 text-center relative overflow-hidden">
+		<section class="py-16 sm:py-20 lg:py-24 xl:py-28 bg-slate-950/50 text-center relative overflow-hidden">
 			<!-- 柔和微光 -->
 			<div
 				class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[250px] bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"
@@ -73,7 +73,7 @@
 
 		<!-- 13. 誠懇安心行動召喚：自主決定與三大入口 -->
 		<section
-			class="py-10 sm:py-16 lg:py-24 xl:py-28 bg-gradient-to-b from-slate-950/60 via-slate-900/40 to-slate-950 text-center relative overflow-hidden"
+			class="py-16 sm:py-20 lg:py-24 xl:py-28 bg-gradient-to-b from-slate-950/60 via-slate-900/40 to-slate-950 text-center relative overflow-hidden"
 		>
 			<!-- 柔和環境光暈 -->
 			<div

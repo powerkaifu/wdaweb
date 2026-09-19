@@ -1,5 +1,5 @@
 <template>
-	<section id="highlights" class="py-10 sm:py-16 lg:py-24 xl:py-28 bg-transparent relative overflow-hidden">
+	<section id="highlights" class="py-16 sm:py-20 lg:py-24 xl:py-28 bg-transparent relative overflow-hidden">
 		<!-- 背景流光點綴 -->
 		<div
 			class="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl pointer-events-none"
