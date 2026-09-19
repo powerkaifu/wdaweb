@@ -58,35 +58,13 @@
 							</div>
 						</div>
 						<h3
-							class="text-lg xl:text-xl font-extrabold text-white mb-2.5 sm:mb-3 tracking-tight 2xl:whitespace-nowrap"
+							class="text-lg xl:text-xl font-extrabold text-white mb-3 tracking-tight"
 						>
 							完全沒寫過程式，我真的學得會嗎？
 						</h3>
-						<!-- 手機端隱藏引言框 -->
-						<div
-							class="hidden sm:block p-4 rounded-2xl bg-slate-950/70 border border-slate-800/90 mb-4 text-base text-slate-300 font-normal leading-relaxed text-justify"
-						>
-							“看著滿螢幕的英文程式碼，總覺得是離自己非常遙遠的世界……”
-						</div>
 						<p class="text-base text-slate-200 leading-relaxed text-pretty text-justify">
-							<!-- 手機端穿透金句 -->
-							<span class="sm:hidden block">
-								別擔心，歷屆超過八成學員都是零基礎。老師會從最基礎的畫面帶你敲代碼，每天親手練，一步步把不會變會。
-							</span>
-							<!-- 桌機端完整論述 -->
-							<span class="hidden sm:inline">
-								學習程式不需要一開始就懂所有事情。歷屆超過八成的學員都是從零開始，課程從最基礎的網頁結構教起，每天動手敲代碼，一步步建立手感與信心。<br />
-								<span class="text-cyan-300 font-bold mt-2.5 block text-base sm:text-lg">
-									不用怕自己現在不會，只要你願意每天跟著練習，老師會陪你把它弄懂。
-								</span>
-							</span>
+							別擔心，歷屆超過八成學員都是零基礎。老師會從最基礎的畫面帶你敲代碼，每天親手練，一步步把不會變會。
 						</p>
-					</div>
-					<div
-						class="hidden sm:flex pt-3.5 sm:pt-5 mt-4 sm:mt-6 border-t border-slate-800/80 items-center justify-between text-xs sm:text-sm text-slate-300 font-mono"
-					>
-						<span>學習心態</span>
-						<span class="text-cyan-400 font-bold"> 時間投入 · 循序打底 </span>
 					</div>
 				</div>
 
@@ -106,35 +84,13 @@
 							</div>
 						</div>
 						<h3
-							class="text-lg xl:text-xl font-extrabold text-white mb-2.5 sm:mb-3 tracking-tight 2xl:whitespace-nowrap"
+							class="text-lg xl:text-xl font-extrabold text-white mb-3 tracking-tight"
 						>
 							現在才學寫程式，會不會馬上被 AI 取代？
 						</h3>
-						<!-- 手機端隱藏引言框 -->
-						<div
-							class="hidden sm:block p-4 rounded-2xl bg-slate-950/70 border border-slate-800/90 mb-4 text-base text-slate-300 font-normal leading-relaxed text-justify"
-						>
-							“新聞天天都在報 AI 能一秒寫出網頁，現在投入還有競爭力嗎……”
-						</div>
 						<p class="text-base text-slate-200 leading-relaxed text-pretty text-justify">
-							<!-- 手機端穿透金句 -->
-							<span class="sm:hidden block">
-								AI 敲鍵盤再快，企業真正要花錢請的，是能看懂程式碼、抓出 Bug、把完整網站做出來的人。
-							</span>
-							<!-- 桌機端完整論述 -->
-							<span class="hidden sm:inline">
-								AI 雖然能快速產生代碼，但也更容易產生難以察覺的錯誤。企業真正需要的不是只會複製貼上的人，而是能看懂程式邏輯、抓得出 Bug、能把專案完整做出來的工程師。<br />
-								<span class="text-blue-300 font-bold mt-2.5 block text-base sm:text-lg">
-									AI 是你的強大副駕駛，但掌握方向盤與品質把關的永遠是你。
-								</span>
-							</span>
+							AI 敲鍵盤再快，企業真正要花錢請的，是能看懂程式碼、抓出 Bug、把完整網站做出來的人。
 						</p>
-					</div>
-					<div
-						class="hidden sm:flex pt-3.5 sm:pt-5 mt-4 sm:mt-6 border-t border-slate-800/80 items-center justify-between text-xs sm:text-sm text-slate-300 font-mono"
-					>
-						<span>未來趨勢</span>
-						<span class="text-blue-400 font-bold"> 人機協作 · 核心理解 </span>
 					</div>
 				</div>
 
@@ -154,35 +110,13 @@
 							</div>
 						</div>
 						<h3
-							class="text-lg xl:text-xl font-extrabold text-white mb-2.5 sm:mb-3 tracking-tight 2xl:whitespace-nowrap"
+							class="text-lg xl:text-xl font-extrabold text-white mb-3 tracking-tight"
 						>
 							自學資源這麼多，為什麼需要來職訓？
 						</h3>
-						<!-- 手機端隱藏引言框 -->
-						<div
-							class="hidden sm:block p-4 rounded-2xl bg-slate-950/70 border border-slate-800/90 mb-4 text-base text-slate-300 font-normal leading-relaxed text-justify"
-						>
-							“看線上教學好像都懂，自己開編輯器卻一行都寫不出來……”
-						</div>
 						<p class="text-base text-slate-200 leading-relaxed text-pretty text-justify">
-							<!-- 手機端穿透金句 -->
-							<span class="sm:hidden block">
-								看教學影片卡在一個 Bug 三天就想放棄對吧？在職訓，轉頭就能問老師和同學，不用一個人孤軍奮戰。
-							</span>
-							<!-- 桌機端完整論述 -->
-							<span class="hidden sm:inline">
-								自學最大的阻礙往往不是教材不夠多，而是卡在一個報錯好幾天沒人問，熱情慢慢被磨光。在實體職訓，轉頭就能跟老師討論、跟同學切磋，讓你不再一個人孤軍奮戰。<br />
-								<span class="text-purple-300 font-bold mt-2.5 block text-base sm:text-lg">
-									你缺的不是更多教學影片，而是一個能陪你走完半年的真實環境。
-								</span>
-							</span>
+							看教學影片卡在一個 Bug 三天就想放棄對吧？在職訓，轉頭就能問老師和同學，不用一個人孤軍奮戰。
 						</p>
-					</div>
-					<div
-						class="hidden sm:flex pt-3.5 sm:pt-5 mt-4 sm:mt-6 border-t border-slate-800/80 items-center justify-between text-xs sm:text-sm text-slate-300 font-mono"
-					>
-						<span>實體價值</span>
-						<span class="text-purple-400 font-bold"> 專注環境 · 即時討論 </span>
 					</div>
 				</div>
 			</div>

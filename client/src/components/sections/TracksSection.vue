@@ -56,8 +56,7 @@
 						</div>
 						<h3 class="text-lg sm:text-xl font-extrabold text-white mb-2 sm:mb-2.5 tracking-tight">從零出發的轉職者</h3>
 						<p class="text-base text-slate-200 leading-relaxed mb-3 sm:mb-4 text-pretty text-justify">
-							<span class="sm:hidden block">零基礎別怕，天天實作演練，帶你建立扎實工程底氣。</span>
-							<span class="hidden sm:inline">零基礎不用擔心。課程從最基礎的<span class="inline-block">網頁排版</span>，透過每日紮實的實作演練，帶你一步步建立扎實的<span class="inline-block">程式思維</span>。</span>
+							完全沒碰過程式沒關係。老師從最基礎的網頁畫面教起，每天動手練，帶你一步步穩穩起步。
 						</p>
 					</div>
 					<div
@@ -82,8 +81,7 @@
 						</div>
 						<h3 class="text-lg sm:text-xl font-extrabold text-white mb-2 sm:mb-2.5 tracking-tight">探索職涯可能性</h3>
 						<p class="text-base text-slate-200 leading-relaxed mb-3 sm:mb-4 text-pretty text-justify">
-							<span class="sm:hidden block">用半年的專注投入，為人生換一張能持續增值的技術底牌。</span>
-							<span class="hidden sm:inline">為自己的職涯開拓新跑道。前端技能隨經驗持續增值，用半年的專注投入，為人生開啟具備技術底氣的新選擇。</span>
+							文組、商管、餐飲服務都能轉。用半年 920 小時專注訓練，為自己換一份有前景的專業。
 						</p>
 					</div>
 					<div
@@ -108,8 +106,7 @@
 						</div>
 						<h3 class="text-lg sm:text-xl font-extrabold text-white mb-2.5 sm:mb-2.5 tracking-tight">設計、UI/UX 創作者</h3>
 						<p class="text-base text-slate-200 leading-relaxed mb-3 sm:mb-4 text-pretty text-justify">
-							<span class="sm:hidden block">懂美感再學會前端架構，親手把靜態設計稿變成活產品。</span>
-							<span class="hidden sm:inline">發揮你的視覺美感優勢。學會<span class="inline-block">前端框架</span>與互動程式後，讓優秀設計不再停留在靜態稿，而是親手變成可運作的真實產品。</span>
+							發揮你的視覺美感優勢。學會前端框架與互動程式，親手把靜態設計稿做成能動的真實網站。
 						</p>
 					</div>
 					<div
@@ -134,8 +131,7 @@
 						</div>
 						<h3 class="text-lg sm:text-xl font-extrabold text-white mb-2 sm:mb-2.5 tracking-tight">自學瓶頸或資訊相關</h3>
 						<p class="text-base text-slate-200 leading-relaxed mb-3 sm:mb-4 text-pretty text-justify">
-							<span class="sm:hidden block">告別零散碎片自學，用 920 小時把殘缺知識整合成實戰力。</span>
-							<span class="hidden sm:inline">告別零散沒有順序的自學。透過<span class="inline-block"> 920 小時</span>系統化訓練，帶你將零散的語法與知識，逐步整合為能實際完成專案的能力。</span>
+							不再東學一點西看一片。用 920 小時完整帶你串接前後端，做出真正能上線的代表作品。
 						</p>
 					</div>
 					<div

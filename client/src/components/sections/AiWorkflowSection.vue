@@ -70,13 +70,8 @@
 									<span class="text-2xl sm:text-3xl shrink-0">💡</span>
 									<h3 class="text-xl font-bold text-white tracking-tight">想法轉化為程式雛型</h3>
 								</div>
-								<!-- 手機短金句 -->
-								<p class="text-base text-slate-300 leading-relaxed text-pretty text-justify sm:hidden">
+								<p class="text-base text-slate-300 leading-relaxed text-pretty text-justify">
 									用精確 Prompt 讓 AI 快速生成版面與雛型，大幅縮短從零摸索的時間。
-								</p>
-								<!-- 桌機完整論述 -->
-								<p class="hidden sm:block text-base text-slate-300 leading-relaxed text-pretty text-justify">
-									學會用精確的 Prompt 描述需求，讓 AI 快速生成基礎頁面架構與樣式雛型，大幅縮短從零起步的摸索期。
 								</p>
 							</div>
 							<div class="pt-4 mt-5 border-t border-slate-800/70 flex flex-wrap gap-2">
@@ -102,13 +97,8 @@
 									<span class="text-2xl sm:text-3xl shrink-0">🔍</span>
 									<h3 class="text-xl font-bold text-white tracking-tight">報錯解讀與輔助除錯</h3>
 								</div>
-								<!-- 手機短金句 -->
-								<p class="text-base text-slate-300 leading-relaxed text-pretty text-justify sm:hidden">
+								<p class="text-base text-slate-300 leading-relaxed text-pretty text-justify">
 									看不懂報錯時請 AI 翻譯成白話、分析原因，提供多元解題思路。
-								</p>
-								<!-- 桌機完整論述 -->
-								<p class="hidden sm:block text-base text-slate-300 leading-relaxed text-pretty text-justify">
-									遇到看不懂的錯誤訊息時，學會請 AI 協助翻譯成人類白話，分析可能的報錯成因，提供多元解題思路。
 								</p>
 							</div>
 							<div class="pt-4 mt-5 border-t border-slate-800/70 flex flex-wrap gap-2">
@@ -134,13 +124,8 @@
 									<span class="text-2xl sm:text-3xl shrink-0">🛡️</span>
 									<h3 class="text-xl font-bold text-white tracking-tight">批判審核與把關驗證</h3>
 								</div>
-								<!-- 手機短金句 -->
-								<p class="text-base text-slate-300 leading-relaxed text-pretty text-justify sm:hidden">
+								<p class="text-base text-slate-300 leading-relaxed text-pretty text-justify">
 									AI 也會犯錯。培養逐行審閱與除錯驗證能力，掌握專案最終主導權。
-								</p>
-								<!-- 桌機完整論述 -->
-								<p class="hidden sm:block text-base text-slate-300 leading-relaxed text-pretty text-justify">
-									AI 也會出錯。你將學會不盲信、不照抄，具備逐行審閱代碼、除錯與驗證的能力，牢牢掌握專案的最終主導權。
 								</p>
 							</div>
 							<div class="pt-4 mt-5 border-t border-slate-800/70 flex flex-wrap gap-2">

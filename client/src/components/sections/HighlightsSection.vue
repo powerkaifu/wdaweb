@@ -67,21 +67,9 @@
 						</div>
 
 						<h3 class="text-xl font-extrabold text-white mb-2 sm:mb-3 tracking-tight">老師陪你拆解問題</h3>
-						<!-- 手機端精煉文案 -->
-						<p class="text-base text-slate-200 leading-relaxed text-pretty text-justify sm:hidden">
-							遇到紅字報錯不用慌。老師坐在你旁邊，帶你看懂錯誤訊息，教你以後自己也能解開。
+						<p class="text-base text-slate-200 leading-relaxed text-pretty text-justify">
+							遇到紅字報錯不用慌。老師坐在你身邊，帶你看懂錯誤訊息，教你以後自己也能解開。
 						</p>
-						<!-- 桌機完整論述 -->
-						<p class="hidden sm:block text-base text-slate-200 leading-relaxed text-pretty text-justify">
-							遇到問題，不必一個人對著錯誤訊息反覆猜測。老師坐在你身邊，一步一步帶你看懂報錯根因，練習拆解問題的邏輯，教你以後走進職場也能自己解開。
-						</p>
-					</div>
-
-					<div
-						class="hidden sm:flex pt-4 sm:pt-5 mt-4 sm:mt-6 border-t border-slate-800/80 items-center justify-between text-sm text-slate-300 font-mono"
-					>
-						<span>思維訓練</span>
-						<span class="text-cyan-400 font-bold">理解原因而非死背</span>
 					</div>
 				</div>
 
@@ -112,21 +100,9 @@
 						<h3 class="text-xl font-extrabold text-white mb-2 sm:mb-3 tracking-tight">
 							專屬<span class="inline-block">雙螢幕實作環境</span>
 						</h3>
-						<!-- 手機端精煉文案 -->
-						<p class="text-base text-slate-200 leading-relaxed text-pretty text-justify sm:hidden">
+						<p class="text-base text-slate-200 leading-relaxed text-pretty text-justify">
 							一人一台專屬電腦配雙螢幕。左邊看老師示範、右邊跟著敲代碼，當場做、當場搞懂。
 						</p>
-						<!-- 桌機完整論述 -->
-						<p class="hidden sm:block text-base text-slate-200 leading-relaxed text-pretty text-justify">
-							一人一機獨立雙螢幕實作工位。左邊看老師操作示範，右邊打開編輯器跟著敲代碼與即時預覽，徹底擺脫「看影片覺得懂、開編輯器一片空白」的困境。
-						</p>
-					</div>
-
-					<div
-						class="hidden sm:flex pt-4 sm:pt-5 mt-4 sm:mt-6 border-t border-slate-800/80 items-center justify-between text-sm text-slate-300 font-mono"
-					>
-						<span>降低阻力</span>
-						<span class="text-blue-400 font-bold">即時實作反饋</span>
 					</div>
 				</div>
 
@@ -155,21 +131,9 @@
 						</div>
 
 						<h3 class="text-xl font-extrabold text-white mb-2 sm:mb-3 tracking-tight">同儕一起學習成長</h3>
-						<!-- 手機端精煉文案 -->
-						<p class="text-base text-slate-200 leading-relaxed text-pretty text-justify sm:hidden">
+						<p class="text-base text-slate-200 leading-relaxed text-pretty text-justify">
 							你不是一個人在戰鬥。身邊同學都在同一個進度上，互相提問討論，卡關更容易走出來。
 						</p>
-						<!-- 桌機完整論述 -->
-						<p class="hidden sm:block text-base text-slate-200 leading-relaxed text-pretty text-justify">
-							轉職路上最怕孤單。全班三十位同學跟你一樣認真投入，大家一起卡關、互相討論提點，在彼此切磋中打破盲點，結訓後更是同行互挺的人脈。
-						</p>
-					</div>
-
-					<div
-						class="hidden sm:flex pt-4 sm:pt-5 mt-4 sm:mt-6 border-t border-slate-800/80 items-center justify-between text-sm text-slate-300 font-mono"
-					>
-						<span>心理支持</span>
-						<span class="text-purple-400 font-bold">同儕共同突破</span>
 					</div>
 				</div>
 
@@ -186,7 +150,7 @@
 					<div>
 						<div class="flex items-center justify-between mb-4 sm:mb-6">
 							<div
-								class="w-12 h-12 rounded-2xl bg-emerald-500/15 border border-emerald-500/40 text-emerald-300 flex items-center justify-center text-2xl shadow-[0_0_20px_rgba(16,185,129,0.2)]"
+								class="w-12 h-12 rounded-2xl bg-emerald-500/15 border border-emerald-500/40 text-emerald-300 flex items-center justify-center text-2xl shadow-[0_0_20px_rgba(16|185|129|0.2)]"
 							>
 								⏳
 							</div>
@@ -200,21 +164,9 @@
 						<h3 class="text-xl font-extrabold text-white mb-2 sm:mb-3 tracking-tight">
 							<span class="inline-block">920 小時</span>集中沉浸
 						</h3>
-						<!-- 手機端精煉文案 -->
-						<p class="text-base text-slate-200 leading-relaxed text-pretty text-justify sm:hidden">
+						<p class="text-base text-slate-200 leading-relaxed text-pretty text-justify">
 							整整半年專心衝刺，待業全額補助。不用下班疲累自學，每天有完整 8 小時把技術練扎實。
 						</p>
-						<!-- 桌機完整論述 -->
-						<p class="hidden sm:block text-base text-slate-200 leading-relaxed text-pretty text-justify">
-							下班自學常常因為加班或疲累而中斷。920 小時給你一段全心全意的專注時光，在半年密集實作中把破碎的知識串起來，做出能讓面試官眼睛一亮的完整代表作。
-						</p>
-					</div>
-
-					<div
-						class="hidden sm:flex pt-4 sm:pt-5 mt-4 sm:mt-6 border-t border-slate-800/80 items-center justify-between text-sm text-slate-300 font-mono"
-					>
-						<span>專注累積</span>
-						<span class="text-emerald-400 font-bold">零散知識轉為實戰</span>
 					</div>
 				</div>
 			</div>
