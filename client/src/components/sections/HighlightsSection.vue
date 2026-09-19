@@ -29,7 +29,7 @@
 				<p
 					class="hidden sm:block text-slate-400 mt-4 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed text-pretty text-center"
 				>
-					自學可以走得很遠。但當你面對一個看不懂的錯誤訊息時，有人可以一起討論、有同學可以交流，往往能讓你少繞很多彎路。這也是實體學習最難被取代的地方。
+					自學可以走得很遠。但當你面對一個看不懂的錯誤訊息時，有人可以一起討論、有同學可以交流，往往能讓你少繞很多彎路。這也是實體學習真正的價值。
 				</p>
 			</div>
 
@@ -165,7 +165,7 @@
 							<span class="inline-block">920 小時</span>集中沉浸
 						</h3>
 						<p class="text-base text-slate-200 leading-relaxed text-pretty text-justify">
-							整整半年專心衝刺，待業全額補助。不用下班疲累自學，每天有完整 8 小時把技術練扎實。
+							整整半年專心衝刺，課程費用全額補助。不用下班疲累自學，每天有完整 8 小時把技術練扎實。
 						</p>
 					</div>
 				</div>

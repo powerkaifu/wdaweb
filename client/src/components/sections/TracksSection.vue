@@ -17,7 +17,9 @@
 					<span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
 					<span>Starting Points ｜ 找到專屬起點</span>
 				</div>
-				<h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight text-balance lg:whitespace-nowrap">
+				<h2
+					class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight text-balance lg:whitespace-nowrap"
+				>
 					<span class="block sm:inline">起點不同，</span>
 					<span
 						class="block sm:inline mt-1 sm:mt-0 text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400"
@@ -27,7 +29,10 @@
 				<p
 					class="text-slate-300 mt-3 sm:mt-4 text-base sm:text-lg max-w-none mx-auto leading-relaxed text-pretty text-center"
 				>
-					每個人走進教室時，背景都不一樣。<span class="inline-block text-emerald-300 font-extrabold px-2 py-0.5 rounded-lg bg-emerald-400/10 border border-emerald-400/30 shadow-[0_0_12px_rgba(52,211,153,0.15)]">過去的經驗不是空白</span>，而是你理解問題、發想創意，並完成作品時，最獨特的起點。
+					每個人走進教室時，背景都不一樣。<span
+						class="inline-block text-emerald-300 font-extrabold px-2 py-0.5 rounded-lg bg-emerald-400/10 border border-emerald-400/30 shadow-[0_0_12px_rgba(52,211,153,0.15)]"
+						>過去的經驗不是空白</span
+					>，而是你理解問題、發想創意，並完成作品時，最獨特的起點。
 				</p>
 			</div>
 
@@ -56,7 +61,7 @@
 						</div>
 						<h3 class="text-lg sm:text-xl font-extrabold text-white mb-2 sm:mb-2.5 tracking-tight">從零出發的轉職者</h3>
 						<p class="text-base text-slate-200 leading-relaxed mb-3 sm:mb-4 text-pretty text-justify">
-							完全沒碰過程式沒關係。老師從最基礎的網頁畫面教起，每天動手練，帶你一步步穩穩起步。
+							完全沒碰過程式沒關係。老師從最基礎的網頁教起，每天動手練，帶你一步步穩穩起步。
 						</p>
 					</div>
 					<div
@@ -81,7 +86,7 @@
 						</div>
 						<h3 class="text-lg sm:text-xl font-extrabold text-white mb-2 sm:mb-2.5 tracking-tight">探索職涯可能性</h3>
 						<p class="text-base text-slate-200 leading-relaxed mb-3 sm:mb-4 text-pretty text-justify">
-							文組、商管、餐飲服務都能轉。用半年 920 小時專注訓練，為自己換一份有前景的專業。
+							文組、商管、餐飲服務都能轉。用半年 920 小時專注訓練，為自己建立一項新的專業能力。
 						</p>
 					</div>
 					<div
@@ -104,7 +109,9 @@
 								<span>設計與視覺背景</span>
 							</span>
 						</div>
-						<h3 class="text-lg sm:text-xl font-extrabold text-white mb-2.5 sm:mb-2.5 tracking-tight">設計、UI/UX 創作者</h3>
+						<h3 class="text-lg sm:text-xl font-extrabold text-white mb-2.5 sm:mb-2.5 tracking-tight">
+							設計、UI/UX 創作者
+						</h3>
 						<p class="text-base text-slate-200 leading-relaxed mb-3 sm:mb-4 text-pretty text-justify">
 							發揮你的視覺美感優勢。學會前端框架與互動程式，親手把靜態設計稿做成能動的真實網站。
 						</p>
@@ -112,7 +119,7 @@
 					<div
 						class="hidden sm:block p-3 rounded-2xl bg-slate-950/70 border border-slate-800/90 text-sm 2xl:text-base font-bold text-purple-300 xl:whitespace-nowrap overflow-hidden text-ellipsis"
 					>
-						💡 讓設計不只畫面，而是被實現
+						💡讓設計不只畫面，而是被真正實現
 					</div>
 				</div>
 
@@ -129,7 +136,9 @@
 								<span>曾接觸過程式</span>
 							</span>
 						</div>
-						<h3 class="text-lg sm:text-xl font-extrabold text-white mb-2 sm:mb-2.5 tracking-tight">自學瓶頸或資訊相關</h3>
+						<h3 class="text-lg sm:text-xl font-extrabold text-white mb-2 sm:mb-2.5 tracking-tight">
+							自學瓶頸或資訊相關
+						</h3>
 						<p class="text-base text-slate-200 leading-relaxed mb-3 sm:mb-4 text-pretty text-justify">
 							不再東學一點西看一片。用 920 小時完整帶你串接前後端，做出真正能上線的代表作品。
 						</p>

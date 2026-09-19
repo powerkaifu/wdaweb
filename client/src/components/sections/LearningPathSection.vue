@@ -24,7 +24,9 @@
 						>一步一步完成自己的作品</span
 					>
 				</h2>
-				<p class="hidden sm:block text-slate-400 mt-4 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed text-pretty text-center">
+				<p
+					class="hidden sm:block text-slate-400 mt-4 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed text-pretty text-center"
+				>
 					<span class="block"
 						>920 小時，從「看不懂」到「知道自己正在做什麼」，一步步累積能真正做出作品的實戰能力。</span
 					>
@@ -66,9 +68,7 @@
 							</span>
 						</div>
 
-						<div class="text-sm sm:text-base font-bold text-cyan-400 tracking-wider mb-1">
-							Stage 01 ｜ 從看不懂開始
-						</div>
+						<div class="text-sm sm:text-base font-bold text-cyan-400 tracking-wider mb-1">Stage 01 ｜ 從看不懂開始</div>
 						<h3 class="text-xl font-extrabold text-white mb-2 sm:mb-3 tracking-tight">開始理解網頁運作</h3>
 						<p class="text-base text-slate-300 leading-relaxed text-pretty text-justify">
 							從 HTML/CSS/JS 開始，理解畫面與互動原理，從看不懂到知道每行代碼在做什麼。
@@ -79,7 +79,7 @@
 						class="pt-4 sm:pt-5 mt-4 sm:mt-6 border-t border-slate-800/80 flex items-center justify-between text-sm text-cyan-300 font-semibold"
 					>
 						<span>核心能力</span>
-						<span>HTML · CSS · JS 底層</span>
+						<span>HTML · CSS · JavaScript</span>
 					</div>
 				</div>
 
@@ -155,7 +155,7 @@
 						</div>
 						<h3 class="text-xl font-extrabold text-white mb-2 sm:mb-3 tracking-tight">串接真實資料流</h3>
 						<p class="text-base text-slate-300 leading-relaxed text-pretty text-justify">
-							串接 REST API 與資料庫，貫通前後端資料流，具備處理真實業務邏輯的能力。
+							串接 REST API 與資料庫，貫通前後端資料流，理解基本的業務邏輯。
 						</p>
 					</div>
 

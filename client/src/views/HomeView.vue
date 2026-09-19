@@ -39,11 +39,13 @@
 					<span class="block">不用先相信自己一定能做到。</span>
 					<span
 						class="block mt-1 sm:mt-1.5 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-emerald-400"
-						>先看看曾經相同起點的人，最後做出了什麼。</span
+						>先看看曾經相同起點的人，做出了什麼。</span
 					>
 				</h2>
 
-				<p class="hidden sm:block text-slate-300 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed text-pretty text-center">
+				<p
+					class="hidden sm:block text-slate-300 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed text-pretty text-center"
+				>
 					每一個作品的開始，都不是一個完整的工程師，而是一個願意從不熟悉的第一行開始學習的人。
 				</p>
 
@@ -81,7 +83,9 @@
 					<span>Make Your Choice ｜ 自主決定</span>
 				</div>
 
-				<h2 class="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-black text-white tracking-tight leading-tight lg:whitespace-nowrap">
+				<h2
+					class="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-black text-white tracking-tight leading-tight lg:whitespace-nowrap"
+				>
 					<span class="block sm:inline">先看清楚、想明白，</span>
 					<span
 						class="block sm:inline mt-1 sm:mt-0 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-emerald-400"
@@ -91,7 +95,7 @@
 
 				<!-- 誠懇安心說明文字 (精煉單一版本，手機與桌機皆舒適閱讀) -->
 				<p class="text-slate-300 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed text-pretty text-center">
-					920 小時扎實培訓，待業全額補助。當你準備好了，為自己爭取一次改變的機會。
+					920 小時扎實培訓，課程費用全額補助。當你準備好了，為自己爭取一次改變的機會。
 				</p>
 
 				<!-- 底部三軌按鈕群組 (手機直式堆疊，平板與桌機橫向排開) -->
@@ -131,7 +135,7 @@
 </template>
 
 <script setup lang="ts">
-import { useSeoMeta } from '@/composables/useSeoMeta'
+import AiWorkflowSection from '@/components/sections/AiWorkflowSection.vue'
 import AudienceSection from '@/components/sections/AudienceSection.vue'
 import FacilitiesSection from '@/components/sections/FacilitiesSection.vue'
 import HeroCarousel from '@/components/sections/HeroCarousel.vue'
@@ -139,13 +143,14 @@ import HighlightsSection from '@/components/sections/HighlightsSection.vue'
 import LearningPathSection from '@/components/sections/LearningPathSection.vue'
 import OutcomesSection from '@/components/sections/OutcomesSection.vue'
 import TechStackSection from '@/components/sections/TechStackSection.vue'
-import AiWorkflowSection from '@/components/sections/AiWorkflowSection.vue'
 import TracksSection from '@/components/sections/TracksSection.vue'
+import { useSeoMeta } from '@/composables/useSeoMeta'
 
 useSeoMeta({
-  title: '泰山職訓「前端網頁技術與AI應用」前端課程｜920 小時政府全額補助實體培訓',
-  description: '【政府全額補助前端課程】勞動部泰山職訓場「前端網頁技術與AI應用專班」招生中！920 小時實體密集培訓，一人獨立雙螢幕實作工位，完整涵蓋 Vue 3、TypeScript、AI 開發工具整合與專案作品集。待業民眾經甄試錄取享 100% 全額免費受訓與生活津貼補助，正式報名請至台灣就業通官方網站。諮詢專線：(02) 2901-8274。',
-  canonicalPath: '/',
-  robots: 'index, follow'
+	title: '泰山職訓「前端網頁技術與AI應用」前端課程｜920 小時政府全額補助實體培訓',
+	description:
+		'【政府全額補助前端課程】勞動部泰山職訓場「前端網頁技術與AI應用專班」招生中！920 小時實體密集培訓，一人獨立雙螢幕實作工位，完整涵蓋 Vue 3、TypeScript、AI 開發工具整合與專案作品集。待業民眾經甄試錄取享 100% 全額免費受訓與生活津貼補助，正式報名請至台灣就業通官方網站。諮詢專線：(02) 2901-8274。',
+	canonicalPath: '/',
+	robots: 'index, follow',
 })
 </script>

@@ -30,7 +30,7 @@
 					class="hidden sm:block text-slate-400 mt-4 text-base sm:text-lg max-w-4xl xl:max-w-5xl mx-auto leading-relaxed text-pretty text-center"
 				>
 					AI 可以加速開發，但無法取代需求分析與架構思考。讓 AI
-					成為你的副駕駛，由你主導設計、驗證與除錯，最終完成前後端整合與真正可交付的專案。
+					成為你的副駕駛，由你主導設計、驗證與除錯，最終完成前後端整合與可交付的專案，最終完成前後端整合與真正可交付的專案。
 				</p>
 			</div>
 
@@ -148,7 +148,8 @@
 						class="pt-4 sm:pt-5 border-t border-slate-800/80 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 sm:gap-3 text-sm sm:text-base leading-relaxed"
 					>
 						<span class="text-slate-200 font-medium"
-							>💡 核心理念：AI 敲鍵盤再快，企業真正花錢僱用的，是能看懂程式碼、抓出 Bug、交付完整產品的人</span
+							>💡 核心理念：AI 敲鍵盤再快，企業需要的，不只是會使用 AI，而是能看懂程式碼、抓出
+							Bug、交付完整產品的人</span
 						>
 						<span class="text-cyan-400 font-bold tracking-wide">🎯 培養獨立解決問題與系統交付的能力</span>
 					</div>

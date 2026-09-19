@@ -1,8 +1,5 @@
 <template>
-	<section
-		id="audience-resonance"
-		class="py-16 sm:py-20 lg:py-24 xl:py-28 bg-transparent relative overflow-hidden"
-	>
+	<section id="audience-resonance" class="py-16 sm:py-20 lg:py-24 xl:py-28 bg-transparent relative overflow-hidden">
 		<!-- 背景流光點綴 -->
 		<div
 			class="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl pointer-events-none"
@@ -20,14 +17,18 @@
 					<span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping"></span>
 					<span>Facing Reality ｜ 面對問題</span>
 				</div>
-				<h2 class="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-black text-white tracking-tight leading-tight lg:whitespace-nowrap text-balance">
-					<span class="block sm:inline">面對轉職，</span><span
-						class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400 block sm:inline"
+				<h2
+					class="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-black text-white tracking-tight leading-tight lg:whitespace-nowrap text-balance"
+				>
+					<span class="block sm:inline">面對轉職，</span
+					><span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400 block sm:inline"
 						>也許不只是「要不要學程式」</span
 					>
 				</h2>
-				<p class="hidden sm:block text-slate-400 mt-4 text-base sm:text-lg max-w-none mx-auto leading-relaxed text-pretty text-center xl:whitespace-nowrap">
-					踏入陌生的科技領域，害怕跟不上、害怕選錯方向，其實很正常。這些確實是現在許多轉職者正在面對的真實問題。
+				<p
+					class="hidden sm:block text-slate-400 mt-4 text-base sm:text-lg max-w-none mx-auto leading-relaxed text-pretty text-center xl:whitespace-nowrap"
+				>
+					踏入陌生的科技領域，害怕跟不上、害怕選錯方向，都很正常。這些不是你一個人的疑慮，而是許多轉職者都曾面對的問題。
 				</p>
 			</div>
 
@@ -57,13 +58,11 @@
 								COMMON DOUBT 01
 							</div>
 						</div>
-						<h3
-							class="text-lg xl:text-xl font-extrabold text-white mb-3 tracking-tight"
-						>
+						<h3 class="text-lg xl:text-xl font-extrabold text-white mb-3 tracking-tight">
 							完全沒寫過程式，我真的學得會嗎？
 						</h3>
 						<p class="text-base text-slate-200 leading-relaxed text-pretty text-justify">
-							別擔心，歷屆超過八成學員都是零基礎。老師會從最基礎的畫面帶你敲代碼，每天親手練，一步步把不會變會。
+							別擔心，許多歷屆學員都是從零開始。老師會從最基礎的網頁開始帶你動手寫程式，每天親手練，一步步把不會變會。
 						</p>
 					</div>
 				</div>
@@ -83,13 +82,12 @@
 								COMMON DOUBT 02
 							</div>
 						</div>
-						<h3
-							class="text-lg xl:text-xl font-extrabold text-white mb-3 tracking-tight"
-						>
+						<h3 class="text-lg xl:text-xl font-extrabold text-white mb-3 tracking-tight">
 							現在才學寫程式，會不會馬上被 AI 取代？
 						</h3>
 						<p class="text-base text-slate-200 leading-relaxed text-pretty text-justify">
-							AI 可以快速產生程式碼，但真正重要的是，你能看懂、找出問題、驗證並善用 AI 加速，把需求一步步變成真正能運作的產品。
+							AI 可以快速產生程式碼，但真正重要的是，你能看懂、找出問題、驗證並善用 AI
+							加速，把需求一步步變成真正能運作的產品。
 						</p>
 					</div>
 				</div>
@@ -109,9 +107,7 @@
 								COMMON DOUBT 03
 							</div>
 						</div>
-						<h3
-							class="text-lg xl:text-xl font-extrabold text-white mb-3 tracking-tight"
-						>
+						<h3 class="text-lg xl:text-xl font-extrabold text-white mb-3 tracking-tight">
 							自學資源這麼多，為什麼需要來職訓？
 						</h3>
 						<p class="text-base text-slate-200 leading-relaxed text-pretty text-justify">
@@ -123,9 +119,11 @@
 
 			<!-- 核心收束金句 (單行不換行，文字極致精煉) -->
 			<div class="mt-8 sm:mt-12 text-center">
-				<div class="inline-block px-4 sm:px-6 py-2.5 sm:py-3 rounded-2xl bg-slate-900/60 border border-slate-800/80 backdrop-blur-md shadow-lg max-w-full">
-					<p class="text-sm sm:text-base text-slate-200 whitespace-nowrap">
-						💬 <span class="text-cyan-400 font-bold">有猶豫很正常，</span>想清楚再跨出屬於你的下一步。
+				<div
+					class="inline-block px-4 sm:px-6 py-2.5 sm:py-3 rounded-2xl bg-slate-900/60 border border-slate-800/80 backdrop-blur-md shadow-lg max-w-full"
+				>
+					<p class="text-xs xs:text-sm sm:text-base text-slate-200 whitespace-nowrap">
+						💬 <span class="text-cyan-400 font-bold">有猶豫很正常，</span>先把問題想清楚，再決定要不要開始。
 					</p>
 				</div>
 			</div>
@@ -137,15 +135,11 @@
 import { useScrollStagger } from '@/composables/useScrollStagger'
 
 // 3 大內在共鳴卡片統一由通用 Composable 調度
-useScrollStagger(
-	'#resonance-cards-grid .resonance-card',
-	'#resonance-cards-grid',
-	{
-		yOffset: 28,
-		duration: 0.85,
-		stagger: 0.08,
-		ease: 'power1.out',
-		start: 'top 85%',
-	}
-)
+useScrollStagger('#resonance-cards-grid .resonance-card', '#resonance-cards-grid', {
+	yOffset: 28,
+	duration: 0.85,
+	stagger: 0.08,
+	ease: 'power1.out',
+	start: 'top 85%',
+})
 </script>
