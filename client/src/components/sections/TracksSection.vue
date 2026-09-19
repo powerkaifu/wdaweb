@@ -25,9 +25,9 @@
 					>
 				</h2>
 				<p
-					class="hidden sm:block text-slate-400 mt-4 text-base sm:text-lg max-w-none mx-auto leading-relaxed text-pretty text-center"
+					class="text-slate-300 mt-3 sm:mt-4 text-base sm:text-lg max-w-none mx-auto leading-relaxed text-pretty text-center"
 				>
-					每個人走進教室時的背景都不一樣。過去的經驗不是空白，而是你在理解問題與完成作品時，最獨特的切入點。
+					每個人走進教室時的背景都不一樣。<span class="inline-block text-emerald-300 font-extrabold px-2 py-0.5 rounded-lg bg-emerald-400/10 border border-emerald-400/30 shadow-[0_0_12px_rgba(52,211,153,0.15)]">過去的經驗不是空白</span>，而是你在理解問題與完成作品時，最獨特的切入點。
 				</p>
 			</div>
 

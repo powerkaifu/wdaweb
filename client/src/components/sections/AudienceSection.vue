@@ -89,7 +89,7 @@
 							現在才學寫程式，會不會馬上被 AI 取代？
 						</h3>
 						<p class="text-base text-slate-200 leading-relaxed text-pretty text-justify">
-							AI 敲鍵盤再快，企業真正要花錢請的，是能看懂程式碼、抓出 Bug、把完整網站做出來的人。
+							AI 可以快速產生程式碼，但真正重要的是，你能看懂、找出問題、驗證並善用 AI 加速，把需求一步步變成真正能運作的產品。
 						</p>
 					</div>
 				</div>
