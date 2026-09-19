@@ -84,27 +84,17 @@
 					<span>Make Your Choice ｜ 自主決定</span>
 				</div>
 
-				<h2 class="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-black text-white tracking-tight leading-tight">
-					<span class="block">轉職從來不是一個輕鬆的決定。</span>
-					<span class="block mt-1 sm:mt-1.5 text-slate-100">你不需要現在就做決定，</span>
+				<h2 class="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-black text-white tracking-tight leading-tight lg:whitespace-nowrap">
+					<span class="block sm:inline">先看清楚、想明白，</span>
 					<span
-						class="block mt-1 sm:mt-1.5 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-emerald-400"
-						>先看清楚、想明白，再跨出屬於你的下一步。</span
+						class="block sm:inline mt-1 sm:mt-0 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-emerald-400"
+						>再跨出屬於你的下一步。</span
 					>
 				</h2>
 
-				<!-- 手機短金句 -->
-				<p class="text-slate-300 text-base leading-relaxed text-pretty text-center sm:hidden">
-					920 小時不是速成捷徑，而是一步步扎實做出的學習旅程。先看清楚、想明白，再做最適合你的選擇。
-				</p>
-				<!-- 桌機完整論述 -->
-				<p class="hidden sm:block text-slate-300 text-base sm:text-lg max-w-4xl xl:max-w-5xl mx-auto leading-relaxed text-pretty text-center">
-					<span class="block"
-						>920 小時不是一條速成的捷徑，而是一段從陌生、練習、卡關，到逐漸理解與完成作品的學習旅程。</span
-					>
-					<span class="block mt-1">
-						如果你也想為自己爭取一個真正改變的機會，歡迎先看看課程期別與報名方式。
-					</span>
+				<!-- 誠懇安心說明文字 (精煉單一版本，手機與桌機皆舒適閱讀) -->
+				<p class="text-slate-300 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed text-pretty text-center">
+					920 小時扎實培訓，待業全額補助。當你準備好了，為自己爭取一次改變的機會。
 				</p>
 
 				<!-- 底部三軌按鈕群組 (手機直式堆疊，平板與桌機橫向排開) -->
