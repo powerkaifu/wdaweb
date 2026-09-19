@@ -68,49 +68,42 @@
 								<span>看懂背後邏輯 · 自主除錯驗證 · 整合前後端交付產品</span>
 							</div>
 						</div>
-						<!-- 5 步心智流程清單 (大字清晰呈現，左右通透不縮擠) -->
+						<!-- 5 步心智流程清單 (去除右側冗餘標籤，大字清晰通透) -->
 						<div class="pt-2 border-t border-slate-800/80 space-y-2">
 							<div class="p-2.5 rounded-xl bg-slate-900/80 border border-slate-800/80 flex items-center justify-between text-base shadow-sm">
-								<div class="inline-flex items-center space-x-1.5 shrink-0">
+								<div class="inline-flex items-center space-x-2 shrink-0">
 									<span class="text-xl font-black text-cyan-400 leading-none font-sans">①</span>
 									<span class="text-base font-bold text-cyan-300">理解</span>
 								</div>
-								<span class="text-white font-bold text-base px-1">需求到底是什麼？</span>
-								<span class="text-xs text-slate-300 font-medium shrink-0">需求定義</span>
+								<span class="text-white font-bold text-base text-right">需求到底是什麼？</span>
 							</div>
 							<div class="p-2.5 rounded-xl bg-slate-900/80 border border-slate-800/80 flex items-center justify-between text-base shadow-sm">
-								<div class="inline-flex items-center space-x-1.5 shrink-0">
+								<div class="inline-flex items-center space-x-2 shrink-0">
 									<span class="text-xl font-black text-cyan-400 leading-none font-sans">②</span>
 									<span class="text-base font-bold text-cyan-300">拆解</span>
 								</div>
-								<span class="text-white font-bold text-base px-1">這個問題怎麼拆？</span>
-								<span class="text-xs text-slate-300 font-medium shrink-0">架構拆解</span>
+								<span class="text-white font-bold text-base text-right">這個問題怎麼拆？</span>
 							</div>
 							<div class="p-2.5 rounded-xl bg-slate-900/80 border border-slate-800/80 flex items-center justify-between text-base shadow-sm">
-								<div class="inline-flex items-center space-x-1.5 shrink-0">
+								<div class="inline-flex items-center space-x-2 shrink-0">
 									<span class="text-xl font-black text-cyan-400 leading-none font-sans">③</span>
 									<span class="text-base font-bold text-cyan-300">協作</span>
 								</div>
-								<span class="text-white font-bold text-base px-1">如何讓 AI 幫我加速？</span>
-								<span class="text-xs text-slate-300 font-medium shrink-0">精準協同</span>
+								<span class="text-white font-bold text-base text-right">如何讓 AI 幫我加速？</span>
 							</div>
 							<div class="p-2.5 rounded-xl bg-slate-900/80 border border-slate-800/80 flex items-center justify-between text-base shadow-sm">
-								<div class="inline-flex items-center space-x-1.5 shrink-0">
+								<div class="inline-flex items-center space-x-2 shrink-0">
 									<span class="text-xl font-black text-cyan-400 leading-none font-sans">④</span>
 									<span class="text-base font-bold text-cyan-300">驗證</span>
 								</div>
-								<span class="text-white font-bold text-base px-1">AI 做的是對的嗎？</span>
-								<span class="text-xs text-slate-300 font-medium shrink-0">修改與 Debug</span>
+								<span class="text-white font-bold text-base text-right">AI 做的是對的嗎？</span>
 							</div>
-							<div
-								class="p-2.5 rounded-xl bg-slate-900/80 border border-slate-800/80 flex items-center justify-between text-base shadow-sm"
-							>
-								<div class="inline-flex items-center space-x-1.5 shrink-0">
+							<div class="p-2.5 rounded-xl bg-slate-900/80 border border-slate-800/80 flex items-center justify-between text-base shadow-sm">
+								<div class="inline-flex items-center space-x-2 shrink-0">
 									<span class="text-xl font-black text-cyan-400 leading-none font-sans">⑤</span>
 									<span class="text-base font-bold text-cyan-300">整合</span>
 								</div>
-								<span class="text-white font-bold text-base px-1">如何真正運作？</span>
-								<span class="text-xs text-slate-300 font-medium shrink-0">完成產品的人</span>
+								<span class="text-white font-bold text-base text-right">如何把功能真正串起來？</span>
 							</div>
 						</div>
 					</div>
@@ -397,7 +390,7 @@
 					<div
 						class="pt-3.5 sm:pt-5 border-t border-slate-800/80 flex flex-col lg:flex-row lg:items-center justify-between gap-2.5 sm:gap-4 text-base sm:text-lg leading-relaxed"
 					>
-						<span class="text-slate-300 font-medium">💡 核心理念：AI 決定開發速度，而你的工程思維決定產品上限</span>
+						<span class="text-slate-200 font-medium">💡 核心理念：AI 敲鍵盤再快，企業真正花錢僱用的，是能看懂程式碼、抓出 Bug、把產品完整做出來的人</span>
 						<span class="text-cyan-400 font-bold tracking-wide">🎯 培養獨立解決問題與系統交付的能力</span>
 					</div>
 				</div>
