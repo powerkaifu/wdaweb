@@ -148,7 +148,7 @@
 					class="inline-block px-4 sm:px-6 py-2.5 sm:py-3 rounded-2xl bg-slate-900/60 border border-slate-800/80 backdrop-blur-md shadow-lg max-w-full"
 				>
 					<p class="text-sm sm:text-base text-slate-200 whitespace-nowrap">
-						🌱 <span class="text-emerald-400 font-bold">不用符合標準答案，</span>找到適合的起點就能開始。
+						🌱 <span class="text-emerald-400 font-bold">不需要從零開始，</span>只需要找到自己的起點。
 					</p>
 				</div>
 			</div>
