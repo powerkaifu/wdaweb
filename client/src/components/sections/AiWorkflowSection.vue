@@ -1,8 +1,5 @@
 <template>
-	<section
-		id="ai-workflow"
-		class="py-16 sm:py-20 lg:py-24 xl:py-28 bg-transparent relative overflow-hidden"
-	>
+	<section id="ai-workflow" class="py-16 sm:py-20 lg:py-24 xl:py-28 bg-transparent relative overflow-hidden">
 		<!-- 背景微光 -->
 		<div
 			class="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl pointer-events-none"
@@ -20,7 +17,9 @@
 					<span class="w-1.5 h-1.5 rounded-full bg-blue-400 animate-ping"></span>
 					<span>AI Workflow ｜ 現代人機協同</span>
 				</div>
-				<h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight text-balance lg:whitespace-nowrap">
+				<h2
+					class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight text-balance lg:whitespace-nowrap"
+				>
 					<span class="block sm:inline">在 AI 時代，</span>
 					<span
 						class="block sm:inline mt-1 sm:mt-0 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-emerald-400"
@@ -30,7 +29,8 @@
 				<p
 					class="hidden sm:block text-slate-400 mt-4 text-base sm:text-lg max-w-4xl xl:max-w-5xl mx-auto leading-relaxed text-pretty text-center"
 				>
-					AI 敲鍵盤再快，也無法替你定義需求與確保架構。我們將現代生成式 AI 工具融入日常開發，讓 AI 成為副駕駛——但由你主導邏輯設計、驗證除錯，並整合前後端交付真正的商業專案。
+					AI 可以加速開發，但無法取代需求分析與架構思考。讓 AI
+					成為你的副駕駛，由你主導設計、驗證與除錯，最終完成前後端整合與真正可交付的專案。
 				</p>
 			</div>
 
@@ -147,7 +147,9 @@
 					<div
 						class="pt-4 sm:pt-5 border-t border-slate-800/80 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 sm:gap-3 text-sm sm:text-base leading-relaxed"
 					>
-						<span class="text-slate-200 font-medium">💡 核心理念：AI 敲鍵盤再快，企業真正花錢僱用的，是能看懂程式碼、抓出 Bug、交付完整產品的人</span>
+						<span class="text-slate-200 font-medium"
+							>💡 核心理念：AI 敲鍵盤再快，企業真正花錢僱用的，是能看懂程式碼、抓出 Bug、交付完整產品的人</span
+						>
 						<span class="text-cyan-400 font-bold tracking-wide">🎯 培養獨立解決問題與系統交付的能力</span>
 					</div>
 				</div>

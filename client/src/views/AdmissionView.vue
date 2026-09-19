@@ -69,6 +69,90 @@
 
     <!-- 期別卡片 (支援一鍵複製代碼與倒數計時，由 PageHeader 統一引導) -->
     <BatchesSection hide-header />
+
+    <!-- 報名流程與甄試指南 (防呆提醒與行政指引) -->
+    <section class="py-12 sm:py-16 bg-slate-950/60 border-t border-slate-800/80">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-8 sm:mb-10">
+          <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 text-xs sm:text-sm font-bold uppercase tracking-wider mb-2">
+            <span>Official Guide ｜ 報名須知</span>
+          </div>
+          <h3 class="text-xl sm:text-2xl lg:text-3xl font-black text-white tracking-tight">
+            報名流程與甄試必讀指南
+          </h3>
+          <p class="text-slate-400 text-sm sm:text-base mt-2 max-w-2xl mx-auto">
+            正式報名一律透過勞動部「台灣就業通」官方系統，請詳閱以下 4 步驟確保權益。
+          </p>
+        </div>
+
+        <!-- 4 步驟卡片網格 -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+          <!-- Step 1 -->
+          <div class="p-5 rounded-2xl bg-slate-900/80 border border-slate-800/90 flex flex-col justify-between">
+            <div>
+              <div class="text-xs font-mono font-bold text-cyan-400 mb-2">STEP 01</div>
+              <h4 class="text-base font-bold text-white mb-2">確認身分與推介單</h4>
+              <p class="text-sm text-slate-300 leading-relaxed">
+                一般待業者可直接線上報名；<strong class="text-amber-300 font-bold">非自願離職者</strong>請務必於報名截止日前，先親赴就服站開立「職訓推介單」。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-800/60 text-xs text-slate-400">
+              ✓ 津貼請領關鍵手續
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="p-5 rounded-2xl bg-slate-900/80 border border-slate-800/90 flex flex-col justify-between">
+            <div>
+              <div class="text-xs font-mono font-bold text-blue-400 mb-2">STEP 02</div>
+              <h4 class="text-base font-bold text-white mb-2">台灣就業通線上報名</h4>
+              <p class="text-sm text-slate-300 leading-relaxed">
+                登入台灣就業通會員，搜尋課程代碼（第 1 期 159268、第 2 期 159269），點選線上送出報名。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-800/60 text-xs text-slate-400">
+              ✓ 官方唯一合法報名管道
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="p-5 rounded-2xl bg-slate-900/80 border border-slate-800/90 flex flex-col justify-between">
+            <div>
+              <div class="text-xs font-mono font-bold text-purple-400 mb-2">STEP 03</div>
+              <h4 class="text-base font-bold text-white mb-2">參加公開甄試</h4>
+              <p class="text-sm text-slate-300 leading-relaxed">
+                筆試 50%（基礎電腦常識選擇題，不考代碼）＋ 口試 50%（評估參訓動機與轉職決心），零基礎免驚慌。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-800/60 text-xs text-slate-400">
+              ✓ 著重學習決心與態度
+            </div>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="p-5 rounded-2xl bg-slate-900/80 border border-slate-800/90 flex flex-col justify-between">
+            <div>
+              <div class="text-xs font-mono font-bold text-emerald-400 mb-2">STEP 04</div>
+              <h4 class="text-base font-bold text-white mb-2">錄取報到與開訓</h4>
+              <p class="text-sm text-slate-300 leading-relaxed">
+                接獲錄取通知後依規定報到。享有 100% 全額免費受訓、專屬雙螢幕工位與完整 920 小時實戰培訓。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-800/60 text-xs text-slate-400">
+              ✓ 邁向專業前端工程師
+            </div>
+          </div>
+        </div>
+
+        <!-- 諮詢提示 -->
+        <div class="mt-8 text-center">
+          <p class="text-xs sm:text-sm text-slate-400">
+            ※ 若對報名資格、非自願離職身分或甄試流程有任何疑問，歡迎隨時致電招生專線：
+            <a href="tel:0229018274" class="text-cyan-400 font-bold hover:underline">(02) 2901-8274</a>
+          </p>
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 
