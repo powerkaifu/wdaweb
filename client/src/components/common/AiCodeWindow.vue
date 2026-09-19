@@ -17,9 +17,9 @@
         <div class="w-2.5 h-2.5 sm:w-3 sm:h-3 lg:w-3.5 lg:h-3.5 rounded-full bg-red-500/80 flex-shrink-0"></div>
         <div class="w-2.5 h-2.5 sm:w-3 sm:h-3 lg:w-3.5 lg:h-3.5 rounded-full bg-amber-500/80 flex-shrink-0"></div>
         <div class="w-2.5 h-2.5 sm:w-3 sm:h-3 lg:w-3.5 lg:h-3.5 rounded-full bg-emerald-500/80 flex-shrink-0"></div>
-        <span class="ml-1 sm:ml-2 text-xs lg:text-sm font-mono text-slate-400 font-semibold flex items-center space-x-1 truncate">
+        <span class="ml-1.5 sm:ml-2 text-sm sm:text-base font-mono text-slate-300 font-semibold flex items-center space-x-1 truncate">
           <span class="text-cyan-400 flex-shrink-0">⚡</span>
-          <span class="truncate max-w-[110px] xs:max-w-[160px] sm:max-w-none">AIChatWidget.vue</span>
+          <span class="truncate max-w-[120px] xs:max-w-[170px] sm:max-w-none">AIChatWidget.vue</span>
         </span>
       </div>
 
@@ -29,14 +29,14 @@
           <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
           <span class="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
         </span>
-        <span class="text-xs lg:text-sm font-mono text-cyan-300 font-bold tracking-wide">
+        <span class="text-sm sm:text-base font-mono text-cyan-300 font-bold tracking-wide">
           <span class="hidden xs:inline">AI Agent: </span>Generating
         </span>
       </div>
     </div>
 
     <!-- 2. AI Prompt 提示詞終端機指令列 (固定高度 38px sm:40px lg:44px) -->
-    <div class="h-[38px] sm:h-[40px] lg:h-[44px] px-3 sm:px-4 lg:px-5 bg-slate-950/50 border-b border-slate-800/80 flex items-center space-x-2 text-xs lg:text-sm font-mono flex-shrink-0 overflow-hidden">
+    <div class="h-[38px] sm:h-[40px] lg:h-[44px] px-3 sm:px-4 lg:px-5 bg-slate-950/50 border-b border-slate-800/80 flex items-center space-x-2 text-xs sm:text-sm font-mono flex-shrink-0 overflow-hidden">
       <span class="text-purple-400 font-bold flex-shrink-0">✨ Prompt:</span>
       <span class="text-slate-200 truncate flex-1">{{ currentScenario.prompt }}</span>
       <span class="inline-block w-1.5 sm:w-2 h-3.5 sm:h-4 bg-cyan-400 animate-pulse flex-shrink-0"></span>
