@@ -81,13 +81,6 @@
 							{{ card.description }}
 						</p>
 					</div>
-
-					<div
-						class="hidden sm:flex pt-5 mt-6 border-t border-slate-800/80 items-center justify-between text-sm text-slate-300 font-mono"
-					>
-						<span>核心能力</span>
-						<span class="text-cyan-400 font-bold">專題實作</span>
-					</div>
 				</div>
 			</div>
 
