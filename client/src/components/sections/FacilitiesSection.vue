@@ -77,12 +77,7 @@
                 {{ fac.displaySubtitle }}
               </span>
             </h3>
-            <!-- 手機短金句 -->
-            <p class="text-slate-200 leading-relaxed text-base text-pretty text-justify sm:hidden">
-              {{ fac.displayDescriptionMobile }}
-            </p>
-            <!-- 桌機完整論述 -->
-            <p class="hidden sm:block text-slate-200 leading-relaxed text-base sm:text-lg text-pretty text-justify">
+            <p class="text-slate-200 leading-relaxed text-base sm:text-lg text-pretty text-justify">
               {{ fac.description }}
             </p>
           </div>
@@ -151,15 +146,6 @@ withDefaults(
 
 const store = useCmsStore()
 
-function getMobileFacilityDesc(desc?: string) {
-  if (!desc) return ''
-  const sentences = desc.split('。').filter(Boolean)
-  if (sentences.length > 1) {
-    return sentences.slice(0, 2).join('。') + '。'
-  }
-  return desc
-}
-
 // 防禦性預處理設施清單，兼顧主副標智慧解析與安全圖片綁定，杜絕 template 重複呼叫
 const displayFacilities = computed(() => {
   return (store.facilities || []).map((fac, index) => {
@@ -168,7 +154,6 @@ const displayFacilities = computed(() => {
       ...fac,
       displayTitle: titles.title,
       displaySubtitle: titles.subtitle,
-      displayDescriptionMobile: getMobileFacilityDesc(fac.description),
       displayImage: getFacilityImage(fac, index)
     }
   })
