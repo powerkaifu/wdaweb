@@ -1,380 +1,792 @@
-import { defineStore } from 'pinia'
-import { ref } from 'vue'
 import { api } from '@/api/client'
 import type {
-  SiteSetting, CarouselItem, AdmissionBatch,
-  CurriculumModule, TechCard, Facility,
-  StudentProject, FAQItem
+	AdmissionBatch,
+	CarouselItem,
+	CurriculumModule,
+	Facility,
+	FAQItem,
+	SiteSetting,
+	StudentProject,
+	TechCard,
 } from '@/types'
+import { defineStore } from 'pinia'
+import { ref } from 'vue'
 
 const CACHE_KEY = 'wdaweb_cms_cache_v2'
 
 // 預設靜態快照 (確保 0.01 秒秒開與 Render 後端休眠冷啟動零等待體驗)
 const defaultSettings: SiteSetting = {
-  site_title: '泰山職訓－前端網頁技術與AI應用',
-  site_logo_url: '',
-  favicon_url: '',
-  seo_description: '從零開始的網頁設計課程，政府自辦待業者完全免費，920小時培訓前端開發工程師職能。',
-  seo_keywords: '前端網頁, AI應用, Vue, 職訓, 泰山職業訓練場, 免費課程, 生活津貼',
-  og_image_url: '',
-  gtm_id: '',
-  ga4_measurement_id: 'G-BYR7TFXX2P',
-  announcement_bar_enabled: true,
-  announcement_text: '第 1 期招生中 ｜ 待業民眾可申請全額免費受訓與生活津貼',
-  announcement_link: '#batches',
-  discord_server_id: '463880731828158464',
-  discord_channel_id: '',
-  discord_invite_url: 'https://discord.gg/TrerFKG',
-  contact_phone: '(02) 2901-8274',
-  contact_address: '新北市泰山區貴子里致遠新村 55 之 1 號',
-  footer_copyright: '本網站為前端班師資自主推廣與學員成果展示網頁'
+	site_title: '泰山職訓－前端網頁技術與AI應用',
+	site_logo_url: '',
+	favicon_url: '',
+	seo_description: '從零開始的網頁設計課程，政府自辦待業者完全免費，920小時培訓前端開發工程師職能。',
+	seo_keywords: '前端網頁, AI應用, Vue, 職訓, 泰山職業訓練場, 免費課程, 生活津貼',
+	og_image_url: '',
+	gtm_id: '',
+	ga4_measurement_id: 'G-BYR7TFXX2P',
+	announcement_bar_enabled: true,
+	announcement_text: '第 1 期招生中 ｜ 待業民眾可申請全額免費受訓與生活津貼',
+	announcement_link: '#batches',
+	discord_server_id: '463880731828158464',
+	discord_channel_id: '',
+	discord_invite_url: 'https://discord.gg/TrerFKG',
+	contact_phone: '(02) 2901-8274',
+	contact_address: '新北市泰山區貴子里致遠新村 55 之 1 號',
+	footer_copyright: '本網站為前端班師資自主推廣與學員成果展示網頁',
 }
 
 const defaultCarousels: CarouselItem[] = [
-  {
-    id: 1,
-    title: '從零開始的前端工程師養成',
-    subtitle: '政府自辦 920 小時紮實培訓 ｜ 待業者完全免費 ｜ 輔導就業與生活津貼',
-    image_url: '',
-    mobile_image_url: '',
-    image_alt: '泰山職訓前端網頁技術與AI應用班主視覺',
-    cta_text: '立即線上報名',
-    cta_link: '#batches',
-    cta_target: '_self',
-    sort_order: 1
-  },
-  {
-    id: 2,
-    title: '現代前端框架與 AI 協同開發',
-    subtitle: '一人兩機雙螢幕教學設備 ｜ 打造 AI 應用的優秀作品集 ｜ 跨領域轉職最佳起點',
-    image_url: '',
-    mobile_image_url: '',
-    image_alt: '泰山職訓雙螢幕教室實境',
-    cta_text: '立即線上報名',
-    cta_link: '#batches',
-    cta_target: '_self',
-    sort_order: 2
-  },
-  {
-    id: 3,
-    title: '打造專屬的個人全端作品集',
-    subtitle: '獨立完成全端架構 ｜ 實踐 AI 工具輔助開發 ｜ 累積求職競爭力的實戰作品集',
-    image_url: '',
-    mobile_image_url: '',
-    image_alt: '泰山職訓跨領域轉職前端網頁成果',
-    cta_text: '立即線上報名',
-    cta_link: '#batches',
-    cta_target: '_self',
-    sort_order: 3
-  }
+	{
+		id: 1,
+		title: '從零開始的前端工程師養成',
+		subtitle: '政府自辦 920 小時紮實培訓 ｜ 待業者完全免費 ｜ 輔導就業與生活津貼',
+		image_url: '',
+		mobile_image_url: '',
+		image_alt: '泰山職訓前端網頁技術與AI應用班主視覺',
+		cta_text: '立即線上報名',
+		cta_link: '#batches',
+		cta_target: '_self',
+		sort_order: 1,
+	},
+	{
+		id: 2,
+		title: '現代前端框架與 AI 協同開發',
+		subtitle: '一人兩機雙螢幕教學設備 ｜ 打造 AI 應用的優秀作品集 ｜ 跨領域轉職最佳起點',
+		image_url: '',
+		mobile_image_url: '',
+		image_alt: '泰山職訓雙螢幕教室實境',
+		cta_text: '立即線上報名',
+		cta_link: '#batches',
+		cta_target: '_self',
+		sort_order: 2,
+	},
+	{
+		id: 3,
+		title: '打造專屬的個人全端作品集',
+		subtitle: '獨立完成全端架構 ｜ 實踐 AI 工具輔助開發 ｜ 累積求職競爭力的實戰作品集',
+		image_url: '',
+		mobile_image_url: '',
+		image_alt: '泰山職訓跨領域轉職前端網頁成果',
+		cta_text: '立即線上報名',
+		cta_link: '#batches',
+		cta_target: '_self',
+		sort_order: 3,
+	},
 ]
 
 export const defaultBatches: AdmissionBatch[] = [
-  {
-    id: 1,
-    batch_name: '前端網頁技術與AI應用 (第 1 期)',
-    total_hours: 920,
-    enroll_start_date: '2025-12-04',
-    enroll_end_date: '2026-02-25',
-    screening_date: '2026-03-11',
-    training_start_date: '2026-03-25',
-    training_end_date: '2026-09-10',
-    planned_trainees: 24,
-    applicants_count: 36,
-    apply_url: 'https://its.taiwanjobs.gov.tw/Course/Detail?ID=159268',
-    course_code: '159268',
-    dynamic_status: 'ended',
-    status_override: 'ended',
-    click_count: 0,
-    sort_order: 1
-  },
-  {
-    id: 2,
-    batch_name: '前端網頁技術與AI應用 (第 2 期)',
-    total_hours: 920,
-    enroll_start_date: '2026-05-07',
-    enroll_end_date: '2026-08-21',
-    screening_date: '2026-09-03',
-    training_start_date: '2026-09-23',
-    training_end_date: '2027-03-24',
-    planned_trainees: 24,
-    applicants_count: 38,
-    apply_url: 'https://its.taiwanjobs.gov.tw/Course/Detail?ID=159269',
-    course_code: '159269',
-    dynamic_status: 'screening',
-    status_override: 'auto',
-    click_count: 0,
-    sort_order: 2
-  }
+	{
+		id: 1,
+		batch_name: '前端網頁技術與AI應用 (第 1 期)',
+		total_hours: 920,
+		enroll_start_date: '2025-12-04',
+		enroll_end_date: '2026-02-25',
+		screening_date: '2026-03-11',
+		training_start_date: '2026-03-25',
+		training_end_date: '2026-09-10',
+		planned_trainees: 24,
+		applicants_count: 36,
+		apply_url: 'https://its.taiwanjobs.gov.tw/Course/Detail?ID=159268',
+		course_code: '159268',
+		dynamic_status: 'ended',
+		status_override: 'ended',
+		click_count: 0,
+		sort_order: 1,
+	},
+	{
+		id: 2,
+		batch_name: '前端網頁技術與AI應用 (第 2 期)',
+		total_hours: 920,
+		enroll_start_date: '2026-05-07',
+		enroll_end_date: '2026-08-21',
+		screening_date: '2026-09-03',
+		training_start_date: '2026-09-23',
+		training_end_date: '2027-03-24',
+		planned_trainees: 24,
+		applicants_count: 38,
+		apply_url: 'https://its.taiwanjobs.gov.tw/Course/Detail?ID=159269',
+		course_code: '159269',
+		dynamic_status: 'screening',
+		status_override: 'auto',
+		click_count: 0,
+		sort_order: 2,
+	},
 ]
 
 const defaultModules: CurriculumModule[] = [
-  { id: 1, module_number: 'M1', module_name: '一般與共同課程', hours: 53, category_tab: '基礎與設計', description: '就業市場分析、勞動法規與權益、性別主流化與職場倫理、職涯資源與求職準備。', sort_order: 1 },
-  { id: 2, module_number: 'M2', module_name: '網頁排版編輯', hours: 160, category_tab: '基礎與設計', description: 'HTML5 語意化結構、CSS3 現代排版佈局、Bootstrap 響應式框架、RWD 跨裝置自適應設計、VS Code 開發環境配置。', sort_order: 2 },
-  { id: 3, module_number: 'M3', module_name: '視覺影像設計', hours: 120, category_tab: '基礎與設計', description: 'Adobe Photoshop 數位影像編修、網頁版面視覺規劃與調色修圖、Adobe Illustrator 貝茲曲線繪圖、向量圖標與 Web Icon 製作。', sort_order: 3 },
-  { id: 4, module_number: 'M4', module_name: '數位媒體應用', hours: 107, category_tab: '基礎與設計', description: '視覺傳達設計基礎、UI/UX 介面設計與使用者體驗流程、原型設計工具應用、企業參訪與業界職場體驗。', sort_order: 4 },
-  { id: 5, module_number: 'M5', module_name: '網頁動態技術', hours: 240, category_tab: '前端核心與框架', description: 'JavaScript 核心語法與 ES6+、DOM 原生操作與前端動態互動、RESTful API 非同步資料串接、Git 版本控制與 GitHub 協同開發、Vue.js 漸進式框架與 Pinia 狀態管理。', sort_order: 5 },
-  { id: 6, module_number: 'M6', module_name: '資料庫程式設計', hours: 80, category_tab: '後端與資料庫', description: 'NoSQL 資料庫概念與操作、MongoDB 資料管理與塑模、Node.js 執行環境、NPM 套件管理與基礎後端 API 整合測試。', sort_order: 6 },
-  { id: 7, module_number: 'M7', module_name: '網頁設計實務', hours: 160, category_tab: '專案實務與作品', description: '前端專案專題製作、前後端 API 整合實務、GitHub Pages 雲端部署發布、成果簡報發表與作品集指導。', sort_order: 7 }
+	{
+		id: 1,
+		module_number: 'M1',
+		module_name: '一般與共同課程',
+		hours: 53,
+		category_tab: '基礎與設計',
+		description: '就業市場分析、勞動法規與權益、性別主流化與職場倫理、職涯資源與求職準備。',
+		sort_order: 1,
+	},
+	{
+		id: 2,
+		module_number: 'M2',
+		module_name: '網頁排版編輯',
+		hours: 160,
+		category_tab: '基礎與設計',
+		description:
+			'HTML5 語意化結構、CSS3 現代排版佈局、Bootstrap 響應式框架、RWD 跨裝置自適應設計、VS Code 開發環境配置。',
+		sort_order: 2,
+	},
+	{
+		id: 3,
+		module_number: 'M3',
+		module_name: '視覺影像設計',
+		hours: 120,
+		category_tab: '基礎與設計',
+		description:
+			'Adobe Photoshop 數位影像編修、網頁版面視覺規劃與調色修圖、Adobe Illustrator 貝茲曲線繪圖、向量圖標與 Web Icon 製作。',
+		sort_order: 3,
+	},
+	{
+		id: 4,
+		module_number: 'M4',
+		module_name: '數位媒體應用',
+		hours: 107,
+		category_tab: '基礎與設計',
+		description: '視覺傳達設計基礎、UI/UX 介面設計與使用者體驗流程、原型設計工具應用、企業參訪與業界職場體驗。',
+		sort_order: 4,
+	},
+	{
+		id: 5,
+		module_number: 'M5',
+		module_name: '網頁動態技術',
+		hours: 240,
+		category_tab: '前端核心與框架',
+		description:
+			'JavaScript 核心語法與 ES6+、DOM 原生操作與前端動態互動、RESTful API 非同步資料串接、Git 版本控制與 GitHub 協同開發、Vue.js 漸進式框架與 Pinia 狀態管理。',
+		sort_order: 5,
+	},
+	{
+		id: 6,
+		module_number: 'M6',
+		module_name: '資料庫程式設計',
+		hours: 80,
+		category_tab: '後端與資料庫',
+		description:
+			'NoSQL 資料庫概念與操作、MongoDB 資料管理與塑模、Node.js 執行環境、NPM 套件管理與基礎後端 API 整合測試。',
+		sort_order: 6,
+	},
+	{
+		id: 7,
+		module_number: 'M7',
+		module_name: '網頁設計實務',
+		hours: 160,
+		category_tab: '專案實務與作品',
+		description: '前端專案專題製作、前後端 API 整合實務、GitHub Pages 雲端部署發布、成果簡報發表與作品集指導。',
+		sort_order: 7,
+	},
 ]
 
 const defaultProjects: StudentProject[] = [
-  { id: 1, student_name: '蔡昀容', batch_tag: '結訓成果', project_name: '夢百貨', cover_image_url: './projects/project_1.webp', image_alt: '夢百貨 - 學員蔡昀容專題作品成果', demo_url: 'https://blackcat0708.github.io/DreamDepartmentStore-front/#/', github_url: '', view_count: 128, is_featured: false, sort_order: 1 },
-  { id: 2, student_name: '董元琪', batch_tag: '結訓成果', project_name: 'Matching TRPG', cover_image_url: './projects/project_2.webp', image_alt: 'Matching TRPG - 學員董元琪專題作品成果', demo_url: 'https://chichitung.github.io/MatchingTRPG-front/#/', github_url: '', view_count: 96, is_featured: false, sort_order: 2 },
-  { id: 3, student_name: '仲崇安', batch_tag: '結訓成果', project_name: 'Voice Land', cover_image_url: './projects/project_3.webp', image_alt: 'Voice Land - 學員仲崇安專題作品成果', demo_url: 'https://josh19961201.github.io/VoiceLand_front/#/', github_url: '', view_count: 112, is_featured: false, sort_order: 3 },
-  { id: 4, student_name: '楊詠茜', batch_tag: '結訓成果', project_name: '桌下吧', cover_image_url: './projects/project_4.webp', image_alt: '桌下吧 - 學員楊詠茜專題作品成果', demo_url: 'https://cloris222.github.io/quasar-project/#/', github_url: '', view_count: 85, is_featured: false, sort_order: 4 },
-  { id: 5, student_name: '黃姿瑄', batch_tag: '結訓成果', project_name: '團購趣', cover_image_url: './projects/project_5.webp', image_alt: '團購趣 - 學員黃姿瑄專題作品成果', demo_url: 'https://a733181.github.io/2022-buytogether/#/', github_url: '', view_count: 73, is_featured: false, sort_order: 5 },
-  { id: 6, student_name: '許凱炫', batch_tag: '結訓成果', project_name: '一個地方', cover_image_url: './projects/project_6.webp', image_alt: '一個地方 - 學員許凱炫專題作品成果', demo_url: 'https://qweasd333ee.github.io/a-place-bar-front/', github_url: '', view_count: 64, is_featured: false, sort_order: 6 },
-  { id: 7, student_name: '徐嘉伶', batch_tag: '結訓成果', project_name: 'AZ.ZERO', cover_image_url: './projects/project_7.webp', image_alt: 'AZ.ZERO - 學員徐嘉伶專題作品成果', demo_url: 'https://lisia229.github.io/AZFront/#/', github_url: '', view_count: 91, is_featured: false, sort_order: 7 },
-  { id: 8, student_name: '郭思緯', batch_tag: '結訓成果', project_name: 'Show Time', cover_image_url: './projects/project_8.webp', image_alt: 'Show Time - 學員郭思緯專題作品成果', demo_url: 'https://kkone0275.github.io/top-free-time-front/#/', github_url: '', view_count: 105, is_featured: false, sort_order: 8 },
-  { id: 9, student_name: '王政文', batch_tag: '結訓成果', project_name: 'Ocean', cover_image_url: './projects/project_9.webp', image_alt: 'Ocean - 學員王政文專題作品成果', demo_url: 'https://nailshort.github.io/Ocean-front/#/', github_url: '', view_count: 58, is_featured: false, sort_order: 9 },
-  { id: 10, student_name: '胡俊宇', batch_tag: '結訓成果', project_name: '揪遊 (JoYo)', cover_image_url: './projects/project_10.webp', image_alt: '揪遊 (JoYo) - 學員胡俊宇專題作品成果', demo_url: 'https://lilmax922.github.io/JoYo-Front/#/', github_url: '', view_count: 79, is_featured: false, sort_order: 10 },
-  { id: 11, student_name: '張雅涵', batch_tag: '結訓成果', project_name: 'Sunday', cover_image_url: './projects/project_11.webp', image_alt: 'Sunday - 學員張雅涵專題作品成果', demo_url: 'https://vvn719.github.io/SUNDAY-vue-project/#/', github_url: '', view_count: 67, is_featured: false, sort_order: 11 },
-  { id: 12, student_name: '黃佳琦', batch_tag: '結訓成果', project_name: '綠善生活農場', cover_image_url: './projects/project_12.webp', image_alt: '綠善生活農場 - 學員黃佳琦專題作品成果', demo_url: 'https://gagiherdesign.github.io/susi-front/#/', github_url: '', view_count: 82, is_featured: false, sort_order: 12 },
-  { id: 13, student_name: '蔡文瑜', batch_tag: '結訓成果', project_name: 'BCoffee', cover_image_url: './projects/project_13.webp', image_alt: 'BCoffee - 學員蔡文瑜專題作品成果', demo_url: 'https://pato830729.github.io/BCcoffee-front/#/', github_url: '', view_count: 74, is_featured: false, sort_order: 13 },
-  { id: 14, student_name: '蘇俞甄', batch_tag: '結訓成果', project_name: 'MAUNA COFFEE', cover_image_url: './projects/project_14.webp', image_alt: 'MAUNA COFFEE - 學員蘇俞甄專題作品成果', demo_url: 'https://a5a5aa.github.io/TSFP-front/#/', github_url: '', view_count: 63, is_featured: false, sort_order: 14 },
-  { id: 15, student_name: '林佳霓', batch_tag: '結訓成果', project_name: 'Sanvia 重構情緒價值的場域', cover_image_url: './projects/project_15.webp', image_alt: 'Sanvia 重構情緒價值的場域 - 學員林佳霓專題作品成果', demo_url: 'https://ho-67.github.io/SANVIA_FRONT/#/', github_url: 'https://ho-67.github.io/SANVIA_FRONT/#/', view_count: 55, is_featured: false, sort_order: 15 },
-  { id: 16, student_name: '許庭瑋', batch_tag: '結訓成果', project_name: 'JIANICE', cover_image_url: './projects/project_16.webp', image_alt: 'JIANICE - 學員許庭瑋專題作品成果', demo_url: 'https://yunahsuya.github.io/JIANICE-vuetify-project/#/', github_url: 'https://yunahsuya.github.io/JIANICE-vuetify-project/#/', view_count: 62, is_featured: false, sort_order: 16 },
-  { id: 17, student_name: '鄭紫明', batch_tag: '結訓成果', project_name: '毛孩救援站', cover_image_url: './projects/project_17.webp', image_alt: '毛孩救援站 - 學員鄭紫明專題作品成果', demo_url: 'https://ziming224.github.io/project--vuetify/#/', github_url: 'https://ziming224.github.io/project--vuetify/#/', view_count: 48, is_featured: false, sort_order: 17 },
-  { id: 18, student_name: '許峻誠', batch_tag: '結訓成果', project_name: 'MuscleMap', cover_image_url: './projects/project_18.webp', image_alt: 'MuscleMap - 學員許峻誠專題作品成果', demo_url: 'https://milktea910.github.io/MuscleMap/#/', github_url: 'https://milktea910.github.io/MuscleMap/#/', view_count: 71, is_featured: false, sort_order: 18 },
-  { id: 19, student_name: '李晨嫣', batch_tag: '結訓成果', project_name: '打工換宿媒合平台', cover_image_url: './projects/project_19.webp', image_alt: '打工換宿媒合平台 - 學員李晨嫣專題作品成果', demo_url: 'https://startina803.github.io/IsandRoaming-front/#/', github_url: 'https://startina803.github.io/IsandRoaming-front/#/', view_count: 69, is_featured: false, sort_order: 19 },
-  { id: 20, student_name: '郭建廷', batch_tag: '結訓成果', project_name: '插畫家的風格網站', cover_image_url: './projects/project_20.webp', image_alt: '插畫家的風格網站 - 學員郭建廷專題作品成果', demo_url: 'https://judywangart.com/#/', github_url: 'https://judywangart.com/#/', view_count: 59, is_featured: false, sort_order: 20 },
-  { id: 21, student_name: '詹薏靜', batch_tag: '結訓成果', project_name: 'JIOVOLLEY', cover_image_url: './projects/project_21.webp', image_alt: 'JIOVOLLEY - 學員詹薏靜專題作品成果', demo_url: 'https://jlo-1992.github.io/jiovolley/#/', github_url: 'https://jlo-1992.github.io/jiovolley/#/', view_count: 84, is_featured: false, sort_order: 21 },
-  { id: 22, student_name: '謝昇運', batch_tag: '結訓成果', project_name: '迷因典', cover_image_url: './projects/project_22.webp', image_alt: '迷因典 - 學員謝昇運專題作品成果', demo_url: 'https://memedam.com/', github_url: 'https://memedam.com/', view_count: 93, is_featured: false, sort_order: 22 }
+	{
+		id: 1,
+		student_name: '蔡昀容',
+		batch_tag: '結訓成果',
+		project_name: '夢百貨',
+		cover_image_url: './projects/project_1.webp',
+		image_alt: '夢百貨 - 學員蔡昀容專題作品成果',
+		demo_url: 'https://blackcat0708.github.io/DreamDepartmentStore-front/#/',
+		github_url: '',
+		view_count: 128,
+		is_featured: false,
+		sort_order: 1,
+	},
+	{
+		id: 2,
+		student_name: '董元琪',
+		batch_tag: '結訓成果',
+		project_name: 'Matching TRPG',
+		cover_image_url: './projects/project_2.webp',
+		image_alt: 'Matching TRPG - 學員董元琪專題作品成果',
+		demo_url: 'https://chichitung.github.io/MatchingTRPG-front/#/',
+		github_url: '',
+		view_count: 96,
+		is_featured: false,
+		sort_order: 2,
+	},
+	{
+		id: 3,
+		student_name: '仲崇安',
+		batch_tag: '結訓成果',
+		project_name: 'Voice Land',
+		cover_image_url: './projects/project_3.webp',
+		image_alt: 'Voice Land - 學員仲崇安專題作品成果',
+		demo_url: 'https://josh19961201.github.io/VoiceLand_front/#/',
+		github_url: '',
+		view_count: 112,
+		is_featured: false,
+		sort_order: 3,
+	},
+	{
+		id: 4,
+		student_name: '楊詠茜',
+		batch_tag: '結訓成果',
+		project_name: '桌下吧',
+		cover_image_url: './projects/project_4.webp',
+		image_alt: '桌下吧 - 學員楊詠茜專題作品成果',
+		demo_url: 'https://cloris222.github.io/quasar-project/#/',
+		github_url: '',
+		view_count: 85,
+		is_featured: false,
+		sort_order: 4,
+	},
+	{
+		id: 5,
+		student_name: '黃姿瑄',
+		batch_tag: '結訓成果',
+		project_name: '團購趣',
+		cover_image_url: './projects/project_5.webp',
+		image_alt: '團購趣 - 學員黃姿瑄專題作品成果',
+		demo_url: 'https://a733181.github.io/2022-buytogether/#/',
+		github_url: '',
+		view_count: 73,
+		is_featured: false,
+		sort_order: 5,
+	},
+	{
+		id: 6,
+		student_name: '許凱炫',
+		batch_tag: '結訓成果',
+		project_name: '一個地方',
+		cover_image_url: './projects/project_6.webp',
+		image_alt: '一個地方 - 學員許凱炫專題作品成果',
+		demo_url: 'https://qweasd333ee.github.io/a-place-bar-front/',
+		github_url: '',
+		view_count: 64,
+		is_featured: false,
+		sort_order: 6,
+	},
+	{
+		id: 7,
+		student_name: '徐嘉伶',
+		batch_tag: '結訓成果',
+		project_name: 'AZ.ZERO',
+		cover_image_url: './projects/project_7.webp',
+		image_alt: 'AZ.ZERO - 學員徐嘉伶專題作品成果',
+		demo_url: 'https://lisia229.github.io/AZFront/#/',
+		github_url: '',
+		view_count: 91,
+		is_featured: false,
+		sort_order: 7,
+	},
+	{
+		id: 8,
+		student_name: '郭思緯',
+		batch_tag: '結訓成果',
+		project_name: 'Show Time',
+		cover_image_url: './projects/project_8.webp',
+		image_alt: 'Show Time - 學員郭思緯專題作品成果',
+		demo_url: 'https://kkone0275.github.io/top-free-time-front/#/',
+		github_url: '',
+		view_count: 105,
+		is_featured: false,
+		sort_order: 8,
+	},
+	{
+		id: 9,
+		student_name: '王政文',
+		batch_tag: '結訓成果',
+		project_name: 'Ocean',
+		cover_image_url: './projects/project_9.webp',
+		image_alt: 'Ocean - 學員王政文專題作品成果',
+		demo_url: 'https://nailshort.github.io/Ocean-front/#/',
+		github_url: '',
+		view_count: 58,
+		is_featured: false,
+		sort_order: 9,
+	},
+	{
+		id: 10,
+		student_name: '胡俊宇',
+		batch_tag: '結訓成果',
+		project_name: '揪遊 (JoYo)',
+		cover_image_url: './projects/project_10.webp',
+		image_alt: '揪遊 (JoYo) - 學員胡俊宇專題作品成果',
+		demo_url: 'https://lilmax922.github.io/JoYo-Front/#/',
+		github_url: '',
+		view_count: 79,
+		is_featured: false,
+		sort_order: 10,
+	},
+	{
+		id: 11,
+		student_name: '張雅涵',
+		batch_tag: '結訓成果',
+		project_name: 'Sunday',
+		cover_image_url: './projects/project_11.webp',
+		image_alt: 'Sunday - 學員張雅涵專題作品成果',
+		demo_url: 'https://vvn719.github.io/SUNDAY-vue-project/#/',
+		github_url: '',
+		view_count: 67,
+		is_featured: false,
+		sort_order: 11,
+	},
+	{
+		id: 12,
+		student_name: '黃佳琦',
+		batch_tag: '結訓成果',
+		project_name: '綠善生活農場',
+		cover_image_url: './projects/project_12.webp',
+		image_alt: '綠善生活農場 - 學員黃佳琦專題作品成果',
+		demo_url: 'https://gagiherdesign.github.io/susi-front/#/',
+		github_url: '',
+		view_count: 82,
+		is_featured: false,
+		sort_order: 12,
+	},
+	{
+		id: 13,
+		student_name: '蔡文瑜',
+		batch_tag: '結訓成果',
+		project_name: 'BCoffee',
+		cover_image_url: './projects/project_13.webp',
+		image_alt: 'BCoffee - 學員蔡文瑜專題作品成果',
+		demo_url: 'https://pato830729.github.io/BCcoffee-front/#/',
+		github_url: '',
+		view_count: 74,
+		is_featured: false,
+		sort_order: 13,
+	},
+	{
+		id: 14,
+		student_name: '蘇俞甄',
+		batch_tag: '結訓成果',
+		project_name: 'MAUNA COFFEE',
+		cover_image_url: './projects/project_14.webp',
+		image_alt: 'MAUNA COFFEE - 學員蘇俞甄專題作品成果',
+		demo_url: 'https://a5a5aa.github.io/TSFP-front/#/',
+		github_url: '',
+		view_count: 63,
+		is_featured: false,
+		sort_order: 14,
+	},
+	{
+		id: 15,
+		student_name: '林佳霓',
+		batch_tag: '結訓成果',
+		project_name: 'Sanvia 重構情緒價值的場域',
+		cover_image_url: './projects/project_15.webp',
+		image_alt: 'Sanvia 重構情緒價值的場域 - 學員林佳霓專題作品成果',
+		demo_url: 'https://ho-67.github.io/SANVIA_FRONT/#/',
+		github_url: 'https://ho-67.github.io/SANVIA_FRONT/#/',
+		view_count: 55,
+		is_featured: false,
+		sort_order: 15,
+	},
+	{
+		id: 16,
+		student_name: '許庭瑋',
+		batch_tag: '結訓成果',
+		project_name: 'JIANICE',
+		cover_image_url: './projects/project_16.webp',
+		image_alt: 'JIANICE - 學員許庭瑋專題作品成果',
+		demo_url: 'https://yunahsuya.github.io/JIANICE-vuetify-project/#/',
+		github_url: 'https://yunahsuya.github.io/JIANICE-vuetify-project/#/',
+		view_count: 62,
+		is_featured: false,
+		sort_order: 16,
+	},
+	{
+		id: 17,
+		student_name: '鄭紫明',
+		batch_tag: '結訓成果',
+		project_name: '毛孩救援站',
+		cover_image_url: './projects/project_17.webp',
+		image_alt: '毛孩救援站 - 學員鄭紫明專題作品成果',
+		demo_url: 'https://ziming224.github.io/project--vuetify/#/',
+		github_url: 'https://ziming224.github.io/project--vuetify/#/',
+		view_count: 48,
+		is_featured: false,
+		sort_order: 17,
+	},
+	{
+		id: 18,
+		student_name: '許峻誠',
+		batch_tag: '結訓成果',
+		project_name: 'MuscleMap',
+		cover_image_url: './projects/project_18.webp',
+		image_alt: 'MuscleMap - 學員許峻誠專題作品成果',
+		demo_url: 'https://milktea910.github.io/MuscleMap/#/',
+		github_url: 'https://milktea910.github.io/MuscleMap/#/',
+		view_count: 71,
+		is_featured: false,
+		sort_order: 18,
+	},
+	{
+		id: 19,
+		student_name: '李晨嫣',
+		batch_tag: '結訓成果',
+		project_name: '打工換宿媒合平台',
+		cover_image_url: './projects/project_19.webp',
+		image_alt: '打工換宿媒合平台 - 學員李晨嫣專題作品成果',
+		demo_url: 'https://startina803.github.io/IsandRoaming-front/#/',
+		github_url: 'https://startina803.github.io/IsandRoaming-front/#/',
+		view_count: 69,
+		is_featured: false,
+		sort_order: 19,
+	},
+	{
+		id: 20,
+		student_name: '郭建廷',
+		batch_tag: '結訓成果',
+		project_name: '插畫家的風格網站',
+		cover_image_url: './projects/project_20.webp',
+		image_alt: '插畫家的風格網站 - 學員郭建廷專題作品成果',
+		demo_url: 'https://judywangart.com/#/',
+		github_url: 'https://judywangart.com/#/',
+		view_count: 59,
+		is_featured: false,
+		sort_order: 20,
+	},
+	{
+		id: 21,
+		student_name: '詹薏靜',
+		batch_tag: '結訓成果',
+		project_name: 'JIOVOLLEY',
+		cover_image_url: './projects/project_21.webp',
+		image_alt: 'JIOVOLLEY - 學員詹薏靜專題作品成果',
+		demo_url: 'https://jlo-1992.github.io/jiovolley/#/',
+		github_url: 'https://jlo-1992.github.io/jiovolley/#/',
+		view_count: 84,
+		is_featured: false,
+		sort_order: 21,
+	},
+	{
+		id: 22,
+		student_name: '謝昇運',
+		batch_tag: '結訓成果',
+		project_name: '迷因典',
+		cover_image_url: './projects/project_22.webp',
+		image_alt: '迷因典 - 學員謝昇運專題作品成果',
+		demo_url: 'https://memedam.com/',
+		github_url: 'https://memedam.com/',
+		view_count: 93,
+		is_featured: false,
+		sort_order: 22,
+	},
 ]
 
 const defaultTechCards: TechCard[] = [
-  { id: 1, category_tab: '基礎與排版', tech_name: 'HTML5 & CSS3', icon_url: '', image_alt: 'HTML5 & CSS3', description: '現代網頁語意標籤與進階排版', sort_order: 1 },
-  { id: 2, category_tab: '基礎與排版', tech_name: 'Bootstrap & Tailwind', icon_url: '', image_alt: 'Bootstrap & Tailwind', description: '現代前端 UI 框架、快速建立高質感響應式 (RWD) 介面', sort_order: 2 },
-  { id: 3, category_tab: '視覺與設計', tech_name: 'Adobe Photoshop & AI', icon_url: '', image_alt: 'Adobe Photoshop & AI', description: '影像處理修圖、Icon 圖示設計與 UI/UX 視覺傳達流程', sort_order: 3 },
-  { id: 4, category_tab: '核心動態技術', tech_name: 'JavaScript (ES6+)', icon_url: '', image_alt: 'JavaScript (ES6+)', description: '原生 DOM 操作、非同步 Promise / Async-Await 與現代語法', sort_order: 4 },
-  { id: 5, category_tab: '核心動態技術', tech_name: 'Vue.js 3 & Pinia', icon_url: '', image_alt: 'Vue.js 3 & Pinia', description: '組件化架構、Composition API、Vue Router 路由與狀態管理', sort_order: 5 },
-  { id: 6, category_tab: '核心動態技術', tech_name: 'RESTful API & Axios', icon_url: '', image_alt: 'RESTful API & Axios', description: '前後端分離資料串接、JSON 處理與非同步請求處理', sort_order: 6 },
-  { id: 7, category_tab: '環境與資料管理', tech_name: 'Node.js & MongoDB', icon_url: '', image_alt: 'Node.js & MongoDB', description: 'Node.js 執行環境、NoSQL 資料庫設計與基礎 API 開發', sort_order: 7 },
-  { id: 8, category_tab: '協同開發', tech_name: 'Git & GitHub', icon_url: '', image_alt: 'Git & GitHub', description: '版本控制、分支管理、團隊協同開發與 GitHub Pages 部署', sort_order: 8 }
+	{
+		id: 1,
+		category_tab: '基礎與排版',
+		tech_name: 'HTML5 & CSS3',
+		icon_url: '',
+		image_alt: 'HTML5 & CSS3',
+		description: '現代網頁語意標籤與進階排版',
+		sort_order: 1,
+	},
+	{
+		id: 2,
+		category_tab: '基礎與排版',
+		tech_name: 'Bootstrap & Tailwind',
+		icon_url: '',
+		image_alt: 'Bootstrap & Tailwind',
+		description: '現代前端 UI 框架、快速建立高質感響應式 (RWD) 介面',
+		sort_order: 2,
+	},
+	{
+		id: 3,
+		category_tab: '視覺與設計',
+		tech_name: 'Adobe Photoshop & AI',
+		icon_url: '',
+		image_alt: 'Adobe Photoshop & AI',
+		description: '影像處理修圖、Icon 圖示設計與 UI/UX 視覺傳達流程',
+		sort_order: 3,
+	},
+	{
+		id: 4,
+		category_tab: '核心動態技術',
+		tech_name: 'JavaScript (ES6+)',
+		icon_url: '',
+		image_alt: 'JavaScript (ES6+)',
+		description: '原生 DOM 操作、非同步 Promise / Async-Await 與現代語法',
+		sort_order: 4,
+	},
+	{
+		id: 5,
+		category_tab: '核心動態技術',
+		tech_name: 'Vue.js 3 & Pinia',
+		icon_url: '',
+		image_alt: 'Vue.js 3 & Pinia',
+		description: '組件化架構、Composition API、Vue Router 路由與狀態管理',
+		sort_order: 5,
+	},
+	{
+		id: 6,
+		category_tab: '核心動態技術',
+		tech_name: 'RESTful API & Axios',
+		icon_url: '',
+		image_alt: 'RESTful API & Axios',
+		description: '前後端分離資料串接、JSON 處理與非同步請求處理',
+		sort_order: 6,
+	},
+	{
+		id: 7,
+		category_tab: '環境與資料管理',
+		tech_name: 'Node.js & MongoDB',
+		icon_url: '',
+		image_alt: 'Node.js & MongoDB',
+		description: 'Node.js 執行環境、NoSQL 資料庫設計與基礎 API 開發',
+		sort_order: 7,
+	},
+	{
+		id: 8,
+		category_tab: '協同開發',
+		tech_name: 'Git & GitHub',
+		icon_url: '',
+		image_alt: 'Git & GitHub',
+		description: '版本控制、分支管理、團隊協同開發與 GitHub Pages 部署',
+		sort_order: 8,
+	},
 ]
 
 const defaultFacilities: Facility[] = [
-  {
-    id: 1,
-    facility_name: '寬敞明亮專屬實作空間',
-    subtitle: '雙螢幕教學設備',
-    description: '專屬獨立座位，一人配置雙螢幕電腦，可邊看講師示範邊同步動手實作。',
-    image_url: '',
-    image_alt: '寬敞明亮專屬實作空間、雙螢幕教學設備',
-    sort_order: 1
-  },
-  {
-    id: 2,
-    facility_name: '整潔舒適專屬用餐空間',
-    subtitle: '完善生活休憩設施',
-    description: '寬敞木質長桌搭配舒適空調，現場備有冷藏冰箱與多功能收納書櫃。',
-    image_url: '',
-    image_alt: '整潔舒適專屬用餐空間、完善生活休憩設施',
-    sort_order: 2
-  }
+	{
+		id: 1,
+		facility_name: '寬敞明亮專屬實作空間',
+		subtitle: '雙螢幕教學設備',
+		description: '專屬獨立座位，一人配置雙螢幕電腦，可邊看講師示範邊同步動手實作。',
+		image_url: '',
+		image_alt: '寬敞明亮專屬實作空間、雙螢幕教學設備',
+		sort_order: 1,
+	},
+	{
+		id: 2,
+		facility_name: '整潔舒適專屬用餐空間',
+		subtitle: '完善生活休憩設施',
+		description: '寬敞木質長桌搭配舒適空調，現場備有冷藏冰箱與多功能收納書櫃。',
+		image_url: '',
+		image_alt: '整潔舒適專屬用餐空間、完善生活休憩設施',
+		sort_order: 2,
+	},
 ]
 
 const defaultFAQs: FAQItem[] = [
-  { id: 1, category: '參訓資格', question: '完全沒有寫過程式或設計背景適合報名嗎？', answer: '非常適合！本專班專為零基礎及跨領域轉職者量身打造，只要您對程式設計與 AI 應用抱持濃厚興趣即可報名。課程從最基礎的 HTML/CSS 排版與視覺設計教起，循序漸進至 JavaScript 與 Vue 3 動態框架，並深度結合生成式 AI 輔助開發，全力培養能靈活運用 AI 賦能的跨領域現代網頁設計與前端實戰人才！', sort_order: 1 },
-  { id: 2, category: '參訓費用', question: '參加本訓練需要負擔學費或材料費嗎？', answer: '待業者完全免費！本課程為勞動部自辦職前訓練，政府全額補助學費與材料費。', sort_order: 2 },
-  {
-    id: 3,
-    category: '生活津貼',
-    question: '受訓期間可以申請職業訓練生活津貼嗎？申請流程為何？',
-    answer: `符合特定對象資格（如非自願離職者、中高齡待業者、身心障礙者、原住民、低收入戶等），受訓期間每月可申請基本工資 60% 之職業訓練生活津貼，最高補助 6 個月。
+	{
+		id: 1,
+		category: '參訓資格',
+		question: '完全沒有寫過程式或設計背景適合報名嗎？',
+		answer:
+			'非常適合！本專班專為零基礎及跨領域轉職者量身打造，只要您對程式設計與 AI 應用抱持濃厚興趣即可報名。課程從最基礎的 HTML/CSS 排版與視覺設計教起，循序漸進至 JavaScript 與 Vue 3 動態框架，並深度結合生成式 AI 輔助開發，全力培養能靈活運用 AI 賦能的跨領域現代網頁設計與前端實戰人才！',
+		sort_order: 1,
+	},
+	{
+		id: 2,
+		category: '參訓費用',
+		question: '參加本訓練需要負擔學費或材料費嗎？',
+		answer: '待業者完全免費！本課程為勞動部自辦職前訓練，政府全額補助學費與材料費。',
+		sort_order: 2,
+	},
+	{
+		id: 3,
+		category: '生活津貼',
+		question: '受訓期間可以申請職業訓練生活津貼嗎？申請流程為何？',
+		answer: `符合特定對象資格（如非自願離職者、中高齡待業者、身心障礙者、原住民、低收入戶等），受訓期間每月可申請基本工資 60% 之職業訓練生活津貼，最高補助 6 個月。
 
 ⚠️ 特別提醒（非自願離職者請注意）：欲請領職訓生活津貼之非自願離職勞工，請務必於報名截止日前，先親自前往各地公立就業服務機構（就服站）辦理求職登記並開立「職業訓練推介單」，再行完成報名程序，以確保津貼請領權益！`,
-    sort_order: 3
-  },
-  {
-    id: 4,
-    category: '甄試流程',
-    question: '完全沒有程式底子，甄試（筆試與口試）該怎麼準備？',
-    answer: `本班錄取採公開甄試作業（筆試 50%、口試 50%）：
+		sort_order: 3,
+	},
+	{
+		id: 4,
+		category: '甄試流程',
+		question: '完全沒有程式底子，甄試（筆試與口試）該怎麼準備？',
+		answer: `本班錄取採公開甄試作業（筆試 50%、口試 50%）：
 
 1. 筆試內容（50%）：以「基礎電腦常識與基本邏輯推理測驗」為主（選擇題），絕對不會考複雜的程式碼撰寫！即使是零基礎的朋友，具備一般電腦基本操作概念即可正常應考。
 2. 口試評分（50%）：著重於評估您的「參訓動機、全勤學習決心、人際溝通態度與結訓後轉職規劃」，而非您現在具備多少技術。只要展現對新技能的學習熱忱與轉職決心，零基礎一樣具備極高的錄取優勢！`,
-    sort_order: 4
-  },
-  {
-    id: 5,
-    category: '出勤規範',
-    question: '受訓期間可以請假或兼職打工嗎？',
-    answer: `本專班為全日制（週一至週五 08:30 ~ 16:35）密集實體培訓：
+		sort_order: 4,
+	},
+	{
+		id: 5,
+		category: '出勤規範',
+		question: '受訓期間可以請假或兼職打工嗎？',
+		answer: `本專班為全日制（週一至週五 08:10 ~ 16:35）密集實體培訓：
 
 1. 出勤紀律：勞動部對公費職訓專班有嚴格出勤規定，曠課或事病假累積達法定時數上限（約總時數 8%~10%）將依法退訓，請務必確認半年期間能全心投入。
 2. 兼職打工：具待業身分參訓者，受訓期間原則上不得具有勞工保險（勞保）加保紀錄，以免喪失政府全額學費補助資格與生活津貼請領權益。`,
-    sort_order: 5
-  },
-  {
-    id: 6,
-    category: '設備環境',
-    question: '上課需要自己準備筆記型電腦嗎？',
-    answer: `完全不需要！
+		sort_order: 5,
+	},
+	{
+		id: 6,
+		category: '設備環境',
+		question: '上課需要自己準備筆記型電腦嗎？',
+		answer: `完全不需要！
 
 1. 課堂設備：教室內已為每位學員配置專屬獨立工位，一人一套高效能電腦主機搭配「專屬雙螢幕」，左邊看講師示範、右邊同步敲代碼實作。
 2. 課後複習：若課後想在家自主練習或做專案，只要家中有一般可正常上網的個人電腦或文書筆電即可，無需額外添購昂貴的高階電競設備。`,
-    sort_order: 6
-  },
-  { id: 7, category: '上課時間', question: '上課時間與地點為何？', answer: '週一至週五 08:30 ~ 16:35（全日制培訓），上課地點於勞動部泰山職業訓練場（新北市泰山區致遠新村 55 之 1 號）。', sort_order: 7 },
-  { id: 8, category: '就業輔導', question: '結訓前會提供履歷健檢與作品集指導嗎？', answer: '會的！課程最後階段會由專業師資個別提供一對一履歷健檢、作品集面試優化指導，並舉辦專題成果發表會，協助學員以具備競爭力的完整作品集底氣十足接軌就業市場。', sort_order: 8 },
-  {
-    id: 9,
-    category: '住宿申請',
-    question: '外縣市或遠道學員有提供宿舍住宿嗎？申請資格與費用為何？',
-    answer: `有提供！泰山職業訓練場備有學員宿舍，提供符合條件之遠道待業學員申請：
+		sort_order: 6,
+	},
+	{
+		id: 7,
+		category: '上課時間',
+		question: '上課時間與地點為何？',
+		answer:
+			'週一至週五 08:10 ~ 16:35（全日制培訓），上課地點於勞動部泰山職業訓練場（新北市泰山區致遠新村 55 之 1 號）。',
+		sort_order: 7,
+	},
+	{
+		id: 8,
+		category: '就業輔導',
+		question: '結訓前會提供履歷健檢與作品集指導嗎？',
+		answer:
+			'會的！課程最後階段會由專業師資個別提供一對一履歷健檢、作品集面試優化指導，並舉辦專題成果發表會，協助學員以具備競爭力的完整作品集底氣十足接軌就業市場。',
+		sort_order: 8,
+	},
+	{
+		id: 9,
+		category: '住宿申請',
+		question: '外縣市或遠道學員有提供宿舍住宿嗎？申請資格與費用為何？',
+		answer: `有提供！泰山職業訓練場備有學員宿舍，提供符合條件之遠道待業學員申請：
 
 1. 申請資格：以戶籍地距離訓練場較遠（通常為 30 公里以上）之外縣市遠道學員優先，因床位有限需依規定名額審查分配。
 2. 費用規定：免收房間住宿費（免房費），僅需自付基本耗能費（如冷氣費依規定計收）及繳交住宿保證金（結訓無損點交後無息退還）。
 3. 宿舍環境：多為 4 人團體寢室，需自備個人盥洗用品與寢具，並遵守場區宿舍生活管理要點。
 
 ※ 實際申請流程與床位分配，請一律以錄取報到通知單及訓練場最新公告為準。`,
-    sort_order: 9
-  }
+		sort_order: 9,
+	},
 ]
 
 interface CmsCachePayload {
-  settings?: SiteSetting
-  carousels?: CarouselItem[]
-  batches?: AdmissionBatch[]
-  modules?: CurriculumModule[]
-  techCards?: TechCard[]
-  facilities?: Facility[]
-  projects?: StudentProject[]
-  faqs?: FAQItem[]
-  savedAt?: number
+	settings?: SiteSetting
+	carousels?: CarouselItem[]
+	batches?: AdmissionBatch[]
+	modules?: CurriculumModule[]
+	techCards?: TechCard[]
+	facilities?: Facility[]
+	projects?: StudentProject[]
+	faqs?: FAQItem[]
+	savedAt?: number
 }
 
 const CACHE_TTL_MS = 24 * 60 * 60 * 1000 // 24 小時快取效期
 
-export type { NavbarStyleType, GlowMotionPreset, NebulaFeatures, MeteorConfig } from './useThemeStore'
+export type { GlowMotionPreset, MeteorConfig, NavbarStyleType, NebulaFeatures } from './useThemeStore'
 
 export const useCmsStore = defineStore('cms', () => {
-  // 優先從 localStorage 讀取快取（含 24h TTL 檢查），若無或過期則使用預設快照 (0.01 秒秒開)
-  let cachedData: CmsCachePayload | null = null
-  try {
-    const raw = localStorage.getItem(CACHE_KEY)
-    if (raw) {
-      const parsed = JSON.parse(raw) as CmsCachePayload
-      if (parsed.savedAt && Date.now() - parsed.savedAt < CACHE_TTL_MS) {
-        cachedData = parsed
-      }
-    }
-  } catch (e) {}
+	// 優先從 localStorage 讀取快取（含 24h TTL 檢查），若無或過期則使用預設快照 (0.01 秒秒開)
+	let cachedData: CmsCachePayload | null = null
+	try {
+		const raw = localStorage.getItem(CACHE_KEY)
+		if (raw) {
+			const parsed = JSON.parse(raw) as CmsCachePayload
+			if (parsed.savedAt && Date.now() - parsed.savedAt < CACHE_TTL_MS) {
+				cachedData = parsed
+			}
+		}
+	} catch (e) {}
 
-  const settings = ref<SiteSetting>(cachedData?.settings || defaultSettings)
-  const carousels = ref<CarouselItem[]>(cachedData?.carousels || defaultCarousels)
-  const batches = ref<AdmissionBatch[]>(cachedData?.batches || defaultBatches)
-  const modules = ref<CurriculumModule[]>(cachedData?.modules || defaultModules)
-  const techCards = ref<TechCard[]>(cachedData?.techCards || defaultTechCards)
-  const facilities = ref<Facility[]>(cachedData?.facilities || defaultFacilities)
-  const initialProjects = (cachedData?.projects || defaultProjects).map(p => ({
-    ...p,
-    cover_image_url: p.cover_image_url || `./projects/project_${p.id}.webp`
-  }))
-  const projects = ref<StudentProject[]>(initialProjects)
-  const faqs = ref<FAQItem[]>(cachedData?.faqs || defaultFAQs)
+	const settings = ref<SiteSetting>(cachedData?.settings || defaultSettings)
+	const carousels = ref<CarouselItem[]>(cachedData?.carousels || defaultCarousels)
+	const batches = ref<AdmissionBatch[]>(cachedData?.batches || defaultBatches)
+	const modules = ref<CurriculumModule[]>(cachedData?.modules || defaultModules)
+	const techCards = ref<TechCard[]>(cachedData?.techCards || defaultTechCards)
+	const facilities = ref<Facility[]>(cachedData?.facilities || defaultFacilities)
+	const initialProjects = (cachedData?.projects || defaultProjects).map((p) => ({
+		...p,
+		cover_image_url: p.cover_image_url || `./projects/project_${p.id}.webp`,
+	}))
+	const projects = ref<StudentProject[]>(initialProjects)
+	const faqs = ref<FAQItem[]>(cachedData?.faqs || defaultFAQs)
 
-  const isLiveConnected = ref(false)
-  const isLoading = ref(false)
-  const error = ref<string | null>(null)
+	const isLiveConnected = ref(false)
+	const isLoading = ref(false)
+	const error = ref<string | null>(null)
 
-  // 背景靜默非同步喚醒後端 API 並更新最新狀態
-  async function fetchAll() {
-    isLoading.value = true
-    error.value = null
-    try {
-      const [
-        settingsRes,
-        carouselsRes,
-        batchesRes,
-        modulesRes,
-        techCardsRes,
-        facilitiesRes,
-        projectsRes,
-        faqsRes
-      ] = await Promise.all([
-        api.getSiteSettings().catch(() => null),
-        api.getCarousels().catch(() => null),
-        api.getBatches().catch(() => null),
-        api.getCurriculumModules().catch(() => null),
-        api.getTechCards().catch(() => null),
-        api.getFacilities().catch(() => null),
-        api.getProjects().catch(() => null),
-        api.getFAQs().catch(() => null),
-      ])
+	// 背景靜默非同步喚醒後端 API 並更新最新狀態
+	async function fetchAll() {
+		isLoading.value = true
+		error.value = null
+		try {
+			const [settingsRes, carouselsRes, batchesRes, modulesRes, techCardsRes, facilitiesRes, projectsRes, faqsRes] =
+				await Promise.all([
+					api.getSiteSettings().catch(() => null),
+					api.getCarousels().catch(() => null),
+					api.getBatches().catch(() => null),
+					api.getCurriculumModules().catch(() => null),
+					api.getTechCards().catch(() => null),
+					api.getFacilities().catch(() => null),
+					api.getProjects().catch(() => null),
+					api.getFAQs().catch(() => null),
+				])
 
-      if (settingsRes) settings.value = settingsRes
-      if (Array.isArray(carouselsRes)) carousels.value = carouselsRes
-      if (Array.isArray(batchesRes)) batches.value = batchesRes
-      if (Array.isArray(modulesRes)) modules.value = modulesRes
-      if (Array.isArray(techCardsRes)) techCards.value = techCardsRes
-      if (Array.isArray(facilitiesRes)) facilities.value = facilitiesRes
-      if (Array.isArray(projectsRes)) {
-        projects.value = projectsRes.map(p => ({
-          ...p,
-          cover_image_url: p.cover_image_url || `./projects/project_${p.id}.webp`
-        }))
-      }
-      if (Array.isArray(faqsRes)) faqs.value = faqsRes
+			if (settingsRes) settings.value = settingsRes
+			if (Array.isArray(carouselsRes)) carousels.value = carouselsRes
+			if (Array.isArray(batchesRes)) batches.value = batchesRes
+			if (Array.isArray(modulesRes)) modules.value = modulesRes
+			if (Array.isArray(techCardsRes)) techCards.value = techCardsRes
+			if (Array.isArray(facilitiesRes)) facilities.value = facilitiesRes
+			if (Array.isArray(projectsRes)) {
+				projects.value = projectsRes.map((p) => ({
+					...p,
+					cover_image_url: p.cover_image_url || `./projects/project_${p.id}.webp`,
+				}))
+			}
+			if (Array.isArray(faqsRes)) faqs.value = faqsRes
 
-      const hasValidData = !!(settingsRes || batchesRes || carouselsRes)
-      isLiveConnected.value = hasValidData
+			const hasValidData = !!(settingsRes || batchesRes || carouselsRes)
+			isLiveConnected.value = hasValidData
 
-      // 儲存最新快照到 localStorage
-      try {
-        const payload: CmsCachePayload = {
-          settings: settings.value,
-          carousels: carousels.value,
-          batches: batches.value,
-          modules: modules.value,
-          techCards: techCards.value,
-          facilities: facilities.value,
-          projects: projects.value,
-          faqs: faqs.value,
-          savedAt: Date.now()
-        }
-        localStorage.setItem(CACHE_KEY, JSON.stringify(payload))
-      } catch (e) {}
-    } catch (err: unknown) {
-      error.value = err instanceof Error ? err.message : '後端 API 連線異常'
-      console.warn('CMS API 背景載入提示（目前使用即時離線快照呈現）:', err)
-    } finally {
-      isLoading.value = false
-    }
-  }
+			// 儲存最新快照到 localStorage
+			try {
+				const payload: CmsCachePayload = {
+					settings: settings.value,
+					carousels: carousels.value,
+					batches: batches.value,
+					modules: modules.value,
+					techCards: techCards.value,
+					facilities: facilities.value,
+					projects: projects.value,
+					faqs: faqs.value,
+					savedAt: Date.now(),
+				}
+				localStorage.setItem(CACHE_KEY, JSON.stringify(payload))
+			} catch (e) {}
+		} catch (err: unknown) {
+			error.value = err instanceof Error ? err.message : '後端 API 連線異常'
+			console.warn('CMS API 背景載入提示（目前使用即時離線快照呈現）:', err)
+		} finally {
+			isLoading.value = false
+		}
+	}
 
-  async function trackBatchClick(id: number) {
-    try {
-      await api.trackBatchClick(id)
-      const target = batches.value.find(b => b.id === id)
-      if (target) target.click_count++
-    } catch (e) {}
-  }
+	async function trackBatchClick(id: number) {
+		try {
+			await api.trackBatchClick(id)
+			const target = batches.value.find((b) => b.id === id)
+			if (target) target.click_count++
+		} catch (e) {}
+	}
 
-  async function trackProjectView(id: number) {
-    try {
-      await api.trackProjectView(id)
-      const target = projects.value.find(p => p.id === id)
-      if (target) target.view_count++
-    } catch (e) {}
-  }
+	async function trackProjectView(id: number) {
+		try {
+			await api.trackProjectView(id)
+			const target = projects.value.find((p) => p.id === id)
+			if (target) target.view_count++
+		} catch (e) {}
+	}
 
-  return {
-    settings,
-    carousels,
-    batches,
-    modules,
-    techCards,
-    facilities,
-    projects,
-    faqs,
-    isLiveConnected,
-    isLoading,
-    error,
-    fetchAll,
-    trackBatchClick,
-    trackProjectView,
-  }
+	return {
+		settings,
+		carousels,
+		batches,
+		modules,
+		techCards,
+		facilities,
+		projects,
+		faqs,
+		isLiveConnected,
+		isLoading,
+		error,
+		fetchAll,
+		trackBatchClick,
+		trackProjectView,
+	}
 })
