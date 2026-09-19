@@ -37,7 +37,7 @@
 			<!-- 手機端橫向滑動提示 (桌機隱藏) -->
 			<div
 				v-if="!hideHeader"
-				class="flex sm:hidden items-center justify-center gap-2 text-base font-bold text-cyan-400 -mt-2 mb-4"
+				class="flex sm:hidden items-center justify-center gap-2 text-base font-bold text-cyan-400 mt-8 mb-5"
 			>
 				<span>👈 左右滑動瀏覽 8 大核心技術 👉</span>
 			</div>
