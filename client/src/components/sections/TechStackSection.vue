@@ -25,7 +25,7 @@
 					<span>Development Tools ｜ 技術與工具</span>
 				</div>
 				<h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight text-balance">
-					你會接觸到哪些技術？
+					這半年掌握哪些核心技術？
 				</h2>
 				<p
 					class="hidden sm:block text-slate-400 mt-4 text-base sm:text-lg max-w-4xl xl:max-w-5xl mx-auto leading-relaxed text-pretty text-center"

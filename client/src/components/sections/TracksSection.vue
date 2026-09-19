@@ -18,7 +18,7 @@
 					<span>Starting Points ｜ 找到專屬起點</span>
 				</div>
 				<h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight text-balance lg:whitespace-nowrap">
-					<span class="block sm:inline">你的起點不同，</span>
+					<span class="block sm:inline">起點不同，</span>
 					<span
 						class="block sm:inline mt-1 sm:mt-0 text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400"
 						>但不代表從零開始</span

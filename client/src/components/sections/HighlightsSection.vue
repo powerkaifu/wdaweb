@@ -20,7 +20,7 @@
 				<h2
 					class="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-black text-white tracking-tight leading-tight text-balance"
 				>
-					<span class="block">當你真的卡住時，</span>
+					<span class="block">真正遇到卡關時，</span>
 					<span
 						class="block mt-1 sm:mt-1.5 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400"
 						>差別在身邊有沒有能一起解題的人</span

@@ -36,10 +36,10 @@
 				</div>
 
 				<h2 class="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-black text-white tracking-tight leading-tight">
-					<span class="block">你不需要先相信自己一定能做到。</span>
+					<span class="block">不用先相信自己一定能做到。</span>
 					<span
 						class="block mt-1 sm:mt-1.5 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-emerald-400"
-						>先看看曾經和你一樣的人，最後做出了什麼。</span
+						>先看看曾經相同起點的人，最後做出了什麼。</span
 					>
 				</h2>
 
@@ -59,10 +59,10 @@
 			</div>
 		</section>
 
-		<!-- 11. 結訓真實收穫 ｜ 你最後真正帶走的，不只是一張結訓證明 -->
+		<!-- 11. 結訓真實收穫 ｜ 結訓最後帶走的，不只是一張結訓證明 -->
 		<OutcomesSection />
 
-		<!-- 12. 教學環境與設施 ｜ 接下來的半年，你會在這樣的地方學習 -->
+		<!-- 12. 教學環境與設施 ｜ 接下來的半年，在這樣安心專注的環境中學習 -->
 		<FacilitiesSection />
 
 		<!-- 13. 誠懇安心行動召喚：自主決定與三大入口 -->
@@ -85,7 +85,7 @@
 					<span class="block sm:inline">先看清楚、想明白，</span>
 					<span
 						class="block sm:inline mt-1 sm:mt-0 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-emerald-400"
-						>再跨出屬於你的下一步。</span
+						>再跨出屬於自己的下一步。</span
 					>
 				</h2>
 

@@ -21,7 +21,7 @@
 					<span>Real Takeaways ｜ 結訓真實收穫</span>
 				</div>
 				<h2 class="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-black text-white tracking-tight leading-tight text-balance">
-					<span class="block sm:inline">你最後真正帶走的，</span>
+					<span class="block sm:inline">結訓最後帶走的，</span>
 					<span
 						class="block sm:inline mt-1 sm:mt-0 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-emerald-400"
 						>不只是一張結訓證明</span
