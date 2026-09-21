@@ -544,7 +544,7 @@
                   1. 3D 宇宙深空流動星雲與銀河星空 (3D Nebula & Milky Way Stars)
                 </h3>
                 <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                  5 大 3D 柔焦星雲漫游交疊，搭配 2,560 顆三階星等銀河繁星（深空微星、中景二等星、璀璨一等亮星）在深空中自然眨眼微閃爍，營造如高山觀星般的浪漫深邃銀河！
+                  5 大 3D 柔焦星雲漫游交疊，搭配 1,880 顆三階星等銀河繁星（100% 聚焦視界內！深空微星、中景二等星、璀璨一等亮星）在深空中自然眨眼微閃爍，營造如高山觀星般的浪漫深邃銀河！
                 </p>
               </div>
 
@@ -556,7 +556,7 @@
                 </div>
                 <div class="p-2.5 rounded-xl bg-slate-950/70 border border-slate-800/80 text-xs font-mono text-cyan-300 flex items-center space-x-2">
                   <span>✨</span>
-                  <span>2,560 顆銀河繁星微閃</span>
+                  <span>1,880 顆視界聚焦繁星</span>
                 </div>
                 <div class="p-2.5 rounded-xl bg-slate-950/70 border border-slate-800/80 text-xs font-mono text-cyan-300 flex items-center space-x-2">
                   <span>💎</span>

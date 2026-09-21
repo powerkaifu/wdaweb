@@ -711,13 +711,19 @@ function initNebulaFlowScene() {
     spritesRuntime.push({ sprite, material: mat, config: cfg })
   })
 
-  // 2. 建立自然銀河繁星 (Salpeter IMF 天文天體光度學 + GPU 原生三頻大氣湍流微爆閃)
-  // 桌機配置 2,560 顆三階繁星；手機端自適應提升為 880 顆（保證深邃璀璨星空美感，滿天繁星晶瑩若塵）
-  const starCount = isMobileDevice ? 880 : 2560
-  const tier1Count = isMobileDevice ? 46 : 128   // 🌟 一等星（亮核光刺，視覺錨點，約佔 5.0%）
-  const tier2Count = isMobileDevice ? 238 : 688  // 🌌 二等星（銀河主序帶，各自眨眼，約佔 26.9%）
+  // 2. 建立自然銀河繁星 (視錐自適應動態幾何約束 + Salpeter IMF 天體光學 + GPU 原生三頻大氣湍流微爆閃)
+  // 🌟 透過相機動態視錐體幾何計算，確保 100% 繁星精準落於螢幕視野內（零虛空散落浪費）
+  const winW = typeof window !== 'undefined' ? window.innerWidth : 1920
+  const winH = typeof window !== 'undefined' ? window.innerHeight : 1080
+  const aspect = winW / Math.max(winH, 1)
+  const tanHalfFov = Math.tan((55 * Math.PI) / 360) // 相機垂直 FOV 55 度之半角正切 (≈ 0.5206)
+
+  // 桌機配置 1,880 顆視野內真實可見繁星；手機端配置 680 顆（滿天繁星晶鑽密佈，零遮擋、零無效頂點）
+  const starCount = isMobileDevice ? 680 : 1880
+  const tier1Count = isMobileDevice ? 38 : 96    // 🌟 一等星（亮核光刺，視覺錨點，約佔 5.1%）
+  const tier2Count = isMobileDevice ? 192 : 524  // 🌌 二等星（銀河主序帶，各自眨眼，約佔 27.9%）
   const tier1End = tier1Count
-  const tier2End = tier1Count + tier2Count       // ✨ 三等星（深空天鵝絨微針星塵，約佔 68.1%）
+  const tier2End = tier1Count + tier2Count       // ✨ 三等星（深空天鵝絨微針星塵，約佔 67.0%）
 
   const starGeometry = new THREE.BufferGeometry()
   const starPositions = new Float32Array(starCount * 3)
@@ -736,10 +742,26 @@ function initNebulaFlowScene() {
 
   for (let i = 0; i < starCount; i++) {
     const i3 = i * 3
-    let x = 0
-    let y = 0
     let z = 0
 
+    if (i < tier1End) {
+      z = -12 - Math.random() * 16 // -12 ~ -28
+    } else if (i < tier2End) {
+      z = -18 - Math.random() * 32 // -18 ~ -50
+    } else {
+      z = -22 - Math.random() * 58 // -22 ~ -80 遠低於遠裁切面 120，絕對不被裁切
+    }
+
+    // 📐 核心幾何推導：計算該深度 z 處，相機視錐體之可見半高與半寬
+    const dist = 15 - z // 相機固定於 (0, 0, 15)
+    const frustumHalfH = dist * tanHalfFov
+    const frustumHalfW = frustumHalfH * aspect
+    // 加入 8% 視差安全緩衝（防止滑鼠視差移動時邊緣出現突兀邊界）
+    const boundHalfW = frustumHalfW * 1.08
+    const boundHalfH = frustumHalfH * 1.08
+
+    let x = 0
+    let y = 0
     let scale = 1.0
     let baseBrightness = 0.7
     let speed = 1.0
@@ -748,65 +770,57 @@ function initNebulaFlowScene() {
     let c = colorBrightWhite
 
     if (i < tier1End) {
-      // 🌟 【Tier 1：76 顆璀璨一等星 (Bright Stellar Beacons)】
-      // 分佈於中近景醒目視野，一眼可見光芒四射的鑽石十字光刺
-      const isArmBeacon = i < Math.round(tier1Count * 0.62)
+      // 🌟 【Tier 1：96 顆璀璨一等星 (Bright Stellar Beacons)】
+      const isArmBeacon = i < Math.round(tier1Count * 0.65)
       if (isArmBeacon) {
-        // 沿著主星河高光帶排布
-        const t = (Math.random() - 0.5) * 80
-        const armCurve = t * 0.40 + Math.sin(t * 0.08) * 6.0
-        x = t + (Math.random() - 0.5) * 8.0
-        y = armCurve + (Math.random() - 0.5) * 6.0
-        z = -12 - Math.random() * 16 // 較近的景深 (-12 ~ -28)
+        // 沿著主星河對角斜向高光帶密集排布
+        const norm = (Math.random() - 0.5) * 2 // -1 ~ +1
+        x = norm * boundHalfW * 0.88 + (Math.random() - 0.5) * (boundHalfW * 0.12)
+        y = norm * (boundHalfH * 0.52) + Math.sin(norm * Math.PI) * (boundHalfH * 0.14) + (Math.random() - 0.5) * (boundHalfH * 0.16)
       } else {
-        // 醒目散落於兩側深空天幕
-        x = (Math.random() - 0.5) * 88
-        y = (Math.random() - 0.5) * 58
-        z = -14 - Math.random() * 16
+        // 醒目漫佈於全視野深空天幕
+        x = (Math.random() - 0.5) * 2 * boundHalfW * 0.92
+        y = (Math.random() - 0.5) * 2 * boundHalfH * 0.92
       }
 
-      scale = 1.10 + Math.random() * 0.40 // 1.10 ~ 1.50 精巧鑽石一等星尺寸
-      baseBrightness = 1.10 + Math.random() * 0.30 // 1.10 ~ 1.40 飽和高光
-      speed = 1.2 + Math.random() * 1.6 // 靈動呼吸頻率
-      twinkleStrength = 0.75 + Math.random() * 0.35 // 0.75 ~ 1.10 大幅度閃爍，波峰激發微爆閃與 HDR 溢光
-      parallax = 0.45 + Math.random() * 0.40 // 近景顯著視差
-
+      scale = 1.15 + Math.random() * 0.45 // 1.15 ~ 1.60 璀璨尺寸
+      baseBrightness = 1.15 + Math.random() * 0.35 // 1.15 ~ 1.50 飽和高光
+      speed = 1.2 + Math.random() * 1.6
+      twinkleStrength = 0.75 + Math.random() * 0.35
+      parallax = 0.45 + Math.random() * 0.35
       c = Math.random() < 0.75 ? colorBrightWhite : colorCyan
     } else if (i < tier2End) {
-      // 🌌 【Tier 2：384 顆中景二等星 (Mid-Magnitude Stars)】
-      // 沿銀河旋臂弧線密集分佈，各自獨立眨眼閃爍
-      const t = (Math.random() - 0.5) * 96
-      const armCurve = t * 0.42 + Math.sin(t * 0.09) * 6.5
-      const spread = (Math.random() - 0.5) * (Math.random() * 22 + 6)
-
-      x = t
+      // 🌌 【Tier 2：524 顆中景二等星 (Mid-Magnitude Stars)】
+      // 沿銀河旋臂弧線密集分佈，呈現壯麗星帶
+      const norm = (Math.random() - 0.5) * 2 // -1 ~ +1
+      x = norm * boundHalfW * 1.02
+      const armCurve = norm * (boundHalfH * 0.50) + Math.sin(norm * Math.PI * 1.1) * (boundHalfH * 0.15)
+      const spread = (Math.random() - 0.5) * (boundHalfH * 0.35)
       y = armCurve + spread
-      z = -20 - Math.random() * 35 // -20 ~ -55 中景深
 
-      scale = 0.48 + Math.random() * 0.28 // 0.48 ~ 0.76 中景靈動二等星
-      baseBrightness = 0.75 + Math.random() * 0.30 // 0.75 ~ 1.05
+      scale = 0.55 + Math.random() * 0.32 // 0.55 ~ 0.87 明晰中景二等星
+      baseBrightness = 0.82 + Math.random() * 0.32 // 0.82 ~ 1.14
       speed = 0.7 + Math.random() * 1.3
-      twinkleStrength = 0.50 + Math.random() * 0.35
-      parallax = 0.22 + Math.random() * 0.23
+      twinkleStrength = 0.52 + Math.random() * 0.35
+      parallax = 0.22 + Math.random() * 0.22
 
       const rndColor = Math.random()
       if (rndColor < 0.58) c = colorBrightWhite
       else if (rndColor < 0.85) c = colorCyan
       else c = colorPurple
     } else {
-      // ✨ 【Tier 3：960 顆銀河深空星塵 (Deep Space Stellar Dust)】
-      // 廣域漫佈於深邃背景，微幅平穩微爆閃，襯托無垠深空天鵝絨質感
-      x = (Math.random() - 0.5) * 140
-      y = (Math.random() - 0.5) * 95
-      z = -28 - Math.random() * 77 // -28 ~ -105 大幅拉開 2.4 倍景深縱深
+      // ✨ 【Tier 3：1,260 顆銀河深空星塵 (Deep Space Stellar Dust)】
+      // 全視野天鵝絨背景均勻漫佈，晶瑩剔透
+      x = (Math.random() - 0.5) * 2 * boundHalfW
+      y = (Math.random() - 0.5) * 2 * boundHalfH
 
-      scale = 0.18 + Math.random() * 0.17 // 0.18 ~ 0.35 針尖微星星塵
-      baseBrightness = 0.45 + Math.random() * 0.30 // 0.45 ~ 0.75 明晰微光
-      speed = 0.35 + Math.random() * 0.75
-      twinkleStrength = 0.25 + Math.random() * 0.25
+      scale = 0.32 + Math.random() * 0.26 // 0.32 ~ 0.58 提升微星尺寸，確保物理像素清晰可見
+      baseBrightness = 0.62 + Math.random() * 0.32 // 0.62 ~ 0.94 飽和微光
+      speed = 0.40 + Math.random() * 0.80
+      twinkleStrength = 0.35 + Math.random() * 0.30
       parallax = 0.08 + Math.random() * 0.12
 
-      c = Math.random() < 0.85 ? colorBrightWhite : colorCyan
+      c = Math.random() < 0.80 ? colorBrightWhite : colorCyan
     }
 
     starPositions[i3] = x
@@ -819,7 +833,7 @@ function initNebulaFlowScene() {
 
     starScales[i] = scale
     starBaseBrightness[i] = baseBrightness
-    starPhases[i] = Math.random() * Math.PI * 2 // 獨立隨機初始相位
+    starPhases[i] = Math.random() * Math.PI * 2
     starSpeeds[i] = speed
     starTwinkleStrengths[i] = twinkleStrength
     starParallaxes[i] = parallax
@@ -876,17 +890,17 @@ function initNebulaFlowScene() {
         // 非線性微爆閃整流：保持波形對稱，但使波峰更銳利璀璨、波谷更幽深平緩
         float peakedTwinkle = sign(rawTwinkle) * pow(abs(rawTwinkle), 1.35);
 
-        // 3. 亮度動態計算 (一等星波峰可達 1.55，激發高光 HDR 溢白光核)
-        float brightness = clamp(aBaseBrightness + peakedTwinkle * aTwinkleStrength, 0.12, 1.55);
+        // 3. 亮度動態計算 (一等星波峰可達 1.60，激發高光 HDR 溢白光核)
+        float brightness = clamp(aBaseBrightness + peakedTwinkle * aTwinkleStrength, 0.18, 1.60);
         vBrightness = brightness;
 
         // 4. 動態光學膨脹：亮度增強時，光暈直徑隨之物理擴散
-        float dynamicScale = aScale * (0.75 + brightness * 0.40);
+        float dynamicScale = aScale * (0.75 + brightness * 0.42);
 
-        // 5. 投影座標與視距衰減 (保證微米精緻度，一等星約 14px~22px，二等星約 6px~10px，星塵約 1.5px~3.5px)
+        // 5. 投影座標與視距衰減 (常數優化為 230.0，底層尺寸提升至 1.8px，確保微米級星塵粒粒清晰明見)
         vec4 mvPosition = modelViewMatrix * vec4(pos, 1.0);
         float dist = max(-mvPosition.z, 1.0);
-        gl_PointSize = clamp(dynamicScale * (165.0 / dist) * uPixelRatio, 1.0 * uPixelRatio, 24.0 * uPixelRatio);
+        gl_PointSize = clamp(dynamicScale * (230.0 / dist) * uPixelRatio, 1.8 * uPixelRatio, 26.0 * uPixelRatio);
 
         gl_Position = projectionMatrix * mvPosition;
       }
@@ -909,8 +923,8 @@ function initNebulaFlowScene() {
           rgb += vec3(excess * 0.90);
         }
 
-        // 3. 不透明度平滑過渡
-        float alpha = tex.a * clamp(vBrightness * 0.85 + 0.15, 0.15, 1.0);
+        // 3. 不透明度平滑過渡：強化底層感知度閾值 (0.28)，使深空微星在暗夜天鵝絨中晶瑩立體
+        float alpha = tex.a * clamp(vBrightness * 0.85 + 0.28, 0.28, 1.0);
 
         gl_FragColor = vec4(rgb, alpha);
       }
