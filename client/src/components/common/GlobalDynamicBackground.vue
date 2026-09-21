@@ -712,12 +712,12 @@ function initNebulaFlowScene() {
   })
 
   // 2. 建立自然銀河繁星 (Salpeter IMF 天文天體光度學 + GPU 原生三頻大氣湍流微爆閃)
-  // 桌機配置 1,420 顆三階繁星；手機端自適應精簡為 480 顆（保證深邃璀璨星空美感，零前景視覺干擾）
-  const starCount = isMobileDevice ? 480 : 1420
-  const tier1Count = isMobileDevice ? 26 : 76    // 🌟 一等星（亮核光刺，視覺錨點，約佔 5.3%）
-  const tier2Count = isMobileDevice ? 130 : 384  // 🌌 二等星（銀河主序帶，各自眨眼，約佔 27.0%）
+  // 桌機配置 2,560 顆三階繁星；手機端自適應提升為 880 顆（保證深邃璀璨星空美感，滿天繁星晶瑩若塵）
+  const starCount = isMobileDevice ? 880 : 2560
+  const tier1Count = isMobileDevice ? 46 : 128   // 🌟 一等星（亮核光刺，視覺錨點，約佔 5.0%）
+  const tier2Count = isMobileDevice ? 238 : 688  // 🌌 二等星（銀河主序帶，各自眨眼，約佔 26.9%）
   const tier1End = tier1Count
-  const tier2End = tier1Count + tier2Count       // ✨ 三等星（深空天鵝絨微針星塵，約佔 67.6%）
+  const tier2End = tier1Count + tier2Count       // ✨ 三等星（深空天鵝絨微針星塵，約佔 68.1%）
 
   const starGeometry = new THREE.BufferGeometry()
   const starPositions = new Float32Array(starCount * 3)
