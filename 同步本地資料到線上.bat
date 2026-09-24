@@ -1,4 +1,4 @@
-﻿@echo off
+@echo off
 chcp 65001 >nul
 title 泰山職訓 CMS 本地資料同步至線上工具
 
@@ -15,11 +15,11 @@ if not exist "%PYTHON_EXE%" (
     set PYTHON_EXE=python
 )
 
-%PYTHON_EXE% -Xutf8 manage.py dumpdata cms --natural-foreign --natural-primary --indent 2 -o ../cms_data_backup.json
+%PYTHON_EXE% -Xutf8 manage.py sync_to_deploy
 
 if %ERRORLEVEL% NEQ 0 (
     echo.
-    echo [ERROR] 打包資料時發生錯誤，請確認本地虛擬環境與資料庫狀態。
+    echo [ERROR] 同步作業發生錯誤，請確認本地環境與資料庫狀態。
     pause
     exit /b %ERRORLEVEL%
 )

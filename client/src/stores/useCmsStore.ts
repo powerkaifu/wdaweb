@@ -12,7 +12,7 @@ import type {
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 
-const CACHE_KEY = 'wdaweb_cms_cache_v3'
+const CACHE_KEY = 'wdaweb_cms_cache_1790237249'
 
 // 預設靜態快照 (確保 0.01 秒秒開與 Render 後端休眠冷啟動零等待體驗)
 const defaultSettings: SiteSetting = {
