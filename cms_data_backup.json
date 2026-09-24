@@ -363,7 +363,7 @@
     "github_url": "",
     "view_count": 1,
     "is_featured": false,
-    "sort_order": 35,
+    "sort_order": 36,
     "is_active": true,
     "created_at": "2026-09-01T19:28:08.797Z",
     "updated_at": "2026-09-09T13:36:49.321Z"
@@ -383,7 +383,7 @@
     "github_url": "",
     "view_count": 1,
     "is_featured": false,
-    "sort_order": 34,
+    "sort_order": 35,
     "is_active": true,
     "created_at": "2026-09-01T19:28:08.800Z",
     "updated_at": "2026-09-09T13:36:49.323Z"
@@ -403,7 +403,7 @@
     "github_url": "",
     "view_count": 2,
     "is_featured": false,
-    "sort_order": 33,
+    "sort_order": 34,
     "is_active": true,
     "created_at": "2026-09-01T19:28:08.802Z",
     "updated_at": "2026-09-09T13:36:49.327Z"
@@ -423,7 +423,7 @@
     "github_url": "",
     "view_count": 1,
     "is_featured": false,
-    "sort_order": 32,
+    "sort_order": 33,
     "is_active": true,
     "created_at": "2026-09-01T19:28:08.804Z",
     "updated_at": "2026-09-09T13:36:49.329Z"
@@ -443,7 +443,7 @@
     "github_url": "",
     "view_count": 0,
     "is_featured": false,
-    "sort_order": 31,
+    "sort_order": 32,
     "is_active": true,
     "created_at": "2026-09-01T19:28:08.806Z",
     "updated_at": "2026-09-09T13:36:49.333Z"
@@ -463,7 +463,7 @@
     "github_url": "",
     "view_count": 1,
     "is_featured": false,
-    "sort_order": 30,
+    "sort_order": 31,
     "is_active": true,
     "created_at": "2026-09-01T19:28:08.808Z",
     "updated_at": "2026-09-09T13:36:49.336Z"
@@ -483,7 +483,7 @@
     "github_url": "",
     "view_count": 0,
     "is_featured": false,
-    "sort_order": 29,
+    "sort_order": 30,
     "is_active": true,
     "created_at": "2026-09-01T19:28:08.810Z",
     "updated_at": "2026-09-09T13:36:49.339Z"
@@ -503,7 +503,7 @@
     "github_url": "",
     "view_count": 0,
     "is_featured": false,
-    "sort_order": 28,
+    "sort_order": 29,
     "is_active": true,
     "created_at": "2026-09-01T19:28:08.811Z",
     "updated_at": "2026-09-09T13:36:49.342Z"
@@ -523,7 +523,7 @@
     "github_url": "",
     "view_count": 0,
     "is_featured": false,
-    "sort_order": 27,
+    "sort_order": 28,
     "is_active": true,
     "created_at": "2026-09-01T19:28:08.813Z",
     "updated_at": "2026-09-09T13:36:49.344Z"
@@ -543,7 +543,7 @@
     "github_url": "",
     "view_count": 0,
     "is_featured": false,
-    "sort_order": 26,
+    "sort_order": 27,
     "is_active": true,
     "created_at": "2026-09-01T19:28:08.815Z",
     "updated_at": "2026-09-09T13:36:49.346Z"
@@ -563,7 +563,7 @@
     "github_url": "",
     "view_count": 0,
     "is_featured": false,
-    "sort_order": 25,
+    "sort_order": 26,
     "is_active": true,
     "created_at": "2026-09-01T19:28:08.818Z",
     "updated_at": "2026-09-09T13:36:49.349Z"
@@ -583,7 +583,7 @@
     "github_url": "",
     "view_count": 0,
     "is_featured": false,
-    "sort_order": 24,
+    "sort_order": 25,
     "is_active": true,
     "created_at": "2026-09-01T19:28:08.821Z",
     "updated_at": "2026-09-09T13:36:49.352Z"
@@ -603,7 +603,7 @@
     "github_url": "",
     "view_count": 0,
     "is_featured": false,
-    "sort_order": 23,
+    "sort_order": 24,
     "is_active": true,
     "created_at": "2026-09-01T19:28:08.823Z",
     "updated_at": "2026-09-09T13:36:49.355Z"
@@ -623,7 +623,7 @@
     "github_url": "",
     "view_count": 0,
     "is_featured": false,
-    "sort_order": 22,
+    "sort_order": 23,
     "is_active": true,
     "created_at": "2026-09-01T19:28:08.825Z",
     "updated_at": "2026-09-09T13:36:49.357Z"
@@ -643,7 +643,7 @@
     "github_url": "https://ho-67.github.io/SANVIA_FRONT/#/",
     "view_count": 1,
     "is_featured": false,
-    "sort_order": 21,
+    "sort_order": 22,
     "is_active": true,
     "created_at": "2026-09-09T13:36:49.293Z",
     "updated_at": "2026-09-09T13:36:49.293Z"
@@ -663,7 +663,7 @@
     "github_url": "https://yunahsuya.github.io/JIANICE-vuetify-project/#/",
     "view_count": 1,
     "is_featured": false,
-    "sort_order": 20,
+    "sort_order": 21,
     "is_active": true,
     "created_at": "2026-09-09T13:36:49.301Z",
     "updated_at": "2026-09-09T13:36:49.301Z"
@@ -683,7 +683,7 @@
     "github_url": "https://ziming224.github.io/project--vuetify/#/",
     "view_count": 0,
     "is_featured": false,
-    "sort_order": 19,
+    "sort_order": 20,
     "is_active": true,
     "created_at": "2026-09-09T13:36:49.303Z",
     "updated_at": "2026-09-09T13:36:49.305Z"
@@ -703,7 +703,7 @@
     "github_url": "https://milktea910.github.io/MuscleMap/#/",
     "view_count": 0,
     "is_featured": false,
-    "sort_order": 18,
+    "sort_order": 19,
     "is_active": true,
     "created_at": "2026-09-09T13:36:49.307Z",
     "updated_at": "2026-09-09T13:36:49.307Z"
@@ -723,7 +723,7 @@
     "github_url": "https://startina803.github.io/IsandRoaming-front/#/",
     "view_count": 0,
     "is_featured": false,
-    "sort_order": 17,
+    "sort_order": 18,
     "is_active": true,
     "created_at": "2026-09-09T13:36:49.310Z",
     "updated_at": "2026-09-09T13:36:49.310Z"
@@ -743,7 +743,7 @@
     "github_url": "https://judywangart.com/#/",
     "view_count": 0,
     "is_featured": false,
-    "sort_order": 16,
+    "sort_order": 17,
     "is_active": true,
     "created_at": "2026-09-09T13:36:49.313Z",
     "updated_at": "2026-09-09T13:36:49.313Z"
@@ -763,7 +763,7 @@
     "github_url": "https://jlo-1992.github.io/jiovolley/#/",
     "view_count": 0,
     "is_featured": false,
-    "sort_order": 15,
+    "sort_order": 16,
     "is_active": true,
     "created_at": "2026-09-09T13:36:49.316Z",
     "updated_at": "2026-09-09T13:36:49.316Z"
@@ -783,7 +783,7 @@
     "github_url": "https://memedam.com/",
     "view_count": 0,
     "is_featured": false,
-    "sort_order": 14,
+    "sort_order": 15,
     "is_active": true,
     "created_at": "2026-09-09T13:36:49.319Z",
     "updated_at": "2026-09-09T13:36:49.319Z"
@@ -803,7 +803,7 @@
     "github_url": "",
     "view_count": 0,
     "is_featured": false,
-    "sort_order": 13,
+    "sort_order": 14,
     "is_active": true,
     "created_at": "2026-09-24T06:19:34.405Z",
     "updated_at": "2026-09-24T06:19:34.406Z"
@@ -823,7 +823,7 @@
     "github_url": "",
     "view_count": 0,
     "is_featured": false,
-    "sort_order": 12,
+    "sort_order": 13,
     "is_active": true,
     "created_at": "2026-09-24T07:12:59.873Z",
     "updated_at": "2026-09-24T07:13:00.151Z"
@@ -843,7 +843,7 @@
     "github_url": "",
     "view_count": 0,
     "is_featured": false,
-    "sort_order": 11,
+    "sort_order": 12,
     "is_active": true,
     "created_at": "2026-09-24T07:14:19.938Z",
     "updated_at": "2026-09-24T07:14:19.946Z"
@@ -863,7 +863,7 @@
     "github_url": "",
     "view_count": 0,
     "is_featured": false,
-    "sort_order": 10,
+    "sort_order": 11,
     "is_active": true,
     "created_at": "2026-09-24T07:16:27.117Z",
     "updated_at": "2026-09-24T07:16:27.123Z"
@@ -883,7 +883,7 @@
     "github_url": "",
     "view_count": 0,
     "is_featured": false,
-    "sort_order": 9,
+    "sort_order": 10,
     "is_active": true,
     "created_at": "2026-09-24T07:18:54.893Z",
     "updated_at": "2026-09-24T07:18:54.898Z"
@@ -903,7 +903,7 @@
     "github_url": "",
     "view_count": 0,
     "is_featured": false,
-    "sort_order": 8,
+    "sort_order": 9,
     "is_active": true,
     "created_at": "2026-09-24T07:20:54.617Z",
     "updated_at": "2026-09-24T07:20:54.624Z"
@@ -923,7 +923,7 @@
     "github_url": "",
     "view_count": 0,
     "is_featured": false,
-    "sort_order": 7,
+    "sort_order": 8,
     "is_active": true,
     "created_at": "2026-09-24T07:22:18.462Z",
     "updated_at": "2026-09-24T07:22:18.469Z"
@@ -943,7 +943,7 @@
     "github_url": "",
     "view_count": 0,
     "is_featured": false,
-    "sort_order": 6,
+    "sort_order": 7,
     "is_active": true,
     "created_at": "2026-09-24T07:23:47.673Z",
     "updated_at": "2026-09-24T07:23:47.680Z"
@@ -963,7 +963,7 @@
     "github_url": "",
     "view_count": 0,
     "is_featured": false,
-    "sort_order": 5,
+    "sort_order": 6,
     "is_active": true,
     "created_at": "2026-09-24T07:25:55.969Z",
     "updated_at": "2026-09-24T07:25:55.975Z"
@@ -983,7 +983,7 @@
     "github_url": "",
     "view_count": 0,
     "is_featured": false,
-    "sort_order": 4,
+    "sort_order": 5,
     "is_active": true,
     "created_at": "2026-09-24T07:26:56.902Z",
     "updated_at": "2026-09-24T07:26:56.909Z"
@@ -1003,7 +1003,7 @@
     "github_url": "",
     "view_count": 0,
     "is_featured": false,
-    "sort_order": 3,
+    "sort_order": 4,
     "is_active": true,
     "created_at": "2026-09-24T07:29:28.258Z",
     "updated_at": "2026-09-24T07:29:37.746Z"
@@ -1023,7 +1023,7 @@
     "github_url": "",
     "view_count": 0,
     "is_featured": false,
-    "sort_order": 2,
+    "sort_order": 3,
     "is_active": true,
     "created_at": "2026-09-24T07:49:28.900Z",
     "updated_at": "2026-09-24T07:49:28.906Z"
@@ -1043,10 +1043,30 @@
     "github_url": "",
     "view_count": 0,
     "is_featured": false,
-    "sort_order": 1,
+    "sort_order": 2,
     "is_active": true,
     "created_at": "2026-09-24T07:51:34.688Z",
     "updated_at": "2026-09-24T07:51:34.695Z"
+  }
+},
+{
+  "model": "cms.studentproject",
+  "pk": 39,
+  "fields": {
+    "deleted_at": null,
+    "student_name": "陳香吟",
+    "batch_tag": "前端專班結訓成果",
+    "project_name": "Pop! Learning",
+    "cover_image": "projects/project_39.webp",
+    "image_alt": "Pop! Learning - 學員 陳香吟 專題作品首頁成果",
+    "demo_url": "https://pop-learning.onrender.com/",
+    "github_url": "",
+    "view_count": 0,
+    "is_featured": false,
+    "sort_order": 1,
+    "is_active": true,
+    "created_at": "2026-09-24T08:36:32.882Z",
+    "updated_at": "2026-09-24T08:36:32.887Z"
   }
 },
 {

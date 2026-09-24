@@ -12,7 +12,7 @@ import type {
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 
-const CACHE_KEY = 'wdaweb_cms_cache_1790237249'
+const CACHE_KEY = 'wdaweb_cms_cache_1790239059'
 
 // 預設靜態快照 (確保 0.01 秒秒開與 Render 後端休眠冷啟動零等待體驗)
 const defaultSettings: SiteSetting = {
@@ -185,6 +185,19 @@ const defaultModules: CurriculumModule[] = [
 
 const defaultProjects: StudentProject[] = [
 	{
+		id: 39,
+		student_name: "陳香吟",
+		batch_tag: "前端專班結訓成果",
+		project_name: "Pop! Learning",
+		cover_image_url: "./projects/project_39.webp",
+		image_alt: "Pop! Learning - 學員 陳香吟 專題作品首頁成果",
+		demo_url: "https://pop-learning.onrender.com/",
+		github_url: "",
+		view_count: 0,
+		is_featured: false,
+		sort_order: 1,
+	},
+	{
 		id: 38,
 		student_name: "簡孟蓁",
 		batch_tag: "前端專班結訓成果",
@@ -195,7 +208,7 @@ const defaultProjects: StudentProject[] = [
 		github_url: "",
 		view_count: 0,
 		is_featured: false,
-		sort_order: 1,
+		sort_order: 2,
 	},
 	{
 		id: 37,
@@ -208,7 +221,7 @@ const defaultProjects: StudentProject[] = [
 		github_url: "",
 		view_count: 0,
 		is_featured: false,
-		sort_order: 2,
+		sort_order: 3,
 	},
 	{
 		id: 36,
@@ -221,7 +234,7 @@ const defaultProjects: StudentProject[] = [
 		github_url: "",
 		view_count: 0,
 		is_featured: false,
-		sort_order: 3,
+		sort_order: 4,
 	},
 	{
 		id: 35,
@@ -234,7 +247,7 @@ const defaultProjects: StudentProject[] = [
 		github_url: "",
 		view_count: 0,
 		is_featured: false,
-		sort_order: 4,
+		sort_order: 5,
 	},
 	{
 		id: 34,
@@ -247,7 +260,7 @@ const defaultProjects: StudentProject[] = [
 		github_url: "",
 		view_count: 0,
 		is_featured: false,
-		sort_order: 5,
+		sort_order: 6,
 	},
 	{
 		id: 33,
@@ -260,7 +273,7 @@ const defaultProjects: StudentProject[] = [
 		github_url: "",
 		view_count: 0,
 		is_featured: false,
-		sort_order: 6,
+		sort_order: 7,
 	},
 	{
 		id: 32,
@@ -273,7 +286,7 @@ const defaultProjects: StudentProject[] = [
 		github_url: "",
 		view_count: 0,
 		is_featured: false,
-		sort_order: 7,
+		sort_order: 8,
 	},
 	{
 		id: 31,
@@ -286,7 +299,7 @@ const defaultProjects: StudentProject[] = [
 		github_url: "",
 		view_count: 0,
 		is_featured: false,
-		sort_order: 8,
+		sort_order: 9,
 	},
 	{
 		id: 30,
@@ -299,7 +312,7 @@ const defaultProjects: StudentProject[] = [
 		github_url: "",
 		view_count: 0,
 		is_featured: false,
-		sort_order: 9,
+		sort_order: 10,
 	},
 	{
 		id: 29,
@@ -312,7 +325,7 @@ const defaultProjects: StudentProject[] = [
 		github_url: "",
 		view_count: 0,
 		is_featured: false,
-		sort_order: 10,
+		sort_order: 11,
 	},
 	{
 		id: 28,
@@ -325,7 +338,7 @@ const defaultProjects: StudentProject[] = [
 		github_url: "",
 		view_count: 0,
 		is_featured: false,
-		sort_order: 11,
+		sort_order: 12,
 	},
 	{
 		id: 27,
@@ -338,7 +351,7 @@ const defaultProjects: StudentProject[] = [
 		github_url: "",
 		view_count: 0,
 		is_featured: false,
-		sort_order: 12,
+		sort_order: 13,
 	},
 	{
 		id: 24,
@@ -351,7 +364,7 @@ const defaultProjects: StudentProject[] = [
 		github_url: "",
 		view_count: 0,
 		is_featured: false,
-		sort_order: 13,
+		sort_order: 14,
 	},
 	{
 		id: 22,
@@ -364,7 +377,7 @@ const defaultProjects: StudentProject[] = [
 		github_url: "https://memedam.com/",
 		view_count: 0,
 		is_featured: false,
-		sort_order: 14,
+		sort_order: 15,
 	},
 	{
 		id: 21,
@@ -377,7 +390,7 @@ const defaultProjects: StudentProject[] = [
 		github_url: "https://jlo-1992.github.io/jiovolley/#/",
 		view_count: 0,
 		is_featured: false,
-		sort_order: 15,
+		sort_order: 16,
 	},
 	{
 		id: 20,
@@ -390,7 +403,7 @@ const defaultProjects: StudentProject[] = [
 		github_url: "https://judywangart.com/#/",
 		view_count: 0,
 		is_featured: false,
-		sort_order: 16,
+		sort_order: 17,
 	},
 	{
 		id: 19,
@@ -403,7 +416,7 @@ const defaultProjects: StudentProject[] = [
 		github_url: "https://startina803.github.io/IsandRoaming-front/#/",
 		view_count: 0,
 		is_featured: false,
-		sort_order: 17,
+		sort_order: 18,
 	},
 	{
 		id: 18,
@@ -416,7 +429,7 @@ const defaultProjects: StudentProject[] = [
 		github_url: "https://milktea910.github.io/MuscleMap/#/",
 		view_count: 0,
 		is_featured: false,
-		sort_order: 18,
+		sort_order: 19,
 	},
 	{
 		id: 17,
@@ -429,7 +442,7 @@ const defaultProjects: StudentProject[] = [
 		github_url: "https://ziming224.github.io/project--vuetify/#/",
 		view_count: 0,
 		is_featured: false,
-		sort_order: 19,
+		sort_order: 20,
 	},
 	{
 		id: 16,
@@ -442,7 +455,7 @@ const defaultProjects: StudentProject[] = [
 		github_url: "https://yunahsuya.github.io/JIANICE-vuetify-project/#/",
 		view_count: 1,
 		is_featured: false,
-		sort_order: 20,
+		sort_order: 21,
 	},
 	{
 		id: 15,
@@ -455,7 +468,7 @@ const defaultProjects: StudentProject[] = [
 		github_url: "https://ho-67.github.io/SANVIA_FRONT/#/",
 		view_count: 1,
 		is_featured: false,
-		sort_order: 21,
+		sort_order: 22,
 	},
 	{
 		id: 14,
@@ -468,7 +481,7 @@ const defaultProjects: StudentProject[] = [
 		github_url: "",
 		view_count: 0,
 		is_featured: false,
-		sort_order: 22,
+		sort_order: 23,
 	},
 	{
 		id: 13,
@@ -481,7 +494,7 @@ const defaultProjects: StudentProject[] = [
 		github_url: "",
 		view_count: 0,
 		is_featured: false,
-		sort_order: 23,
+		sort_order: 24,
 	},
 	{
 		id: 12,
@@ -494,7 +507,7 @@ const defaultProjects: StudentProject[] = [
 		github_url: "",
 		view_count: 0,
 		is_featured: false,
-		sort_order: 24,
+		sort_order: 25,
 	},
 	{
 		id: 11,
@@ -507,7 +520,7 @@ const defaultProjects: StudentProject[] = [
 		github_url: "",
 		view_count: 0,
 		is_featured: false,
-		sort_order: 25,
+		sort_order: 26,
 	},
 	{
 		id: 10,
@@ -520,7 +533,7 @@ const defaultProjects: StudentProject[] = [
 		github_url: "",
 		view_count: 0,
 		is_featured: false,
-		sort_order: 26,
+		sort_order: 27,
 	},
 	{
 		id: 9,
@@ -533,7 +546,7 @@ const defaultProjects: StudentProject[] = [
 		github_url: "",
 		view_count: 0,
 		is_featured: false,
-		sort_order: 27,
+		sort_order: 28,
 	},
 	{
 		id: 8,
@@ -546,7 +559,7 @@ const defaultProjects: StudentProject[] = [
 		github_url: "",
 		view_count: 0,
 		is_featured: false,
-		sort_order: 28,
+		sort_order: 29,
 	},
 	{
 		id: 7,
@@ -559,7 +572,7 @@ const defaultProjects: StudentProject[] = [
 		github_url: "",
 		view_count: 0,
 		is_featured: false,
-		sort_order: 29,
+		sort_order: 30,
 	},
 	{
 		id: 6,
@@ -572,7 +585,7 @@ const defaultProjects: StudentProject[] = [
 		github_url: "",
 		view_count: 1,
 		is_featured: false,
-		sort_order: 30,
+		sort_order: 31,
 	},
 	{
 		id: 5,
@@ -585,7 +598,7 @@ const defaultProjects: StudentProject[] = [
 		github_url: "",
 		view_count: 0,
 		is_featured: false,
-		sort_order: 31,
+		sort_order: 32,
 	},
 	{
 		id: 4,
@@ -598,7 +611,7 @@ const defaultProjects: StudentProject[] = [
 		github_url: "",
 		view_count: 1,
 		is_featured: false,
-		sort_order: 32,
+		sort_order: 33,
 	},
 	{
 		id: 3,
@@ -611,7 +624,7 @@ const defaultProjects: StudentProject[] = [
 		github_url: "",
 		view_count: 2,
 		is_featured: false,
-		sort_order: 33,
+		sort_order: 34,
 	},
 	{
 		id: 2,
@@ -624,7 +637,7 @@ const defaultProjects: StudentProject[] = [
 		github_url: "",
 		view_count: 1,
 		is_featured: false,
-		sort_order: 34,
+		sort_order: 35,
 	},
 	{
 		id: 1,
@@ -637,7 +650,7 @@ const defaultProjects: StudentProject[] = [
 		github_url: "",
 		view_count: 1,
 		is_featured: false,
-		sort_order: 35,
+		sort_order: 36,
 	},
 ]
 
