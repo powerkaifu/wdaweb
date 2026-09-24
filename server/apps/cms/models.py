@@ -237,7 +237,7 @@ class StudentProject(SoftDeleteModel):
     class Meta:
         verbose_name = "學員專題作品"
         verbose_name_plural = "學員作品集管理"
-        ordering = ['-is_featured', 'sort_order', '-created_at']
+        ordering = ['-is_featured', 'sort_order', '-created_at', '-id']
 
     def save(self, *args, **kwargs):
         if self.cover_image:

@@ -228,6 +228,7 @@ class StudentProjectAdmin(SafeUploadAdminMixin, SoftDeleteAdminMixin, ModelAdmin
     list_filter = ['batch_tag', 'is_featured', 'is_active']
     search_fields = ['student_name', 'project_name']
     list_editable = ['is_featured', 'sort_order', 'is_active']
+    ordering = ['-is_featured', 'sort_order', '-created_at', '-id']
     actions = ['action_capture_screenshots']
 
     fieldsets = (
