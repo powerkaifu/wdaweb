@@ -229,7 +229,7 @@ class StudentProject(SoftDeleteModel):
     github_url = models.URLField(max_length=500, blank=True, verbose_name="GitHub 原始碼網址")
     view_count = models.IntegerField(default=0, verbose_name="瀏覽次數")
     is_featured = models.BooleanField(default=False, verbose_name="是否精選置頂")
-    sort_order = models.IntegerField(default=0, verbose_name="排序")
+    sort_order = models.IntegerField(default=1, verbose_name="排序 (預設 1 自動置頂第一名，系統會自動將其他作品順序往後順延)")
     is_active = models.BooleanField(default=True, verbose_name="是否啟用")
     created_at = models.DateTimeField(default=timezone.now, verbose_name="建立時間")
     updated_at = models.DateTimeField(auto_now=True, verbose_name="更新時間")
@@ -242,6 +242,25 @@ class StudentProject(SoftDeleteModel):
     def save(self, *args, **kwargs):
         if self.cover_image:
             optimize_image(self.cover_image, max_width=1280)
+
+        # 🚨 方案 B：自動遞推讓位機制（新增或插隊時，舊專案自動讓位）
+        is_new = self.pk is None
+        target_order = max(1, self.sort_order if self.sort_order is not None else 1)
+        self.sort_order = target_order
+
+        if is_new:
+            # 新增專案：將所有排序 >= target_order 的現存未刪除作品順序自動 +1
+            StudentProject.objects.filter(sort_order__gte=target_order).update(
+                sort_order=models.F('sort_order') + 1
+            )
+        else:
+            # 編輯既有專案：僅當管理員確實修改了排序數字時才觸發順延
+            orig = StudentProject.all_objects.filter(pk=self.pk).values('sort_order').first()
+            if orig and orig['sort_order'] != target_order:
+                StudentProject.objects.filter(sort_order__gte=target_order).exclude(pk=self.pk).update(
+                    sort_order=models.F('sort_order') + 1
+                )
+
         super().save(*args, **kwargs)
 
     def __str__(self):

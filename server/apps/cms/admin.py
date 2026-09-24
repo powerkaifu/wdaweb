@@ -229,7 +229,22 @@ class StudentProjectAdmin(SafeUploadAdminMixin, SoftDeleteAdminMixin, ModelAdmin
     search_fields = ['student_name', 'project_name']
     list_editable = ['is_featured', 'sort_order', 'is_active']
     ordering = ['-is_featured', 'sort_order', '-created_at', '-id']
-    actions = ['action_capture_screenshots']
+    actions = ['action_capture_screenshots', 'action_compact_sort_order', 'action_renumber_by_created_at']
+
+    @admin.action(description='🔢 整理排序為連續整數 (1~N 緊湊排序)')
+    def action_compact_sort_order(self, request, queryset):
+        projects = list(StudentProject.objects.all().order_by('-is_featured', 'sort_order', '-created_at', '-id'))
+        for idx, p in enumerate(projects, start=1):
+            if p.sort_order != idx:
+                StudentProject.objects.filter(pk=p.pk).update(sort_order=idx)
+        self.message_user(request, f"🎉 整理完成！已將全站 {len(projects)} 件專案之排序重整為連續整數 1 ~ {len(projects)}。")
+
+    @admin.action(description='⏱️ 依建立時間重新編號 (最新發布者為 1~N)')
+    def action_renumber_by_created_at(self, request, queryset):
+        projects = list(StudentProject.objects.all().order_by('-is_featured', '-created_at', '-id'))
+        for idx, p in enumerate(projects, start=1):
+            StudentProject.objects.filter(pk=p.pk).update(sort_order=idx)
+        self.message_user(request, f"🎉 編號完成！已依照最新發布時間，將 {len(projects)} 件專案重新編號為 1 ~ {len(projects)}。")
 
     fieldsets = (
         ("📋 學員與作品基本資訊", {
