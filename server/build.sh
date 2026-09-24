@@ -11,3 +11,5 @@ if [ -f "../cms_data_backup.json" ]; then
 fi
 
 python seed_data.py
+
+# Deployment trigger: v2026-09-24-35projects-sync
