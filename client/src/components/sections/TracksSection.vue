@@ -27,7 +27,7 @@
 					>
 				</h2>
 				<p
-					class="text-slate-300 mt-3 sm:mt-4 text-base sm:text-lg max-w-none mx-auto leading-relaxed text-pretty text-center"
+					class="hidden sm:block text-slate-300 mt-3 sm:mt-4 text-base sm:text-lg max-w-none mx-auto leading-relaxed text-pretty text-center"
 				>
 					每個人走進教室時，背景都不一樣。<span
 						class="inline-block text-emerald-300 font-extrabold px-2 py-0.5 rounded-lg bg-emerald-400/10 border border-emerald-400/30 shadow-[0_0_12px_rgba(52,211,153,0.15)]"
