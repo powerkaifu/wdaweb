@@ -7,11 +7,11 @@
       theme="cyan"
     >
       <template #subtitle>
-        <div class="max-w-4xl mx-auto leading-relaxed space-y-1.5 sm:space-y-2 text-center px-1">
-          <p class="text-slate-300 text-[clamp(12px,3.8vw,16px)] sm:text-base lg:text-lg whitespace-nowrap overflow-hidden text-ellipsis sm:overflow-visible">
+        <div class="hidden sm:block max-w-4xl mx-auto leading-relaxed space-y-1.5 sm:space-y-2 text-center px-1">
+          <p class="text-slate-300 text-base lg:text-lg">
             本專班為勞動部自辦訓練，待業民眾享 100% 全額免費培訓。
           </p>
-          <p class="text-slate-300 text-[clamp(12px,3.8vw,16px)] sm:text-base lg:text-lg whitespace-nowrap overflow-hidden text-ellipsis sm:overflow-visible">
+          <p class="text-slate-300 text-base lg:text-lg">
             請直接點擊下方期別連結至「台灣就業通」官方網站完成報名。
           </p>
         </div>
