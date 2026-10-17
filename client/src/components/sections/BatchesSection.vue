@@ -138,41 +138,8 @@
 
 					<!-- 上方資訊區 -->
 					<div>
-						<!-- 大器狀態身分橫幅 (Status Hero Banner：一眼秒懂期別當前核心狀態) -->
-						<div class="mb-4 sm:mb-5">
-							<div
-								class="rounded-2xl p-3 sm:p-3.5 border transition-all duration-300 flex items-center justify-between gap-3 shadow-inner"
-								:class="getStatusHeroBanner(batch).containerClass"
-							>
-								<div class="flex items-center space-x-2.5 min-w-0">
-									<span class="text-xl sm:text-2xl shrink-0">{{ getStatusHeroBanner(batch).icon }}</span>
-									<div class="min-w-0">
-										<div
-											class="text-sm sm:text-base font-bold tracking-wide leading-snug truncate"
-											:class="getStatusHeroBanner(batch).titleClass"
-										>
-											{{ getStatusHeroBanner(batch).title }}
-										</div>
-										<div
-											class="text-xs sm:text-sm leading-tight mt-0.5 font-medium truncate"
-											:class="getStatusHeroBanner(batch).subtitleClass"
-										>
-											{{ getStatusHeroBanner(batch).subtitle }}
-										</div>
-									</div>
-								</div>
-								<!-- 右側微徽章 -->
-								<span
-									class="shrink-0 text-xs font-bold font-mono px-2.5 py-1 rounded-full border whitespace-nowrap"
-									:class="getStatusHeroBanner(batch).badgeClass"
-								>
-									{{ getStatusHeroBanner(batch).badgeText }}
-								</span>
-							</div>
-						</div>
-
 						<h3
-							class="text-xl sm:text-2xl lg:text-3xl font-extrabold mb-4 sm:mb-5 flex items-center space-x-2.5 transition-colors break-words"
+							class="text-xl sm:text-2xl lg:text-3xl font-extrabold mb-4 sm:mb-5 flex items-center space-x-2.5 transition-colors break-words pr-24 sm:pr-28"
 							:class="[
 								isBatchEnded(batch)
 									? 'text-slate-300 group-hover:text-white'
@@ -535,7 +502,6 @@ const {
 	isScreeningEnded,
 	isCelebrationBatch,
 	getFastStatusPill,
-	getStatusHeroBanner,
 	getApplicantsSummary,
 	getLifecycleLineWidth,
 	getStepNodeClass,
