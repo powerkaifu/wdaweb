@@ -3,8 +3,6 @@
     <!-- 0. 課程特色頁面（首頁）專屬動態背景 (依 GlowLabView 設定的動畫即時渲染，其他分頁不顯示) -->
     <GlobalDynamicBackground />
 
-
-
     <!-- 2. 右下角微型科技 HUD 滾動進度與 GSAP ScrollToPlugin 一鍵回頂 (測試頁隱藏) -->
     <div
       v-if="!isLabPage"
