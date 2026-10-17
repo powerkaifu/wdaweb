@@ -190,12 +190,6 @@
                     >
                       <span v-if="getStepStatus(batch, sIndex + 1) === 'completed'">✓</span>
                       <span v-else>{{ sIndex + 1 }}</span>
-
-                      <!-- 結訓慶典專屬：聲納波紋擴散光環 (Sonar Ripple Pulse) -->
-                      <span
-                        v-if="sIndex + 1 === 5 && getStepStatus(batch, 5) === 'completed' && isCelebrationBatch(batch)"
-                        class="absolute inset-0 rounded-full bg-emerald-400 animate-ping opacity-35 pointer-events-none"
-                      ></span>
                     </div>
                   </div>
                 </div>
