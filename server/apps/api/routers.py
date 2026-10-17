@@ -1,3 +1,4 @@
+import os
 from typing import List, Optional
 from ninja import NinjaAPI
 from ninja.security import django_auth
@@ -134,6 +135,45 @@ def trigger_batches_sync(request):
         return {"success": False, "message": f"同步失敗: {', '.join(res['errors'])}"}
     finally:
         cache.delete(lock_key)
+
+def handle_cron_sync(request, token: Optional[str] = None):
+    """
+    供外部定時排程 (如 GitHub Actions) 觸發的自動同步處理函式。
+    支援 Header 'X-Cron-Token'、'Authorization: Bearer <token>' 或 Query Parameter '?token='。
+    """
+    expected_token = os.getenv("CRON_SECRET_TOKEN", "wdaweb-cron-sync-token-2026")
+    header_token = request.headers.get("x-cron-token") or request.headers.get("X-Cron-Token")
+    auth_header = request.headers.get("authorization", "") or request.headers.get("Authorization", "")
+    bearer_token = auth_header.replace("Bearer ", "").strip() if auth_header.startswith("Bearer ") else ""
+
+    provided_token = token or header_token or bearer_token
+
+    if not provided_token or provided_token != expected_token:
+        return 403, {"success": False, "message": "未授權：無效的排程密鑰 (Invalid Cron Token)"}
+
+    lock_key = "lock:batch_sync_trigger"
+    if not cache.add(lock_key, True, timeout=60):
+        return {"success": False, "message": "背景同步作業已在進行中或冷卻中，請稍候再試。"}
+    try:
+        from apps.cms.services.batch_sync import sync_admission_batches
+        res = sync_admission_batches()
+        if res["success"]:
+            return {"success": True, "message": f"同步成功！新增 {res['created']} 筆，更新 {res['updated']} 筆。"}
+        return {"success": False, "message": f"同步失敗: {', '.join(res['errors'])}"}
+    except Exception as e:
+        return {"success": False, "message": f"同步過程發生異常: {str(e)}"}
+    finally:
+        cache.delete(lock_key)
+
+@api.get("/cron/batches/sync", response={200: ApiResponse, 403: ApiResponse}, tags=["Cron 自動排程"])
+def cron_batches_sync_get(request, token: Optional[str] = None):
+    """供外部定時排程 (如 GitHub Actions) 透過 GET 觸發台灣就業通同步"""
+    return handle_cron_sync(request, token)
+
+@api.post("/cron/batches/sync", response={200: ApiResponse, 403: ApiResponse}, tags=["Cron 自動排程"])
+def cron_batches_sync_post(request, token: Optional[str] = None):
+    """供外部定時排程 (如 GitHub Actions) 透過 POST 觸發台灣就業通同步"""
+    return handle_cron_sync(request, token)
 
 @api.get("/public/curriculum/modules", response=List[CurriculumModuleOut], tags=["Public 前台公開"])
 def get_curriculum_modules(request):
