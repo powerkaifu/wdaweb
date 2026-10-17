@@ -386,9 +386,9 @@
 						</div>
 					</div>
 
-					<!-- 底部心智理念收束引言 -->
+					<!-- 底部心智理念收束引言 (手機版隱藏，平板與桌機 sm:flex 呈現) -->
 					<div
-						class="pt-3.5 sm:pt-5 border-t border-slate-800/80 flex flex-col lg:flex-row lg:items-center justify-between gap-2.5 sm:gap-4 text-base sm:text-lg leading-relaxed"
+						class="hidden sm:flex pt-3.5 sm:pt-5 border-t border-slate-800/80 flex-col lg:flex-row lg:items-center justify-between gap-2.5 sm:gap-4 text-base sm:text-lg leading-relaxed"
 					>
 						<span class="text-slate-200 font-medium">💡 核心理念：AI 敲鍵盤再快，企業真正花錢僱用的，是能看懂程式碼、抓出 Bug、把產品完整做出來的人</span>
 						<span class="text-cyan-400 font-bold tracking-wide">🎯 培養獨立解決問題與系統交付的能力</span>
