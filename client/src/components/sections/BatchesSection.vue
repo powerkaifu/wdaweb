@@ -340,8 +340,8 @@
 						</div>
 					</div>
 
-					<!-- 下方行動按鈕區 (已結訓期別以右上角官方印章為代表，底部無須重複按鈕，其餘狀態維持引導) -->
-					<div v-if="!isBatchEnded(batch)" class="pt-4 border-t border-slate-800/80">
+					<!-- 下方行動按鈕區 -->
+					<div class="pt-4 border-t border-slate-800/80">
 						<!-- 1. 報名中 (最後 72h 倒數升級為琥珀金信標按鈕) -->
 						<a
 							v-if="isBatchEnrolling(batch)"
@@ -368,7 +368,16 @@
 							</svg>
 						</a>
 
-						<!-- 2. 正全力培訓衝刺中 -->
+						<!-- 2. 已結訓 (保留沉靜灰色按鈕面板，不可點選，文案避開重複的圓滿結訓與作品引導) -->
+						<div
+							v-else-if="isBatchEnded(batch)"
+							class="w-full py-3.5 sm:py-4 px-4 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-inner flex items-center justify-center space-x-2 select-none text-base lg:text-lg cursor-default"
+						>
+							<span class="text-lg sm:text-xl opacity-60">🎓</span>
+							<span class="text-slate-400 font-semibold tracking-wide">920h 培訓完成 · 邁向職場</span>
+						</div>
+
+						<!-- 3. 正全力培訓衝刺中 -->
 						<div
 							v-else-if="isBatchTraining(batch)"
 							class="w-full py-3.5 sm:py-4 px-3 rounded-2xl text-center font-semibold text-emerald-300 bg-slate-900/90 border border-emerald-500/30 shadow-inner flex items-center justify-center space-x-2 select-none text-base lg:text-lg"

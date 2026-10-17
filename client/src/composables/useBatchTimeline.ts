@@ -523,17 +523,9 @@ export function useBatchTimeline(batchesInput: MaybeRefOrGetter<AdmissionBatch[]
 
   function getLifecycleDetailNotice(batch: AdmissionBatch): DetailNotice {
     if (isBatchEnded(batch)) {
-      const isTodayGrad = (isCelebrationSimulated.value && batch.id === 1) || isTodayGraduationDay(batch.training_end_date)
-      const isCelebration = isCelebrationBatch(batch)
-      if (isTodayGrad || isCelebration) {
-        return {
-          icon: '🎓',
-          text: '本期已圓滿結訓 · 祝賀大家未來旅途一切順利！'
-        }
-      }
       return {
-        icon: '🎉',
-        text: '本期已圓滿結訓 · 歡迎查閱精彩專題成果！'
+        icon: '🎓',
+        text: '920 小時全期訓練已圓滿完成 · 邁向專業前端與 AI 職場！'
       }
     }
     if (isBatchTraining(batch)) {
