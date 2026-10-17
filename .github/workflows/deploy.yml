@@ -16,7 +16,7 @@ permissions:
 
 concurrency:
   group: 'pages'
-  cancel-in-progress: true
+  cancel-in-progress: false # 遵循 GitHub 官方指引：不中斷進行中的部署，自動排隊發布以避免鎖定衝突
 
 jobs:
   build-and-deploy:
