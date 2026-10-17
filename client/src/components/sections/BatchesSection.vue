@@ -340,8 +340,8 @@
 						</div>
 					</div>
 
-					<!-- 下方行動按鈕區 -->
-					<div class="pt-4 border-t border-slate-800/80">
+					<!-- 下方行動按鈕區 (已結訓期別以右上角官方印章為代表，底部無須重複按鈕，其餘狀態維持引導) -->
+					<div v-if="!isBatchEnded(batch)" class="pt-4 border-t border-slate-800/80">
 						<!-- 1. 報名中 (最後 72h 倒數升級為琥珀金信標按鈕) -->
 						<a
 							v-if="isBatchEnrolling(batch)"
@@ -368,25 +368,7 @@
 							</svg>
 						</a>
 
-						<!-- 2. 圓滿結訓 (灰色沉靜風格，點擊引導前往下方查閱學員專題成果) -->
-						<a
-							v-else-if="isBatchEnded(batch)"
-							href="#showcase"
-							class="w-full py-3.5 sm:py-4 px-4 rounded-2xl bg-slate-900/90 hover:bg-slate-800/90 border border-slate-800 hover:border-slate-700 text-slate-300 hover:text-white shadow-inner flex items-center justify-center space-x-2.5 text-base lg:text-lg transition-all duration-200 group/ended cursor-pointer"
-						>
-							<span class="text-lg sm:text-xl opacity-75">🎓</span>
-							<span class="font-semibold tracking-wide">本期已圓滿結訓 · 查看學員專題成果</span>
-							<svg
-								class="w-4 h-4 text-slate-400 group-hover/ended:translate-x-1 transition-transform flex-shrink-0"
-								fill="none"
-								viewBox="0 0 24 24"
-								stroke="currentColor"
-							>
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-							</svg>
-						</a>
-
-						<!-- 3. 正全力培訓衝刺中 -->
+						<!-- 2. 正全力培訓衝刺中 -->
 						<div
 							v-else-if="isBatchTraining(batch)"
 							class="w-full py-3.5 sm:py-4 px-3 rounded-2xl text-center font-semibold text-emerald-300 bg-slate-900/90 border border-emerald-500/30 shadow-inner flex items-center justify-center space-x-2 select-none text-base lg:text-lg"
@@ -395,7 +377,7 @@
 							<span>本期 920h 全力培訓衝刺中</span>
 						</div>
 
-						<!-- 4. 甄試結束待開訓 -->
+						<!-- 3. 甄試結束待開訓 -->
 						<div
 							v-else-if="isBatchScreeningOrPreparing(batch)"
 							class="w-full py-3.5 sm:py-4 px-3 rounded-2xl text-center font-semibold text-cyan-300 bg-slate-900/90 border border-cyan-500/30 shadow-inner flex flex-wrap items-center justify-center gap-1.5 select-none text-base lg:text-lg"
@@ -411,7 +393,7 @@
 							<span class="text-center">✨ 甄試結束 · 待開訓 ({{ batch.training_start_date }} 開課)</span>
 						</div>
 
-						<!-- 5. 尚未開放報名 -->
+						<!-- 4. 尚未開放報名 -->
 						<div
 							v-else-if="isBatchUpcoming(batch)"
 							class="w-full py-3.5 sm:py-4 px-3 rounded-2xl text-center font-semibold text-purple-300/90 bg-slate-900/90 border border-purple-500/30 shadow-inner flex items-center justify-center space-x-2 select-none text-base lg:text-lg"
@@ -427,7 +409,7 @@
 							<span>⏳ 尚未開放報名（敬請期待）</span>
 						</div>
 
-						<!-- 6. 報名截止 -->
+						<!-- 5. 報名截止 -->
 						<div
 							v-else
 							class="w-full py-3.5 sm:py-4 px-3 rounded-2xl text-center font-semibold text-slate-400 bg-slate-900/90 border border-slate-800 shadow-inner flex items-center justify-center space-x-2 select-none text-base lg:text-lg"

@@ -250,9 +250,9 @@ export function useBatchTimeline(batchesInput: MaybeRefOrGetter<AdmissionBatch[]
       const endDate = batch.training_end_date ? batch.training_end_date.replace(/-/g, '/') : ''
       return {
         icon: '🎓',
-        title: '本期已圓滿結訓 · 邁向職場',
-        subtitle: `920 小時全課程培育達成 · ${endDate} 完訓`,
-        badgeText: '★ 圓滿結訓 ★',
+        title: '920 小時全課程培育達成',
+        subtitle: `已於 ${endDate} 全員完訓 · 邁向專業職場`,
+        badgeText: '邁向職場',
         containerClass: 'bg-slate-900/90 border-slate-750/90 shadow-md shadow-slate-950/40',
         titleClass: 'text-slate-200',
         subtitleClass: 'text-slate-400',
