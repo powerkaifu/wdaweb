@@ -122,7 +122,7 @@
 				<div
 					class="inline-block px-4 sm:px-6 py-2.5 sm:py-3 rounded-2xl bg-slate-900/60 border border-slate-800/80 backdrop-blur-md shadow-lg max-w-full"
 				>
-					<p class="text-xs xs:text-sm sm:text-base text-slate-200 whitespace-nowrap">
+					<p class="text-sm sm:text-base text-slate-200 whitespace-nowrap">
 						💬 <span class="text-cyan-400 font-bold">有猶豫很正常，</span>先把問題想清楚，再決定要不要開始。
 					</p>
 				</div>
