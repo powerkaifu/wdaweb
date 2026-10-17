@@ -117,52 +117,93 @@
 						{{ String(index + 1).padStart(2, '0') }}
 					</div>
 
+					<!-- 官方完訓認證印章水印 (僅已結訓期別顯現，極具公信力與授證質感) -->
+					<div
+						v-if="isBatchEnded(batch)"
+						class="absolute top-4 right-4 sm:top-6 sm:right-6 pointer-events-none select-none z-10 opacity-75 sm:opacity-85"
+					>
+						<div
+							class="transform rotate-12 border-2 border-slate-700/80 rounded-2xl px-3 py-1.5 sm:px-4 sm:py-2 bg-slate-900/90 backdrop-blur-md flex flex-col items-center justify-center shadow-xl shadow-black/60"
+						>
+							<span class="text-[10px] sm:text-xs font-mono font-bold tracking-widest text-slate-400 uppercase">
+								TAISHAN WDA · 920H
+							</span>
+							<span class="text-xs sm:text-sm font-black tracking-wider text-slate-200 flex items-center space-x-1 mt-0.5">
+								<span>★</span>
+								<span>圓滿結訓</span>
+								<span>★</span>
+							</span>
+						</div>
+					</div>
+
 					<!-- 上方資訊區 -->
 					<div>
-						<!-- 0.5 秒瞬間定錨狀態標籤 (求職者一眼秒懂開課與報名狀態) -->
-						<div class="mb-3.5">
-							<span
-								class="inline-flex items-center space-x-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold tracking-wide"
-								:class="getFastStatusPill(batch).class"
+						<!-- 大器狀態身分橫幅 (Status Hero Banner：一眼秒懂期別當前核心狀態) -->
+						<div class="mb-4 sm:mb-5">
+							<div
+								class="rounded-2xl p-3 sm:p-3.5 border transition-all duration-300 flex items-center justify-between gap-3 shadow-inner"
+								:class="getStatusHeroBanner(batch).containerClass"
 							>
-								<span>{{ getFastStatusPill(batch).label }}</span>
-							</span>
+								<div class="flex items-center space-x-2.5 min-w-0">
+									<span class="text-xl sm:text-2xl shrink-0">{{ getStatusHeroBanner(batch).icon }}</span>
+									<div class="min-w-0">
+										<div
+											class="text-sm sm:text-base font-bold tracking-wide leading-snug truncate"
+											:class="getStatusHeroBanner(batch).titleClass"
+										>
+											{{ getStatusHeroBanner(batch).title }}
+										</div>
+										<div
+											class="text-xs sm:text-sm leading-tight mt-0.5 font-medium truncate"
+											:class="getStatusHeroBanner(batch).subtitleClass"
+										>
+											{{ getStatusHeroBanner(batch).subtitle }}
+										</div>
+									</div>
+								</div>
+								<!-- 右側微徽章 -->
+								<span
+									class="shrink-0 text-xs font-bold font-mono px-2.5 py-1 rounded-full border whitespace-nowrap"
+									:class="getStatusHeroBanner(batch).badgeClass"
+								>
+									{{ getStatusHeroBanner(batch).badgeText }}
+								</span>
+							</div>
 						</div>
 
 						<h3
-							class="text-xl sm:text-2xl lg:text-3xl font-extrabold mb-5 flex items-center space-x-2.5 transition-colors break-words"
+							class="text-xl sm:text-2xl lg:text-3xl font-extrabold mb-4 sm:mb-5 flex items-center space-x-2.5 transition-colors break-words"
 							:class="[
 								isBatchEnded(batch)
-									? 'text-slate-500 group-hover:text-slate-400'
-									: isBatchClosed(batch) && !isBatchScreeningOrPreparing(batch)
-										? 'text-slate-200 group-hover:text-cyan-300'
-										: 'text-white group-hover:text-cyan-300',
+									? 'text-slate-300 group-hover:text-white'
+									: 'text-white group-hover:text-cyan-300',
 							]"
 						>
 							<span>{{ batch.batch_name }}</span>
 						</h3>
 
-						<!-- 即時報名人數與熱度進度條 (Social Proof) -->
+						<!-- 參訓學員陣容 / 報名熱度 / 結訓成果進度看板 (Social Proof 因狀態而異) -->
 						<div
 							v-if="batch.applicants_count !== undefined && batch.applicants_count !== null"
 							class="mb-5 p-3.5 sm:p-4 rounded-2xl bg-slate-950/70 border border-slate-800/90 shadow-inner"
 						>
 							<div class="flex items-center justify-between text-xs sm:text-sm font-semibold mb-2">
-								<span class="text-slate-300 font-medium">報名人數</span>
-								<span class="font-mono font-bold" :class="isBatchEnded(batch) ? 'text-slate-400' : 'text-cyan-400'">
-									已報名 {{ batch.applicants_count }} 人 / 招訓 {{ batch.planned_trainees || 24 }} 名
-								</span>
+								<span class="text-slate-300 font-medium">{{ getApplicantsSummary(batch).label }}</span>
+								<div class="flex items-center space-x-2">
+									<span class="font-mono font-bold" :class="isBatchEnded(batch) ? 'text-slate-300' : 'text-cyan-400'">
+										{{ getApplicantsSummary(batch).countText }}
+									</span>
+									<span class="text-slate-400 text-xs font-normal hidden sm:inline">
+										({{ getApplicantsSummary(batch).detailText }})
+									</span>
+								</div>
 							</div>
 							<div class="w-full bg-slate-800 rounded-full h-2 overflow-hidden">
 								<div
 									class="h-full rounded-full transition-all duration-1000"
-									:class="
-										isBatchEnded(batch)
-											? 'bg-slate-700'
-											: 'bg-gradient-to-r from-cyan-500 to-emerald-400 shadow-[0_0_8px_rgba(6,182,212,0.5)]'
-									"
+									:class="getApplicantsSummary(batch).barClass"
 									:style="{
-										width: `${Math.min(100, Math.round(((batch.applicants_count || 0) / (batch.planned_trainees || 24)) * 100))}%`,
+										width: `${getApplicantsSummary(batch).percent}%`,
 									}"
 								></div>
 							</div>
@@ -327,29 +368,31 @@
 							</svg>
 						</a>
 
-						<!-- 2. 圓滿結訓 (水平置中顯示「本期已圓滿結訓」) -->
-						<div
+						<!-- 2. 圓滿結訓 (灰色沉靜風格，點擊引導前往下方查閱學員專題成果) -->
+						<a
 							v-else-if="isBatchEnded(batch)"
-							class="w-full py-3.5 sm:py-4 px-4 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-inner flex items-center justify-center space-x-2 select-none text-base lg:text-lg"
+							href="#showcase"
+							class="w-full py-3.5 sm:py-4 px-4 rounded-2xl bg-slate-900/90 hover:bg-slate-800/90 border border-slate-800 hover:border-slate-700 text-slate-300 hover:text-white shadow-inner flex items-center justify-center space-x-2.5 text-base lg:text-lg transition-all duration-200 group/ended cursor-pointer"
 						>
-							<span class="text-lg sm:text-xl opacity-60">🎓</span>
-							<span class="text-slate-400 font-semibold tracking-wide">本期已圓滿結訓</span>
-						</div>
+							<span class="text-lg sm:text-xl opacity-75">🎓</span>
+							<span class="font-semibold tracking-wide">本期已圓滿結訓 · 查看學員專題成果</span>
+							<svg
+								class="w-4 h-4 text-slate-400 group-hover/ended:translate-x-1 transition-transform flex-shrink-0"
+								fill="none"
+								viewBox="0 0 24 24"
+								stroke="currentColor"
+							>
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+							</svg>
+						</a>
 
 						<!-- 3. 正全力培訓衝刺中 -->
 						<div
 							v-else-if="isBatchTraining(batch)"
-							class="w-full py-3.5 sm:py-4 px-3 rounded-2xl text-center font-semibold text-emerald-400/90 bg-slate-900/90 border border-emerald-500/30 shadow-inner flex items-center justify-center space-x-2 select-none text-base lg:text-lg"
+							class="w-full py-3.5 sm:py-4 px-3 rounded-2xl text-center font-semibold text-emerald-300 bg-slate-900/90 border border-emerald-500/30 shadow-inner flex items-center justify-center space-x-2 select-none text-base lg:text-lg"
 						>
-							<svg class="w-5 h-5 text-emerald-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-								<path
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									stroke-width="2"
-									d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
-								/>
-							</svg>
-							<span>本期正全力培訓衝刺中</span>
+							<span class="text-base sm:text-lg">🟢</span>
+							<span>本期 920h 全力培訓衝刺中</span>
 						</div>
 
 						<!-- 4. 甄試結束待開訓 -->
@@ -501,6 +544,8 @@ const {
 	isScreeningEnded,
 	isCelebrationBatch,
 	getFastStatusPill,
+	getStatusHeroBanner,
+	getApplicantsSummary,
 	getLifecycleLineWidth,
 	getStepNodeClass,
 	getStepTextClass,
