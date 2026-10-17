@@ -219,15 +219,15 @@ export function useBatchTimeline(batchesInput: MaybeRefOrGetter<AdmissionBatch[]
 
       if (isTodayGrad) {
         return {
-          label: '🎉 今日圓滿結訓 · 邁向職場',
-          class: 'bg-emerald-500/20 text-emerald-300 border border-emerald-400/40 shadow-md shadow-emerald-500/20 animate-pulse'
+          label: '🎓 今日圓滿結訓 · 邁向職場',
+          class: 'bg-slate-800/80 text-slate-400 border border-slate-700/60 shadow-none'
         }
       }
 
       if (isCelebration) {
         return {
-          label: '🎉 圓滿結訓 · 邁向職場',
-          class: 'bg-emerald-500/20 text-emerald-300 border border-emerald-400/40 shadow-md shadow-emerald-500/20'
+          label: '🎓 圓滿結訓 · 邁向職場',
+          class: 'bg-slate-800/80 text-slate-400 border border-slate-700/60 shadow-none'
         }
       }
 
